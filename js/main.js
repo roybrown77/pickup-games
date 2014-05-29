@@ -6,8 +6,7 @@ require.config({
     /* Load bootstrap from cdn. On fail, load local file. */
     'bootstrap': ['//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min'],// 'libs/bootstrap-min'],
     'angular': '//code.angularjs.org/1.2.0-rc.2/angular',
-    'angular.route': '//code.angularjs.org/1.2.0-rc.2/angular-route.min',
-    'Parse': 'lib/parse-1.2.18.min'
+    'angular.route': '//code.angularjs.org/1.2.0-rc.2/angular-route.min'
   },
   shim: {
     'angular' : {'exports' : 'angular'},
@@ -17,7 +16,7 @@ require.config({
   }
 });
 
-require(['jQuery', 'angular', 'app', 'bootstrap', 'Parse'] , function ($, angular) {
+require(['jQuery', 'angular', 'app', 'bootstrap'] , function ($, angular) {
   $(function () { // using jQuery because it will run this even if DOM load already happened
     angular.bootstrap(document , ['app']);
   });
