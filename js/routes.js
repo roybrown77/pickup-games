@@ -1,12 +1,14 @@
 define(['angular', 'controllers'] , function (angular) {
-	angular.module('app.Routes',['app.Controllers','ui.router']).config(function($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/home');
+	angular.module('app.Routes',['app.Controllers','ui.router']).config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+        $locationProvider.html5Mode(true);
+
+        $urlRouterProvider.otherwise('/');
 
         $stateProvider
 
             // HOME STATES AND NESTED VIEWS ========================================
             .state('home', {
-                url: '/home',
+                url: '/',
                 templateUrl: 'partial-home.html'
             })
 
