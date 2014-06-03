@@ -1,8 +1,11 @@
 define(['angular'] , function (angular) {
   return angular.module('app.Controllers', [])
-      .controller('HomeCtrl', ['$scope',
-        function($scope) {
-            $scope.name = "hi";
+      .controller('HomeCtrl', ['$scope', '$window',
+        function($scope, $window) {
+            $scope.creategame = function ($game) {
+                var location = $game.location;
+                var date = $game.date;
+            };
         }
       ])
 

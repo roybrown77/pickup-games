@@ -9,7 +9,8 @@ define(['angular', 'controllers'] , function (angular) {
             // HOME STATES AND NESTED VIEWS ========================================
             .state('home', {
                 url: '/',
-                templateUrl: 'partial-home.html'
+                templateUrl: 'partial-home.html',
+                controller: ''
             })
 
             // nested list with custom controller
