@@ -2,6 +2,19 @@ define(['angular'] , function (angular) {
   return angular.module('app.Controllers', [])
       .controller('HomeCtrl', ['$scope', '$window',
         function($scope, $window) {
+
+            $scope.sports = [
+                {name:'football'},
+                {name:'basketball'},
+                {name:'baseball'},
+                {name:'hockey'},
+                {name:'golf'},
+                {name:'soccer'},
+                {name:'tennis'},
+                {name:'cricket'},
+                {name:'other'}
+            ];
+
             $scope.creategame = function ($game) {
                 var location = $game.location;
                 var date = $game.date;

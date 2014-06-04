@@ -3,6 +3,11 @@
     <p>Get your game <span class="text-danger">on</span>.</p>
 
     <form ng-controller="HomeCtrl" ng-submit="creategame(game)">
+        <span>sport</span>
+        <select ng-model="game.sport" ng-options="sport.name for sport in sports">
+            <option value="">-- choose sport --</option>
+        </select>
+
         <span>location</span>
         <input type="text" ng-model="game.location"/>
 
