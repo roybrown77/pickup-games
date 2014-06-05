@@ -2,14 +2,92 @@
     <h1>Create Game</h1>
     <p>Get your game <span class="text-danger">on</span>.</p>
 
+    <form ng-controller="HomeCtrl" id="form" role="form" name="but">
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="" ng-model="form.typesEnabled">
+                Types
+            </label>
+        </div>
+
+
+        <div class="indent">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="geocode" checked ng-model="form.type" ng-disabled="!form.typesEnabled">
+                    Geocode
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="establishment" ng-model="form.type" ng-disabled="!form.typesEnabled">
+                    Establishment
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="(regions)" ng-model="form.type" ng-disabled="!form.typesEnabled">
+                    Regions
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios4" value="(cities)" ng-model="form.type" ng-disabled="!form.typesEnabled">
+                    Cities
+                </label>
+            </div>
+        </div>
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="" ng-model="form.boundsEnabled">
+                Bounds
+            </label>
+        </div>
+
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="" ng-model="form.componentEnabled">
+                Country
+            </label>
+        </div>
+        <div class="indent">
+            <select class="form-control" ng-model="form.country" ng-disabled="!form.componentEnabled">
+                <option>ca</option>
+                <option>us</option>
+                <option>gb</option>
+            </select>
+        </div>
+        <br><br>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="" ng-model="form.watchEnter">
+                Watch Enter
+            </label>
+        </div>
+
+
+        <div class="form-group move-down">
+            <label for="Autocomplete2">Autocomplete Model</label>
+            <input type="text" id="Autocomplete2" ng-model="autocomplete" class="form-control" ng-autocomplete options="options" details="details"/>
+
+            <br>
+            <b>autocomplete</b>: {{autocomplete}}
+            <br><br>
+            <b>details (formatted address)</b>: {{details.formatted_address}}
+
+        </div>
+
+    </form>
+
     <form ng-controller="HomeCtrl" ng-submit="creategame(game)">
         <span>sport</span>
-        <select ng-model="game.sport" ng-options="sport.name for sport in sports">
-            <option value="">-- choose sport --</option>
-        </select>
+        <input type="text" ng-model="game.sport"/>
 
         <span>location</span>
-        <input type="text" ng-model="game.location"/>
+        <input type="text" ng-model="game.location" ng-autocomplete options="options" details="details"/>
 
         <span>date</span>
         <input type="date" ng-model="game.date"/>
