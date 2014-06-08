@@ -10,7 +10,7 @@ define(['angular', 'controllers'] , function (angular) {
             .state('home', {
                 url: '/',
                 templateUrl: 'partial-home.html',
-                controller: ''
+                controller: 'HomeCtrl'
             })
 
             // nested list with custom controller

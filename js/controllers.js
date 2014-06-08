@@ -1,10 +1,9 @@
 define(['angular'] , function (angular) {
   return angular.module('app.Controllers', ['ngAutocomplete'])
-      .controller('HomeCtrl', ['$scope', '$window',
-        function($scope, $window) {
-
+      .controller('HomeCtrl', ['$scope', '$window', '$http',
+        function($scope, $window, $http) {
             $scope.result = '';
-//    $scope.details = ''
+            //$scope.details = ''
             $scope.options = {};
 
             $scope.form = {
@@ -24,7 +23,6 @@ define(['angular'] , function (angular) {
             $scope.$watch($scope.watchForm, function () {
                 $scope.checkForm()
             }, true);
-
 
             //set options from form selections
             $scope.checkForm = function() {
@@ -50,28 +48,13 @@ define(['angular'] , function (angular) {
             };
 
             $scope.creategame = function ($game) {
+                if ($game == undefined) {
+                    return;
+                }
+
                 var location = $game.location;
                 var date = $game.date;
             };
         }
-      ])
-
-      .controller('scotchController', function($scope) {
-        $scope.message = 'test';
-
-        $scope.scotches = [
-            {
-                name: 'Macallan 12',
-                price: 50
-            },
-            {
-                name: 'Chivas Regal Royal Salute',
-                price: 10000
-            },
-            {
-                name: 'Glenfiddich 1937',
-                price: 20000
-            }
-        ];
-    });
+      ]);
 });
