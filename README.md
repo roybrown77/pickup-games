@@ -28,7 +28,7 @@ settin up database
 get mongodb (http://www.mongodb.org)
 
 start the database
-./mongod --dbpath /Users/niomi/work/pickupgames/mock/db/
+./mongod --dbpath /Users/[name]/work/pickupgames/mock/db/
 
 use Robomongo to see what is in the database
 
