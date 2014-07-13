@@ -21,4 +21,14 @@ npm install -g http-server
 http-server
 ```
 
-Now browse to the URL provided by the server - probably http://localhost:8080.
+Now browse to the URL provided by the server - probably http://localhost:8080.:q
+
+
+settin up database
+get mongodb (http://www.mongodb.org)
+
+start the database
+./mongod --dbpath /Users/niomi/work/pickupgames/mock/db/
+
+use Robomongo to see what is in the database
+
