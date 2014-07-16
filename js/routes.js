@@ -22,6 +22,14 @@ define(['angular', 'controllers'] , function (angular) {
                 }
             })
 
+
+            // nested list with just some random string data
+            .state('signup', {
+                url: '/signup',
+                templateUrl: 'partial-home.html',
+                template: 'I could sure use a drink right now.'
+            })
+
             // nested list with just some random string data
             .state('home.paragraph', {
                 url: '/paragraph',
