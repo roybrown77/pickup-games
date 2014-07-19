@@ -6,6 +6,10 @@ lib-cov
 *.out
 *.pid
 *.gz
+*.dll
+*.pdb
+*.cache
+*.suo
 
 pids
 logs
