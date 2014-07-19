@@ -1,0 +1,89 @@
+<div ng-controller="HomeCtrl">
+<div class="jumbotron text-center">
+    <h1>Create Game</h1>
+    <p>Get your game <span class="text-danger">on</span>.</p>
+
+    <form ng-submit="creategame(game)" id="form" role="form" name="but" enctype="multipart/form-data">
+        <div>
+            <input type="checkbox" value="" ng-model="form.typesEnabled">
+            <label>Types</label>
+        </div>
+
+        <div>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="geocode" checked ng-model="form.type" ng-disabled="!form.typesEnabled">
+            <label>GeoCode</label>
+        </div>
+
+        <div>
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="establishment" ng-model="form.type" ng-disabled="!form.typesEnabled">
+            <label>Establishment</label>
+        </div>
+
+        <div>
+            <input type="radio" name="optionsRadios" id="optionsRadios3" value="(regions)" ng-model="form.type" ng-disabled="!form.typesEnabled">
+            <label>Regions</label>
+        </div>
+
+        <div>
+            <input type="radio" name="optionsRadios" id="optionsRadios4" value="(cities)" ng-model="form.type" ng-disabled="!form.typesEnabled">
+            <label>Cities</label>
+        </div>
+
+        <div>
+            <label>
+                <input type="checkbox" value="" ng-model="form.boundsEnabled">
+                Bounds
+            </label>
+        </div>
+
+        <div>
+            <input type="checkbox" value="" ng-model="form.componentEnabled">
+            <label>Country</label>
+        </div>
+
+        <div>
+            <select ng-model="form.country" ng-disabled="!form.componentEnabled">
+                <option>us</option>
+                <option>ca</option>
+                <option>gb</option>
+            </select>
+        </div>
+
+        <div>
+            <input type="checkbox" value="" ng-model="form.watchEnter">
+            <label>Watch Enter</label>
+        </div>
+
+        <div>
+            <label>location</label>
+            <input type="text" ng-model="game.location" ng-autocomplete options="options" details="details" style="width:25em"/>
+        </div>
+
+        <div>
+            <label>sport</label>
+            <input type="text" ng-model="game.sport"/>
+        </div>
+
+        <div>
+            <label>date</label>
+            <input type="date" ng-model="game.date"/>
+        </div>
+
+        <div>
+            <label>time</label>
+            <input type="time" ng-model="game.time"/>
+        </div>
+
+        <div>
+            <input type="submit" value="Create">
+        </div>
+    </form>
+</div>
+
+<div>
+    <div>game.location: {{game.location}}</div>
+    <div>details (formatted address): {{details.formatted_address}}</div>
+</div>
+</div>
+
+<div ui-view></div>
