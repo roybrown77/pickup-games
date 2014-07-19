@@ -304,6 +304,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Domains\" />
+    <Folder Include="Mappers\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Utilities\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
