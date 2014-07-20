@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using PickupGames.Models;
 
 namespace PickupGames.Controllers
 {
@@ -10,9 +7,8 @@ namespace PickupGames.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
-            return View();
+            var model = new GameModel();
+            return View(model);
         }
 
         public ActionResult About()
@@ -27,6 +23,11 @@ namespace PickupGames.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult GetGames()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
