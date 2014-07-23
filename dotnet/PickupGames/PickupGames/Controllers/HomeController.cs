@@ -5,7 +5,7 @@ using PickupGames.Models;
 
 namespace PickupGames.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : ControllerBase
     {
         public ActionResult Index()
         {

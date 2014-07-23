@@ -83,3 +83,5 @@ C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\bin\
 C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\obj\Debug\PickupGames.csprojResolveAssemblyReference.cache
 C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\obj\Debug\PickupGames.dll
 C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\obj\Debug\PickupGames.pdb
+C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\bin\Ninject.dll
+C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\bin\Ninject.xml
