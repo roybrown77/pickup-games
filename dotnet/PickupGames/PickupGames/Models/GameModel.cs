@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
@@ -27,6 +28,12 @@ namespace PickupGames.Models
         public IEnumerable<SelectListItem> SportItems { get; set; }
 
         [Required]
-        public string Sport { get; set; }    
+        public string Sport { get; set; }
+
+        [Display(Name = "Start Time")]
+        public DateTime StartTime { get; set; }
+
+        [Display(Name = "Game Name")]
+        public string Name { get; set; }
     }
 }

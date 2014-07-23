@@ -5,21 +5,32 @@
 
 <section>
     <div class="content-wrapper">
-        <div class="title">
-             @using (Html.BeginForm("GetGames", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
-            <div class="modal-body">
-                @Html.ValidationSummary(false, "Error:")            
-                @Html.LabelFor(m => m.SportItems)
-                @Html.DropDownListFor(m => m.Sport, new SelectList(Model.SportItems, "Value", "Text"), "--Select Sport--")
-            </div>
-            <div>
-                <input class="btn btn-primary" type="submit"/>
-            </div>
-        }           
+        <div id="creategame" class="title">
+            @using (Ajax.BeginForm("CreateGame", "Home", new AjaxOptions { UpdateTargetId = "test", OnSuccess = "test" }, new { gameModel = "creategame" }))
+            {
+                <div class="modal-body">
+                    @Html.ValidationSummary(false, "Error:")     
+                    
+                    @Html.LabelFor(m => m.Name)
+                    @Html.TextBoxFor(m => m.Name)
+                           
+                    @Html.LabelFor(m => m.SportItems)
+                    @Html.DropDownListFor(m => m.Sport, new SelectList(Model.SportItems, "Value", "Text"), "--Select Sport--")
+                    
+                    @Html.LabelFor(m => m.StartTime)
+                    @Html.EditorFor(m => m.StartTime, "Date")
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-large btn-primary">Create Game!</button>
+                </div>
+            }           
         </div>
-    <div>
-    </div>
+        <div>
+        </div>
     </div>
 </section>
+
+<script>
+    
+</script>
 

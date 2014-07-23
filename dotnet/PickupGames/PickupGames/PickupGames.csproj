@@ -189,8 +189,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mappers\GameMapper.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\GameModel.cs" />
+    <Compile Include="Objects\BasicResponse.cs" />
+    <Compile Include="Objects\Game.cs" />
+    <Compile Include="Objects\ResponseBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -327,7 +331,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Mappers\" />
     <Folder Include="Repositories\" />
     <Folder Include="Utilities\" />
   </ItemGroup>

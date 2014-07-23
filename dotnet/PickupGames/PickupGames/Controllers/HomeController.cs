@@ -1,4 +1,6 @@
 ﻿using System.Web.Mvc;
+using PickupGames.Domains;
+using PickupGames.Mappers;
 using PickupGames.Models;
 
 namespace PickupGames.Controllers
@@ -25,9 +27,13 @@ namespace PickupGames.Controllers
             return View();
         }
 
-        public ActionResult GetGames()
+        [HttpPost]
+        public JsonResult CreateGame(GameModel gameModel)
         {
-            throw new System.NotImplementedException();
+            var gameDomain = new GameDomain();
+            var game = GameMapper.ConvertGameModelToGame(gameModel);
+            var response = gameDomain.CreateGame(game);
+            return Json(response);
         }
     }
 }
