@@ -2,6 +2,7 @@
 using PickupGames.Domains;
 using PickupGames.Mappers;
 using PickupGames.Models;
+using PickupGames.Objects;
 
 namespace PickupGames.Controllers
 {
@@ -30,10 +31,15 @@ namespace PickupGames.Controllers
         [HttpPost]
         public JsonResult CreateGame(GameModel gameModel)
         {
-            var gameDomain = new GameDomain();
-            var game = GameMapper.ConvertGameModelToGame(gameModel);
-            var response = gameDomain.CreateGame(game);
-            return Json(response);
+            if (ModelState.IsValid)
+            {
+                var gameDomain = new GameDomain();
+                var game = GameMapper.ConvertGameModelToGame(gameModel);
+                var response = gameDomain.CreateGame(game);
+                return Json(response);   
+            }
+
+            return Json(new BasicResponse { Status = "Failed", Message = "Incorrect Submission"});
         }
     }
 }

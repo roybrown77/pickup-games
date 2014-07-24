@@ -24,16 +24,18 @@ namespace PickupGames.Models
             };
         }
 
+        [Required]
+        [Display(Name = "Name")]
+        public string Name { get; set; }
+
         [Display(Name = "Sport")]
         public IEnumerable<SelectListItem> SportItems { get; set; }
 
         [Required]
         public string Sport { get; set; }
 
+        [Required]
         [Display(Name = "Start Time")]
         public DateTime StartTime { get; set; }
-
-        [Display(Name = "Game Name")]
-        public string Name { get; set; }
     }
 }
