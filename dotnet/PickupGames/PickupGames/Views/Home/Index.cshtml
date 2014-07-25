@@ -6,13 +6,12 @@
 
 <section>
     <div class="content-wrapper">
-        <div id="target"></div>
         <label onclick="javascript:toggleCreateGameDisplay();" style="font-weight:bold; cursor:pointer">Create Game</label>
         <div id="creategame" class="title" style="display:none">
-            @using (Ajax.BeginForm("CreateGame", "Home", FormMethod.Post, new AjaxOptions { UpdateTargetId = "target", OnComplete = "createGameComplete(data, status, xhr)" }, new { id = "creategameform" }))
+            @using (Ajax.BeginForm("CreateGame", "Home", FormMethod.Post, new AjaxOptions { OnSuccess = "createGameSuccess(data, status, xhr)" }, new { id = "creategameform" }))
             {
                 <div class="modal-body">
-                    @Html.ValidationSummary(false, "Error:")
+                    @Html.ValidationSummary(false)
 
                     @Html.LabelFor(m => m.Name)
                     @Html.TextBoxFor(m => m.Name)
@@ -51,7 +50,7 @@
         });
     }
     
-    function createGameComplete(data, status, xhr) {
+    function createGameSuccess(data, status, xhr) {
         if (data.Status == "Success") {
             $('#creategame').toggle(500);
         } else {
