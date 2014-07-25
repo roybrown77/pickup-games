@@ -37,5 +37,9 @@ namespace PickupGames.Models
         [Required]
         [Display(Name = "Start Time")]
         public DateTime StartTime { get; set; }
+
+        [Required]
+        [Display(Name = "Location")]
+        public object Location { get; set; }
     }
 }
