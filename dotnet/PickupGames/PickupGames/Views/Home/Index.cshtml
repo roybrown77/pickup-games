@@ -1,7 +1,6 @@
 ﻿@model PickupGames.Models.GameModel
 @{
     ViewBag.Title = "Index";
-    var gameModel = Model;
 }
 
 <section>
@@ -33,7 +32,7 @@
     </div>
 </section>
 <section>
-    <div id="map-canvas"/>
+    <div id="map-canvas" style="width:500px; height:300px; background-color: white"/>
 </section>
 
 <script type="text/javascript">
@@ -42,10 +41,11 @@
             center: new google.maps.LatLng(-34.397, 150.644),
             zoom: 8
         };
-        var map = new google.maps.Map(document.getElementById("map-canvas"),
-            mapOptions);
+        
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
         
         var input = (document.getElementById('Location'));
+
         var autocomplete = new google.maps.places.Autocomplete(input);
         autocomplete.bindTo('bounds', map);
     }

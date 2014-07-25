@@ -2,7 +2,6 @@
 using PickupGames.Domains;
 using PickupGames.Mappers;
 using PickupGames.Models;
-using PickupGames.Objects;
 
 namespace PickupGames.Controllers
 {
