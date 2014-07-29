@@ -1,16 +1,38 @@
-﻿@model PickupGames.Models.CreateGameModel
+﻿@using PickupGames.Models
+@using PickupGames.Objects
+@model PickupGames.Models.HomePageModel
 @{
     ViewBag.Title = "Index";
 }
 
 <section>
     <div class="content-wrapper">
-        @Html.Partial("CreateGame")
+        @Html.Partial("CreateGame", Model.Game)
     </div>
 </section>
 
 <section>
-    <div id="map-canvas" style="width:500px; height:300px; background-color: white"/>
+    <div>            
+        <div id="map-canvas" style="margin-top:1em;margin-bottom:1em;width:500px; height:300px; background-color: white">            
+        </div>
+        @foreach (var game in Model.Games)
+        {
+            <div style="margin-top:1em">            
+                <div>
+                    @game.Name          
+                </div>
+                <div>
+                    @game.Sport
+                </div>                                 
+                <div>
+                    @game.StartTime
+                </div>                 
+                <div>
+                    @game.Location
+                </div>                 
+            </div>
+        }
+    </div>
 </section>
 
 <script type="text/javascript">

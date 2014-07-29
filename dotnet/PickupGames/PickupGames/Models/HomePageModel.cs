@@ -2,8 +2,9 @@
 
 namespace PickupGames.Models
 {
-    public class GamesModel
+    public class HomePageModel
     {
+        public GameModel Game { get; set; }
         public List<GameModel> Games { get; set; }
     }
 }

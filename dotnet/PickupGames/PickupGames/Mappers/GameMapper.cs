@@ -5,7 +5,7 @@ namespace PickupGames.Mappers
 {
     public static class GameMapper
     {
-        public static Game ConvertGameModelToGame(CreateGameModel gameModel)
+        public static Game ConvertGameModelToGame(GameModel gameModel)
         {
             return new Game();
         }
