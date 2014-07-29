@@ -188,7 +188,10 @@
     <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\Dependencies.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IocContainer.cs" />
     <Compile Include="Domains\GameDomain.cs" />
+    <Compile Include="Models\GamesModel.cs" />
+    <Compile Include="Models\GameModel.cs" />
     <Compile Include="Repositories\GameRepository.cs" />
     <Compile Include="Repositories\IGameRepository.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -197,7 +200,7 @@
     </Compile>
     <Compile Include="Mappers\GameMapper.cs" />
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\GameModel.cs" />
+    <Compile Include="Models\CreateGameModel.cs" />
     <Compile Include="Objects\BasicResponse.cs" />
     <Compile Include="Objects\Game.cs" />
     <Compile Include="Objects\ResponseBase.cs" />
@@ -329,6 +332,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js.map">
       <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
     </Content>
+    <Content Include="Views\Home\Games.cshtml" />
+    <Content Include="Views\Home\CreateGame.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

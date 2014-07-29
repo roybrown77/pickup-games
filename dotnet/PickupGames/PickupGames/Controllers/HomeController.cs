@@ -9,7 +9,7 @@ namespace PickupGames.Controllers
     {
         public ActionResult Index()
         {
-            var model = new GameModel();
+            var model = new CreateGameModel();
             return View(model);
         }
 
@@ -28,7 +28,7 @@ namespace PickupGames.Controllers
         }
 
         [HttpPost]
-        public JsonResult CreateGame(GameModel gameModel)
+        public JsonResult CreateGame(CreateGameModel gameModel)
         {
             var gameDomain = new GameDomain();
             var game = GameMapper.ConvertGameModelToGame(gameModel);

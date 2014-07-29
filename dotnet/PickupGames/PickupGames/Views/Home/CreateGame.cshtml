@@ -1,0 +1,39 @@
+﻿@model PickupGames.Models.CreateGameModel
+
+<label onclick="javascript:toggleCreateGameDisplay();" style="font-weight:bold; cursor:pointer">Create Game</label>
+<div id="creategame" class="title" style="display:none">
+    @using (Ajax.BeginForm("CreateGame", "Home", FormMethod.Post, new AjaxOptions { OnSuccess = "createGameSuccess(data, status, xhr)" }, new { id = "creategameform" }))
+    {
+        <div class="modal-body">
+            @Html.ValidationSummary(false)
+
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name)
+
+            @Html.LabelFor(m => m.SportItems)
+            @Html.DropDownListFor(m => m.Sport, new SelectList(Model.SportItems, "Value", "Text"), "--Select Sport--")
+
+            @Html.LabelFor(m => m.StartTime)
+            @Html.EditorFor(m => m.StartTime, "Date")
+                    
+            @Html.LabelFor(m => m.Location)
+            @Html.TextBoxFor(m => m.Location, new { style = "width:30em;" })
+        </div>
+        <div>
+            <input type="submit" class="btn btn-large btn-primary" value="Create!"/>
+        </div>
+    }
+</div>
+
+<script type="text/javascript">
+    function toggleCreateGameDisplay() {
+        $('#creategame').toggle(500);
+    };
+    
+    function createGameSuccess(data, status, xhr) {
+        if (data.Status == "Success") {
+            $('#creategame').toggle(500);
+        } else {
+        }
+    }       
+</script>
