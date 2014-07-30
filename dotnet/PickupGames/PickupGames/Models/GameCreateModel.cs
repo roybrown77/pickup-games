@@ -1,14 +1,21 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace PickupGames.Models
 {
-    public class GameModel
+    public class GameCreateModel
     {
+        [Required]
         public string Name { get; set; }
+
+        [Required]
         public string Sport { get; set; }
+
+        [Required]
+        [Display(Name = "Start Time")]
         public DateTime StartTime { get; set; }
+
+        [Required]
         public string Location { get; set; }
-        public int PlayerCount { get; set; }
-        public string DistanceToLocation { get; set; }
     }
 }

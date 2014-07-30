@@ -13,7 +13,7 @@ namespace PickupGames.Controllers
         {
             var model = new HomePageModel
                             {
-                                Game = new GameModel(),
+                                Game = new GameCreateModel(),
                                 Games = new List<GameModel>
                                                { 
                                                    new GameModel
@@ -21,19 +21,55 @@ namespace PickupGames.Controllers
                                                               Name = "touch football",
                                                               Sport = "Football",
                                                               StartTime = DateTime.Now,
-                                                              Location = "Boston, MA"
+                                                              Location = "Boston, MA",
+                                                              PlayerCount = 6,
+                                                              DistanceToLocation = "5.5 mi"
                                                           },
                                                     new GameModel
                                                           {
                                                               Name = "3 on 3 basketball",
                                                               Sport = "Basketball",
                                                               StartTime = DateTime.Now.Add(new TimeSpan(3)),
-                                                              Location = "Atlanta, GA"
+                                                              Location = "Atlanta, GA",
+                                                              PlayerCount = 8,
+                                                              DistanceToLocation = "10.23 mi"
                                                           } 
                                                }
                             };
 
             return View(model);
+        }
+
+        [HttpGet]
+        public JsonResult GetGames()
+        {
+            var model = new HomePageModel
+            {
+                Game = new GameCreateModel(),
+                Games = new List<GameModel>
+                                               { 
+                                                   new GameModel
+                                                          {
+                                                              Name = "touch football",
+                                                              Sport = "Football",
+                                                              StartTime = DateTime.Now,
+                                                              Location = "Boston, MA",
+                                                              PlayerCount = 6,
+                                                              DistanceToLocation = "5.5 mi"
+                                                          },
+                                                    new GameModel
+                                                          {
+                                                              Name = "3 on 3 basketball",
+                                                              Sport = "Basketball",
+                                                              StartTime = DateTime.Now.Add(new TimeSpan(3)),
+                                                              Location = "Atlanta, GA",
+                                                              PlayerCount = 8,
+                                                              DistanceToLocation = "10.23 mi"
+                                                          } 
+                                               }
+            };
+
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult About()
@@ -51,12 +87,18 @@ namespace PickupGames.Controllers
         }
 
         [HttpPost]
-        public JsonResult CreateGame(GameModel gameModel)
+        public JsonResult CreateGame(GameCreateModel gameModel)
         {
             var gameDomain = new GameDomain();
-            var game = GameMapper.ConvertGameModelToGame(gameModel);
+            var game = GameMapper.ConvertGameCreateModelToGame(gameModel);
             var response = gameDomain.CreateGame(game);
-            return Json(response);   
+
+            if (response.Status == "Success")
+            {
+                return Json(response);
+            }            
+
+            return Json(response);
         }
     }
 }
