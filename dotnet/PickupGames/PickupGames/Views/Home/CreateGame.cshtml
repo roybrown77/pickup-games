@@ -1,8 +1,8 @@
 ﻿@model PickupGames.Models.GameCreateModel
 
 <label onclick="javascript:toggleCreateGameDisplay();" style="font-weight:bold; cursor:pointer">Create Game</label>
-<div id="createGameCreateModel" class="title" style="display:none">
-    @using (Ajax.BeginForm("CreateGame", "Home", FormMethod.Post, new AjaxOptions { OnSuccess = "createGameCreateModelSuccess(data, status, xhr)" }, new { id = "creategameform" }))
+<div id="creategame" class="title" style="display:none">
+    @using (Ajax.BeginForm("CreateGame", "Home", FormMethod.Post, new AjaxOptions { OnSuccess = "createGameSuccess(data, status, xhr)" }, new { id = "creategameform" }))
     {
         <div class="modal-body">
             @Html.ValidationSummary(false)
@@ -27,13 +27,6 @@
 
 <script type="text/javascript">
     function toggleCreateGameDisplay() {
-        $('#createGameCreateModel').toggle(500);
-    };
-    
-    function createGameSuccess(data, status, xhr) {
-        if (data.Status == "Success") {
-            $('#createGameCreateModel').toggle(500);
-        } else {
-        }
-    }       
+        $('#creategame').toggle(500);
+    };       
 </script>

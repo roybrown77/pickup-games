@@ -2,25 +2,21 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>@ViewBag.Title - Pickup Games</title>
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
         <meta name="viewport" content="width=device-width" />
+
+        <title>@ViewBag.Title - Pickup Games</title>
+        
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
+        
         <script src="@Url.Content("~/Scripts/jquery-1.8.2.min.js")"> </script>
         <script src="@Url.Content("~/Scripts/jquery.validate.js")"> </script>
         <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
         <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>        
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
-        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-        <meta charset="utf-8" />
-        <style>
-            html, body, #map-canvas {
-                height: 100%;
-                margin: 0px;
-                padding: 0px
-            }
-    </style>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>        
     </head>
     <body>
         <header>
