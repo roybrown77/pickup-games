@@ -30,7 +30,7 @@ namespace PickupGames.Domains
                                                {
                                                    Name = game.Name,
                                                    Sport = game.Name,
-                                                   StartTime = game.StartTime,
+                                                   GameTime = game.GameTime,
                                                    Location = game.Location,
                                                    PlayerCount = 20,
                                                    DistanceToLocation = "25.5 mi"
@@ -39,7 +39,7 @@ namespace PickupGames.Domains
                                                {
                                                    Name = "touch football",
                                                    Sport = "Football",
-                                                   StartTime = DateTime.Now,
+                                                   GameTime = DateTime.Now,
                                                    Location = "Boston, MA",
                                                    PlayerCount = 6,
                                                    DistanceToLocation = "5.5 mi"
@@ -48,7 +48,7 @@ namespace PickupGames.Domains
                                                {
                                                    Name = "3 on 3 basketball",
                                                    Sport = "Basketball",
-                                                   StartTime = DateTime.Now.Add(new TimeSpan(3)),
+                                                   GameTime = DateTime.Now.Add(new TimeSpan(3)),
                                                    Location = "Atlanta, GA",
                                                    PlayerCount = 8,
                                                    DistanceToLocation = "10.23 mi"

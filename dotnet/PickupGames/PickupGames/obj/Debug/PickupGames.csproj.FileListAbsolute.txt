@@ -14,6 +14,7 @@ C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\bin\
 C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
 C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\bin\Microsoft.Web.WebPages.OAuth.dll
 C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\bin\Newtonsoft.Json.dll
+C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\bin\Ninject.dll
 C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\bin\System.Net.Http.Formatting.dll
 C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\bin\System.Spatial.dll
 C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\bin\System.Web.Helpers.dll
@@ -29,6 +30,7 @@ C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\bin\
 C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\bin\WebGrease.dll
 C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\bin\WebMatrix.Data.dll
 C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\bin\WebMatrix.WebData.dll
+C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\bin\Ninject.xml
 C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\bin\EntityFramework.xml
 C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\bin\Newtonsoft.Json.xml
 C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\bin\System.Net.Http.Formatting.xml
@@ -80,8 +82,6 @@ C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\bin\
 C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\bin\ru\System.Spatial.resources.dll
 C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\bin\zh-Hant\System.Spatial.resources.dll
-C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\obj\Debug\PickupGames.csprojResolveAssemblyReference.cache
 C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\obj\Debug\PickupGames.dll
 C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\obj\Debug\PickupGames.pdb
-C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\bin\Ninject.dll
-C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\bin\Ninject.xml
+C:\Users\rmirdb\Documents\GitHub\pickupgames\dotnet\PickupGames\PickupGames\obj\Debug\PickupGames.csprojResolveAssemblyReference.cache

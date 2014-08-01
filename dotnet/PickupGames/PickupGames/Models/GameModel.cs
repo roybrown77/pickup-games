@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace PickupGames.Models
 {
@@ -9,6 +10,8 @@ namespace PickupGames.Models
         public DateTime StartTime { get; set; }
         public string Location { get; set; }
         public int PlayerCount { get; set; }
+
+        [Display(Name = "Distance:")]
         public string DistanceToLocation { get; set; }
     }
 }

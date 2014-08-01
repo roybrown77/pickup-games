@@ -9,6 +9,10 @@
     <div class="content-wrapper">
         @Html.Partial("CreateGame", Model.Game)
     </div>
+
+    <div class="content-wrapper">
+        @Html.Partial("SearchGames", Model.GameSearchModel)
+    </div>
 </section>
 
 <section>
@@ -28,6 +32,14 @@
                 </div>                 
                 <div>
                     @game.Location
+                </div>
+                <div>
+                    @game.PlayerCount
+                    <span>players signed up</span>
+                </div>
+                <div>
+                    @game.DistanceToLocation
+                    <span>from searched or created location</span>
                 </div>                 
             </div>
         }
@@ -35,22 +47,28 @@
 </section>
 
 <script id="gamesTemplate" type="text/html"> 
-        {{#games}} 
-        <div style="margin-top:1em">            
-                <div>
-                    {{Name}}          
-                </div>
-                <div>
-                    {{Sport}}
-                </div>                                 
-                <div>
-                    {{StartTime}}
-                </div>                 
-                <div>
-                    {{Location}}
-                </div>                 
-            </div> 
-        {{/games}}   
+    {{#games}} 
+    <div style="margin-top:1em">            
+        <div>
+            {{Name}}          
+        </div>
+        <div>
+            {{Sport}}
+        </div>                                 
+        <div>
+            {{StartTime}}
+        </div>                 
+        <div>
+            {{Location}}
+        </div>                 
+        <div>
+            {{PlayerCount}}
+        </div>                 
+        <div>
+            {{DistanceToLocation}} 
+        </div>                 
+    </div> 
+    {{/games}}   
 </script>
 
 <script type="text/javascript">

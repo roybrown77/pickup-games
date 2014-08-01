@@ -34,7 +34,8 @@ namespace PickupGames.Controllers
                                                               PlayerCount = 8,
                                                               DistanceToLocation = "10.23 mi"
                                                           } 
-                                               }
+                                               },
+                                GameSearchModel = new GameSearchModel()
                             };
 
             return View(model);
@@ -92,13 +93,13 @@ namespace PickupGames.Controllers
             var gameDomain = new GameDomain();
             var game = GameMapper.ConvertGameCreateModelToGame(gameModel);
             var response = gameDomain.CreateGame(game);
-
-            if (response.Status == "Success")
-            {
-                return Json(response);
-            }            
-
             return Json(response);
+        }
+
+        [HttpPost]
+        public JsonResult SearchGames(GameSearchModel searchModel)
+        {
+            return new JsonResult();
         }
     }
 }

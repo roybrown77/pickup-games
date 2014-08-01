@@ -190,6 +190,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IocContainer.cs" />
     <Compile Include="Domains\GameDomain.cs" />
+    <Compile Include="Models\GameSearchModel.cs" />
     <Compile Include="Models\GameCreateModel.cs" />
     <Compile Include="Models\GameModel.cs" />
     <Compile Include="Repositories\GameRepository.cs" />
@@ -333,6 +334,7 @@
       <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
     </Content>
     <Content Include="Views\Home\CreateGame.cshtml" />
+    <Content Include="Views\Home\SearchGames.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

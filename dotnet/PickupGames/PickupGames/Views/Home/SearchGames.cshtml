@@ -1,0 +1,39 @@
+﻿@model PickupGames.Models.GameSearchModel
+
+<label onclick="javascript:toggle();" style="font-weight:bold; cursor:pointer">Search Games</label>
+<div id="searchgames" class="title" style="display:none">
+    @using (Ajax.BeginForm("SearchGames", "Home", FormMethod.Post, new AjaxOptions { OnSuccess = "searchGameSuccess(data, status, xhr)" }, new { id = "searchgameform" }))
+    {
+        <div class="modal-body">
+            @Html.ValidationSummary(false)
+
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name)
+
+            @Html.LabelFor(m => m.Sport)
+            @Html.TextBoxFor(m => m.Sport)
+
+            @Html.LabelFor(m => m.GameTime)
+            @Html.EditorFor(m => m.GameTime, "Date")
+                    
+            @Html.LabelFor(m => m.Location)
+            @Html.TextBoxFor(m => m.Location, new { style = "width:30em;" })
+
+
+            @Html.LabelFor(m => m.Radius)
+            @Html.TextBoxFor(m => m.Radius)
+            
+            @Html.LabelFor(m => m.PlayerCount)
+            @Html.TextBoxFor(m => m.PlayerCount)        
+        </div>
+        <div>
+            <input type="submit" class="btn btn-large btn-primary" value="Search!"/>
+        </div>
+    }
+</div>
+
+<script type="text/javascript">
+    function toggle() {
+        $('#searchgames').toggle(500);
+    };       
+</script>

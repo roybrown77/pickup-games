@@ -11,7 +11,7 @@ namespace PickupGames.Mappers
                        {
                            Name = gameModel.Name,
                            Sport = gameModel.Sport,
-                           StartTime = gameModel.StartTime,
+                           GameTime = gameModel.GameTime,
                            Location = gameModel.Location
                        };
         }
