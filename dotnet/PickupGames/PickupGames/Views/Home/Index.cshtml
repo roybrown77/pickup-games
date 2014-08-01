@@ -12,9 +12,8 @@
 </section>
 
 <section>
-    <div>            
-        <div id="map-canvas" style="margin-top:1em;margin-bottom:1em;width:500px; height:300px; background-color: white">            
-        </div>
+    <div id="map-canvas" style="margin-top:1em;margin-bottom:1em;width:500px; height:300px; background-color: white"></div>
+    <div id="gamelist">            
         @foreach (var game in Model.Games)
         {
             <div style="margin-top:1em">            
@@ -35,6 +34,25 @@
     </div>
 </section>
 
+<script id="gamesTemplate" type="text/html"> 
+        {{#games}} 
+        <div style="margin-top:1em">            
+                <div>
+                    {{Name}}          
+                </div>
+                <div>
+                    {{Sport}}
+                </div>                                 
+                <div>
+                    {{StartTime}}
+                </div>                 
+                <div>
+                    {{Location}}
+                </div>                 
+            </div> 
+        {{/games}}   
+</script>
+
 <script type="text/javascript">
     function initialize() {
         var mapOptions = {
@@ -53,6 +71,8 @@
     function createGameSuccess(data, status, xhr) {
         if (data.Status == "Success") {
             $('#creategame').toggle(500);
+            var templateWithData = Mustache.to_html($("#gamesTemplate").html(), { games: data.Games });
+            $("#gamelist").empty().html(templateWithData);
         } else {
         }
     }
