@@ -20,7 +20,7 @@ namespace PickupGames.Controllers
                                                           {
                                                               Name = "touch football",
                                                               Sport = "Football",
-                                                              StartTime = DateTime.Now,
+                                                              GameDateTime = DateTime.Now,
                                                               Location = "Boston, MA",
                                                               PlayerCount = 6,
                                                               DistanceToLocation = "5.5 mi"
@@ -29,7 +29,7 @@ namespace PickupGames.Controllers
                                                           {
                                                               Name = "3 on 3 basketball",
                                                               Sport = "Basketball",
-                                                              StartTime = DateTime.Now.Add(new TimeSpan(3)),
+                                                              GameDateTime = DateTime.Now.Add(new TimeSpan(3)),
                                                               Location = "Atlanta, GA",
                                                               PlayerCount = 8,
                                                               DistanceToLocation = "10.23 mi"
@@ -53,7 +53,7 @@ namespace PickupGames.Controllers
                                                           {
                                                               Name = "touch football",
                                                               Sport = "Football",
-                                                              StartTime = DateTime.Now,
+                                                              GameDateTime = DateTime.Now,
                                                               Location = "Boston, MA",
                                                               PlayerCount = 6,
                                                               DistanceToLocation = "5.5 mi"
@@ -62,7 +62,7 @@ namespace PickupGames.Controllers
                                                           {
                                                               Name = "3 on 3 basketball",
                                                               Sport = "Basketball",
-                                                              StartTime = DateTime.Now.Add(new TimeSpan(3)),
+                                                              GameDateTime = DateTime.Now.Add(new TimeSpan(3)),
                                                               Location = "Atlanta, GA",
                                                               PlayerCount = 8,
                                                               DistanceToLocation = "10.23 mi"

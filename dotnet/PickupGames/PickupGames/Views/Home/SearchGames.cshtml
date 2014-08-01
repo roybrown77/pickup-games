@@ -1,6 +1,6 @@
 ﻿@model PickupGames.Models.GameSearchModel
 
-<label onclick="javascript:toggle();" style="font-weight:bold; cursor:pointer">Search Games</label>
+<label onclick="javascript:toggleSearchGames();" style="font-weight:bold; cursor:pointer">Search Games</label>
 <div id="searchgames" class="title" style="display:none">
     @using (Ajax.BeginForm("SearchGames", "Home", FormMethod.Post, new AjaxOptions { OnSuccess = "searchGameSuccess(data, status, xhr)" }, new { id = "searchgameform" }))
     {
@@ -31,12 +31,14 @@
             @Html.LabelFor(m => m.SearchLocation)
             @Html.TextBoxFor(m => m.SearchLocation, new { style = "width:30em;" })
 
-
             @Html.LabelFor(m => m.Radius)
             @Html.TextBoxFor(m => m.Radius)
             
             @Html.LabelFor(m => m.PlayerCount)
-            @Html.TextBoxFor(m => m.PlayerCount)        
+            @Html.TextBoxFor(m => m.PlayerCount)
+            
+            @Html.LabelFor(m => m.Views)
+            @Html.TextBoxFor(m => m.Views)        
         </div>
         <div>
             <input type="submit" class="btn btn-large btn-primary" value="Search!"/>
@@ -45,7 +47,7 @@
 </div>
 
 <script type="text/javascript">
-    function toggle() {
+    function toggleSearchGames() {
         $('#searchgames').toggle(500);
     };       
 </script>

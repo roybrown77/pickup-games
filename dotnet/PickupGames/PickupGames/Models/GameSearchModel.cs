@@ -32,5 +32,7 @@ namespace PickupGames.Models
 
         [Display(Name = "Players signed up")]
         public int PlayerCount { get; set; }
+
+        public int Views { get; set; }
     }
 }

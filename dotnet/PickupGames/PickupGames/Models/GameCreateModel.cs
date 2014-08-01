@@ -22,8 +22,16 @@ namespace PickupGames.Models
         [Required]
         public string Location { get; set; }
 
-        [Required]
         [Display(Name = "Recurring Day")]
         public string RecurringDay { get; set; }
+
+        public DateTime Duration { get; set; }
+
+        public string Status { get; set; }
+
+        [Display(Name = "Age Group")]
+        public string AgeGroup { get; set; }
+
+        public string Notes { get; set; }
     }
 }
