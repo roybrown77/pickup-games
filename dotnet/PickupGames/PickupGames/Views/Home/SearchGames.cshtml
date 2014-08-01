@@ -12,12 +12,24 @@
 
             @Html.LabelFor(m => m.Sport)
             @Html.TextBoxFor(m => m.Sport)
+            
+            @Html.LabelFor(m => m.GameDay)
+            @Html.EditorFor(m => m.GameDay, "Day")
 
-            @Html.LabelFor(m => m.GameTime)
-            @Html.EditorFor(m => m.GameTime, "Date")
+            @Html.LabelFor(m => m.GameDateStart)
+            @Html.EditorFor(m => m.GameDateStart, "Date")
+            
+            @Html.LabelFor(m => m.GameDateEnd)
+            @Html.EditorFor(m => m.GameDateEnd, "Date")
+
+            @Html.LabelFor(m => m.GameTimeStart)
+            @Html.EditorFor(m => m.GameTimeStart, "Time")
+            
+            @Html.LabelFor(m => m.GameTimeEnd)
+            @Html.EditorFor(m => m.GameTimeEnd, "Time")
                     
-            @Html.LabelFor(m => m.Location)
-            @Html.TextBoxFor(m => m.Location, new { style = "width:30em;" })
+            @Html.LabelFor(m => m.SearchLocation)
+            @Html.TextBoxFor(m => m.SearchLocation, new { style = "width:30em;" })
 
 
             @Html.LabelFor(m => m.Radius)

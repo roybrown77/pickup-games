@@ -81,9 +81,13 @@
         var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
         
         var input = (document.getElementById('Location'));
-
+   
         var autocomplete = new google.maps.places.Autocomplete(input);
         autocomplete.bindTo('bounds', map);
+        
+        var input2 = (document.getElementById('SearchLocation'));
+        
+        var autocomplete2 = new google.maps.places.Autocomplete(input2);
     }
     
     function createGameSuccess(data, status, xhr) {

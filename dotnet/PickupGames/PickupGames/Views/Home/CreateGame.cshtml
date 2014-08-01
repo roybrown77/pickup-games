@@ -13,11 +13,17 @@
             @Html.LabelFor(m => m.Sport)
             @Html.TextBoxFor(m => m.Sport)
 
+            @Html.LabelFor(m => m.GameDate)
+            @Html.EditorFor(m => m.GameDate, "Date")
+            
             @Html.LabelFor(m => m.GameTime)
-            @Html.EditorFor(m => m.GameTime, "Date")
+            @Html.EditorFor(m => m.GameTime, "Time")
                     
             @Html.LabelFor(m => m.Location)
             @Html.TextBoxFor(m => m.Location, new { style = "width:30em;" })
+            
+            @Html.LabelFor(m => m.RecurringDay)
+            @Html.TextBoxFor(m => m.RecurringDay)
         </div>
         <div>
             <input type="submit" class="btn btn-large btn-primary" value="Create!"/>
