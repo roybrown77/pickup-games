@@ -2,7 +2,7 @@
 
 namespace PickupGames.Models
 {
-    public class HomePageModel
+    public class GamesModel
     {
         public GameCreateModel Game { get; set; }
         public GameSearchModel GameSearchModel { get; set; }

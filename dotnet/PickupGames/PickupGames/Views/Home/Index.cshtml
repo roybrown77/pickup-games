@@ -1,141 +1,30 @@
 ﻿@using PickupGames.Models
 @using PickupGames.Objects
-@model PickupGames.Models.HomePageModel
+
+@model PickupGames.Models.GameSearchModel
+
 @{
     ViewBag.Title = "Index";
 }
 
-<section>
-    <div class="content-wrapper">
-        @Html.Partial("CreateGame", Model.Game)
-    </div>
+<div id="searchgames" class="title">
+    @using (Html.BeginForm("SearchMainPage", "Home", FormMethod.Post))
+    {
+        <div class="modal-body" style="float:left">
+            @Html.ValidationSummary(false)
 
-    <div class="content-wrapper">
-        @Html.Partial("SearchGames", Model.GameSearchModel)
-    </div>
-    <div class="content-wrapper">
-        <label onclick="javascript:toggleMyGames();" style="font-weight:bold; cursor:pointer">My Games</label>
-    </div>
-    <div class="content-wrapper">
-        <label onclick="javascript:toggleMyVenues();" style="font-weight:bold; cursor:pointer">My Venues</label>
-    </div>
-</section>
-
-<section>
-    <div id="map-canvas" style="margin-top:1em;margin-bottom:1em;width:500px; height:300px; background-color: white"></div>
-    <div id="gamelist">            
-        @foreach (var game in Model.Games)
-        {
-            <div style="margin-top:1em">            
-                <div>
-                    @game.Name          
-                </div>
-                <div>
-                    @game.Sport
-                </div>                                 
-                <div>
-                    @game.GameDateTime
-                </div>                 
-                <div>
-                    @game.Location
-                </div>
-                <div>
-                    @game.PlayerCount
-                    <span>players signed up</span>
-                </div>
-                <div>
-                    @game.DistanceToLocation
-                    <span>from searched or created location</span>
-                </div>
-                <div>
-                    @game.Duration
-                </div>
-                <div>
-                    @game.Status
-                </div>
-                <div>
-                    @game.AgeGroup
-                </div>
-                <div>
-                    @game.Notes
-                </div>
-                <div>
-                    @game.Views
-                </div>      
-                <button>Sign up</button>
-                <button>Edit</button>
-                <button>Delete</button>           
-            </div>
-        }
-    </div>
-</section>
-
-<script id="gamesTemplate" type="text/html"> 
-    {{#games}} 
-    <div style="margin-top:1em">            
-        <div>
-            {{Name}}          
+            @Html.TextBoxFor(m => m.SearchLocation, new { style = "width:30em;" })     
         </div>
         <div>
-            {{Sport}}
-        </div>                                 
-        <div>
-            {{StartTime}}
-        </div>                 
-        <div>
-            {{Location}}
-        </div>                 
-        <div>
-            {{PlayerCount}}
-        </div>                 
-        <div>
-            {{DistanceToLocation}} 
+            <input type="submit" class="btn btn-large btn-primary" value="Search"/>
         </div>
-        <div>
-            {{Duration}} 
-        </div>
-        <div>
-            {{Status}} 
-        </div>
-        <div>
-            {{AgeGroup}} 
-        </div>
-        <div>
-            {{Views}} 
-        </div>       
-        <button>Sign up</button>
-        <button>Edit</button>
-        <button>Delete</button>          
-    </div> 
-    {{/games}}   
-</script>
+    }
+</div>
 
 <script type="text/javascript">
     function initialize() {
-        var mapOptions = {
-            center: new google.maps.LatLng(42.3756519, -71.2353334),
-            zoom: 8
-        };
-        
-        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-        
-        var input = (document.getElementById('Location'));
-   
-        var autocomplete = new google.maps.places.Autocomplete(input);
-        autocomplete.bindTo('bounds', map);
-        
-        var input2 = (document.getElementById('SearchLocation'));
-        
-        new google.maps.places.Autocomplete(input2);
-    }
-    
-    function createGameSuccess(data, status, xhr) {
-        if (data.Status == "Success") {
-            $('#creategame').toggle(500);
-            var templateWithData = Mustache.to_html($("#gamesTemplate").html(), { games: data.Games });
-            $("#gamelist").empty().html(templateWithData);
-        } else {
-        }
+        var input = (document.getElementById('SearchLocation')); 
+        new google.maps.places.Autocomplete(input);
     }
     
     google.maps.event.addDomListener(window, 'load', initialize);

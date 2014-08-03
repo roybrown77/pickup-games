@@ -193,6 +193,7 @@
     <Compile Include="Models\GameSearchModel.cs" />
     <Compile Include="Models\GameCreateModel.cs" />
     <Compile Include="Models\GameModel.cs" />
+    <Compile Include="Models\MainSearchModel.cs" />
     <Compile Include="Repositories\GameRepository.cs" />
     <Compile Include="Repositories\IGameRepository.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -201,7 +202,7 @@
     </Compile>
     <Compile Include="Mappers\GameMapper.cs" />
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\HomePageModel.cs" />
+    <Compile Include="Models\GamesModel.cs" />
     <Compile Include="Objects\BasicResponse.cs" />
     <Compile Include="Objects\Game.cs" />
     <Compile Include="Objects\ResponseBase.cs" />
@@ -335,6 +336,7 @@
     </Content>
     <Content Include="Views\Home\CreateGame.cshtml" />
     <Content Include="Views\Home\SearchGames.cshtml" />
+    <Content Include="Views\Home\Games.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
