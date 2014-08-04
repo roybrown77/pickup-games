@@ -7,7 +7,7 @@ using PickupGames.Models;
 
 namespace PickupGames.Controllers
 {
-    public class GameSearchController : ControllerBase
+    public class GamesController : ControllerBase
     {
         public ActionResult Index()
         {
@@ -42,7 +42,7 @@ namespace PickupGames.Controllers
         }
 
         [HttpPost]
-        public JsonResult CreateGame(GameCreateModel gameModel)
+        public JsonResult Create(GameCreateModel gameModel)
         {
             var gameDomain = new GameDomain();
             var game = GameMapper.ConvertGameCreateModelToGame(gameModel);
@@ -50,13 +50,7 @@ namespace PickupGames.Controllers
             return Json(response);
         }
 
-        [HttpPost]
-        public JsonResult SearchGames(GameSearchModel searchModel)
-        {
-            return new JsonResult();
-        }
-
-        public ActionResult SearchGames2(GameSearchModel searchModel)
+        public ActionResult Search(GameSearchModel searchModel)
         {
             var model = new GamesModel
             {
@@ -82,10 +76,10 @@ namespace PickupGames.Controllers
                                                               DistanceToLocation = "10.23 mi"
                                                           } 
                                                },
-                GameSearchModel = new GameSearchModel()
+                GameSearchModel = searchModel
             };
 
             return View("SearchGames", model);
-        }
+        }        
     }
 }

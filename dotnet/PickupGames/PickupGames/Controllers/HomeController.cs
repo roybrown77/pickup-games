@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using PickupGames.Models;
 
 namespace PickupGames.Controllers
@@ -28,14 +27,7 @@ namespace PickupGames.Controllers
         [HttpPost]
         public ActionResult SearchGames(GameSearchModel searchModel)
         {
-            var model = new GamesModel
-            {
-                Game = new GameCreateModel(),
-                GameSearchModel = new GameSearchModel(),
-                Games = new List<GameModel>()
-            };
-
-            return View("SearchGames", model);
+            return RedirectToAction("Search", "Games", searchModel);
         }
     }
 }

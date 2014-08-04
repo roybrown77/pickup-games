@@ -186,8 +186,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
-    <Compile Include="Controllers\MainSearchController.cs" />
-    <Compile Include="Controllers\GameSearchController.cs" />
+    <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\Dependencies.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IocContainer.cs" />
@@ -336,9 +335,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js.map">
       <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
     </Content>
-    <Content Include="Views\Shared\CreateGame.cshtml" />
-    <Content Include="Views\Shared\FilterGames.cshtml" />
-    <Content Include="Views\Shared\SearchGames.cshtml" />
+    <Content Include="Views\Games\CreateGame.cshtml" />
+    <Content Include="Views\Games\FilterGames.cshtml" />
+    <Content Include="Views\Games\SearchGames.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

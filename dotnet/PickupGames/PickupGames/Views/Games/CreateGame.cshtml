@@ -2,7 +2,7 @@
 
 <label onclick="javascript:toggleCreateGameDisplay();" style="font-weight:bold; cursor:pointer">Create Game</label>
 <div id="creategame" class="title" style="display:none">
-    @using (Ajax.BeginForm("CreateGame", "GameSearch", FormMethod.Post, new AjaxOptions { OnSuccess = "createGameSuccess(data, status, xhr)" }, new { id = "creategameform" }))
+    @using (Ajax.BeginForm("Create", "Games", FormMethod.Post, new AjaxOptions { OnSuccess = "createGameSuccess(data, status, xhr)" }, new { id = "creategameform" }))
     {
         <div class="modal-body">
             @Html.ValidationSummary(false)
