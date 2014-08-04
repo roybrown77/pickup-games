@@ -2,7 +2,7 @@
 
 <label onclick="javascript:toggleSearchGames();" style="font-weight:bold; cursor:pointer">Search Games</label>
 <div id="searchgames" class="title" style="display:none">
-    @using (Ajax.BeginForm("SearchGames", "Home", FormMethod.Post, new AjaxOptions { OnSuccess = "searchGameSuccess(data, status, xhr)" }, new { id = "searchgameform" }))
+    @using (Ajax.BeginForm("SearchGames", "GameSearch", FormMethod.Post, new AjaxOptions { OnSuccess = "searchGameSuccess(data, status, xhr)" }, new { id = "searchgameform" }))
     {
         <div class="modal-body">
             @Html.ValidationSummary(false)
