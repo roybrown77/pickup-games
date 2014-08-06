@@ -1,6 +1,6 @@
 ﻿@model PickupGames.Models.GameSearchModel
 
-<label onclick="javascript:toggleSearchGames();" style="font-weight:bold; cursor:pointer">Search Games</label>
+<label onclick="javascript:toggleSearchGames();" style="font-weight:bold; cursor:pointer">More Filters</label>
 <div class="title">
     @using (Ajax.BeginForm("JsonSearch", "Games", FormMethod.Post, new AjaxOptions { OnSuccess = "searchGamesSuccess(data, status, xhr)" }, new { id = "searchgamesform" }))
     {
@@ -41,7 +41,7 @@
             @Html.TextBoxFor(m => m.Views)        
         </div>
         <div>
-            <input type="submit" class="btn btn-large btn-primary" value="Search"/>
+            <input style="display:none" type="submit" class="btn btn-large btn-primary" value="Search"/>
         </div>
     }
 </div>

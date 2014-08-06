@@ -9,20 +9,8 @@
     <div class="content-wrapper">
         @Html.Partial("SearchGames", Model.GameSearchModel)
     </div>
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="position: absolute;top: 155px;left: 1450px;">
         @Html.Partial("CreateGame", Model.GameCreateModel)
-    </div>
-    <div class="content-wrapper">
-        <label onclick="javascript:toggleMyGames();" style="font-weight:bold; cursor:pointer">My Games</label>
-    </div>
-    <div class="content-wrapper">
-        <label onclick="javascript:toggleMyVenues();" style="font-weight:bold; cursor:pointer">My Venues</label>
-    </div>
-    <div class="content-wrapper">
-        <label onclick="javascript:toogleMyFitnessTracker();" style="font-weight:bold; cursor:pointer">My Fitness Tracker</label>
-    </div>
-    <div class="content-wrapper">
-        <label onclick="javascript:toggleMyUpcomingGames();" style="font-weight:bold; cursor:pointer">Upcoming Games</label>
     </div>
 </section>
 
@@ -77,7 +65,7 @@
 
 <script id="gamesTemplate" type="text/html"> 
     {{#games}} 
-    <div style="margin-top:1em">            
+    <div data-id = {{Id}} style="margin-top:1em">            
         <div>
             {{Name}}          
         </div>
@@ -193,9 +181,11 @@
     }
     
     function joinGame() {
+        var id = 1;
         $.ajax({
             type: 'POST',
-            url: "@Url.Action("Join", "Games")",            
+            url: "@Url.Action("Join", "Games")",        
+            data: { gameId: id },
             success: function (data) {
                 if (data.Status == "Success") {
                     alert('joined!');
@@ -206,9 +196,11 @@
     }
     
     function deleteGame() {
+        var id = 1;
         $.ajax({
             type: 'POST',
             url: "@Url.Action("Delete", "Games")",
+            data: { gameId: id },
             success: function (data) {
                 if (data.Status == "Success") {
                     alert('deleted!');

@@ -51,13 +51,13 @@ namespace PickupGames.Controllers
         }
 
         [HttpPost]
-        public JsonResult Join()
+        public JsonResult Join(string gameId)
         {
             return Json(new BasicResponse { Status = "Success" });
         }
 
         [HttpPost]
-        public JsonResult Delete()
+        public JsonResult Delete(string gameId)
         {
             return Json(new BasicResponse { Status = "Success" });
         }
