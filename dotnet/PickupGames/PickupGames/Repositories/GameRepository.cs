@@ -18,7 +18,7 @@ namespace PickupGames.Repositories
                                {
                                    Name = "touch football",
                                    Sport = "Football",
-                                   GameTime = DateTime.Now,
+                                   GameTime = DateTime.Now.TimeOfDay,
                                    Location = "Boston, MA",
                                    PlayerCount = 6,
                                    DistanceToLocation = "5.5 mi"
@@ -27,7 +27,7 @@ namespace PickupGames.Repositories
                                {
                                    Name = "3 on 3 basketball",
                                    Sport = "Basketball",
-                                   GameTime = DateTime.Now.Add(new TimeSpan(3)),
+                                   GameTime = DateTime.Now.TimeOfDay,
                                    Location = "Atlanta, GA",
                                    PlayerCount = 8,
                                    DistanceToLocation = "10.23 mi"
@@ -43,7 +43,7 @@ namespace PickupGames.Repositories
                                {
                                    Name = "touch football",
                                    Sport = "Football",
-                                   GameTime = DateTime.Now,
+                                   GameTime = DateTime.Now.TimeOfDay,
                                    Location = "Boston, MA",
                                    PlayerCount = 6,
                                    DistanceToLocation = "5.5 mi"

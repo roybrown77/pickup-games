@@ -37,7 +37,7 @@ namespace PickupGames.Domains
             }
         }
 
-        public GameSearchResponse GetBy(string location)
+        public GameSearchResponse FindBy(string location)
         {
             try
             {

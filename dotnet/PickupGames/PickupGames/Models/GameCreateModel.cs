@@ -17,7 +17,7 @@ namespace PickupGames.Models
 
         [Required]
         [Display(Name = "Game Time")]
-        public DateTime GameTime { get; set; }
+        public TimeSpan GameTime { get; set; }
 
         [Required]
         public string Location { get; set; }

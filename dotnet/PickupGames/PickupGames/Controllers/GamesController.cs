@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using PickupGames.Domain.Objects;
 using PickupGames.Domains;
 using PickupGames.Mappers;
 using PickupGames.Models;
@@ -10,9 +11,9 @@ namespace PickupGames.Controllers
         public ActionResult Index()
         {
             var domain = new GameDomain();
-            var response = domain.GetBy("US"); //get by user location or all of login country
+            var response = domain.FindBy("US"); //get by user specific location or login city, state
             var model = GameMapper.ConvertGameListToGamesModel(response.Games);
-            return View("SearchGames", model);
+            return View("Games", model);
         }
 
         [HttpPost]
@@ -20,12 +21,14 @@ namespace PickupGames.Controllers
         {
             var domain = new GameDomain();
             var game = GameMapper.ConvertGameCreateModelToGame(gameModel);
-            var response = domain.CreateGame(game);
-            if (response.Status == "Success")
-            {
-                var gameResponse = domain.GetBy(gameModel.Location);
-                return Json(gameResponse);
-            }
+            var response = domain.CreateGame(game);            
+            return Json(response);
+        }
+
+        public JsonResult JsonSearch(string location)
+        {
+            var domain = new GameDomain();
+            var response = domain.FindBy(location);            
             return Json(response);
         }
 
@@ -35,7 +38,28 @@ namespace PickupGames.Controllers
             var searchQuery = GameMapper.ConvertSearchModelToSearchQuery(searchModel);
             var response = domain.FindBy(searchQuery);
             var model = GameMapper.ConvertGameListToGamesModel(response.Games);
-            return View("SearchGames", model);
-        }        
+            return View("Games", model);
+        }
+
+        [HttpPost]
+        public JsonResult JsonSearch(GameSearchModel searchModel)
+        {
+            var domain = new GameDomain();
+            var searchQuery = GameMapper.ConvertSearchModelToSearchQuery(searchModel);
+            var response = domain.FindBy(searchQuery);
+            return Json(response);
+        }
+
+        [HttpPost]
+        public JsonResult Join()
+        {
+            return Json(new BasicResponse { Status = "Success" });
+        }
+
+        [HttpPost]
+        public JsonResult Delete()
+        {
+            return Json(new BasicResponse { Status = "Success" });
+        }
     }
 }

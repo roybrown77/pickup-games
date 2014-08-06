@@ -7,7 +7,7 @@ namespace PickupGames.Models
     {
         public string Name { get; set; }
         public string Sport { get; set; }
-        public DateTime GameTime { get; set; }
+        public TimeSpan GameTime { get; set; }
         public string Location { get; set; }
         public int PlayerCount { get; set; }
 

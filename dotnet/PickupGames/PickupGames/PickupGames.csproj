@@ -337,8 +337,8 @@
       <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
     </Content>
     <Content Include="Views\Games\CreateGame.cshtml" />
-    <Content Include="Views\Games\FilterGames.cshtml" />
     <Content Include="Views\Games\SearchGames.cshtml" />
+    <Content Include="Views\Games\Games.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
