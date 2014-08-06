@@ -1,4 +1,4 @@
-﻿namespace PickupGames.Objects
+﻿namespace PickupGames.Domain.Objects
 {
     public abstract class ResponseBase
     {

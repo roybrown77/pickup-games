@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace PickupGames.Objects
+namespace PickupGames.Domain.Objects
 {
-    public class BasicResponse : ResponseBase
+    public class GameSearchResponse : ResponseBase
     {
         public List<Game> Games { get; set; }
     }

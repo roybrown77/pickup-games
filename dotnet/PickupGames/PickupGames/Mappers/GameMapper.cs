@@ -1,5 +1,6 @@
-﻿using PickupGames.Models;
-using PickupGames.Objects;
+﻿using System.Collections.Generic;
+using PickupGames.Domain.Objects;
+using PickupGames.Models;
 
 namespace PickupGames.Mappers
 {
@@ -13,6 +14,42 @@ namespace PickupGames.Mappers
                            Sport = gameModel.Sport,
                            GameTime = gameModel.GameTime,
                            Location = gameModel.Location
+                       };
+        }
+
+        public static GamesModel ConvertGameListToGamesModel(List<Game> games)
+        {
+            return new GamesModel
+                       {
+                           GameListModel = ConvertGames(games)
+                       };
+        }
+
+        private static List<GameModel> ConvertGames(IEnumerable<Game> games)
+        {
+            var gameListModel = new List<GameModel>();
+            
+            foreach (var game in games)
+            {
+                gameListModel.Add(new GameModel
+                                      {
+                                          Name = game.Name,
+                                          Sport = game.Sport,
+                                          GameTime = game.GameTime,
+                                          Location = game.Location,
+                                          PlayerCount = game.PlayerCount,
+                                          DistanceToLocation = game.DistanceToLocation
+                                      });
+            }
+
+            return gameListModel;
+        }
+
+        public static SearchQuery ConvertSearchModelToSearchQuery(GameSearchModel searchModel)
+        {
+            return new SearchQuery
+                       {
+                           SearchLocation = searchModel.SearchLocation
                        };
         }
     }

@@ -190,11 +190,12 @@
     <Compile Include="Controllers\Dependencies.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IocContainer.cs" />
+    <Compile Include="Domain.Objects\BasicResponse.cs" />
+    <Compile Include="Domain.Objects\SearchQuery.cs" />
     <Compile Include="Domains\GameDomain.cs" />
     <Compile Include="Models\GameSearchModel.cs" />
     <Compile Include="Models\GameCreateModel.cs" />
     <Compile Include="Models\GameModel.cs" />
-    <Compile Include="Models\MainSearchModel.cs" />
     <Compile Include="Repositories\GameRepository.cs" />
     <Compile Include="Repositories\IGameRepository.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -204,9 +205,9 @@
     <Compile Include="Mappers\GameMapper.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\GamesModel.cs" />
-    <Compile Include="Objects\BasicResponse.cs" />
-    <Compile Include="Objects\Game.cs" />
-    <Compile Include="Objects\ResponseBase.cs" />
+    <Compile Include="Domain.Objects\GameSearchResponse.cs" />
+    <Compile Include="Domain.Objects\Game.cs" />
+    <Compile Include="Domain.Objects\ResponseBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

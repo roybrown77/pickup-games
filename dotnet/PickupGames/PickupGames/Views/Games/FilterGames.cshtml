@@ -1,10 +1,12 @@
 ﻿@model PickupGames.Models.GameSearchModel
 
 <label onclick="javascript:toggleSearchGames();" style="font-weight:bold; cursor:pointer">Search Games</label>
-<div id="searchgames" class="title" style="display:none">
+<div class="title">
     @using (Ajax.BeginForm("Search", "Games", FormMethod.Post, new AjaxOptions { OnSuccess = "searchGameSuccess(data, status, xhr)" }, new { id = "searchgameform" }))
     {
-        <div class="modal-body">
+        @Html.TextBoxFor(m => m.SearchLocation, new { style = "width:30em;" })
+
+        <div class="modal-body" id="searchgames" style="display:none">
             @Html.ValidationSummary(false)
 
             @Html.LabelFor(m => m.Name)
@@ -28,9 +30,7 @@
             @Html.LabelFor(m => m.GameTimeEnd)
             @Html.EditorFor(m => m.GameTimeEnd, "Time")
                     
-            @Html.LabelFor(m => m.SearchLocation)
-            @Html.TextBoxFor(m => m.SearchLocation, new { style = "width:30em;" })
-
+            
             @Html.LabelFor(m => m.Radius)
             @Html.TextBoxFor(m => m.Radius)
             

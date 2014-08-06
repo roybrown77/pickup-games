@@ -4,8 +4,16 @@ namespace PickupGames.Models
 {
     public class GamesModel
     {
-        public GameCreateModel Game { get; set; }
+        public GamesModel()
+        {
+            GameCreateModel = new GameCreateModel();
+            GameSearchModel = new GameSearchModel();
+        }
+
+        public GameCreateModel GameCreateModel { get; set; }
+
         public GameSearchModel GameSearchModel { get; set; }
-        public List<GameModel> Games { get; set; }
+
+        public List<GameModel> GameListModel { get; set; }
     }
 }

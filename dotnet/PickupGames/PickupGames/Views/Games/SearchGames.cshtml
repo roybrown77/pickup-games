@@ -1,5 +1,5 @@
 ﻿@using PickupGames.Models
-@using PickupGames.Objects
+@using PickupGames.Domain.Objects
 @model PickupGames.Models.GamesModel
 @{
     ViewBag.Title = "Games";
@@ -7,11 +7,10 @@
 
 <section>
     <div class="content-wrapper">
-        @Html.Partial("CreateGame", Model.Game)
-    </div>
-
-    <div class="content-wrapper">
         @Html.Partial("FilterGames", Model.GameSearchModel)
+    </div>
+    <div class="content-wrapper">
+        @Html.Partial("CreateGame", Model.GameCreateModel)
     </div>
     <div class="content-wrapper">
         <label onclick="javascript:toggleMyGames();" style="font-weight:bold; cursor:pointer">My Games</label>
@@ -30,7 +29,7 @@
 <section>
     <div id="map-canvas" style="margin-top:1em;margin-bottom:1em;width:500px; height:300px; background-color: white"></div>
     <div id="gamelist">            
-        @foreach (var game in Model.Games)
+        @foreach (var game in Model.GameListModel)
         {
             <div style="margin-top:1em">            
                 <div>
@@ -40,7 +39,7 @@
                     @game.Sport
                 </div>                                 
                 <div>
-                    @game.GameDateTime
+                    @game.GameTime
                 </div>                 
                 <div>
                     @game.Location
