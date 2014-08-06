@@ -19,10 +19,10 @@
         <label onclick="javascript:toggleMyVenues();" style="font-weight:bold; cursor:pointer">My Venues</label>
     </div>
     <div class="content-wrapper">
-        <label onclick="javascript:toggleMyVenues();" style="font-weight:bold; cursor:pointer">My Fitness Tracker</label>
+        <label onclick="javascript:toogleMyFitnessTracker();" style="font-weight:bold; cursor:pointer">My Fitness Tracker</label>
     </div>
     <div class="content-wrapper">
-        <label onclick="javascript:toggleMyVenues();" style="font-weight:bold; cursor:pointer">Upcoming Games</label>
+        <label onclick="javascript:toggleMyUpcomingGames();" style="font-weight:bold; cursor:pointer">Upcoming Games</label>
     </div>
 </section>
 
@@ -67,7 +67,7 @@
                 <div>
                     @game.Views
                 </div>      
-                <button onclick="javascript:joinGame()">Join</button>
+                <button onclick="javascript:joinGame();">Join</button>
                 <button>Edit</button>
                 <button onclick="javascript:deleteGame();">Delete</button>           
             </div>
@@ -108,7 +108,7 @@
         <div>
             {{Views}} 
         </div>       
-        <button onclick="javascript:joinGame()">Join</button>
+        <button onclick="javascript:joinGame();">Join</button>
         <button>Edit</button>
         <button onclick="javascript:deleteGame();">Delete</button>          
     </div> 
@@ -117,13 +117,16 @@
 
 <script type="text/javascript">
     function initialize() {
+        var myLatlng = new google.maps.LatLng(42.3756519, -71.2353334);
         var mapOptions = {
-            center: new google.maps.LatLng(42.3756519, -71.2353334),
-            zoom: 8
+            center: myLatlng,
+            zoom: 16
         };
 
         var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
+        addMarkers(myLatlng, map, "time to ball!");
+        
         var input = (document.getElementById('Location'));
 
         var autocomplete = new google.maps.places.Autocomplete(input);
@@ -132,6 +135,30 @@
         var input2 = (document.getElementById('SearchLocation'));
 
         new google.maps.places.Autocomplete(input2);
+    }
+
+    var markerGlobal;
+    
+    function addMarkers(locationLatLng, map, title) {
+        var marker = new google.maps.Marker({
+            map: map,
+            position: locationLatLng,
+            title: title,
+            draggable: true,
+            animation: google.maps.Animation.DROP            
+        });
+
+        markerGlobal = marker;
+        
+        google.maps.event.addListener(marker, 'click', toggleBounce);
+    }
+    
+    function toggleBounce() {
+        if (markerGlobal.getAnimation() != null) {
+            markerGlobal.setAnimation(null);
+        } else {
+            markerGlobal.setAnimation(google.maps.Animation.BOUNCE);
+        }
     }
 
     function createGameSuccess(data, status, xhr) {
