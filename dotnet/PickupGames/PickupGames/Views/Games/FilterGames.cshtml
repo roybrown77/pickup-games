@@ -4,7 +4,7 @@
 <div class="title">
     @using (Ajax.BeginForm("Search", "Games", FormMethod.Post, new AjaxOptions { OnSuccess = "searchGameSuccess(data, status, xhr)" }, new { id = "searchgameform" }))
     {
-        @Html.TextBoxFor(m => m.SearchLocation, new { style = "width:30em;" })
+        @Html.TextBoxFor(m => m.SearchLocation, new { style = "width:30em;", placeholder= "Where do you want to play?" })
 
         <div class="modal-body" id="searchgames" style="display:none">
             @Html.ValidationSummary(false)

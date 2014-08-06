@@ -10,7 +10,7 @@ namespace PickupGames.Controllers
         public ActionResult Index()
         {
             var domain = new GameDomain();
-            var response = domain.GetBy("US");
+            var response = domain.GetBy("US"); //get by user location or all of login country
             var model = GameMapper.ConvertGameListToGamesModel(response.Games);
             return View("SearchGames", model);
         }
