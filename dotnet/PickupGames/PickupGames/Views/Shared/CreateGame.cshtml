@@ -1,7 +1,7 @@
 ﻿@model PickupGames.Models.GameCreateModel
 
-<label onclick="javascript:toggleCreateGameDisplay();" style="font-weight:bold; cursor:pointer">Create Game</label>
-<div id="creategame" class="title" style="display:none">
+<label style="font-weight:bold; cursor:pointer;margin-bottom:1em">Create Game</label>
+<div id="creategame" class="title">
     @using (Ajax.BeginForm("Create", "Games", FormMethod.Post, new AjaxOptions { OnSuccess = "createGameSuccess(data, status, xhr)" }, new { id = "creategameform" }))
     {
         <div class="modal-body">
