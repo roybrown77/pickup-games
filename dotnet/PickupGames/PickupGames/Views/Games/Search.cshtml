@@ -2,7 +2,7 @@
 
 <label onclick="javascript:toggleSearchGames();" style="font-weight:bold; cursor:pointer">More Filters</label>
 <div class="title">
-    @using (Ajax.BeginForm("JsonSearch", "Games", FormMethod.Post, new AjaxOptions { OnBegin = "return updateUrl()", OnSuccess = "searchGamesSuccess(data, status, xhr)" }, new { id = "searchgamesform" }))
+    @using (Ajax.BeginForm("JsonSearch", "Games", FormMethod.Post, new AjaxOptions { OnComplete = "return updateUrl()", OnSuccess = "searchGamesSuccess(data, status, xhr)" }, new { id = "searchgamesform" }))
     {
         @Html.TextBoxFor(m => m.Location, new { style = "width:30em;", placeholder= "Where do you want to play?" })
 
@@ -50,10 +50,10 @@
         $('#searchgames').toggle(500);
     };
     
-    function updateUrl() {        
-        var searchParameters = $("#searchgamesform").serializeArray();
+    function updateUrl() {
         var parameters = [];
-
+        
+        var searchParameters = $("#searchgamesform").serializeArray();
         var searchParametersEncoded = $.param(searchParameters);
         var searchParametersEncodedArray = searchParametersEncoded.split('&');
 
