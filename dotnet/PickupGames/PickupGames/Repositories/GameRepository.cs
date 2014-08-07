@@ -18,6 +18,7 @@ namespace PickupGames.Repositories
                                {
                                    Name = "touch football",
                                    Sport = "Football",
+                                   GameDate = DateTime.Now.Date,
                                    GameTime = DateTime.Now.TimeOfDay,
                                    Location = "Boston, MA",
                                    PlayerCount = 6,
@@ -27,6 +28,7 @@ namespace PickupGames.Repositories
                                {
                                    Name = "3 on 3 basketball",
                                    Sport = "Basketball",
+                                   GameDate = DateTime.Now.Date,
                                    GameTime = DateTime.Now.TimeOfDay,
                                    Location = "Atlanta, GA",
                                    PlayerCount = 8,
@@ -43,6 +45,7 @@ namespace PickupGames.Repositories
                                {
                                    Name = "touch football",
                                    Sport = "Football",
+                                   GameDate = DateTime.Now.Date,
                                    GameTime = DateTime.Now.TimeOfDay,
                                    Location = "Boston, MA",
                                    PlayerCount = 6,

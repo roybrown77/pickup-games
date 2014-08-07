@@ -12,40 +12,53 @@ namespace PickupGames.Controllers
         {
             var domain = new GameDomain();
             var response = domain.FindBy("US"); //get by user specific location or login city, state
-            var model = GameMapper.ConvertGameListToGamesModel(response.Games);
-            return View("Games", model);
+            var model = GamesMapper.ConvertGameListToGamesModel(response.Games);
+            return View(model);
+        }
+
+        public ActionResult Create()
+        {
+            return View("CreateGame");
         }
 
         [HttpPost]
-        public JsonResult Create(GameCreateModel gameModel)
+        public ActionResult Create(GameCreateModel gameModel)
         {
-            var domain = new GameDomain();
-            var game = GameMapper.ConvertGameCreateModelToGame(gameModel);
-            var response = domain.CreateGame(game);            
-            return Json(response);
+            try
+            {
+                var domain = new GameDomain();
+                var game = GamesMapper.ConvertGameCreateModelToGame(gameModel);
+                domain.CreateGame(game);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View("CreateGame");
+            }            
         }
 
-        public JsonResult JsonSearch(string location)
+        /*[HttpPost]
+        public JsonResult JsonCreate(GameCreateModel gameModel)
         {
             var domain = new GameDomain();
-            var response = domain.FindBy(location);            
+            var game = GamesMapper.ConvertGameCreateModelToGame(gameModel);
+            var response = domain.CreateGame(game);
             return Json(response);
-        }
+        }*/
 
         public ActionResult Search(GameSearchModel searchModel)
         {
             var domain = new GameDomain();
-            var searchQuery = GameMapper.ConvertSearchModelToSearchQuery(searchModel);
+            var searchQuery = GamesMapper.ConvertSearchModelToSearchQuery(searchModel);
             var response = domain.FindBy(searchQuery);
-            var model = GameMapper.ConvertGameListToGamesModel(response.Games);
-            return View("Games", model);
+            var model = GamesMapper.ConvertGameListToGamesModel(response.Games);
+            return View("Index", model);
         }
 
-        [HttpPost]
         public JsonResult JsonSearch(GameSearchModel searchModel)
         {
             var domain = new GameDomain();
-            var searchQuery = GameMapper.ConvertSearchModelToSearchQuery(searchModel);
+            var searchQuery = GamesMapper.ConvertSearchModelToSearchQuery(searchModel);
             var response = domain.FindBy(searchQuery);
             return Json(response);
         }

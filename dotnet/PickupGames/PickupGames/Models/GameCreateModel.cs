@@ -25,7 +25,7 @@ namespace PickupGames.Models
         [Display(Name = "Recurring Day")]
         public string RecurringDay { get; set; }
 
-        public DateTime Duration { get; set; }
+        public TimeSpan Duration { get; set; }
 
         public string Status { get; set; }
 

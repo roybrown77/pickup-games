@@ -7,7 +7,7 @@ namespace PickupGames.Controllers
     {
         public ControllerBase()
         {
-            IocContainer.Dependencies = new StandardKernel(new Dependencies());
+            NinjectContainer.Dependencies = new StandardKernel(new NinjectDependencies());
         }
     }
 }

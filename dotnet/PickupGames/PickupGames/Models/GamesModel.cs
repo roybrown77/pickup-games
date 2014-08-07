@@ -6,11 +6,8 @@ namespace PickupGames.Models
     {
         public GamesModel()
         {
-            GameCreateModel = new GameCreateModel();
             GameSearchModel = new GameSearchModel();
         }
-
-        public GameCreateModel GameCreateModel { get; set; }
 
         public GameSearchModel GameSearchModel { get; set; }
 

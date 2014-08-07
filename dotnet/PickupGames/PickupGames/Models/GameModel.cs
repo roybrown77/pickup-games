@@ -7,6 +7,7 @@ namespace PickupGames.Models
     {
         public string Name { get; set; }
         public string Sport { get; set; }
+        public DateTime GameDate { get; set; }
         public TimeSpan GameTime { get; set; }
         public string Location { get; set; }
         public int PlayerCount { get; set; }
@@ -14,7 +15,7 @@ namespace PickupGames.Models
         [Display(Name = "Distance: ")]
         public string DistanceToLocation { get; set; }
 
-        public DateTime Duration { get; set; }
+        public TimeSpan Duration { get; set; }
 
         public string Status { get; set; }
 
@@ -23,6 +24,6 @@ namespace PickupGames.Models
 
         public string Notes { get; set; }
 
-        public int Views { get; set; }
+        public int Views { get; set; }        
     }
 }

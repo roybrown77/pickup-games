@@ -186,11 +186,14 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
-    <Compile Include="Controllers\GameController.cs" />
+    <Compile Include="Controllers\Default1Controller.cs" />
+    <Compile Include="Controllers\NinjectContainer.cs" />
+    <Compile Include="Controllers\DepedencyInjectorFactory.cs" />
     <Compile Include="Controllers\GamesController.cs" />
-    <Compile Include="Controllers\Dependencies.cs" />
+    <Compile Include="Controllers\NinjectDependencies.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\IocContainer.cs" />
+    <Compile Include="Controllers\IDependencyInjector.cs" />
+    <Compile Include="Controllers\NinjectDepedencyInjector.cs" />
     <Compile Include="Domain.Objects\BasicResponse.cs" />
     <Compile Include="Domain.Objects\SearchQuery.cs" />
     <Compile Include="Domains\GameDomain.cs" />
@@ -203,7 +206,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Mappers\GameMapper.cs" />
+    <Compile Include="Mappers\GamesMapper.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\GamesModel.cs" />
     <Compile Include="Domain.Objects\GameSearchResponse.cs" />
@@ -338,8 +341,13 @@
       <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
     </Content>
     <Content Include="Views\Shared\CreateGame.cshtml" />
-    <Content Include="Views\Games\SearchGames.cshtml" />
-    <Content Include="Views\Games\Games.cshtml" />
+    <Content Include="Views\Games\Search.cshtml" />
+    <Content Include="Views\Games\Index.cshtml" />
+    <Content Include="Views\Default1\Index.cshtml" />
+    <Content Include="Views\Default1\Details.cshtml" />
+    <Content Include="Views\Default1\Create.cshtml" />
+    <Content Include="Views\Default1\Edit.cshtml" />
+    <Content Include="Views\Default1\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

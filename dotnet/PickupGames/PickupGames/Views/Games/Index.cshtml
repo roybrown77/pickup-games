@@ -1,0 +1,223 @@
+﻿@using PickupGames.Models
+@using PickupGames.Domain.Objects
+@model PickupGames.Models.GamesModel
+@{
+    ViewBag.Title = "Games";
+}
+
+<section>
+    <div class="content-wrapper">
+        @Html.Partial("Search", Model.GameSearchModel)
+    </div>
+</section>
+
+<section>
+    <div id="map-canvas" style="margin-top:1em;margin-bottom:1em;width:500px; height:300px; background-color: white"></div>
+    <div id="gamelist">            
+        @foreach (var game in Model.GameListModel)
+        {
+            <div style="margin-top:1em">            
+                <div>
+                    @game.Name          
+                </div>
+                <div>
+                    @game.Sport
+                </div>                 
+                <div>
+                    @game.GameDate
+                </div>                                 
+                <div>
+                    @game.GameTime
+                </div>                 
+                <div>
+                    @game.Location
+                </div>
+                <div>
+                    @game.PlayerCount
+                    <span>players joined</span>
+                </div>
+                <div>
+                    @game.DistanceToLocation
+                    <span>from searched or created location</span>
+                </div>
+                <div>
+                    @game.Duration
+                </div>
+                <div>
+                    @game.Status
+                </div>
+                <div>
+                    @game.AgeGroup
+                </div>
+                <div>
+                    @game.Notes
+                </div>
+                <div>
+                    @game.Views
+                </div>      
+                <button onclick="javascript:joinGame();">Join</button>
+                <button>Edit</button>
+                <button onclick="javascript:deleteGame();">Delete</button>           
+            </div>
+        }
+    </div>
+</section>
+
+<script id="gamesTemplate" type="text/html"> 
+    {{#games}} 
+    <div data-id = {{Id}} style="margin-top:1em">            
+        <div>
+            {{Name}}          
+        </div>
+        <div>
+            {{Sport}}
+        </div>                 
+        <div>
+            {{GameDate}}
+        </div>                                 
+        <div>
+            {{GameTime}}
+        </div>                 
+        <div>
+            {{Location}}
+        </div>                 
+        <div>
+            {{PlayerCount}}
+            <span>players joined</span>
+        </div>                 
+        <div>
+            {{DistanceToLocation}} 
+            <span>from searched or created location</span>
+        </div>
+        <div>
+            {{Duration}} 
+        </div>
+        <div>
+            {{Status}} 
+        </div>
+        <div>
+            {{AgeGroup}} 
+        </div>
+        <div>
+            {{Notes}} 
+        </div>
+        <div>
+            {{Views}} 
+        </div>       
+        <button onclick="javascript:joinGame();">Join</button>
+        <button>Edit</button>
+        <button onclick="javascript:deleteGame();">Delete</button>          
+    </div> 
+    {{/games}}   
+</script>
+
+<script type="text/javascript">
+    function initialize() {
+        var myLatlng = new google.maps.LatLng(42.3756519, -71.2353334);
+        var mapOptions = {
+            center: myLatlng,
+            zoom: 16
+        };
+
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+        addMarkers(myLatlng, map, "time to ball!");
+        
+        var input = (document.getElementById('Location'));
+
+        var autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.bindTo('bounds', map);
+
+        /*var input2 = (document.getElementById('SearchLocation'));
+
+        new google.maps.places.Autocomplete(input2);*/
+    }
+
+    var markerGlobal;
+    
+    function addMarkers(locationLatLng, map, title) {
+        var marker = new google.maps.Marker({
+            map: map,
+            position: locationLatLng,
+            title: title,
+            draggable: true,
+            animation: google.maps.Animation.DROP            
+        });
+
+        markerGlobal = marker;
+        
+        google.maps.event.addListener(marker, 'click', toggleBounce);
+    }
+    
+    function toggleBounce() {
+        if (markerGlobal.getAnimation() != null) {
+            markerGlobal.setAnimation(null);
+        } else {
+            markerGlobal.setAnimation(google.maps.Animation.BOUNCE);
+        }
+    }
+
+    /*function createGameSuccess(data, status, xhr) {
+        if (data.Status == "Success") {
+            $('#creategame').toggle(500);
+            searchGames();
+        } else {
+        }
+    }*/
+    
+    function searchGames() {
+        $.ajax({
+            type: 'GET',
+            url: "@Url.Action("JsonSearch", "Games")",
+            data: { location: $("#Location").val() },
+            success: function (data) {
+                if (data.Status == "Success") {                    
+                    var templateWithData = Mustache.to_html($("#gamesTemplate").html(), { games: data.Games });
+                    $("#gamelist").empty().html(templateWithData);
+                } else {
+                }
+            }
+        });
+    }
+    
+    function searchGamesSuccess(data, status, xhr) {
+        if (data.Status == "Success") {
+            var templateWithData = Mustache.to_html($("#gamesTemplate").html(), { games: data.Games });
+            $("#gamelist").empty().html(templateWithData);
+        } else {
+        }
+    }
+    
+    function joinGame() {
+        var id = 1;
+        $.ajax({
+            type: 'POST',
+            url: "@Url.Action("Join", "Games")",        
+            data: { gameId: id },
+            success: function (data) {
+                if (data.Status == "Success") {
+                    alert('joined!');
+                } else {
+                }
+            }
+        });
+    }
+    
+    function deleteGame() {
+        var id = 1;
+        $.ajax({
+            type: 'POST',
+            url: "@Url.Action("Delete", "Games")",
+            data: { gameId: id },
+            success: function (data) {
+                if (data.Status == "Success") {
+                    alert('deleted!');
+                } else {
+                }
+            }
+        });
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+

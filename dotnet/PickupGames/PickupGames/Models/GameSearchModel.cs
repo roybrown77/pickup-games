@@ -25,7 +25,7 @@ namespace PickupGames.Models
         public DateTime? GameTimeEnd { get; set; }
 
         [Display(Name = "Location")]
-        public string SearchLocation { get; set; }
+        public string Location { get; set; }
 
         [Display(Name = "Radius to location")]
         public string Radius { get; set; }
