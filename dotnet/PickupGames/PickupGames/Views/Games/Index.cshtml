@@ -183,7 +183,7 @@
     function searchGamesSuccess(data, status, xhr) {
         if (data.Status == "Success") {
             var templateWithData = Mustache.to_html($("#gamesTemplate").html(), { games: data.Games });
-            $("#gamelist").empty().html(templateWithData);
+            $("#gamelist").empty().html(templateWithData);            
         } else {
         }
     }

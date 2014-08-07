@@ -55,6 +55,7 @@ namespace PickupGames.Controllers
             return View("Index", model);
         }
 
+        [HttpPost]
         public JsonResult JsonSearch(GameSearchModel searchModel)
         {
             var domain = new GameDomain();
