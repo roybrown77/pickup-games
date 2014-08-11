@@ -56,7 +56,7 @@ namespace PickupGames.Controllers
         }
 
         [HttpPost]
-        public JsonResult JsonSearch(GameSearchModel searchModel)
+        public JsonResult SearchByAjax(GameSearchModel searchModel)
         {
             var domain = new GameDomain();
             var searchQuery = GamesMapper.ConvertSearchModelToSearchQuery(searchModel);

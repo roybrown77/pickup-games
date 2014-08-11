@@ -2,7 +2,7 @@
 
 <label onclick="javascript:toggleSearchGames();" style="font-weight:bold; cursor:pointer">More Filters</label>
 <div class="title">
-    @using (Ajax.BeginForm("JsonSearch", "Games", FormMethod.Post, new AjaxOptions { OnComplete = "return updateUrl()", OnSuccess = "searchGamesSuccess(data, status, xhr)" }, new { id = "searchgamesform" }))
+    @using (Ajax.BeginForm("SearchByAjax", "Games", FormMethod.Post, new AjaxOptions { OnComplete = "return updateUrl()", OnSuccess = "onSearchGamesSuccess(data, status, xhr)" }, new { id = "searchgamesform" }))
     {
         @Html.TextBoxFor(m => m.Location, new { style = "width:30em;", placeholder= "Where do you want to play?" })
 
@@ -67,9 +67,7 @@
             window.history.pushState("searchcriteria", "searchcriteria", "?" + parameters.join("&"));
         }
     }
-</script>
 
-<script type="text/javascript">
     function initialize() {
         var input = (document.getElementById('Location'));
         new google.maps.places.Autocomplete(input);

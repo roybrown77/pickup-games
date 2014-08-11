@@ -156,31 +156,8 @@
             markerGlobal.setAnimation(google.maps.Animation.BOUNCE);
         }
     }
-
-    /*function createGameSuccess(data, status, xhr) {
-        if (data.Status == "Success") {
-            $('#creategame').toggle(500);
-            searchGames();
-        } else {
-        }
-    }*/
-    
-    function searchGames() {
-        $.ajax({
-            type: 'GET',
-            url: "@Url.Action("JsonSearch", "Games")",
-            data: { location: $("#Location").val() },
-            success: function (data) {
-                if (data.Status == "Success") {                    
-                    var templateWithData = Mustache.to_html($("#gamesTemplate").html(), { games: data.Games });
-                    $("#gamelist").empty().html(templateWithData);
-                } else {
-                }
-            }
-        });
-    }
-    
-    function searchGamesSuccess(data, status, xhr) {
+   
+    function onSearchGamesSuccess(data, status, xhr) {
         if (data.Status == "Success") {
             var templateWithData = Mustache.to_html($("#gamesTemplate").html(), { games: data.Games });
             $("#gamelist").empty().html(templateWithData);            
