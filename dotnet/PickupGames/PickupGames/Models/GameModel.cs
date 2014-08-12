@@ -5,6 +5,7 @@ namespace PickupGames.Models
 {
     public class GameModel
     {
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Sport { get; set; }
         public DateTime GameDate { get; set; }

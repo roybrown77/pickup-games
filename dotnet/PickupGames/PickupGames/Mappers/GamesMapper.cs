@@ -9,7 +9,7 @@ namespace PickupGames.Mappers
         public static Game ConvertGameCreateModelToGame(GameCreateModel gameModel)
         {
             return new Game
-                       {
+                       {                          
                            Name = gameModel.Name,
                            Sport = gameModel.Sport,
                            GameTime = gameModel.GameTime,
@@ -33,6 +33,7 @@ namespace PickupGames.Mappers
             {
                 gameListModel.Add(new GameModel
                                       {
+                                          Id = game.Id,
                                           Name = game.Name,
                                           Sport = game.Sport,
                                           GameDate = game.GameDate,

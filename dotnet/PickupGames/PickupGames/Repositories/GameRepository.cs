@@ -16,6 +16,7 @@ namespace PickupGames.Repositories
                        {
                            new Game
                                {
+                                   Id = Guid.NewGuid(),
                                    Name = "touch football",
                                    Sport = "Football",
                                    GameDate = DateTime.Now.Date,
@@ -26,6 +27,7 @@ namespace PickupGames.Repositories
                                },
                            new Game
                                {
+                                   Id = Guid.NewGuid(),
                                    Name = "3 on 3 basketball",
                                    Sport = "Basketball",
                                    GameDate = DateTime.Now.Date,
@@ -43,6 +45,7 @@ namespace PickupGames.Repositories
                        {
                            new Game
                                {
+                                   Id = Guid.NewGuid(),
                                    Name = "touch football",
                                    Sport = "Football",
                                    GameDate = DateTime.Now.Date,

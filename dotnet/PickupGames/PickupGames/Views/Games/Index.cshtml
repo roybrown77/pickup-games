@@ -55,9 +55,9 @@
                 <div>
                     @game.Views
                 </div>      
-                <button onclick="javascript:joinGame();">Join</button>
+                <button onclick="javascript:joinGame('@game.Id');">Join</button>
                 <button>Edit</button>
-                <button onclick="javascript:deleteGame();">Delete</button>           
+                <button onclick="javascript:deleteGame('@game.Id');">Delete</button>           
             </div>
         }
     </div>
@@ -104,9 +104,9 @@
         <div>
             {{Views}} 
         </div>       
-        <button onclick="javascript:joinGame();">Join</button>
+        <button onclick="javascript:joinGame('{{Id}}');">Join</button>
         <button>Edit</button>
-        <button onclick="javascript:deleteGame();">Delete</button>          
+        <button onclick="javascript:deleteGame('{{Id}}');">Delete</button>          
     </div> 
     {{/games}}   
 </script>
@@ -126,11 +126,7 @@
         var input = (document.getElementById('Location'));
 
         var autocomplete = new google.maps.places.Autocomplete(input);
-        autocomplete.bindTo('bounds', map);
-
-        /*var input2 = (document.getElementById('SearchLocation'));
-
-        new google.maps.places.Autocomplete(input2);*/
+        autocomplete.bindTo('bounds', map);        
     }
 
     var markerGlobal;
@@ -165,8 +161,7 @@
         }
     }
     
-    function joinGame() {
-        var id = 1;
+    function joinGame(id) {
         $.ajax({
             type: 'POST',
             url: "@Url.Action("Join", "Games")",        
@@ -180,8 +175,7 @@
         });
     }
     
-    function deleteGame() {
-        var id = 1;
+    function deleteGame(id) {
         $.ajax({
             type: 'POST',
             url: "@Url.Action("Delete", "Games")",

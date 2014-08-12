@@ -24,27 +24,17 @@ namespace PickupGames.Controllers
         [HttpPost]
         public ActionResult Create(GameCreateModel gameModel)
         {
-            try
-            {
-                var domain = new GameDomain();
-                var game = GamesMapper.ConvertGameCreateModelToGame(gameModel);
-                domain.CreateGame(game);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View("CreateGame");
-            }            
-        }
-
-        /*[HttpPost]
-        public JsonResult JsonCreate(GameCreateModel gameModel)
-        {
             var domain = new GameDomain();
             var game = GamesMapper.ConvertGameCreateModelToGame(gameModel);
             var response = domain.CreateGame(game);
-            return Json(response);
-        }*/
+
+            if (response.Status == "Success")
+            {
+                return RedirectToAction("Index");
+            }
+            
+            return View("CreateGame");                                  
+        }
 
         public ActionResult Search(GameSearchModel searchModel)
         {
