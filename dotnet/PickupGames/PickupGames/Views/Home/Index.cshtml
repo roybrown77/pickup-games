@@ -7,16 +7,20 @@
     ViewBag.Title = "Index";
 }
 
-<div id="searchgames" class="title">
+<div style="display:block">
+    <video style="width:100%" loop="loop" preload="auto">
+        <source src="toy.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div id="searchgames" style="position:relative;top:-100px;left:35%">
     @using (Html.BeginForm("SearchGames", "Home", FormMethod.Post))
     {
         <div class="modal-body" style="float:left">
-            @Html.ValidationSummary(false)
-
-            @Html.TextBoxFor(m => m.Location, new { placeholder= "Where do you want to play?" })     
+            @Html.TextBoxFor(m => m.Location, new { placeholder= "Where do you want to play?", style="height: 32px; border: 1px solid #dce0e0;border-radius: 2px;background-color: #fff;color: #565a5c;"})     
         </div>
         <div>
-            <input type="submit" class="btn btn-large btn-primary" value="Search"/>
+            <input style="width: 88px;height: 44px;background-color: #ff5a5f;border-color: #ff5a5f;font-weight: bold;color: white;" type="submit" class="btn btn-large btn-primary" value="Search"/>
         </div>
     }
 </div>
