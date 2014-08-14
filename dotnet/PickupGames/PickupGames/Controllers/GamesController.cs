@@ -34,7 +34,7 @@ namespace PickupGames.Controllers
             }
             
             return View("CreateGame");                                  
-        }
+        }                
 
         public ActionResult Search(GameSearchModel searchModel)
         {
@@ -65,5 +65,11 @@ namespace PickupGames.Controllers
         {
             return Json(new BasicResponse { Status = "Success" });
         }
+
+        [HttpPost]
+        public JsonResult Watch(string gameId)
+        {
+            return Json(new BasicResponse { Status = "Success" });
+        }        
     }
 }

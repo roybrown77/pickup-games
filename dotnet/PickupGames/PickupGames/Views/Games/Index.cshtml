@@ -16,7 +16,7 @@
     <div id="gamelist">            
         @foreach (var game in Model.GameListModel)
         {
-            <div style="margin-top:1em">            
+            <div data-id="@game.Id" style="margin-top:1em">            
                 <div>
                     @game.Name          
                 </div>
@@ -29,9 +29,9 @@
                 <div>
                     @game.GameTime
                 </div>                 
-                <div>
+                <div data-lat="@game.LocationLat" data-lng="@game.LocationLng">
                     @game.Location
-                </div>
+                </div>                                                
                 <div>
                     @game.PlayerCount
                     <span>players joined</span>
@@ -56,6 +56,7 @@
                     @game.Views
                 </div>      
                 <button onclick="javascript:joinGame('@game.Id');">Join</button>
+                <button onclick="javascript:watchGame('@game.Id');">Watch</button>
                 <button>Edit</button>
                 <button onclick="javascript:deleteGame('@game.Id');">Delete</button>           
             </div>
@@ -65,7 +66,7 @@
 
 <script id="gamesTemplate" type="text/html"> 
     {{#games}} 
-    <div data-id = {{Id}} style="margin-top:1em">            
+    <div data-id={{Id}} style="margin-top:1em">            
         <div>
             {{Name}}          
         </div>
@@ -78,7 +79,7 @@
         <div>
             {{GameTime}}
         </div>                 
-        <div>
+        <div data-lat={{LocationLat}} data-lng={{LocationLng}}>
             {{Location}}
         </div>                 
         <div>
@@ -105,6 +106,7 @@
             {{Views}} 
         </div>       
         <button onclick="javascript:joinGame('{{Id}}');">Join</button>
+        <button onclick="javascript:watchGame('{{Id}}');">Watch</button>
         <button>Edit</button>
         <button onclick="javascript:deleteGame('{{Id}}');">Delete</button>          
     </div> 
@@ -113,6 +115,11 @@
 
 <script type="text/javascript">
     function initialize() {
+        var locations = $(".location").map(function () {
+            return [$(this).data('lat'), $(this).data('lng')];
+        }).get();
+
+        debugger;
         var myLatlng = new google.maps.LatLng(42.3756519, -71.2353334);
         var mapOptions = {
             center: myLatlng,
@@ -169,6 +176,20 @@
             success: function (data) {
                 if (data.Status == "Success") {
                     alert('joined!');
+                } else {
+                }
+            }
+        });
+    }
+
+    function watchGame(id) {
+        $.ajax({
+            type: 'POST',
+            url: "@Url.Action("Watch", "Games")",
+            data: { gameId: id },
+            success: function (data) {
+                if (data.Status == "Success") {
+                    alert('watching!');
                 } else {
                 }
             }
