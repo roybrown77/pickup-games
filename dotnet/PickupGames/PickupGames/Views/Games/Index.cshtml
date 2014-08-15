@@ -5,17 +5,15 @@
     ViewBag.Title = "Games";
 }
 
-<div style="float:left">
-    <div id="map-canvas" style="width:700px; height:900px; background-color: white"></div>
+<div style="float:left;width:45%">
+    <div id="map-canvas" style="width:100%; height:900px; background-color: white"></div>
 </div>
 
-<div>
-    <div class="content-wrapper">
+<div style="left: 45%;position: absolute;">
+    <div>
         @Html.Partial("Search", Model.GameSearchModel)
     </div>
-</div>
 
-<div>    
     <div id="gamelist">            
         @foreach (var game in Model.GameListModel)
         {
@@ -170,10 +168,10 @@
 
    
     function onSearchGamesSuccess(data, status, xhr) {
-        if (data.Status == "Success") {
-            createMap(data.SearchLocationLat, data.SearchLocationLng);
+        if (data.Status == "Success") {            
             var templateWithData = Mustache.to_html($("#gamesTemplate").html(), { games: data.Games });
-            $("#gamelist").empty().html(templateWithData);            
+            $("#gamelist").empty().html(templateWithData);
+            createMap(data.SearchLocationLat, data.SearchLocationLng);
         } else {
         }
     }
