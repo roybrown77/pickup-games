@@ -50,7 +50,7 @@ namespace PickupGames.Mappers
                                           GameTime = game.GameTime,
                                           Location = game.Location,
                                           PlayerCount = game.PlayerCount,
-                                          DistanceToLocation = game.DistanceToLocation,
+                                          DistanceToCenterLocation = game.DistanceToCenterLocation,
                                           LocationLat = game.LocationLat,
                                           LocationLng = game.LocationLng
                                       });

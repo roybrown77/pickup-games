@@ -17,6 +17,26 @@ namespace PickupGames.Repositories
                            new Game
                                {
                                    Id = Guid.NewGuid(),
+                                   Name = "street hockey",
+                                   Sport = "Hockey",
+                                   GameDate = DateTime.Now.Date,
+                                   GameTime = DateTime.Now.TimeOfDay,
+                                   Location = "Waltham, MA",
+                                   LocationLat = "42.3756519",
+                                   LocationLng = "-71.2353334",
+                                   PlayerCount = 6,
+                                   DistanceToCenterLocation = "5.5 mi"
+                               }
+                       };
+        }
+
+        public List<Game> FindBy(SearchQuery searchQuery)
+        {
+            return new List<Game>
+                       {
+                           new Game
+                               {
+                                   Id = Guid.NewGuid(),
                                    Name = "touch football",
                                    Sport = "Football",
                                    GameDate = DateTime.Now.Date,
@@ -25,7 +45,7 @@ namespace PickupGames.Repositories
                                    LocationLat = "42.3756519",
                                    LocationLng = "-71.2353334",
                                    PlayerCount = 6,
-                                   DistanceToLocation = "5.5 mi"
+                                   DistanceToCenterLocation = "5.5 mi"
                                },
                            new Game
                                {
@@ -38,28 +58,8 @@ namespace PickupGames.Repositories
                                    LocationLat = "42.359968",
                                    LocationLng = "-71.060093",
                                    PlayerCount = 8,
-                                   DistanceToLocation = "10.23 mi"
-                               }
-                       };
-        }
-
-        public List<Game> FindBy(SearchQuery searchQuery)
-        {
-            return new List<Game>
-                       {
-                           new Game
-                               {
-                                   Id = Guid.NewGuid(),
-                                   Name = "street hockey",
-                                   Sport = "Hockey",
-                                   GameDate = DateTime.Now.Date,
-                                   GameTime = DateTime.Now.TimeOfDay,
-                                   Location = "Waltham, MA",
-                                   LocationLat = "42.3756519",
-                                   LocationLng = "-71.2353334",
-                                   PlayerCount = 6,
-                                   DistanceToLocation = "5.5 mi"
-                               }
+                                   DistanceToCenterLocation = "10.23 mi"
+                               }                           
                        };
         }
     }

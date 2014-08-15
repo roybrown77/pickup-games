@@ -16,7 +16,7 @@ namespace PickupGames.Models
         public int PlayerCount { get; set; }
 
         [Display(Name = "Distance: ")]
-        public string DistanceToLocation { get; set; }
+        public string DistanceToCenterLocation { get; set; }
 
         public TimeSpan Duration { get; set; }
 
