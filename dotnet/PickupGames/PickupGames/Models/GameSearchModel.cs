@@ -27,6 +27,10 @@ namespace PickupGames.Models
         [Display(Name = "Location")]
         public string Location { get; set; }
 
+        public string LocationLat { get; set; }
+
+        public string LocationLng { get; set; }
+
         [Display(Name = "Radius to location")]
         public string Radius { get; set; }
 

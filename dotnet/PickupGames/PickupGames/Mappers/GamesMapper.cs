@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using PickupGames.Domain.Objects;
 using PickupGames.Models;
-using PickupGames.Utilities;
 
 namespace PickupGames.Mappers
 {
@@ -9,28 +8,34 @@ namespace PickupGames.Mappers
     {
         public static Game ConvertGameCreateModelToGame(GameCreateModel gameModel)
         {
-            var coordinates = GeographyUtility.GetCoordinates(gameModel.Location);
-
             return new Game
                        {                          
                            Name = gameModel.Name,
                            Sport = gameModel.Sport,
                            GameTime = gameModel.GameTime,
-                           Location = gameModel.Location,
-                           LocationLat = coordinates.Lat,
-                           LocationLng = coordinates.Lng
+                           Location = gameModel.Location
                        };
         }
 
-        public static GamesModel ConvertGameListToGamesModel(List<Game> games)
+        public static GamesModel ConvertGameListToGamesModel(GameSearchResponse response)
         {
             return new GamesModel
                        {
-                           GameListModel = ConvertGames(games)
+                           GameListModel = ConvertGameListToGamesModelList(response.Games),
+                           GameSearchModel = GetGameSearchModel(response)
                        };
         }
 
-        private static List<GameModel> ConvertGames(IEnumerable<Game> games)
+        private static GameSearchModel GetGameSearchModel(GameSearchResponse response)
+        {
+            return new GameSearchModel
+            {
+                LocationLat = response.SearchLocationLat,
+                LocationLng = response.SearchLocationLng
+            };
+        }
+
+        private static List<GameModel> ConvertGameListToGamesModelList(IEnumerable<Game> games)
         {
             var gameListModel = new List<GameModel>();
             

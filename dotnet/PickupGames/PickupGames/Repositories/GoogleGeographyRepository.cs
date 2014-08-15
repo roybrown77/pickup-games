@@ -1,12 +1,12 @@
 ﻿using System.Xml;
 using PickupGames.Domain.Objects;
 
-namespace PickupGames.Utilities
+namespace PickupGames.Repositories
 {
-    public static class GeographyUtility
+    public class GoogleGeographyRepository : IGeographyRepository
     {
         //private void GetCoordinates(string street, string city, string zipcode, string state)
-        public static Coordinates GetCoordinates(string location)
+        public Coordinates GetCoordinates(string location)
         {
             var coordinates = new Coordinates();
 
@@ -18,7 +18,7 @@ namespace PickupGames.Utilities
             nsMgr.AddNamespace("geo", @"http://www.w3.org/2003/01/geo/wgs84_pos#");
             coordinates.Lat = geocoderXmlDoc.DocumentElement.SelectSingleNode(@"//geometry/location/lat", nsMgr).InnerText;
             coordinates.Lng = geocoderXmlDoc.DocumentElement.SelectSingleNode(@"//geometry/location/lng", nsMgr).InnerText;
-
+            
             return coordinates;
         }
     }

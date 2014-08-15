@@ -21,7 +21,7 @@ namespace PickupGames.Repositories
                                    Sport = "Football",
                                    GameDate = DateTime.Now.Date,
                                    GameTime = DateTime.Now.TimeOfDay,
-                                   Location = "Boston, MA",
+                                   Location = "Waltham, MA",
                                    LocationLat = "42.3756519",
                                    LocationLng = "-71.2353334",
                                    PlayerCount = 6,
@@ -34,9 +34,9 @@ namespace PickupGames.Repositories
                                    Sport = "Basketball",
                                    GameDate = DateTime.Now.Date,
                                    GameTime = DateTime.Now.TimeOfDay,
-                                   Location = "Atlanta, GA",
-                                   LocationLat = "44.3756519",
-                                   LocationLng = "-74.2353334",
+                                   Location = "Boston, MA",
+                                   LocationLat = "42.359968",
+                                   LocationLng = "-71.060093",
                                    PlayerCount = 8,
                                    DistanceToLocation = "10.23 mi"
                                }
@@ -50,13 +50,13 @@ namespace PickupGames.Repositories
                            new Game
                                {
                                    Id = Guid.NewGuid(),
-                                   Name = "touch football",
-                                   Sport = "Football",
+                                   Name = "street hockey",
+                                   Sport = "Hockey",
                                    GameDate = DateTime.Now.Date,
                                    GameTime = DateTime.Now.TimeOfDay,
-                                   Location = "Boston, MA",
-                                   LocationLat = "48.3756519",
-                                   LocationLng = "-78.2353334",
+                                   Location = "Waltham, MA",
+                                   LocationLat = "42.3756519",
+                                   LocationLng = "-71.2353334",
                                    PlayerCount = 6,
                                    DistanceToLocation = "5.5 mi"
                                }
