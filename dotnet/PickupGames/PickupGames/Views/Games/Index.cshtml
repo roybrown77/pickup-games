@@ -5,14 +5,17 @@
     ViewBag.Title = "Games";
 }
 
-<section>
+<div style="float:left">
+    <div id="map-canvas" style="width:700px; height:900px; background-color: white"></div>
+</div>
+
+<div>
     <div class="content-wrapper">
         @Html.Partial("Search", Model.GameSearchModel)
     </div>
-</section>
+</div>
 
-<section>
-    <div id="map-canvas" style="margin-top:1em;margin-bottom:1em;width:500px; height:300px; background-color: white"></div>
+<div>    
     <div id="gamelist">            
         @foreach (var game in Model.GameListModel)
         {
@@ -62,7 +65,7 @@
             </div>
         }
     </div>
-</section>
+</div>
 
 <script id="gamesTemplate" type="text/html"> 
     {{#games}} 
@@ -121,8 +124,14 @@
     }
 
     function createMap(centerCoordinateLat, centerCoordinateLng) {
+        var zoom = 10;
+
+        if ($('#Location').val() == "") {
+            zoom = 3;
+        }
+
         var map = new google.maps.Map(document.getElementById('map-canvas'), {
-            zoom: 8,
+            zoom: zoom,
             center: new google.maps.LatLng(centerCoordinateLat, centerCoordinateLng),
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
