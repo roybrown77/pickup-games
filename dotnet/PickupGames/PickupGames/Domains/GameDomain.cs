@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using PickupGames.Domain.Objects;
 using PickupGames.Repositories;
 
@@ -49,14 +50,16 @@ namespace PickupGames.Domains
         {
             try
             {
-                var coordinates = _geographyRepository.GetCoordinates(location);                
+                var centerCoordinates = _geographyRepository.GetCoordinates(location);
+                var games = _gameRepository.FindBy(location);
+                SetDistanceToCenter(games, centerCoordinates);
 
                 return new GameSearchResponse
                            {
                                Status = "Success",
-                               Games = _gameRepository.FindBy(location),
-                               SearchLocationLat = coordinates.Lat,
-                               SearchLocationLng = coordinates.Lng
+                               Games = games,
+                               SearchLocationLat = centerCoordinates.Lat,
+                               SearchLocationLng = centerCoordinates.Lng
                            };
             }
             catch (Exception ex)
@@ -73,14 +76,16 @@ namespace PickupGames.Domains
         {
             try
             {
-                var coordinates = _geographyRepository.GetCoordinates(searchQuery.Location);
+                var centerCoordinates = _geographyRepository.GetCoordinates(searchQuery.Location);
+                var games = _gameRepository.FindBy(searchQuery);
+                SetDistanceToCenter(games, centerCoordinates);
 
                 return new GameSearchResponse
                 {
                     Status = "Success",
-                    Games = _gameRepository.FindBy(searchQuery),
-                    SearchLocationLat = coordinates.Lat,
-                    SearchLocationLng = coordinates.Lng
+                    Games = games,
+                    SearchLocationLat = centerCoordinates.Lat,
+                    SearchLocationLng = centerCoordinates.Lng
                 };
             }
             catch (Exception ex)
@@ -90,6 +95,20 @@ namespace PickupGames.Domains
                     Status = "Failed",
                     Message = ex.Message
                 };
+            }
+        }
+
+        private void SetDistanceToCenter(IEnumerable<Game> games, Coordinates centerCoordinate)
+        {
+            foreach (var game in games)
+            {
+                var gameCoordinate = new Coordinates
+                {
+                    Lat = game.LocationLat,
+                    Lng = game.LocationLng
+                };
+
+                game.DistanceToCenterLocation = _geographyRepository.DistanceBetweenCoordinates(gameCoordinate, centerCoordinate);
             }
         }
     }
