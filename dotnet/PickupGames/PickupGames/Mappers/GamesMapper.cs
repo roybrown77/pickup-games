@@ -38,7 +38,12 @@ namespace PickupGames.Mappers
         private static List<GameModel> ConvertGameListToGamesModelList(IEnumerable<Game> games)
         {
             var gameListModel = new List<GameModel>();
-            
+
+            if (games == null)
+            {
+                return gameListModel;
+            }
+
             foreach (var game in games)
             {
                 gameListModel.Add(new GameModel
