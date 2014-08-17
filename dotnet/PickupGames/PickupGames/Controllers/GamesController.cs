@@ -11,7 +11,7 @@ namespace PickupGames.Controllers
         public ActionResult Index()
         {
             var domain = new GameDomain();
-            var response = domain.FindBy("US"); //get by user set location or url country
+            var response = domain.FindBy("US", 1); //get by user set location or url country
             var model = GamesMapper.ConvertGameListToGamesModel(response);
             return View(model);
         }
@@ -36,11 +36,11 @@ namespace PickupGames.Controllers
             return View("CreateGame", gameModel);                                  
         }                
 
-        public ActionResult Search(GameSearchModel searchModel)
+        public ActionResult Search(GameSearchModel searchModel, int page)
         {
             var domain = new GameDomain();
             var searchQuery = GamesMapper.ConvertSearchModelToSearchQuery(searchModel);
-            var response = domain.FindBy(searchQuery);
+            var response = domain.FindBy(searchQuery, page);
             var model = GamesMapper.ConvertGameListToGamesModel(response);            
             return View("Index", model);
         }
@@ -50,7 +50,7 @@ namespace PickupGames.Controllers
         {
             var domain = new GameDomain();
             var searchQuery = GamesMapper.ConvertSearchModelToSearchQuery(searchModel);
-            var response = domain.FindBy(searchQuery);
+            var response = domain.FindBy(searchQuery, 1);
             return Json(response);
         }
 

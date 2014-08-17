@@ -9,15 +9,35 @@
     <div id="map-canvas" style="width:100%; height:900px; background-color: white"></div>
 </div>
 
-<div style="left: 45%;position: absolute;">
+<div style="left: 45%;position: absolute;width:100%">
     <div>
         @Html.Partial("Search", Model.GameSearchModel)
+    </div>
+
+    <div class="results-footer">
+
+        <div class="page-divider"> </div>
+
+        <div class="pagination-buttons-container">
+            <div class="results_count">
+                <p>
+                    1 – 18 of 879 Games
+                </p>
+            </div>
+            <div class="pagination">
+                pagination
+            </div>
+        </div>
+
+        <div class="breadcrumbs" itemprop="breadcrumb" style="margin-bottom:1em">
+            bread crumbs
+        </div>
     </div>
 
     <div id="gamelist">            
         @foreach (var game in Model.GameListModel)
         {
-            <div data-id="@game.Id" style="margin-top:1em">            
+            <div data-id="@game.Id">            
                 <div>
                     @game.Name          
                 </div>
@@ -113,6 +133,14 @@
 </script>
 
 <script type="text/javascript">
+    $(function () {
+        $('light-pagination').pagination({
+            items: 100,
+            itemsOnPage: 10,
+            cssStyle: 'light-theme'
+        });
+    });
+
     function initializeMap() {
         var centerCoordinateLat = parseFloat($('#Location').attr('data-lat'));
         var centerCoordinateLng = parseFloat($('#Location').attr('data-lng'));

@@ -218,6 +218,7 @@
     <Compile Include="Repositories\IGeographyRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\simplePagination.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -283,6 +284,7 @@
     <Content Include="Scripts\jquery-ui-1.8.24.min.js.map">
       <DependentUpon>jquery-ui-1.8.24.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\jquery.simplePagination.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js.map">
       <DependentUpon>jquery.unobtrusive-ajax.js</DependentUpon>
     </Content>

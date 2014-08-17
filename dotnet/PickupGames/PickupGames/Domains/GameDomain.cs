@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using PickupGames.Domain.Objects;
 using PickupGames.Repositories;
 
@@ -46,7 +47,7 @@ namespace PickupGames.Domains
             }
         }
 
-        public GameSearchResponse FindBy(string location)
+        public GameSearchResponse FindBy(string location, int page)
         {
             try
             {
@@ -57,7 +58,7 @@ namespace PickupGames.Domains
                 return new GameSearchResponse
                            {
                                Status = "Success",
-                               Games = games,
+                               Games = games.Skip(page).Take(4).ToList(),
                                SearchLocationLat = centerCoordinates.Lat,
                                SearchLocationLng = centerCoordinates.Lng
                            };
@@ -72,7 +73,7 @@ namespace PickupGames.Domains
             }
         }
 
-        public GameSearchResponse FindBy(SearchQuery searchQuery)
+        public GameSearchResponse FindBy(SearchQuery searchQuery, int page)
         {
             try
             {
@@ -83,7 +84,7 @@ namespace PickupGames.Domains
                 return new GameSearchResponse
                 {
                     Status = "Success",
-                    Games = games,
+                    Games = games.Skip(page).Take(4).ToList(),
                     SearchLocationLat = centerCoordinates.Lat,
                     SearchLocationLng = centerCoordinates.Lng
                 };
@@ -98,7 +99,7 @@ namespace PickupGames.Domains
             }
         }
 
-        private void SetDistanceToCenter(IEnumerable<Game> games, Coordinates centerCoordinate)
+        private void SetDistanceToCenter(IList<Game> games, Coordinates centerCoordinate)
         {
             foreach (var game in games)
             {
@@ -109,6 +110,8 @@ namespace PickupGames.Domains
                 };
 
                 game.DistanceToCenterLocation = _geographyRepository.DistanceBetweenCoordinates(gameCoordinate, centerCoordinate);
+                //games = games.OrderBy(x => float.Parse(x.DistanceToCenterLocation.Replace(" mi","").Replace(" km",""))).ToList();
+                games = games.OrderBy(x => x.Location).ToList();
             }
         }
     }
