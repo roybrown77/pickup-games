@@ -1,8 +1,8 @@
 ﻿using Ninject;
 
-namespace PickupGames.Controllers
+namespace PickupGames.Utilities.DependencyInjector
 {
-    public class NinjectContainer
+    public class NinjectDependencyInjector
     {
         public static StandardKernel Dependencies { get; set; }
     }

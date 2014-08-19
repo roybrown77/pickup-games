@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using PickupGames.Domain.Objects;
+using PickupGames.Repositories.Interfaces;
 
-namespace PickupGames.Repositories
+namespace PickupGames.Repositories.Mocks
 {
-    public class GameRepository : IGameRepository
+    public class MockGameRepository : IGameRepository
     {
         public void Add(Game game)
         {

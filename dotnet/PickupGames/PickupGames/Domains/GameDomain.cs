@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Ninject;
 using PickupGames.Domain.Objects;
-using PickupGames.Repositories;
+using PickupGames.Repositories.Interfaces;
+using PickupGames.Utilities.DependencyInjector;
 
 namespace PickupGames.Domains
 {
@@ -11,15 +13,10 @@ namespace PickupGames.Domains
         private readonly IGameRepository _gameRepository;
         private readonly IGeographyRepository _geographyRepository;
 
-        public GameDomain() 
-            : this(new GameRepository(), new GoogleGeographyRepository())
+        public GameDomain()
         {
-        }
-
-        public GameDomain(IGameRepository gameRepository, IGeographyRepository geographyRepository)
-        {
-            _gameRepository = gameRepository;
-            _geographyRepository = geographyRepository;
+            _gameRepository = NinjectDependencyInjector.Dependencies.Get<IGameRepository>();
+            _geographyRepository = NinjectDependencyInjector.Dependencies.Get<IGeographyRepository>();
         }
 
         public BasicResponse CreateGame(Game game)

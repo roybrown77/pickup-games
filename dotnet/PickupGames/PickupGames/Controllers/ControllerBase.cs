@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using Ninject;
+using PickupGames.Utilities.DependencyInjector;
 
 namespace PickupGames.Controllers
 {
@@ -7,7 +8,7 @@ namespace PickupGames.Controllers
     {
         public ControllerBase()
         {
-            NinjectContainer.Dependencies = new StandardKernel(new NinjectDependencies());
+            NinjectDependencyInjector.Dependencies = new StandardKernel(NinjectDependencyFactory.Create());
         }
     }
 }

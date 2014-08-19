@@ -187,13 +187,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\Default1Controller.cs" />
-    <Compile Include="Controllers\NinjectContainer.cs" />
-    <Compile Include="Controllers\DepedencyInjectorFactory.cs" />
+    <Compile Include="Utilities\DependencyInjector\NinjectDependencyInjector.cs" />
+    <Compile Include="Utilities\DependencyInjector\NinjectDependencyFactory.cs" />
     <Compile Include="Controllers\GamesController.cs" />
-    <Compile Include="Controllers\NinjectDependencies.cs" />
+    <Compile Include="Utilities\DependencyInjector\MockNinjectDependencies.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\IDependencyInjector.cs" />
-    <Compile Include="Controllers\NinjectDepedencyInjector.cs" />
     <Compile Include="Domain.Objects\BasicResponse.cs" />
     <Compile Include="Domain.Objects\Coordinates.cs" />
     <Compile Include="Domain.Objects\SearchQuery.cs" />
@@ -201,8 +199,8 @@
     <Compile Include="Models\GameSearchModel.cs" />
     <Compile Include="Models\GameCreateModel.cs" />
     <Compile Include="Models\GameModel.cs" />
-    <Compile Include="Repositories\GameRepository.cs" />
-    <Compile Include="Repositories\IGameRepository.cs" />
+    <Compile Include="Repositories\Mocks\MockGameRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IGameRepository.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -215,7 +213,7 @@
     <Compile Include="Domain.Objects\ResponseBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\GoogleGeographyRepository.cs" />
-    <Compile Include="Repositories\IGeographyRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IGeographyRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\simplePagination.css" />
@@ -357,7 +355,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Utilities\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
