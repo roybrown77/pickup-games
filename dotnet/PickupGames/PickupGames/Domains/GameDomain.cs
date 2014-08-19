@@ -81,7 +81,7 @@ namespace PickupGames.Domains
                 return new GameSearchResponse
                 {
                     Status = "Success",
-                    Games = games.Skip(page).Take(4).ToList(),
+                    Games = games.Skip((page-1)*4).Take(4).ToList(),
                     SearchLocationLat = centerCoordinates.Lat,
                     SearchLocationLng = centerCoordinates.Lng
                 };
@@ -107,9 +107,9 @@ namespace PickupGames.Domains
                 };
 
                 game.DistanceToCenterLocation = _geographyRepository.DistanceBetweenCoordinates(gameCoordinate, centerCoordinate);
-                //games = games.OrderBy(x => float.Parse(x.DistanceToCenterLocation.Replace(" mi","").Replace(" km",""))).ToList();
-                games = games.OrderBy(x => x.Location).ToList();
             }
+
+            //games = games.OrderBy(x => double.Parse(x.DistanceToCenterLocation.Replace(" mi","").Replace(" km",""))).ToList();            
         }
     }
 }

@@ -109,7 +109,7 @@ namespace PickupGames.Repositories.Mocks
                                    LocationLat = temp.GetCoordinates("Fall River, MA").Lat,
                                    LocationLng = temp.GetCoordinates("Fall River, MA").Lng,
                                    PlayerCount = 6
-                               },
+                               }/*,
                            new Game
                                {
                                    Id = Guid.NewGuid(),
@@ -121,7 +121,7 @@ namespace PickupGames.Repositories.Mocks
                                    LocationLat = temp.GetCoordinates("Attleboro, MA").Lat,
                                    LocationLng = temp.GetCoordinates("Attleboro, MA").Lng,
                                    PlayerCount = 6
-                               }/*,
+                               },
                            new Game
                                {
                                    Id = Guid.NewGuid(),
