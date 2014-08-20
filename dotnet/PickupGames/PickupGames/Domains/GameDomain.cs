@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Ninject;
 using PickupGames.Domain.Objects;
 using PickupGames.Repositories.Interfaces;
@@ -44,18 +43,18 @@ namespace PickupGames.Domains
             }
         }
 
-        public GameSearchResponse FindBy(string location, int page)
+        public GameSearchResponse FindBy(string location, GameSearchRequest request)
         {
             try
             {
                 var centerCoordinates = _geographyRepository.GetCoordinates(location);
-                var games = _gameRepository.FindBy(location);
+                var games = _gameRepository.FindBy(location, request);
                 SetDistanceToCenter(games, centerCoordinates);
 
                 return new GameSearchResponse
                            {
                                Status = "Success",
-                               Games = games.Skip(page).Take(4).ToList(),
+                               Games = games,
                                SearchLocationLat = centerCoordinates.Lat,
                                SearchLocationLng = centerCoordinates.Lng
                            };
@@ -70,18 +69,18 @@ namespace PickupGames.Domains
             }
         }
 
-        public GameSearchResponse FindBy(SearchQuery searchQuery, int page)
+        public GameSearchResponse FindBy(SearchQuery searchQuery, GameSearchRequest request)
         {
             try
             {
                 var centerCoordinates = _geographyRepository.GetCoordinates(searchQuery.Location);
-                var games = _gameRepository.FindBy(searchQuery);
+                var games = _gameRepository.FindBy(searchQuery, request);
                 SetDistanceToCenter(games, centerCoordinates);
 
                 return new GameSearchResponse
                 {
                     Status = "Success",
-                    Games = games.Skip((page-1)*4).Take(4).ToList(),
+                    Games = games,
                     SearchLocationLat = centerCoordinates.Lat,
                     SearchLocationLng = centerCoordinates.Lng
                 };

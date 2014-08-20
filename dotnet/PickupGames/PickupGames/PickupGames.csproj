@@ -187,6 +187,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\Default1Controller.cs" />
+    <Compile Include="Domain.Objects\GameSearchRequest.cs" />
+    <Compile Include="Domain.Objects\GamesSortBy.cs" />
     <Compile Include="Utilities\DependencyInjector\NinjectDependencyInjector.cs" />
     <Compile Include="Utilities\DependencyInjector\NinjectDependencyFactory.cs" />
     <Compile Include="Controllers\GamesController.cs" />
