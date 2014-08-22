@@ -51,6 +51,8 @@ namespace PickupGames.Controllers
             var domain = new GameDomain();
             var searchQuery = GamesMapper.ConvertSearchModelToSearchQuery(searchModel);
             var response = domain.FindBy(searchQuery, new GameSearchRequest { Index = page });
+            // move response stuff to view model
+            // var model = GamesMapper.ConvertGameListToGamesModel(response);
             return Json(response);
         }
 

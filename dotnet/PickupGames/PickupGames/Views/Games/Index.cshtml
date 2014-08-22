@@ -15,18 +15,14 @@
     </div>
 
     <div class="results-footer">
-
-        <div class="page-divider"> </div>
-
         <div class="pagination-buttons-container">
             <div class="results_count">
                 <p>
                     1 – 18 of 879 Games
                 </p>
             </div>
-            <div class="pagination">
-                pagination
-            </div>
+            
+            <div id="pagination"></div>
         </div>
 
         <div class="breadcrumbs" itemprop="breadcrumb" style="margin-bottom:1em">
@@ -133,13 +129,13 @@
 </script>
 
 <script type="text/javascript">
-    $(function () {
-        $('light-pagination').pagination({
+    $(document).ready(function () {
+        $('#pagination').pagination({
             items: 100,
             itemsOnPage: 10,
-            cssStyle: 'light-theme'
+            cssStyle: 'light-theme'            
         });
-    });
+    });    
 
     function initializeMap() {
         var centerCoordinateLat = parseFloat($('#Location').attr('data-lat'));

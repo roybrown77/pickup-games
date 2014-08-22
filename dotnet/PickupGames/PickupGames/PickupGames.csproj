@@ -275,16 +275,11 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.8.2.js" />
-    <Content Include="Scripts\jquery-1.8.2.min.js" />
-    <Content Include="Scripts\jquery-1.8.2.min.js.map">
-      <DependentUpon>jquery-1.8.2.js</DependentUpon>
-    </Content>
+    <Content Include="Scripts\jquery-2.1.1.min.js" />
+    <Content Include="Scripts\jquery.simplePagination.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js.map">
       <DependentUpon>jquery-ui-1.8.24.js</DependentUpon>
     </Content>
-    <Content Include="Scripts\jquery.simplePagination.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js.map">
       <DependentUpon>jquery.unobtrusive-ajax.js</DependentUpon>
     </Content>
