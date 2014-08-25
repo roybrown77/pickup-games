@@ -8,59 +8,111 @@ $(document).ready(function () {
     });
 });
 
-function gameSearchPage(index) {
-    alert(index);
+function onSearchGamesBegin() {
+    
+}
+  
+function onSearchGamesComplete() {
+    updateUrl();    
 }
 
-function toggleSearchGames() {
-    $('#searchgames').toggle(500);
-};
-    
-function updateUrl() {
-    var parameters = [];
-        
-    var searchParameters = $("#searchgamesform").serializeArray();
-    var searchParametersEncoded = $.param(searchParameters);
-    var searchParametersEncodedArray = searchParametersEncoded.split('&');
-
-    $.each(searchParametersEncodedArray, function (index, elem) {
-        if (elem.split("=")[1] != "" && elem.split("=")[0].toLowerCase() != "location") {
-            elem = elem.split("=")[0].toLowerCase() + '=' + elem.split("=")[1];
-            parameters.push(elem);
-        }
-    });
-
-    if (parameters.length > 0) {
-        window.history.pushState("searchcriteria", "searchcriteria", "?" + parameters.join("&"));
+function onSearchGamesSuccess(data, status, xhr) {
+    if (data.Status == "Success") {
+        updateGameList(data.Games);
+        createMap(data.SearchLocationLat, data.SearchLocationLng);
+    } else {
+        alert(data.Message);
     }
 }
 
-/*function initialize() {
-    var input = (document.getElementById('Location'));
-    new google.maps.places.Autocomplete(input);
+function pageGames(index) {
+    alert(index);
 }
 
-google.maps.event.addDomListener(window, 'load', initialize);*/
+function showHideGameSearchFilter() {
+    $('#searchgames').toggle(500);
+};
 
-function getUrlSearchParameters() {    
+function updateUrl() {
+    var urlSearchParameterArray = getUrlSearchParameterArray();
+
+    if (urlSearchParameterArray.length > 0) {
+        window.history.pushState("searchcriteria", "searchcriteria", "?" + urlSearchParameterArray.join("&"));
+    }
+}
+
+function getUrlSearchParameterString() {    
     var urlSearchParameterString = '';
+    var urlSearchParameterArray = getUrlSearchParameterArray();
+
+    if (urlSearchParameterArray.length > 0) {
+        urlSearchParameterString = '&' + urlSearchParameterArray.join("&");
+    }
+    return urlSearchParameterString;
+}
+
+function getUrlSearchParameterArray() {
     var urlSearchParameterArray = [];
 
     var searchFormParameters = $("#searchgamesform").serializeArray();
     var encodedSearchFormParameters = $.param(searchFormParameters);
     var encodedSearchFormParametersArray = encodedSearchFormParameters.split('&');
 
-    $.each(encodedSearchFormParametersArray, function (index, elem) {
+    $.each(encodedSearchFormParametersArray, function(index, elem) {
         if (elem.split("=")[1] != "" && elem.split("=")[0].toLowerCase() != "location") {
             elem = elem.split("=")[0].toLowerCase() + '=' + elem.split("=")[1];
             urlSearchParameterArray.push(elem);
         }
     });
 
-    if (urlSearchParameterArray.length > 0) {
-        urlSearchParameterString = '&' + urlSearchParameterArray.join("&");
+    return urlSearchParameterArray;
+}
+
+function updateGameList(games) {
+    var templateWithData = Mustache.to_html($("#gamesTemplate").html(), { games: games });
+    $("#gamelist").empty().html(templateWithData);
+}
+    
+function joinGame(id) {
+    $.ajax({
+        type: 'POST',
+        url: "Games/Join",        
+        data: { gameId: id },
+    success: function (data) {
+        if (data.Status == "Success") {
+            alert('joined!');
+        } else {
+        }
     }
-    return urlSearchParameterString;
+});
+}
+
+function watchGame(id) {
+    $.ajax({
+        type: 'POST',
+        url: "Games/Watch",
+        data: { gameId: id },
+        success: function (data) {
+            if (data.Status == "Success") {
+                alert('watching!');
+            } else {
+            }
+        }
+    });
+}
+    
+function deleteGame(id) {
+    $.ajax({
+        type: 'POST',
+        url: "Games/Delete",
+        data: { gameId: id },
+    success: function (data) {
+        if (data.Status == "Success") {
+            alert('deleted!');
+        } else {
+        }
+    }
+});
 }
 
 function initializeMap() {
@@ -112,58 +164,6 @@ function createMap(centerCoordinateLat, centerCoordinateLng) {
     var input = (document.getElementById('Location'));
     var autocomplete = new google.maps.places.Autocomplete(input);
     autocomplete.bindTo('bounds', map);
-}
-
-   
-function onSearchGamesSuccess(data, status, xhr) {
-    if (data.Status == "Success") {            
-        var templateWithData = Mustache.to_html($("#gamesTemplate").html(), { games: data.Games });
-        $("#gamelist").empty().html(templateWithData);
-        createMap(data.SearchLocationLat, data.SearchLocationLng);
-    } else {
-    }
-}
-    
-function joinGame(id) {
-    $.ajax({
-        type: 'POST',
-        url: "Games/Join",        
-        data: { gameId: id },
-    success: function (data) {
-        if (data.Status == "Success") {
-            alert('joined!');
-        } else {
-        }
-    }
-});
-}
-
-function watchGame(id) {
-    $.ajax({
-        type: 'POST',
-        url: "Games/Watch",
-        data: { gameId: id },
-        success: function (data) {
-            if (data.Status == "Success") {
-                alert('watching!');
-            } else {
-            }
-        }
-    });
-}
-    
-function deleteGame(id) {
-    $.ajax({
-        type: 'POST',
-        url: "Games/Delete",
-        data: { gameId: id },
-    success: function (data) {
-        if (data.Status == "Success") {
-            alert('deleted!');
-        } else {
-        }
-    }
-});
 }
 
 function validateLatLng(address) {

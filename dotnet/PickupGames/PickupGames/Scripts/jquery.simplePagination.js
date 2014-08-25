@@ -142,7 +142,7 @@
 			
 			tagName = (typeof this.prop === 'function') ? this.prop('tagName') : this.attr('tagName');
 
-			var $panel = tagName === 'UL' ? this : $('<ul></ul>').appendTo(this);
+			var $panel = tagName === 'UL' ? this : $('<ul id="Index"></ul>').appendTo(this);
 
 			// Generate Prev link
 			if (o.prevText) {
@@ -199,7 +199,7 @@
 		},
 
 		_appendItem: function(pageIndex, opts) {
-			var self = this, options, $link, o = self.data('pagination'), $linkWrapper = $('<li></li>'), $ul = self.find('ul');
+			var self = this, options, $link, o = self.data('pagination'), $linkWrapper = $('<li value = "1"></li>'), $ul = self.find('ul');
 
 			pageIndex = pageIndex < 0 ? 0 : (pageIndex < o.pages ? pageIndex : o.pages - 1);
 
@@ -222,7 +222,7 @@
 				}
 				$link = $('<span class="current">' + (options.text) + '</span>');
 			} else {
-			    $link = $('<span onclick="javaScript:gameSearchPage(' + (pageIndex + 1) + ');" class="page-link">' + (options.text) + '</span>');
+			    $link = $('<span onclick="javaScript:pageGames(' + (pageIndex + 1) + ');" class="page-link">' + (options.text) + '</span>');
 				$link.click(function(event){
 					return methods._selectPage.call(self, pageIndex, event);
 				});

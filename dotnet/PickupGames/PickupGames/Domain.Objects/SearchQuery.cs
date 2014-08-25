@@ -4,6 +4,8 @@ namespace PickupGames.Domain.Objects
 {
     public class SearchQuery
     {
+        private int _index = 1;
+
         public string Name { get; set; }
         public string Sport { get; set; }
         public string GameDay { get; set; }
@@ -15,5 +17,12 @@ namespace PickupGames.Domain.Objects
         public string Radius { get; set; }
         public int? PlayerCount { get; set; }
         public int? Views { get; set; }
+        public GamesSortBy SortBy { get; set; }
+
+        public int Index {
+            get { return _index; }
+            set { _index = value; }
+        }
+        public int NumberOfResultsPerPage { get; set; }
     }
 }

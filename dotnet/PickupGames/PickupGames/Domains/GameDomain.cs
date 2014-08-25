@@ -43,12 +43,12 @@ namespace PickupGames.Domains
             }
         }
 
-        public GameSearchResponse FindBy(string location, GameSearchRequest request)
+        public GameSearchResponse FindBy(string location)
         {
             try
             {
                 var centerCoordinates = _geographyRepository.GetCoordinates(location);
-                var games = _gameRepository.FindBy(location, request);
+                var games = _gameRepository.FindBy(location);
                 SetDistanceToCenter(games, centerCoordinates);
 
                 return new GameSearchResponse
@@ -69,12 +69,12 @@ namespace PickupGames.Domains
             }
         }
 
-        public GameSearchResponse FindBy(SearchQuery searchQuery, GameSearchRequest request)
+        public GameSearchResponse FindBy(SearchQuery searchQuery)
         {
             try
             {
                 var centerCoordinates = _geographyRepository.GetCoordinates(searchQuery.Location);
-                var games = _gameRepository.FindBy(searchQuery, request);
+                var games = _gameRepository.FindBy(searchQuery);
                 SetDistanceToCenter(games, centerCoordinates);
 
                 return new GameSearchResponse

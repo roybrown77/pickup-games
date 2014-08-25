@@ -16,17 +16,7 @@ namespace PickupGames.Repositories.Mocks
             throw new NotImplementedException();
         }
 
-        public List<Game> FindAll(GameSearchRequest request)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Game> FindBy(string location)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Game> FindBy(string location, GameSearchRequest request)
         {
             var temp = new GoogleGeographyRepository();            
 
@@ -49,14 +39,9 @@ namespace PickupGames.Repositories.Mocks
 
         public List<Game> FindBy(SearchQuery searchQuery)
         {
-            throw new NotImplementedException();
-        }
-
-        public List<Game> FindBy(SearchQuery searchQuery, GameSearchRequest request)
-        {
             var temp = new GoogleGeographyRepository();
 
-            if (request.Index% 2 == 1)
+            if (searchQuery.Index % 2 == 1)
             {
                 return new List<Game>
                        {
