@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using PickupGames.Domain.Objects;
 
 namespace PickupGames.Models
 {
@@ -38,5 +39,9 @@ namespace PickupGames.Models
         public int? PlayerCount { get; set; }
 
         public int? Views { get; set; }
+
+        public GamesSortBy SortBy { get; set; }
+        public int Index { get; set; }
+        public int NumberOfResultsPerPage { get; set; }
     }
 }

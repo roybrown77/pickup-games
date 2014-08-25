@@ -36,21 +36,21 @@ namespace PickupGames.Controllers
             return View("CreateGame", gameModel);                                  
         }                
 
-        public ActionResult Search(GameSearchModel searchModel, int page)
+        public ActionResult Search(GameSearchModel searchModel)
         {
             var domain = new GameDomain();
             var searchQuery = GamesMapper.ConvertSearchModelToSearchQuery(searchModel);
-            var response = domain.FindBy(searchQuery, new GameSearchRequest{ Index = page });
+            var response = domain.FindBy(searchQuery, new GameSearchRequest{ Index = 1 });
             var model = GamesMapper.ConvertGameListToGamesModel(response);            
             return View("Index", model);
         }
 
         [HttpPost]
-        public JsonResult SearchByAjax(GameSearchModel searchModel, int page)
+        public JsonResult SearchByAjax(GameSearchModel searchModel)
         {
             var domain = new GameDomain();
             var searchQuery = GamesMapper.ConvertSearchModelToSearchQuery(searchModel);
-            var response = domain.FindBy(searchQuery, new GameSearchRequest { Index = page });
+            var response = domain.FindBy(searchQuery, new GameSearchRequest { Index = 1 });
             // move response stuff to view model
             // var model = GamesMapper.ConvertGameListToGamesModel(response);
             return Json(response);

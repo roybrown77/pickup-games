@@ -12,20 +12,20 @@
 
 	var methods = {
 		init: function(options) {
-			var o = $.extend({
-				items: 1,
-				itemsOnPage: 1,
-				pages: 0,
-				displayedPages: 5,
-				edges: 2,
-				currentPage: 1,
-				hrefTextPrefix: '#page-',
-				hrefTextSuffix: '',
-				prevText: 'Prev',
-				nextText: 'Next',
-				ellipseText: '&hellip;',
-				cssStyle: 'light-theme',
-				labelMap: [],
+		    var o = $.extend({
+		        items: 1,
+		        itemsOnPage: 1,
+		        pages: 0,
+		        displayedPages: 5,
+		        edges: 2,
+		        currentPage: 1,
+		        hrefTextPrefix: '#page-',
+		        hrefTextSuffix: '',
+		        prevText: 'Prev',
+		        nextText: 'Next',
+		        ellipseText: '&hellip;',
+		        cssStyle: 'light-theme',
+		        labelMap: [],
 				selectOnClick: true,
 				onPageClick: function(pageNumber, event) {
 					// Callback triggered when a page is clicked
@@ -222,7 +222,7 @@
 				}
 				$link = $('<span class="current">' + (options.text) + '</span>');
 			} else {
-				$link = $('<a href="' + o.hrefTextPrefix + (pageIndex + 1) + o.hrefTextSuffix + '" class="page-link">' + (options.text) + '</a>');
+			    $link = $('<span onclick="javaScript:gameSearchPage(' + (pageIndex + 1) + ');" class="page-link">' + (options.text) + '</span>');
 				$link.click(function(event){
 					return methods._selectPage.call(self, pageIndex, event);
 				});
