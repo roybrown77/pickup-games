@@ -68,7 +68,8 @@ namespace PickupGames.Mappers
         {
             return new SearchQuery
                        {
-                           Location = searchModel.Location
+                           Location = searchModel.Location,
+                           Index = searchModel.Index ?? 1
                        };
         }
     }

@@ -10,10 +10,23 @@ namespace PickupGames
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-               name: "GamesSearch",
-               url: "Games/Search/{location}",
-               defaults: new { controller = "Games", action = "Search", location = "usa" }
+               name: "Games",
+               url: "Games",
+               defaults: new { controller = "Games", action = "Search", page = 1 }
             );
+
+            routes.MapRoute(
+               name: "GamesSearch",
+               url: "Games/Search",
+               defaults: new { controller = "Games", action = "Search", page = 1 }
+            );
+
+
+            routes.MapRoute(
+               name: "GamesSearchPage",
+               url: "Games/Search/{page}",
+               defaults: new { controller = "Games", action = "Search", page = 1 }
+            );       
 
             routes.MapRoute(
                 name: "Default",

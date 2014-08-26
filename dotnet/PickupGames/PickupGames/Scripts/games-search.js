@@ -6,14 +6,14 @@ $(document).ready(function () {
         hrefTextPrefix: '/Games/Search/' + $('#Location').val() + '?page=',
         hrefTextSuffix: getUrlSearchParameters(),*/
     });
+
+    $('#pagination > ul > li.active').click(function () {
+        var temp = 1;
+    });
 });
 
 function onSearchGamesBegin() {
     
-}
-  
-function onSearchGamesComplete() {
-    updateUrl();    
 }
 
 function onSearchGamesSuccess(data, status, xhr) {
@@ -25,8 +25,54 @@ function onSearchGamesSuccess(data, status, xhr) {
     }
 }
 
+function onSearchGamesComplete() {
+    updateUrl();
+}
+
 function pageGames(index) {
-    alert(index);
+    var searchFormParameters = $('#searchgamesform').serialize();
+    var encodedSearchFormParametersArray = searchFormParameters.split('&');
+    var urlSearchParameterArray = [];
+
+    $.each(encodedSearchFormParametersArray, function (index, elem) {
+        if (elem.split("=")[1] != "") {
+            elem = elem.split("=")[0].toLowerCase() + '=' + elem.split("=")[1];
+            urlSearchParameterArray.push(elem);
+        }
+    });
+
+    if (urlSearchParameterArray.length == 0) {
+        return;
+    }
+
+    var urlSearchParameterString = urlSearchParameterArray.join('&') + '&Index=' + index;
+
+    $.ajax({        
+        url: 'Games/SearchByAjax',
+        type: 'POST',
+        data: urlSearchParameterString,
+        //dataType: "json",
+        //contentType:'application/json; charset=utf-8',
+        success: function(data) {
+            if (data.Status == "Success") {
+                updateGameList(data.Games);
+                createMap(data.SearchLocationLat, data.SearchLocationLng);
+            } else {
+                alert(data.Message);
+            }
+        }
+    });
+}
+
+function convertFormToObject(form) {
+    var array = $(form).serializeArray();
+    var newObject = {};
+
+    $.each(array, function () {
+        newObject[this.name] = this.value || null;
+    });
+
+    return newObject;
 }
 
 function showHideGameSearchFilter() {
@@ -44,10 +90,7 @@ function updateUrl() {
 function getUrlSearchParameterString() {    
     var urlSearchParameterString = '';
     var urlSearchParameterArray = getUrlSearchParameterArray();
-
-    if (urlSearchParameterArray.length > 0) {
-        urlSearchParameterString = '&' + urlSearchParameterArray.join("&");
-    }
+    urlSearchParameterString = urlSearchParameterArray.join("&");    
     return urlSearchParameterString;
 }
 
@@ -77,7 +120,7 @@ function joinGame(id) {
     $.ajax({
         type: 'POST',
         url: "Games/Join",        
-        data: { gameId: id },
+        data: { gameId: id },        
     success: function (data) {
         if (data.Status == "Success") {
             alert('joined!');

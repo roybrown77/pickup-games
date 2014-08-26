@@ -142,7 +142,7 @@
 			
 			tagName = (typeof this.prop === 'function') ? this.prop('tagName') : this.attr('tagName');
 
-			var $panel = tagName === 'UL' ? this : $('<ul id="Index"></ul>').appendTo(this);
+			var $panel = tagName === 'UL' ? this : $('<ul></ul>').appendTo(this);
 
 			// Generate Prev link
 			if (o.prevText) {
@@ -199,7 +199,7 @@
 		},
 
 		_appendItem: function(pageIndex, opts) {
-			var self = this, options, $link, o = self.data('pagination'), $linkWrapper = $('<li value = "1"></li>'), $ul = self.find('ul');
+			var self = this, options, $link, o = self.data('pagination'), $linkWrapper = $('<li></li>'), $ul = self.find('ul');
 
 			pageIndex = pageIndex < 0 ? 0 : (pageIndex < o.pages ? pageIndex : o.pages - 1);
 
