@@ -172,7 +172,7 @@ function initializeMap() {
 function createMap(centerCoordinateLat, centerCoordinateLng) {
     var zoom = 10;
 
-    if ($('#Location').val() == "") {
+    if ($('#Location').val() == "" || (centerCoordinateLat == 37.09024 && centerCoordinateLng == -95.712891)) {
         zoom = 3;
     }
 
