@@ -10,6 +10,8 @@ $(document).ready(function () {
     $('#pagination > ul > li.active').click(function () {
         var temp = 1;
     });
+
+    google.maps.event.addDomListener(window, 'load', initializeMap);
 });
 
 function onSearchGamesBegin() {
@@ -222,5 +224,3 @@ function validateLatLng(address) {
         var longitude = point.x;
     });
 }
-
-google.maps.event.addDomListener(window, 'load', initializeMap);
