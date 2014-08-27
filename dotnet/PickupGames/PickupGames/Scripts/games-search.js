@@ -26,7 +26,7 @@ function onSearchGamesSuccess(data, status, xhr) {
 }
 
 function onSearchGamesComplete() {
-    updateUrl();
+    updateUrl(1);    
 }
 
 function pageGames(index) {
@@ -34,7 +34,7 @@ function pageGames(index) {
     var encodedSearchFormParametersArray = searchFormParameters.split('&');
     var urlSearchParameterArray = [];
 
-    $.each(encodedSearchFormParametersArray, function (index, elem) {
+    $.each(encodedSearchFormParametersArray, function (i, elem) {
         if (elem.split("=")[1] != "") {
             elem = elem.split("=")[0].toLowerCase() + '=' + elem.split("=")[1];
             urlSearchParameterArray.push(elem);
@@ -45,10 +45,10 @@ function pageGames(index) {
         return;
     }
 
-    var urlSearchParameterString = urlSearchParameterArray.join('&') + '&Index=' + index;
+    var urlSearchParameterString = urlSearchParameterArray.join('&') + '&index=' + index;    
 
     $.ajax({        
-        url: 'Games/SearchByAjax',
+        url: '/Games/SearchByAjax',
         type: 'POST',
         data: urlSearchParameterString,
         //dataType: "json",
@@ -56,12 +56,25 @@ function pageGames(index) {
         success: function(data) {
             if (data.Status == "Success") {
                 updateGameList(data.Games);
-                createMap(data.SearchLocationLat, data.SearchLocationLng);
+                createMap(data.SearchLocationLat, data.SearchLocationLng);                
             } else {
                 alert(data.Message);
             }
+        },
+        complete: function() {
+            updateUrl(index);
         }
     });
+}
+
+function updateUrl(index) {
+    var urlSearchParameterArray = getUrlSearchParameterArray();
+
+    if (urlSearchParameterArray.length > 0) {
+        window.history.pushState("searchcriteria", "searchcriteria", "/Games/Search/" + $('#Location').val() + "/" + index + "?" + urlSearchParameterArray.join("&"));
+    } else {
+        window.history.pushState("searchcriteria", "searchcriteria", "/Games/Search/" + $('#Location').val() + "/" + index);
+    }
 }
 
 function convertFormToObject(form) {
@@ -78,14 +91,6 @@ function convertFormToObject(form) {
 function showHideGameSearchFilter() {
     $('#searchgames').toggle(500);
 };
-
-function updateUrl() {
-    var urlSearchParameterArray = getUrlSearchParameterArray();
-
-    if (urlSearchParameterArray.length > 0) {
-        window.history.pushState("searchcriteria", "searchcriteria", "?" + urlSearchParameterArray.join("&"));
-    }
-}
 
 function getUrlSearchParameterString() {    
     var urlSearchParameterString = '';
