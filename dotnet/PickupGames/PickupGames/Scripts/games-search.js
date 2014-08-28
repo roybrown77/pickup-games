@@ -186,6 +186,7 @@ function createMap(centerCoordinateLat, centerCoordinateLng) {
     var autocomplete = new google.maps.places.Autocomplete(input);
     autocomplete.bindTo('bounds', gamesMap);
     google.maps.event.addListener(gamesMap, 'dragend', resetMapCenter);
+    google.maps.event.addListener(gamesMap, 'dblclick', resetMapCenter);
 }
 
 function resetMapCenter() {
