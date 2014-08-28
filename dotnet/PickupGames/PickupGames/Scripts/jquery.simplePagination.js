@@ -222,7 +222,7 @@
 				}
 				$link = $('<span class="current">' + (options.text) + '</span>');
 			} else {
-			    $link = $('<span onclick="javaScript:pageGames(' + (pageIndex + 1) + ');" class="page-link">' + (options.text) + '</span>');
+			    $link = $('<span onclick="javaScript:searchGamesByAjax(' + (pageIndex + 1) + ');" class="page-link">' + (options.text) + '</span>');
 				$link.click(function(event){
 					return methods._selectPage.call(self, pageIndex, event);
 				});

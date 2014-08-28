@@ -2,14 +2,8 @@ $(document).ready(function () {
     $('#pagination').pagination({
         items: 100,
         itemsOnPage: 10,
-        cssStyle: 'light-theme'/*,
-        hrefTextPrefix: '/Games/Search/' + $('#Location').val() + '?page=',
-        hrefTextSuffix: getUrlSearchParameters(),*/
-    });
-
-    $('#pagination > ul > li.active').click(function () {
-        var temp = 1;
-    });
+        cssStyle: 'light-theme'
+    });    
 
     google.maps.event.addDomListener(window, 'load', initializeMap);
 });
@@ -27,7 +21,7 @@ function onSearchGamesComplete() {
     updateUrl(1);    
 }
 
-function pageGames(index) {
+function searchGamesByAjax(pageIndex) {
     var searchFormParameters = $('#searchgamesform').serialize();
     var encodedSearchFormParametersArray = searchFormParameters.split('&');
     var urlSearchParameterArray = [];
@@ -43,14 +37,12 @@ function pageGames(index) {
         return;
     }
 
-    var urlSearchParameterString = urlSearchParameterArray.join('&') + '&index=' + index;    
+    var urlSearchParameterString = urlSearchParameterArray.join('&') + '&index=' + pageIndex;
 
     $.ajax({        
         url: '/Games/SearchByAjax',
         type: 'POST',
         data: urlSearchParameterString,
-        //dataType: "json",
-        //contentType:'application/json; charset=utf-8',
         success: function(data) {
             if (data.Status == "Success") {
                 updateGameList(data.Games);
@@ -60,42 +52,24 @@ function pageGames(index) {
             }
         },
         complete: function() {
-            updateUrl(index);
+            updateUrl(pageIndex);
         }
     });
 }
 
-function updateUrl(index) {
+function updateUrl(pageIndex) {
     var urlSearchParameterArray = getUrlSearchParameterArray();
 
     if (urlSearchParameterArray.length > 0) {
-        window.history.pushState("searchcriteria", "searchcriteria", "/Games/Search/" + $('#Location').val() + "/" + index + "?" + urlSearchParameterArray.join("&"));
+        window.history.pushState("searchcriteria", "searchcriteria", "/Games/Search/" + $('#Location').val() + "/" + pageIndex + "?" + urlSearchParameterArray.join("&"));
     } else {
-        window.history.pushState("searchcriteria", "searchcriteria", "/Games/Search/" + $('#Location').val() + "/" + index);
+        window.history.pushState("searchcriteria", "searchcriteria", "/Games/Search/" + $('#Location').val() + "/" + pageIndex);
     }
-}
-
-function convertFormToObject(form) {
-    var array = $(form).serializeArray();
-    var newObject = {};
-
-    $.each(array, function () {
-        newObject[this.name] = this.value || null;
-    });
-
-    return newObject;
 }
 
 function showHideGameSearchFilter() {
     $('#searchgames').toggle(500);
 };
-
-function getUrlSearchParameterString() {    
-    var urlSearchParameterString = '';
-    var urlSearchParameterArray = getUrlSearchParameterArray();
-    urlSearchParameterString = urlSearchParameterArray.join("&");    
-    return urlSearchParameterString;
-}
 
 function getUrlSearchParameterArray() {
     var urlSearchParameterArray = [];
@@ -104,7 +78,7 @@ function getUrlSearchParameterArray() {
     var encodedSearchFormParameters = $.param(searchFormParameters);
     var encodedSearchFormParametersArray = encodedSearchFormParameters.split('&');
 
-    $.each(encodedSearchFormParametersArray, function(index, elem) {
+    $.each(encodedSearchFormParametersArray, function(i, elem) {
         if (elem.split("=")[1] != "" && elem.split("=")[0].toLowerCase() != "location") {
             elem = elem.split("=")[0].toLowerCase() + '=' + elem.split("=")[1];
             urlSearchParameterArray.push(elem);
@@ -182,14 +156,13 @@ function createMap(centerCoordinateLat, centerCoordinateLng) {
         mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
-    var marker, i;
-
     var coordinates = [];
-    $('.location').each(function (index) {
-        coordinates[index] = [parseFloat($(this).attr('data-lat')), parseFloat($(this).attr('data-lng'))];
+    $('.location').each(function (i) {
+        coordinates[i] = [parseFloat($(this).attr('data-lat')), parseFloat($(this).attr('data-lng'))];
     });
 
-    $(coordinates).each(function (index, elem) {
+    var marker;
+    $(coordinates).each(function (i, elem) {
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(elem[0], elem[1]),
             map: gamesMap,
@@ -222,7 +195,7 @@ function resetMapCenter() {
         if (status == google.maps.GeocoderStatus.OK) {
             if (results[1]) {
                 $('#Location').val(results[1].formatted_address);
-                pageGames(1);                
+                searchGamesByAjax(1);
             } else {
                 alert('No results found');
             }
@@ -240,3 +213,21 @@ function validateLatLng(address) {
         var longitude = point.x;
     });
 }
+
+/*function convertFormToObject(form) {
+    var array = $(form).serializeArray();
+    var newObject = {};
+
+    $.each(array, function () {
+        newObject[this.name] = this.value || null;
+    });
+
+    return newObject;
+}
+
+function getUrlSearchParameterString() {
+    var urlSearchParameterString = '';
+    var urlSearchParameterArray = getUrlSearchParameterArray();
+    urlSearchParameterString = urlSearchParameterArray.join("&");
+    return urlSearchParameterString;
+}*/
