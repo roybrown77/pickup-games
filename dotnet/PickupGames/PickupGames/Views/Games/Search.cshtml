@@ -2,7 +2,7 @@
 
 <label onclick="javascript:showHideGameSearchFilter();" style="font-weight:bold; cursor:pointer">More Filters</label>
 <div class="title">
-    @using (Ajax.BeginForm("SearchByAjax", "Games", FormMethod.Post, new AjaxOptions { OnBegin = "return onSearchGamesBegin()", OnComplete = "return onSearchGamesComplete()", OnSuccess = "onSearchGamesSuccess(data, status, xhr)" }, new { id = "searchgamesform" }))
+    @using (Ajax.BeginForm("SearchByAjax", "Games", FormMethod.Post, new AjaxOptions { OnSuccess = "onSearchGamesSuccess(data, status, xhr)", OnComplete = "return onSearchGamesComplete()" }, new { id = "searchgamesform" }))
     {                
         @Html.TextBoxFor(m => m.Location, new { data_lat = @Model.LocationLat, data_lng = @Model.LocationLng, style = "width:30em;", placeholder= "Where do you want to play?" })
 

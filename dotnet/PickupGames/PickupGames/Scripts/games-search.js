@@ -14,10 +14,6 @@ $(document).ready(function () {
     google.maps.event.addDomListener(window, 'load', initializeMap);
 });
 
-function onSearchGamesBegin() {
-    
-}
-
 function onSearchGamesSuccess(data, status, xhr) {
     if (data.Status == "Success") {
         updateGameList(data.Games);
@@ -165,10 +161,12 @@ function deleteGame(id) {
 });
 }
 
+var gamesMap;
+
 function initializeMap() {
     var centerCoordinateLat = parseFloat($('#Location').attr('data-lat'));
     var centerCoordinateLng = parseFloat($('#Location').attr('data-lng'));
-    createMap(centerCoordinateLat, centerCoordinateLng);
+    createMap(centerCoordinateLat, centerCoordinateLng);    
 }
 
 function createMap(centerCoordinateLat, centerCoordinateLng) {
@@ -178,7 +176,7 @@ function createMap(centerCoordinateLat, centerCoordinateLng) {
         zoom = 3;
     }
 
-    var map = new google.maps.Map(document.getElementById('map-canvas'), {
+    gamesMap = new google.maps.Map(document.getElementById('map-canvas'), {
         zoom: zoom,
         center: new google.maps.LatLng(centerCoordinateLat, centerCoordinateLng),
         mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -194,7 +192,7 @@ function createMap(centerCoordinateLat, centerCoordinateLng) {
     $(coordinates).each(function (index, elem) {
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(elem[0], elem[1]),
-            map: map,
+            map: gamesMap,
             title: 'time to ball!',
             draggable: true,
             animation: google.maps.Animation.DROP
@@ -213,7 +211,25 @@ function createMap(centerCoordinateLat, centerCoordinateLng) {
 
     var input = (document.getElementById('Location'));
     var autocomplete = new google.maps.places.Autocomplete(input);
-    autocomplete.bindTo('bounds', map);
+    autocomplete.bindTo('bounds', gamesMap);
+    google.maps.event.addListener(gamesMap, 'dragend', resetMapCenter);
+}
+
+function resetMapCenter() {
+    var latlng = gamesMap.getCenter();   
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            if (results[1]) {
+                $('#Location').val(results[1].formatted_address);
+                pageGames(1);                
+            } else {
+                alert('No results found');
+            }
+        } else {
+            alert('Geocoder failed due to: ' + status);
+        }
+    });
 }
 
 function validateLatLng(address) {
