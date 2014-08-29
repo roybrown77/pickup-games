@@ -92,7 +92,31 @@ namespace PickupGames.Repositories.Mocks
                                    LocationLat = temp.GetCoordinates("Malden, MA").Lat,
                                    LocationLng = temp.GetCoordinates("Malden, MA").Lng,
                                    PlayerCount = 6
-                               }
+                               },
+                           new Game
+                               {
+                                   Id = Guid.NewGuid(),
+                                   Name = "touch football",
+                                   Sport = "Football",
+                                   GameDate = DateTime.Now.Date,
+                                   GameTime = DateTime.Now.TimeOfDay,
+                                   Location = "Providence, RI",
+                                   LocationLat = temp.GetCoordinates("Providence, RI").Lat,
+                                   LocationLng = temp.GetCoordinates("Providence, RI").Lng,
+                                   PlayerCount = 6
+                               },
+                           new Game
+                               {
+                                   Id = Guid.NewGuid(),
+                                   Name = "touch football",
+                                   Sport = "Football",
+                                   GameDate = DateTime.Now.Date,
+                                   GameTime = DateTime.Now.TimeOfDay,
+                                   Location = "Chicago, IL",
+                                   LocationLat = temp.GetCoordinates("Chicago, IL").Lat,
+                                   LocationLng = temp.GetCoordinates("Chicago, IL").Lng,
+                                   PlayerCount = 6
+                               },
                        };
             }
 

@@ -75,7 +75,20 @@ namespace PickupGames.Domains
             {
                 var centerCoordinates = _geographyRepository.GetCoordinates(searchQuery.Location);
                 var games = _gameRepository.FindBy(searchQuery);
+                
+                var northeastCoordinates = new Coordinates
+                {
+                    Lat = searchQuery.NortheastLat,
+                    Lng = searchQuery.NortheastLng
+                };
+
                 SetDistanceToCenter(games, centerCoordinates);
+
+                if (northeastCoordinates.Lat != null && northeastCoordinates.Lng != null)
+                {
+                    var maxDistance = _geographyRepository.DistanceBetweenCoordinates(northeastCoordinates, centerCoordinates);
+                    games = GetGamesWithinRadius(games, maxDistance);
+                }                                               
 
                 return new GameSearchResponse
                 {
@@ -95,7 +108,22 @@ namespace PickupGames.Domains
             }
         }
 
-        private void SetDistanceToCenter(IList<Game> games, Coordinates centerCoordinate)
+        private List<Game> GetGamesWithinRadius(IEnumerable<Game> games, Distance maxDistance)
+        {
+            var newGames = new List<Game>();
+
+            foreach (var game in games)
+            {
+                if (game.DistanceToCenterLocation.Value < maxDistance.Value)
+                {
+                    newGames.Add(game);
+                }                
+            }
+
+            return newGames;
+        }
+
+        private void SetDistanceToCenter(IEnumerable<Game> games, Coordinates centerCoordinate)
         {
             foreach (var game in games)
             {
@@ -108,6 +136,8 @@ namespace PickupGames.Domains
                 game.DistanceToCenterLocation = _geographyRepository.DistanceBetweenCoordinates(gameCoordinate, centerCoordinate);
             }
 
+            // must convert ft into miles
+            // must consider km
             //games = games.OrderBy(x => double.Parse(x.DistanceToCenterLocation.Replace(" mi","").Replace(" km",""))).ToList();            
         }
     }

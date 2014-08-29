@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Xml.Linq;
 using PickupGames.Domain.Objects;
 using PickupGames.Repositories.Interfaces;
@@ -25,7 +26,7 @@ namespace PickupGames.Repositories
             return coordinates;
         }
 
-        public string DistanceBetweenCoordinates(Coordinates start, Coordinates end)
+        public Distance DistanceBetweenCoordinates(Coordinates start, Coordinates end)
         {
             var geocoderUri =
                 string.Format(
@@ -38,7 +39,13 @@ namespace PickupGames.Repositories
             var distanceElement = result.Element("element").Element("distance");
             var distance = distanceElement.Element("text").Value;
 
-            return distance;
+            var array = distance.Split(Convert.ToChar(" "));
+
+            return new Distance
+            {
+                Value = decimal.Parse(array[0]),
+                Unit = array[1]
+            };
         }
     }
 }

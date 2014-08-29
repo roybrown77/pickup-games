@@ -45,5 +45,9 @@ namespace PickupGames.Models
         public int? Index { get; set; }
 
         public int? NumberOfResultsPerPage { get; set; }
+
+        public string NortheastLat { get; set; }
+
+        public string NortheastLng { get; set; }
     }
 }

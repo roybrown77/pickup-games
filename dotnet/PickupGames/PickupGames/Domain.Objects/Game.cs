@@ -11,7 +11,7 @@ namespace PickupGames.Domain.Objects
         public TimeSpan GameTime { get; set; }
         public string Location { get; set; }
         public int PlayerCount { get; set; }
-        public string DistanceToCenterLocation { get; set; }
+        public Distance DistanceToCenterLocation { get; set; }
         public string LocationLat { get; set; }
         public string LocationLng { get; set; }
     }

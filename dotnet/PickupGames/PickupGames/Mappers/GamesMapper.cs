@@ -55,7 +55,7 @@ namespace PickupGames.Mappers
                                           GameTime = game.GameTime,
                                           Location = game.Location,
                                           PlayerCount = game.PlayerCount,
-                                          DistanceToCenterLocation = game.DistanceToCenterLocation,
+                                          DistanceToCenterLocation = game.DistanceToCenterLocation.Value + " " + game.DistanceToCenterLocation.Unit,
                                           LocationLat = game.LocationLat,
                                           LocationLng = game.LocationLng
                                       });
@@ -69,7 +69,9 @@ namespace PickupGames.Mappers
             return new SearchQuery
                        {
                            Location = searchModel.Location,
-                           Index = searchModel.Index ?? 1
+                           Index = searchModel.Index ?? 1,
+                           NortheastLat = searchModel.NortheastLat,
+                           NortheastLng = searchModel.NortheastLng,
                        };
         }
     }

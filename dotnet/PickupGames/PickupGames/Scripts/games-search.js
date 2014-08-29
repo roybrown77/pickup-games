@@ -37,7 +37,20 @@ function searchGamesByAjax(pageIndex) {
         return;
     }
 
-    var urlSearchParameterString = urlSearchParameterArray.join('&') + '&index=' + pageIndex;
+    var latlngBounds = gamesMap.getBounds();
+    var latlngMax;
+
+    try {
+        latlngMax = latlngBounds.getNorthEast();
+    } catch (e) {
+        try {
+            latlngMax = latlngBounds.getSouthWest();
+        } catch (e) {
+            latlngMax = gamesMap.getCenter();
+        } 
+    }     
+
+    var urlSearchParameterString = urlSearchParameterArray.join('&') + '&index=' + pageIndex + '&northeastlat=' + latlngMax.lat() + '&northeastlng=' + latlngMax.lng();
 
     $.ajax({        
         url: '/Games/SearchByAjax',
@@ -190,7 +203,7 @@ function createMap(centerCoordinateLat, centerCoordinateLng) {
 }
 
 function resetMapCenter() {
-    var latlng = gamesMap.getCenter();   
+    var latlng = gamesMap.getCenter();    
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({ 'latLng': latlng }, function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
