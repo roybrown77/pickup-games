@@ -48,7 +48,9 @@ namespace PickupGames.Domains
             try
             {
                 var centerCoordinates = _geographyRepository.GetCoordinates(location);
+                
                 var games = _gameRepository.FindBy(location);
+
                 SetDistanceToCenter(games, centerCoordinates);
 
                 return new GameSearchResponse
@@ -74,18 +76,21 @@ namespace PickupGames.Domains
             try
             {
                 var centerCoordinates = _geographyRepository.GetCoordinates(searchQuery.Location);
+
+                // get all games by state, region or country and filter down by maxDistance; must convert to formatted address if zip specified? get by zip
+
                 var games = _gameRepository.FindBy(searchQuery);
                 
-                var northeastCoordinates = new Coordinates
-                {
-                    Lat = searchQuery.NortheastLat,
-                    Lng = searchQuery.NortheastLng
-                };
-
                 SetDistanceToCenter(games, centerCoordinates);
 
-                if (northeastCoordinates.Lat != null && northeastCoordinates.Lng != null)
+                if (searchQuery.NortheastLat != null && searchQuery.NortheastLng != null)
                 {
+                    var northeastCoordinates = new Coordinates
+                    {
+                        Lat = searchQuery.NortheastLat,
+                        Lng = searchQuery.NortheastLng
+                    };
+
                     var maxDistance = _geographyRepository.DistanceBetweenCoordinates(northeastCoordinates, centerCoordinates);
                     games = GetGamesWithinRadius(games, maxDistance);
                 }                                               
