@@ -49,5 +49,6 @@ namespace PickupGames.Models
         public string NortheastLat { get; set; }
 
         public string NortheastLng { get; set; }
+        public int? Zoom { get; set; }
     }
 }

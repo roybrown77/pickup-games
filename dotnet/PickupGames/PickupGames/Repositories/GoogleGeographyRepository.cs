@@ -43,7 +43,7 @@ namespace PickupGames.Repositories
 
             return new Distance
             {
-                Value = decimal.Parse(array[0]),
+                Value = double.Parse(array[0]),
                 Unit = array[1]
             };
         }

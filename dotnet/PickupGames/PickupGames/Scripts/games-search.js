@@ -11,7 +11,7 @@ $(document).ready(function () {
 function onSearchGamesSuccess(data, status, xhr) {
     if (data.Status == "Success") {
         updateGameList(data.Games);
-        createMap(data.SearchLocationLat, data.SearchLocationLng);
+        createMap(data.Zoom, data.SearchLocationLat, data.SearchLocationLng);
     } else {
         alert(data.Message);
     }
@@ -33,24 +33,7 @@ function searchGamesByAjax(pageIndex) {
         }
     });
 
-    if (urlSearchParameterArray.length == 0) {
-        return;
-    }
-
-    var latlngBounds = gamesMap.getBounds();
-    var latlngMax;
-
-    try {
-        latlngMax = latlngBounds.getNorthEast();
-    } catch (e) {
-        try {
-            latlngMax = latlngBounds.getSouthWest();
-        } catch (e) {
-            latlngMax = gamesMap.getCenter();
-        } 
-    }     
-
-    var urlSearchParameterString = urlSearchParameterArray.join('&') + '&index=' + pageIndex + '&northeastlat=' + latlngMax.lat() + '&northeastlng=' + latlngMax.lng();
+    var urlSearchParameterString = urlSearchParameterArray.join('&') + '&index=' + pageIndex & '&zoom=' + gamesMap.getZoom();
 
     $.ajax({        
         url: '/Games/SearchByAjax',
@@ -59,7 +42,7 @@ function searchGamesByAjax(pageIndex) {
         success: function(data) {
             if (data.Status == "Success") {
                 updateGameList(data.Games);
-                createMap(data.SearchLocationLat, data.SearchLocationLng);                
+                createMap(data.Zoom, data.SearchLocationLat, data.SearchLocationLng);                
             } else {
                 alert(data.Message);
             }
@@ -153,21 +136,22 @@ var gamesMap;
 function initializeMap() {
     var centerCoordinateLat = parseFloat($('#Location').attr('data-lat'));
     var centerCoordinateLng = parseFloat($('#Location').attr('data-lng'));
-    createMap(centerCoordinateLat, centerCoordinateLng);    
+    createMap(3, centerCoordinateLat, centerCoordinateLng);    
 }
 
-function createMap(centerCoordinateLat, centerCoordinateLng) {
-    var zoom = 10;
-
-    if ($('#Location').val() == "" || (centerCoordinateLat == 37.09024 && centerCoordinateLng == -95.712891)) {
-        zoom = 3;
-    }
-
+function createMap(zoom, centerCoordinateLat, centerCoordinateLng) {
     gamesMap = new google.maps.Map(document.getElementById('map-canvas'), {
         zoom: zoom,
         center: new google.maps.LatLng(centerCoordinateLat, centerCoordinateLng),
         mapTypeId: google.maps.MapTypeId.ROADMAP
     });
+
+    /*var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ 'address': $('#Location').val() }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            gamesMap.fitBounds(results[0].geometry.viewport);
+        }
+    });*/
 
     var coordinates = [];
     $('.location').each(function (i) {

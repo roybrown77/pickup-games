@@ -31,7 +31,8 @@ namespace PickupGames.Mappers
             return new GameSearchModel
             {
                 LocationLat = response.SearchLocationLat,
-                LocationLng = response.SearchLocationLng
+                LocationLng = response.SearchLocationLng,
+                Zoom = response.Zoom
             };
         }
 
@@ -72,6 +73,7 @@ namespace PickupGames.Mappers
                            Index = searchModel.Index ?? 1,
                            NortheastLat = searchModel.NortheastLat,
                            NortheastLng = searchModel.NortheastLng,
+                           Zoom = searchModel.Zoom ?? 3
                        };
         }
     }
