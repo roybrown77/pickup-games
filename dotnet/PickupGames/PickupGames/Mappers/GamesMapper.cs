@@ -70,10 +70,10 @@ namespace PickupGames.Mappers
             return new SearchQuery
                        {
                            Location = searchModel.Location,
-                           Index = searchModel.Index,
+                           Index = searchModel.Index ?? 1,
                            NortheastLat = searchModel.NortheastLat,
                            NortheastLng = searchModel.NortheastLng,
-                           Zoom = searchModel.Zoom
+                           Zoom = searchModel.Zoom ?? 3
                        };
         }
     }

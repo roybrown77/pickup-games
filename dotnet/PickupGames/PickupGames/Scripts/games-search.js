@@ -5,7 +5,7 @@ $(function () {
         cssStyle: 'light-theme'
     });    
 
-    google.maps.event.addDomListener(window, 'load', initializeMap);
+    initializeMap();
 
     $('#searchgamesform').submit(function (e) {
         e.preventDefault();
@@ -43,8 +43,7 @@ function searchGamesByAjax(pageIndex) {
             if (data.Status == "Success") {
                 updateGameList(data.Games);
                 refreshMap(data.Zoom, data.SearchLocationLat, data.SearchLocationLng);
-            } else {
-                alert(data.Message);
+            } else {                
             }
         },
         complete: function () {
@@ -165,7 +164,7 @@ function setMapAutocomplete() {
 }
 
 function setMapEvents() {
-    google.maps.event.addListener(gamesMap, 'dragend', onMapDrag);
+    google.maps.event.addListener(gamesMap, 'bounds_changed', onBoundsChanged);
 }
 
 function refreshMap(zoom, centerCoordinateLat, centerCoordinateLng) {
@@ -225,7 +224,7 @@ function setAllMap(map) {
     }
 }
 
-function onMapDrag() {
+function onBoundsChanged() {
     var latlng = gamesMap.getCenter();    
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({ 'latLng': latlng }, function (results, status) {
@@ -233,11 +232,9 @@ function onMapDrag() {
             if (results[1]) {
                 $('#Location').val(results[1].formatted_address);
                 searchGamesByAjax(1);
-            } else {
-                alert('No results found');
+            } else {                
             }
-        } else {
-            alert('Geocoder failed due to: ' + status);
+        } else {           
         }
     });
 }

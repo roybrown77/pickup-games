@@ -42,7 +42,7 @@ namespace PickupGames.Models
 
         public GamesSortBy? SortBy { get; set; }
 
-        public int Index { get; set; }
+        public int? Index { get; set; }
 
         public int? NumberOfResultsPerPage { get; set; }
 
@@ -50,6 +50,6 @@ namespace PickupGames.Models
 
         public string NortheastLng { get; set; }
 
-        public int Zoom { get; set; }
+        public int? Zoom { get; set; }
     }
 }
