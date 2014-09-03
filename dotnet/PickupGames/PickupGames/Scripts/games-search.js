@@ -135,24 +135,36 @@ var gamesMap;
 var markers = [];
 
 function initializeMap() {
-    var centerCoordinateLat = parseFloat($('#Location').attr('data-lat'));
-    var centerCoordinateLng = parseFloat($('#Location').attr('data-lng'));
-    createMap(3, centerCoordinateLat, centerCoordinateLng);    
+    createMap();
+    setMapBounds();
+    addMarkers();
+    setMapAutocomplete();
+    setMapEvents();    
 }
 
-function createMap(zoom, centerCoordinateLat, centerCoordinateLng) {
+function createMap() {
     gamesMap = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: zoom,
-        center: new google.maps.LatLng(centerCoordinateLat, centerCoordinateLng),
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         maxZoom: 10
-    });    
+    });
+}
 
-    addMarkers();
+function setMapBounds() {
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ 'address': $('#Location').val() }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            gamesMap.fitBounds(results[0].geometry.viewport);
+        }
+    });
+}
 
+function setMapAutocomplete() {
     var input = (document.getElementById('Location'));
     var autocomplete = new google.maps.places.Autocomplete(input);
     autocomplete.bindTo('bounds', gamesMap);
+}
+
+function setMapEvents() {
     google.maps.event.addListener(gamesMap, 'dragend', onMapDrag);
 }
 
