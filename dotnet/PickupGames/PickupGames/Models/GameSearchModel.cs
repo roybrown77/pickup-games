@@ -42,13 +42,14 @@ namespace PickupGames.Models
 
         public GamesSortBy? SortBy { get; set; }
 
-        public int? Index { get; set; }
+        public int Index { get; set; }
 
         public int? NumberOfResultsPerPage { get; set; }
 
         public string NortheastLat { get; set; }
 
         public string NortheastLng { get; set; }
-        public int? Zoom { get; set; }
+
+        public int Zoom { get; set; }
     }
 }

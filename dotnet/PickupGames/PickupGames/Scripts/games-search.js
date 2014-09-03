@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(function () {
     $('#pagination').pagination({
         items: 100,
         itemsOnPage: 10,
@@ -6,6 +6,17 @@ $(document).ready(function () {
     });    
 
     google.maps.event.addDomListener(window, 'load', initializeMap);
+
+    $('#searchgamesform').submit(function (e) {
+        e.preventDefault();
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ 'address': $('#Location').val() }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                gamesMap.fitBounds(results[0].geometry.viewport);
+                searchGamesByAjax(1);
+            }
+        });        
+    });
 });
 
 function onSearchGamesSuccess(data, status, xhr) {
@@ -21,6 +32,9 @@ function onSearchGamesComplete() {
     updateUrl(1);    
 }
 
+function onDragSearch() {    
+}
+
 function searchGamesByAjax(pageIndex) {
     var searchFormParameters = $('#searchgamesform').serialize();
     var encodedSearchFormParametersArray = searchFormParameters.split('&');
@@ -31,23 +45,25 @@ function searchGamesByAjax(pageIndex) {
             elem = elem.split("=")[0].toLowerCase() + '=' + elem.split("=")[1];
             urlSearchParameterArray.push(elem);
         }
-    });
+    });    
 
-    var urlSearchParameterString = urlSearchParameterArray.join('&') + '&index=' + pageIndex & '&zoom=' + gamesMap.getZoom();
+    var zoom = gamesMap.getZoom();
 
-    $.ajax({        
+    var urlSearchParameterString = urlSearchParameterArray.join('&') + '&index=' + pageIndex + '&zoom=' + zoom;
+
+    $.ajax({
         url: '/Games/SearchByAjax',
         type: 'POST',
         data: urlSearchParameterString,
-        success: function(data) {
+        success: function (data) {
             if (data.Status == "Success") {
                 updateGameList(data.Games);
-                createMap(data.Zoom, data.SearchLocationLat, data.SearchLocationLng);                
+                createMap(data.Zoom, data.SearchLocationLat, data.SearchLocationLng);
             } else {
                 alert(data.Message);
             }
         },
-        complete: function() {
+        complete: function () {
             updateUrl(pageIndex);
         }
     });
@@ -144,14 +160,7 @@ function createMap(zoom, centerCoordinateLat, centerCoordinateLng) {
         zoom: zoom,
         center: new google.maps.LatLng(centerCoordinateLat, centerCoordinateLng),
         mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
-
-    /*var geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ 'address': $('#Location').val() }, function (results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-            gamesMap.fitBounds(results[0].geometry.viewport);
-        }
-    });*/
+    });    
 
     var coordinates = [];
     $('.location').each(function (i) {
@@ -183,7 +192,6 @@ function createMap(zoom, centerCoordinateLat, centerCoordinateLng) {
     var autocomplete = new google.maps.places.Autocomplete(input);
     autocomplete.bindTo('bounds', gamesMap);
     google.maps.event.addListener(gamesMap, 'dragend', resetMapCenter);
-    //google.maps.event.addListener(gamesMap, 'dblclick', resetMapCenter);
 }
 
 function resetMapCenter() {
