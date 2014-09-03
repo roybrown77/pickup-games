@@ -1,3 +1,7 @@
+var gamesMap;
+var markers = [];
+var enableRecenter = false;
+
 $(function () {
     $('#pagination').pagination({
         items: 100,
@@ -12,6 +16,7 @@ $(function () {
         var geocoder = new google.maps.Geocoder();
         geocoder.geocode({ 'address': $('#Location').val() }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
+                enableRecenter = false;
                 gamesMap.fitBounds(results[0].geometry.viewport);
                 searchGamesByAjax(1);
             }
@@ -130,15 +135,12 @@ function deleteGame(id) {
 });
 }
 
-var gamesMap;
-var markers = [];
-
 function initializeMap() {
     createMap();
     setMapBounds();
     addMarkers();
     setMapAutocomplete();
-    setMapEvents();    
+    setMapEvents();
 }
 
 function createMap() {
@@ -152,6 +154,7 @@ function setMapBounds() {
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({ 'address': $('#Location').val() }, function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
+            enableRecenter = false;
             gamesMap.fitBounds(results[0].geometry.viewport);
         }
     });
@@ -225,18 +228,25 @@ function setAllMap(map) {
 }
 
 function onBoundsChanged() {
-    var latlng = gamesMap.getCenter();    
+    if (gamesMap.getZoom() > 11) {
+        gamesMap.setZoom(11);
+    }
+
     var geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-            if (results[1]) {
-                $('#Location').val(results[1].formatted_address);
-                searchGamesByAjax(1);
-            } else {                
+
+    if (enableRecenter === true) {
+        var latlng = gamesMap.getCenter();
+        geocoder.geocode({ 'latLng': latlng }, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                if (results[1]) {
+                    $('#Location').val(results[1].formatted_address);
+                    searchGamesByAjax(1);
+                }
             }
-        } else {           
-        }
-    });
+        });
+    } else {
+        enableRecenter = true;
+    }
 }
 
 /*function validateLatLng(address) {
