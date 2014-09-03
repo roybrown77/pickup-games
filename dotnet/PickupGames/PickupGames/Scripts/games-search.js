@@ -132,6 +132,7 @@ function deleteGame(id) {
 }
 
 var gamesMap;
+var markers = [];
 
 function initializeMap() {
     var centerCoordinateLat = parseFloat($('#Location').attr('data-lat'));
@@ -147,31 +148,7 @@ function createMap(zoom, centerCoordinateLat, centerCoordinateLng) {
         maxZoom: 10
     });    
 
-    var coordinates = [];
-    $('.location').each(function (i) {
-        coordinates[i] = [parseFloat($(this).attr('data-lat')), parseFloat($(this).attr('data-lng'))];
-    });
-
-    var marker;
-    $(coordinates).each(function (i, elem) {
-        marker = new google.maps.Marker({
-            position: new google.maps.LatLng(elem[0], elem[1]),
-            map: gamesMap,
-            title: 'time to ball!',
-            draggable: true,
-            animation: google.maps.Animation.DROP
-        });
-
-        google.maps.event.addListener(marker, 'click', (function (marker, i) {
-            return function () {
-                if (marker.getAnimation() != null) {
-                    marker.setAnimation(null);
-                } else {
-                    marker.setAnimation(google.maps.Animation.BOUNCE);
-                }
-            }
-        })(marker, i));
-    });
+    addMarkers();
 
     var input = (document.getElementById('Location'));
     var autocomplete = new google.maps.places.Autocomplete(input);
@@ -182,8 +159,12 @@ function createMap(zoom, centerCoordinateLat, centerCoordinateLng) {
 function refreshMap(zoom, centerCoordinateLat, centerCoordinateLng) {
     gamesMap.setZoom(zoom);
     //var pos = new google.maps.LatLng(centerCoordinateLat, centerCoordinateLng);
-    //gamesMap.setCenter(pos);
+    //gamesMap.setCenter(pos);    
+    deleteMarkers();
+    addMarkers();
+}
 
+function addMarkers() {
     var coordinates = [];
     $('.location').each(function (i) {
         coordinates[i] = [parseFloat($(this).attr('data-lat')), parseFloat($(this).attr('data-lng'))];
@@ -196,19 +177,40 @@ function refreshMap(zoom, centerCoordinateLat, centerCoordinateLng) {
             map: gamesMap,
             title: 'time to ball!',
             draggable: true,
-            animation: google.maps.Animation.DROP
+            //animation: google.maps.Animation.DROP
         });
 
         google.maps.event.addListener(marker, 'click', (function (marker, i) {
             return function () {
-                if (marker.getAnimation() != null) {
+                /*if (marker.getAnimation() != null) {
                     marker.setAnimation(null);
                 } else {
                     marker.setAnimation(google.maps.Animation.BOUNCE);
-                }
+                }*/
             }
         })(marker, i));
+
+        markers.push(marker);
     });    
+}
+
+function showMarkers() {
+    setAllMap(gamesMap);
+}
+
+function deleteMarkers() {
+    clearMarkers();
+    markers = [];
+}
+
+function clearMarkers() {
+    setAllMap(null);
+}
+
+function setAllMap(map) {
+    for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(map);
+    }
 }
 
 function onMapDrag() {
@@ -228,7 +230,7 @@ function onMapDrag() {
     });
 }
 
-function validateLatLng(address) {
+/*function validateLatLng(address) {
     var geocoder = new GClientGeocoder();
 
     var coordinates = geocoder.getLatLng(address, function (point) {
@@ -237,7 +239,7 @@ function validateLatLng(address) {
     });
 }
 
-/*function convertFormToObject(form) {
+function convertFormToObject(form) {
     var array = $(form).serializeArray();
     var newObject = {};
 
