@@ -145,7 +145,7 @@ function initializeMap() {
 function createMap() {
     gamesMap = new google.maps.Map(document.getElementById('map-canvas'), {
         mapTypeId: google.maps.MapTypeId.ROADMAP,
-        maxZoom: 10
+        //maxZoom: 8
     });
 }
 
@@ -169,7 +169,7 @@ function setMapEvents() {
 }
 
 function refreshMap(zoom, centerCoordinateLat, centerCoordinateLng) {
-    gamesMap.setZoom(zoom);
+    //gamesMap.setZoom(zoom);
     //var pos = new google.maps.LatLng(centerCoordinateLat, centerCoordinateLng);
     //gamesMap.setCenter(pos);    
     deleteMarkers();

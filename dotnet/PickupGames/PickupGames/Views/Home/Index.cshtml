@@ -14,7 +14,7 @@
 </div>
 
 <div id="searchgames" style="position:relative;top:-100px;left:40%;width:500px">
-    @using (Html.BeginForm("SearchGames", "Home", FormMethod.Post))
+    @using (Html.BeginForm("SearchGames", "Home"))
     {
         <div class="modal-body" style="float:left">
             @Html.TextBoxFor(m => m.Location, new { placeholder= "Where do you want to play?", style="height: 32px; border: 1px solid #dce0e0;border-radius: 2px;background-color: #fff;color: #565a5c;"})     
