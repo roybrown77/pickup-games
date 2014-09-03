@@ -2,7 +2,8 @@
 
 <label onclick="javascript:showHideGameSearchFilter();" style="font-weight:bold; cursor:pointer">More Filters</label>
 <div class="title">
-    <form action="/Games/SearchByAjax/usa/1" data-ajax="true" data-ajax-complete="return onSearchGamesComplete()" data-ajax-success="onSearchGamesSuccess(data, status, xhr)" id="searchgamesform" method="post" novalidate="novalidate"><input data-lat="37.0902400" data-lng="-95.7128910" id="Location" name="Location" placeholder="Where do you want to play?" style="width:30em;" type="text" value="usa" autocomplete="off">           
+    @using (Ajax.BeginForm("SearchByAjax", "Games", FormMethod.Post, new AjaxOptions {}, new { id = "searchgamesform" }))
+    {                
         @Html.TextBoxFor(m => m.Location, new { data_lat = @Model.LocationLat, data_lng = @Model.LocationLng, style = "width:30em;", placeholder= "Where do you want to play?" })
 
         <div class="modal-body" id="searchgames" style="display:none">
@@ -39,7 +40,7 @@
             @Html.TextBoxFor(m => m.Views)        
         </div>
         <div>
-            <input id="searchgamesbutton" type="submit" class="btn btn-large btn-primary" value="Search"/>
+            <input type="submit" class="btn btn-large btn-primary" value="Search"/>
         </div>               
-</form>
+    }
 </div>

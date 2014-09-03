@@ -19,22 +19,6 @@ $(function () {
     });
 });
 
-function onSearchGamesSuccess(data, status, xhr) {
-    if (data.Status == "Success") {
-        updateGameList(data.Games);
-        createMap(data.Zoom, data.SearchLocationLat, data.SearchLocationLng);
-    } else {
-        alert(data.Message);
-    }
-}
-
-function onSearchGamesComplete() {
-    updateUrl(1);    
-}
-
-function onDragSearch() {    
-}
-
 function searchGamesByAjax(pageIndex) {
     var searchFormParameters = $('#searchgamesform').serialize();
     var encodedSearchFormParametersArray = searchFormParameters.split('&');
@@ -58,7 +42,7 @@ function searchGamesByAjax(pageIndex) {
         success: function (data) {
             if (data.Status == "Success") {
                 updateGameList(data.Games);
-                createMap(data.Zoom, data.SearchLocationLat, data.SearchLocationLng);
+                refreshMap(data.Zoom, data.SearchLocationLat, data.SearchLocationLng);
             } else {
                 alert(data.Message);
             }
@@ -159,7 +143,8 @@ function createMap(zoom, centerCoordinateLat, centerCoordinateLng) {
     gamesMap = new google.maps.Map(document.getElementById('map-canvas'), {
         zoom: zoom,
         center: new google.maps.LatLng(centerCoordinateLat, centerCoordinateLng),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        maxZoom: 10
     });    
 
     var coordinates = [];
@@ -191,10 +176,42 @@ function createMap(zoom, centerCoordinateLat, centerCoordinateLng) {
     var input = (document.getElementById('Location'));
     var autocomplete = new google.maps.places.Autocomplete(input);
     autocomplete.bindTo('bounds', gamesMap);
-    google.maps.event.addListener(gamesMap, 'dragend', resetMapCenter);
+    google.maps.event.addListener(gamesMap, 'dragend', onMapDrag);
 }
 
-function resetMapCenter() {
+function refreshMap(zoom, centerCoordinateLat, centerCoordinateLng) {
+    gamesMap.setZoom(zoom);
+    //var pos = new google.maps.LatLng(centerCoordinateLat, centerCoordinateLng);
+    //gamesMap.setCenter(pos);
+
+    var coordinates = [];
+    $('.location').each(function (i) {
+        coordinates[i] = [parseFloat($(this).attr('data-lat')), parseFloat($(this).attr('data-lng'))];
+    });
+
+    var marker;
+    $(coordinates).each(function (i, elem) {
+        marker = new google.maps.Marker({
+            position: new google.maps.LatLng(elem[0], elem[1]),
+            map: gamesMap,
+            title: 'time to ball!',
+            draggable: true,
+            animation: google.maps.Animation.DROP
+        });
+
+        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+            return function () {
+                if (marker.getAnimation() != null) {
+                    marker.setAnimation(null);
+                } else {
+                    marker.setAnimation(google.maps.Animation.BOUNCE);
+                }
+            }
+        })(marker, i));
+    });    
+}
+
+function onMapDrag() {
     var latlng = gamesMap.getCenter();    
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({ 'latLng': latlng }, function (results, status) {
