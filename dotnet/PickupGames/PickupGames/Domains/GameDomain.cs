@@ -176,6 +176,7 @@ namespace PickupGames.Domains
                     maxDistance.Value = 5000;
                     break;
             }
+
             return maxDistance;
         }
 

@@ -23,9 +23,8 @@ namespace PickupGames.Domain.Objects
             get { return _index; }
             set { _index = value; }
         }
+
         public int NumberOfResultsPerPage { get; set; }
-        public string NortheastLat { get; set; }
-        public string NortheastLng { get; set; }
         public int Zoom { get; set; }
     }
 }

@@ -47,7 +47,7 @@ function searchGamesByAjax(pageIndex) {
         success: function (data) {
             if (data.Status == "Success") {
                 updateGameList(data.Games);
-                refreshMap(data.Zoom, data.SearchLocationLat, data.SearchLocationLng);
+                refreshMap();
             } else {                
             }
         },
@@ -145,8 +145,7 @@ function initializeMap() {
 
 function createMap() {
     gamesMap = new google.maps.Map(document.getElementById('map-canvas'), {
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        //maxZoom: 8
+        mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 }
 
@@ -167,13 +166,10 @@ function setMapAutocomplete() {
 }
 
 function setMapEvents() {
-    google.maps.event.addListener(gamesMap, 'bounds_changed', onBoundsChanged);
+    google.maps.event.addListener(gamesMap, 'bounds_changed', onBoundsChanged);    
 }
 
-function refreshMap(zoom, centerCoordinateLat, centerCoordinateLng) {
-    //gamesMap.setZoom(zoom);
-    //var pos = new google.maps.LatLng(centerCoordinateLat, centerCoordinateLng);
-    //gamesMap.setCenter(pos);    
+function refreshMap() {
     deleteMarkers();
     addMarkers();
 }
@@ -190,17 +186,11 @@ function addMarkers() {
             position: new google.maps.LatLng(elem[0], elem[1]),
             map: gamesMap,
             title: 'time to ball!',
-            draggable: true,
-            //animation: google.maps.Animation.DROP
+            draggable: true            
         });
 
         google.maps.event.addListener(marker, 'click', (function (marker, i) {
-            return function () {
-                /*if (marker.getAnimation() != null) {
-                    marker.setAnimation(null);
-                } else {
-                    marker.setAnimation(google.maps.Animation.BOUNCE);
-                }*/
+            return function () {                
             }
         })(marker, i));
 
@@ -228,14 +218,9 @@ function setAllMap(map) {
 }
 
 function onBoundsChanged() {
-    if (gamesMap.getZoom() > 11) {
-        gamesMap.setZoom(11);
-    }
-
-    var geocoder = new google.maps.Geocoder();
-
     if (enableRecenter === true) {
         var latlng = gamesMap.getCenter();
+        var geocoder = new google.maps.Geocoder();
         geocoder.geocode({ 'latLng': latlng }, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 if (results[1]) {
