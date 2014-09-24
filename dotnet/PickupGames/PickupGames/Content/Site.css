@@ -589,8 +589,12 @@ tr.pager td {
 /********************
 *   Mobile Styles   *
 ********************/
-@media only screen and (max-width: 850px) {
 
+@media screen and (min-width: 400px) {
+    
+}
+
+@media screen and (min-width: 600px)  {
     /* header
     ----------------------------------------------------------*/
     header .float-left,
@@ -752,4 +756,12 @@ tr.pager td {
         footer p {
             margin: 0;
         }
+}
+
+@media screen and (min-width: 1000px) {
+    
+}
+
+@media screen and (min-width: 1400px) {
+                                        
 }

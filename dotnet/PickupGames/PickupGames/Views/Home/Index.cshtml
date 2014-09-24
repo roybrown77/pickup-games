@@ -7,20 +7,20 @@
     ViewBag.Title = "Index";
 }
 
-<div style="display:block">
+<div>
     <video loop style="width:100%" autoplay="autoplay" muted>
         <source src="toy.mp4" type="video/mp4">
-    </video loop>
+    </video>
 </div>
 
 <div id="searchgames" style="position:relative;top:-100px;left:40%;width:500px">
     @using (Html.BeginForm("SearchGames", "Home"))
     {
         <div class="modal-body" style="float:left">
-            @Html.TextBoxFor(m => m.Location, new { placeholder= "Where do you want to play?", style="height: 32px; border: 1px solid #dce0e0;border-radius: 2px;background-color: #fff;color: #565a5c;"})     
+            @Html.TextBoxFor(m => m.Location, new { placeholder = "Where do you want to play?", style = "height: 32px; border: 1px solid #dce0e0;border-radius: 2px;background-color: #fff;color: #565a5c; width: 300px" })
         </div>
         <div style="float:right;position: relative;left:-7em;">
-            <input style="width: 88px;height: 44px;background-color: #ff5a5f;border-color: #ff5a5f;font-weight: bold;color: white;" type="submit" class="btn btn-large btn-primary" value="Search"/>
+            <input style="width: 88px;height: 44px;background-color: #ff5a5f;border-color: #ff5a5f;font-weight: bold;color: white;" type="submit" class="btn btn-large btn-primary" value="Search" />
         </div>
     }
 </div>
