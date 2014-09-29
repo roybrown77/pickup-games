@@ -1,5 +1,7 @@
 ﻿@model PickupGames.Models.GameSearchModel
 
+@Html.HiddenFor(m=>m.Zoom)
+
 <label onclick="javascript:showHideGameSearchFilter();" style="font-weight:bold; cursor:pointer">More Filters</label>
 <div class="title">
     @using (Ajax.BeginForm("SearchByAjax", "Games", FormMethod.Post, new AjaxOptions {}, new { id = "searchgamesform" }))

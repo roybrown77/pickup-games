@@ -1,6 +1,7 @@
 var gamesMap;
 var markers = [];
 var enableRecenter = false;
+var zoomValue = 8;
 
 $(function () {
     $('#pagination').pagination({
@@ -36,9 +37,7 @@ function searchGamesByAjax(pageIndex) {
         }
     });    
 
-    var zoom = gamesMap.getZoom();
-
-    var urlSearchParameterString = urlSearchParameterArray.join('&') + '&index=' + pageIndex + '&zoom=' + zoom;
+    var urlSearchParameterString = urlSearchParameterArray.join('&') + '&index=' + pageIndex + '&zoom=' + zoomValue;
 
     $.ajax({
         url: '/Games/SearchByAjax',
@@ -59,11 +58,12 @@ function searchGamesByAjax(pageIndex) {
 
 function updateUrl(pageIndex) {
     var urlSearchParameterArray = getUrlSearchParameterArray();
+    var zoom = gamesMap.getZoom();
 
     if (urlSearchParameterArray.length > 0) {
-        window.history.pushState("searchcriteria", "searchcriteria", "/Games/Search/" + $('#Location').val() + "/" + pageIndex + "?" + urlSearchParameterArray.join("&"));
+        window.history.pushState("searchcriteria", "searchcriteria", "/Games/Search/" + $('#Location').val() + "/" + pageIndex + "?zoom=" + zoomValue + "&" + urlSearchParameterArray.join("&"));
     } else {
-        window.history.pushState("searchcriteria", "searchcriteria", "/Games/Search/" + $('#Location').val() + "/" + pageIndex);
+        window.history.pushState("searchcriteria", "searchcriteria", "/Games/Search/" + $('#Location').val() + "/" + pageIndex + "?zoom=" + zoomValue);
     }
 }
 
@@ -144,9 +144,12 @@ function initializeMap() {
 }
 
 function createMap() {
-    gamesMap = new google.maps.Map(document.getElementById('map-canvas'), {
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
+    zoomValue = parseInt($('#Zoom').val());
+    var mapOptions = {
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        zoom: zoomValue
+    };
+    gamesMap = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 }
 
 function setMapBounds() {
@@ -225,6 +228,7 @@ function onBoundsChanged() {
             if (status == google.maps.GeocoderStatus.OK) {
                 if (results[1]) {
                     $('#Location').val(results[1].formatted_address);
+                    zoomValue = gamesMap.getZoom();
                     searchGamesByAjax(1);
                 }
             }
