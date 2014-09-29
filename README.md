@@ -1,6 +1,6 @@
 # Pickup Games
 
-Create, join and track pickup games
+Create, join and track pickup games.
 
 ## Usage
 
