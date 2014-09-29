@@ -20,7 +20,7 @@ namespace PickupGames
         {
             var myMessage = new SendGridMessage();
             myMessage.AddTo(message.Destination);
-            myMessage.From = new System.Net.Mail.MailAddress("roybrown77@gmail.com", "Admin");
+            myMessage.From = new System.Net.Mail.MailAddress(ConfigurationManager.AppSettings["fromMailAccount"], ConfigurationManager.AppSettings["fromMailAccountDisplayName"]);
             myMessage.Subject = message.Subject;
             myMessage.Text = message.Body;
             myMessage.Html = message.Body;
