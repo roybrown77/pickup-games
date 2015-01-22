@@ -1,0 +1,51 @@
+﻿@using PickupGames.Models
+@using PickupGames.Domain.Objects
+
+@model PickupGames.Models.GameSearchModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="jumbotron">
+    <!--<video loop style="width:100%" autoplay="autoplay" muted>
+        <source src="toy.mp4" type="video/mp4">
+    </video>-->
+    <div>
+        @using (Html.BeginForm("SearchGames", "Home"))
+        {
+            @Html.TextBoxFor(m => m.Location, new { placeholder = "Where do you want to play?", style = "height: 32px; border: 1px solid #dce0e0;border-radius: 2px;background-color: #fff;color: #565a5c; width: 300px" })
+            <input style="background-color: #ff5a5f;border-color: #ff5a5f;color: white" type="submit" class="btn btn-primary btn-lg" value="Search" />
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+            enables a clean separation of concerns and gives you full control over markup
+            for enjoyable, agile development.
+        </p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function initialize() {
+        var input = (document.getElementById('Location'));
+        new google.maps.places.Autocomplete(input);
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
