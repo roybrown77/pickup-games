@@ -22,12 +22,13 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>                    
                     <li>@Html.ActionLink("Games", "Index", "Games")</li>
-                    <li><a>My Games</a></li>
+                    <li>@Html.ActionLink("Create Game", "Create", "Games")</li>
+                    <!--<li><a>My Games</a></li>
                     <li><a>My Venues</a></li>
                     <li><a>My Fitness Tracker</a></li>
-                    <li><a>Upcoming Games</a></li>
+                    <li><a>Upcoming Games</a></li>-->
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
@@ -35,14 +36,15 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content" style="margin-top:.5em">
         @RenderBody()
+        <!--<div id="footer" style="clear:both">
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Pickup Games</p>
         </footer>
-    </div>
-
+        </div>-->
+    </div>    
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
