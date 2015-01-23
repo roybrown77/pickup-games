@@ -13,8 +13,10 @@
     <div>
         @using (Html.BeginForm("SearchGames", "Home"))
         {
-            @Html.TextBoxFor(m => m.Location, new { placeholder = "Where do you want to play?", style = "height: 32px; border: 1px solid #dce0e0;border-radius: 2px;background-color: #fff;color: #565a5c; width: 300px" })
-            <input style="background-color: #ff5a5f;border-color: #ff5a5f;color: white" type="submit" class="btn btn-primary btn-lg" value="Search" />
+            @Html.TextBoxFor(m => m.Location, new { placeholder = "Where do you want to play?", style = "float:left", @class = "form-control" })
+            <div>
+                <input style="background-color: #ff5a5f;border-color: #ff5a5f;color: white" type="submit" class="btn btn-primary btn-lg;" value="Search" />
+            </div>
         }
     </div>
 </div>

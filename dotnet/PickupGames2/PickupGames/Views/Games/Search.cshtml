@@ -1,48 +1,74 @@
 ﻿@model PickupGames.Models.GameSearchModel
 
-@Html.HiddenFor(m=>m.Zoom)
+<div class="row">
+    <div class="col-md-8">
+        <section id="creategame">
+            @Html.HiddenFor(m => m.Zoom)
 
-<label onclick="javascript:showHideGameSearchFilter();" style="font-weight:bold; cursor:pointer">More Filters</label>
-<div class="title">
-    @using (Ajax.BeginForm("SearchByAjax", "Games", FormMethod.Post, new AjaxOptions {}, new { id = "searchgamesform" }))
-    {                
-        @Html.TextBoxFor(m => m.Location, new { data_lat = @Model.LocationLat, data_lng = @Model.LocationLng, style = "width:30em;", placeholder= "Where do you want to play?" })
+            <label onclick="javascript:showHideGameSearchFilter();" style="font-weight:bold; cursor:pointer">More Filters</label>
+            <div class="title">
+                @using (Ajax.BeginForm("SearchByAjax", "Games", FormMethod.Post, new AjaxOptions { }, new { id = "searchgamesform", @class="form-horizontal" }))
+                {
+                    @Html.TextBoxFor(m => m.Location, new { data_lat = @Model.LocationLat, data_lng = @Model.LocationLng, style = "width:30em;", @class = "form-control", placeholder = "Where do you want to play?" })
 
-        <div class="modal-body" id="searchgames" style="display:none">
-            @Html.ValidationSummary(false)
-
-            @Html.LabelFor(m => m.Name)
-            @Html.TextBoxFor(m => m.Name)
-
-            @Html.LabelFor(m => m.Sport)
-            @Html.TextBoxFor(m => m.Sport)
-            
-            @Html.LabelFor(m => m.GameDay)
-            @Html.EditorFor(m => m.GameDay)
-
-            @Html.LabelFor(m => m.GameDateStart)
-            @Html.EditorFor(m => m.GameDateStart)
-            
-            @Html.LabelFor(m => m.GameDateEnd)
-            @Html.EditorFor(m => m.GameDateEnd)
-
-            @Html.LabelFor(m => m.GameTimeStart)
-            @Html.EditorFor(m => m.GameTimeStart)
-            
-            @Html.LabelFor(m => m.GameTimeEnd)
-            @Html.EditorFor(m => m.GameTimeEnd)
-                                
-            @Html.LabelFor(m => m.Radius)
-            @Html.TextBoxFor(m => m.Radius)
-            
-            @Html.LabelFor(m => m.PlayerCount)
-            @Html.TextBoxFor(m => m.PlayerCount)
-            
-            @Html.LabelFor(m => m.Views)
-            @Html.TextBoxFor(m => m.Views)        
-        </div>
-        <div style="display:none">
-            <input type="submit" class="btn btn-large btn-primary" value="Search"/>
-        </div>               
-    }
+                    <div id="searchgames" style="display:none; width:200%">
+                        @Html.ValidationSummary(false)
+                        
+                        @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
+                        <div class="form-group">                            
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                        </div>
+                        
+                        @Html.LabelFor(m => m.Sport, new { @class = "col-md-2 control-label" })
+                        <div class="form-group">                            
+                            @Html.TextBoxFor(m => m.Sport, new { @class = "form-control" })
+                        </div>
+                        
+                        @*<div class="form-group">
+                            @Html.LabelFor(m => m.GameDay, new { @class = "col-md-2 control-label" })
+                            @Html.EditorFor(m => m.GameDay, new { @class = "form-control" })
+                        </div>
+                        
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.GameDateStart, new { @class = "col-md-2 control-label" })
+                            @Html.EditorFor(m => m.GameDateStart, new { @class = "form-control" })
+                        </div>
+                        
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.GameDateEnd, new { @class = "col-md-2 control-label" })
+                            @Html.EditorFor(m => m.GameDateEnd, new { @class = "form-control" })
+                        </div>
+                        
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.GameTimeStart, new { @class = "col-md-2 control-label" })
+                            @Html.EditorFor(m => m.GameTimeStart, new { @class = "form-control" })
+                        </div>
+                        
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.GameTimeEnd, new { @class = "col-md-2 control-label" })
+                            @Html.EditorFor(m => m.GameTimeEnd, new { @class = "form-control" })
+                        </div>
+                        
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Radius, new { @class = "col-md-2 control-label" })
+                            @Html.TextBoxFor(m => m.Radius, new { @class = "form-control" })
+                        </div>
+                        
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.PlayerCount, new { @class = "col-md-2 control-label" })
+                            @Html.TextBoxFor(m => m.PlayerCount, new { @class = "form-control" })
+                        </div>
+                        
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Views, new { @class = "col-md-2 control-label" })
+                            @Html.TextBoxFor(m => m.Views, new { @class = "form-control" })
+                        </div>*@                       
+                    </div>
+                    <div style="display:none">
+                        <input type="submit" class="btn btn-large btn-primary" value="Search" />
+                    </div>
+                }
+            </div>
+        </section>
+    </div>
 </div>
