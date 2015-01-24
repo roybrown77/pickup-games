@@ -69,7 +69,7 @@ function updateUrl(pageIndex) {
 
 function showHideGameSearchFilter() {
     $('#searchgames').toggle(100);
-    $('#gamelist').toggle(100);
+    $('#gamelist').toggle();
 };
 
 function getUrlSearchParameterArray() {
