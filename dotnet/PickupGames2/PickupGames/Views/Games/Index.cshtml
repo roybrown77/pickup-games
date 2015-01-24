@@ -5,32 +5,33 @@
     ViewBag.Title = "Games";
 }
 
-    <div style="width:50%;position:absolute;left:0">
-        <div id="map-canvas" style="width:100%; height:900px; background-color: white"></div>
-    </div>
+<div style="width:50%;position:absolute;left:0">
+    <div id="map-canvas" style="width:100%; height:900px; background-color: white"></div>
+</div>
 
-    <div style="left:50.5%;position:absolute">
-        @Html.Partial("Search", Model.GameSearchModel)
-        <!--<div class="results-footer">
-                <div class="pagination-buttons-container">
-                    <div class="results_count">
-                        <p>
-                            1 – 18 of 879 Games
-                        </p>
-                    </div>
-
-                    <div id="pagination"></div>
+<div style="left:50.5%;position:absolute">
+    @Html.Partial("Search", Model.GameSearchModel)
+    <!--<div class="results-footer">
+            <div class="pagination-buttons-container">
+                <div class="results_count">
+                    <p>
+                        1 – 18 of 879 Games
+                    </p>
                 </div>
 
-                <div class="breadcrumbs" itemprop="breadcrumb" style="margin-bottom:1em">
-                    bread crumbs
-                </div>
-            </div>-->
+                <div id="pagination"></div>
+            </div>
 
-        <div id="gamelist">
-            @foreach (var game in Model.GameListModel)
-            {
-                <div data-id="@game.Id">
+            <div class="breadcrumbs" itemprop="breadcrumb" style="margin-bottom:1em">
+                bread crumbs
+            </div>
+        </div>-->
+
+    <div id="gamelist">
+        @foreach (var game in Model.GameListModel)
+        {
+            <div data-id="@game.Id" class="row">
+                <div class="col-md-12">
                     <div>
                         @game.Name
                     </div>
@@ -73,54 +74,57 @@
                     <button>Edit</button>
                     <button onclick="javascript:deleteGame('@game.Id');">Delete</button>
                 </div>
-            }
-        </div>
+            </div>
+        }
     </div>
+</div>
 
 <script id="gamesTemplate" type="text/html"> 
     {{#games}} 
-    <div data-id={{Id}} style="margin-top:1em">            
-        <div>
-            {{Name}}          
+    <div data-id={{Id}} class="row">
+        <div class="col-md-12">
+            <div>
+                {{Name}}
+            </div>
+            <div>
+                {{Sport}}
+            </div>
+            <div>
+                {{GameDate}}
+            </div>
+            <div>
+                {{GameTime}}
+            </div>
+            <div class="location" data-lat={{LocationLat}} data-lng={{LocationLng}}>
+                {{Location}}
+            </div>
+            <div>
+                {{PlayerCount}}
+                <span>players joined</span>
+            </div>
+            <div>
+                {{DistanceToCenterLocation}}
+            </div>
+            <div>
+                {{Duration}}
+            </div>
+            <div>
+                {{Status}}
+            </div>
+            <div>
+                {{AgeGroup}}
+            </div>
+            <div>
+                {{Notes}}
+            </div>
+            <div>
+                {{Views}}
+            </div>
+            <button onclick="javascript:joinGame('{{Id}}');">Join</button>
+            <button onclick="javascript:watchGame('{{Id}}');">Watch</button>
+            <button>Edit</button>
+            <button onclick="javascript:deleteGame('{{Id}}');">Delete</button>
+        </div> 
         </div>
-        <div>
-            {{Sport}}
-        </div>                 
-        <div>
-            {{GameDate}}
-        </div>                                 
-        <div>
-            {{GameTime}}
-        </div>                 
-        <div class="location" data-lat={{LocationLat}} data-lng={{LocationLng}}>
-            {{Location}}
-        </div>                 
-        <div>
-            {{PlayerCount}}
-            <span>players joined</span>
-        </div>                 
-        <div>
-            {{DistanceToCenterLocation}} 
-        </div>
-        <div>
-            {{Duration}} 
-        </div>
-        <div>
-            {{Status}} 
-        </div>
-        <div>
-            {{AgeGroup}} 
-        </div>
-        <div>
-            {{Notes}} 
-        </div>
-        <div>
-            {{Views}} 
-        </div>       
-        <button onclick="javascript:joinGame('{{Id}}');">Join</button>
-        <button onclick="javascript:watchGame('{{Id}}');">Watch</button>
-        <button>Edit</button>
-        <button onclick="javascript:deleteGame('{{Id}}');">Delete</button>          
-    </div> 
     {{/games}}   
 </script>
