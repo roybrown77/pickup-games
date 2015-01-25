@@ -6,17 +6,20 @@
     ViewBag.Title = "Index";
 }
 
+<div class="bs-example" data-example-id="responsive-embed-16by9-iframe-youtube">
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="//www.youtube.com/embed/vnfulwtcwKQ?rel=0&autoplay=1&loop=1&playlist=vnfulwtcwKQ" allowfullscreen=""></iframe>
+    </div>
+</div>
+
 <div class="jumbotron">
-    <!--<video loop style="width:100%" autoplay="autoplay" muted>
-        <source src="toy.mp4" type="video/mp4">
-    </video>-->
-    <div>
+    <div id="home-search" class="center-block">
         @using (Html.BeginForm("SearchGames", "Home"))
         {
-            @Html.TextBoxFor(m => m.Location, new { placeholder = "Where do you want to play?", style = "float:left", @class = "form-control" })
-            <div>
-                <input style="background-color: #ff5a5f;border-color: #ff5a5f;color: white" type="submit" class="btn btn-primary btn-lg;" value="Search" />
-            </div>
+            @Html.TextBoxFor(m => m.Location, new { placeholder = "Where do you want to play?", @class = "form-control", style = "width:80%;float:left" })
+            <button type="submit" style="background-color: #ff5a5f;border-color: #ff5a5f;color: white" class="btn btn-default" aria-hidden="true">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </button>
         }
     </div>
 </div>

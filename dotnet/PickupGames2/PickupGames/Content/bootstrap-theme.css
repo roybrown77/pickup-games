@@ -6583,9 +6583,12 @@ a.list-group-item-danger.active:focus {
 }
 
 @media (max-width: 767px) {
+    /*#home-search {
+        width: 80%;
+    }*/
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 992px) {
    #map-canvas {
        width:50% !important;
    }
