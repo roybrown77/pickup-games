@@ -6583,10 +6583,5 @@ a.list-group-item-danger.active:focus {
 }
 
 @media (max-width: 767px) {
-    #gamelist {
-        display: none;
-    }
-    #map-canvas {
-        height: 200px;
-    }
+   
 }
