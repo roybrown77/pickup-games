@@ -148,7 +148,7 @@ function createMap() {
     zoomValue = parseInt($('#Zoom').val());
     var mapOptions = {
         mapTypeId: google.maps.MapTypeId.ROADMAP,
-        zoom: zoomValue
+        zoom: zoomValue 
     };
     gamesMap = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 }
