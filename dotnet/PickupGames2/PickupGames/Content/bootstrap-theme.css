@@ -6590,9 +6590,9 @@ a.list-group-item-danger.active:focus {
 
 @media (min-width: 992px) {
    #map-canvas {
-       width:50% !important;
+       width:40% !important;
    }
    #search {
-       left:50.5%;position:absolute;
+       left:40%;position:absolute;
    }
 }

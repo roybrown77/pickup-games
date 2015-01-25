@@ -1,0 +1,12 @@
+﻿@model PickupGames.Models.GameSearchModel
+
+@*<div class="row">
+    <div class="col-md-8">
+        <section id="creategame">*@
+@using (Html.BeginForm("SearchGames", "Home"))
+{
+    @Html.TextBoxFor(m => m.Location, new {data_lat = @Model.LocationLat, data_lng = @Model.LocationLng, style = "width:30em;", @class = "form-control", placeholder = "Where do you want to play?"})
+}    
+    @*</section>
+    </div>
+</div>*@
