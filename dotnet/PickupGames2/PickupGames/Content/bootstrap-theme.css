@@ -6588,11 +6588,23 @@ a.list-group-item-danger.active:focus {
     }*/
 }
 
+@media (max-width: 992px) {
+    /*#home-search {
+        width: 80%;
+    }*/
+    #game-list, #game-filter-toggle {
+        display: none;
+    }
+}
+
 @media (min-width: 992px) {
    #map-canvas {
        width:40% !important;
    }
    #search {
        left:40%;position:absolute;
+   }
+   #mobile-footer {
+       display: none;
    }
 }

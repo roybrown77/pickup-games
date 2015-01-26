@@ -69,7 +69,7 @@ function updateUrl(pageIndex) {
 
 function showHideGameSearchFilter() {
     $('#searchgames').toggle(100);
-    $('#gamelist').toggle();
+    $('#game-list').toggle();
 };
 
 function getUrlSearchParameterArray() {
@@ -91,7 +91,7 @@ function getUrlSearchParameterArray() {
 
 function updateGameList(games) {
     var templateWithData = Mustache.to_html($("#gamesTemplate").html(), { games: games });
-    $("#gamelist").empty().html(templateWithData);
+    $("#game-list").empty().html(templateWithData);
 }
     
 function joinGame(id) {
