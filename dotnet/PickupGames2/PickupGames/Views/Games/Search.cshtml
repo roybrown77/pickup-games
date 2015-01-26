@@ -8,7 +8,7 @@
             <div class="title">
     @using (Ajax.BeginForm("SearchByAjax", "Games", FormMethod.Post, new AjaxOptions { }, new { id = "searchgamesform", @class="form-horizontal" }))
                 {
-        @Html.TextBoxFor(m => m.Location, new { data_lat = @Model.LocationLat, data_lng = @Model.LocationLng, style = "width:30em;", @class = "form-control", placeholder = "Where do you want to play?" })
+        @Html.TextBoxFor(m => m.Location, new { data_lat = @Model.LocationLat, data_lng = @Model.LocationLng, @class = "form-control", placeholder = "Where do you want to play?" })
 
         <div id="searchgames" style="display:none">
             @Html.ValidationSummary(false)

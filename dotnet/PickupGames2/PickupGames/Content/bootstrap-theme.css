@@ -6595,6 +6595,9 @@ a.list-group-item-danger.active:focus {
     #game-list, #game-filter-toggle {
         display: none;
     }
+    #search {
+       left:15%;position:absolute; top:10%
+   }
 }
 
 @media (min-width: 992px) {
