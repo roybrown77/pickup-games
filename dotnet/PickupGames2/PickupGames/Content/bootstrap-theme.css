@@ -6582,11 +6582,9 @@ a.list-group-item-danger.active:focus {
   background-color: #464545;
 }
 
-@media (max-width: 767px) {
-    /*#home-search {
-        width: 80%;
-    }*/
-}
+/*
+    application changes
+*/
 
 @media (max-width: 992px) {
     /*#home-search {
@@ -6595,19 +6593,21 @@ a.list-group-item-danger.active:focus {
     #game-list, #game-filter-toggle {
         display: none;
     }
-    #search {
-       left:15%;position:absolute; top:10%
-   }
 }
 
 @media (min-width: 992px) {
    #map-canvas {
-       width:40% !important;
-   }
-   #search {
-       left:40%;position:absolute;
-   }
+       width:50% !important;
+   }   
    #mobile-footer {
        display: none;
    }
+}
+
+body {
+  padding-top: 70px !important;
+}
+
+.navbar {
+    margin-bottom: 0 !important;
 }
