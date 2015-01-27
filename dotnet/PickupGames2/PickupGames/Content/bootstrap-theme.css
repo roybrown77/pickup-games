@@ -6587,11 +6587,12 @@ a.list-group-item-danger.active:focus {
 */
 
 @media (max-width: 992px) {
-    /*#home-search {
-        width: 80%;
-    }*/
     #game-list, #game-filter-toggle {
         display: none;
+    }
+    #game-location {       
+        margin-top: 1em;
+        margin-left: 1em;
     }
 }
 

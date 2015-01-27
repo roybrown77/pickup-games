@@ -18,7 +18,7 @@
 
 <div class="row">
     <div class="col-xs-12">
-        <div id="home-search" class="center-block">
+        <div id="home-search">
             @using (Html.BeginForm("SearchGames", "Home"))
             {
                 @Html.TextBoxFor(m => m.Location, new { placeholder = "Where do you want to play?", @class = "form-control", style = "width:80%;float:left" })
