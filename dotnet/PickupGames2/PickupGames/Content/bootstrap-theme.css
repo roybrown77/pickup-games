@@ -6586,38 +6586,39 @@ a.list-group-item-danger.active:focus {
     application changes
 */
 
-@media (max-width: 992px) {
-    #game-list, #game-filter-toggle {
-        display: none;
-    }
-    #game-location {       
-        margin-top: 2em;
-        margin-left: 2em;
-    }
+body {
+    padding-top: 4em !important;
+}
+
+.navbar {
+    margin-bottom: 0 !important;
 }
 
 @media (min-width: 992px) {
    #map-canvas {
        width:50% !important;
-   }   
+   } 
+   #game-location {
+        top: -3.5em !important;
+        left: 1em !important;
+    }  
    #mobile-footer {
        display: none;
-   }
+   }   
 }
 
-@media (max-width: 768px) {
-    #navigationbar {
-       display: none;
-    }
+@media (max-width: 991px) {
+    #game-list, #game-filter-toggle {
+        display: none;
+    }            
+}
+
+@media (max-width: 767px) {
     #map-canvas {
         top: 0;
     }
-}
-
-body {
-  padding-top: 0 !important;
-}
-
-.navbar {
-    margin-bottom: 0 !important;
+    #game-location {
+        top: -3.5em !important;
+        left: 1em !important;
+    }
 }
