@@ -6605,14 +6605,19 @@ a.list-group-item-danger.active:focus {
    }
 }
 
+@media (max-width: 768px) {
+    #navigationbar {
+       display: none;
+    }
+    #map-canvas {
+        top: 0;
+    }
+}
+
 body {
   padding-top: 0 !important;
 }
 
 .navbar {
     margin-bottom: 0 !important;
-}
-
-#navigationbar {
-    display: none;
 }
