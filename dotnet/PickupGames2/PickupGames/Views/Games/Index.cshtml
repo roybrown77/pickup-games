@@ -7,66 +7,68 @@
 }
 
 <div class="row">
-    <div class="col-md-6 col-md-push-6" id="search" style="position: fixed; overflow-y: scroll; height: 100%;">
+    
         @Html.Partial("Search", Model.GameSearchModel)
-        <div id="game-filter-toggle" class="row panel-body">
-            <button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default">Filters</button>
-        </div>
-        <div id="game-list" class="row panel-body">
-            @foreach (var game in Model.GameListModel)
-            {
-                <div data-id="@game.Id" class="row">
-                    <div class="col-md-12">
-                        <div>
-                            @game.Name
-                        </div>
-                        <div>
-                            @game.Sport
-                        </div>
-                        <div>
-                            @game.GameDate
-                        </div>
-                        <div>
-                            @game.GameTime
-                        </div>
-                        <div class="location" data-lat="@game.LocationLat" data-lng="@game.LocationLng">
-                            @game.Location
-                        </div>
-                        <div>
-                            @game.PlayerCount
-                            <span>players joined</span>
-                        </div>
-                        <div>
-                            @game.DistanceToCenterLocation
-                        </div>
-                        <div>
-                            @game.Duration
-                        </div>
-                        <div>
-                            @game.Status
-                        </div>
-                        <div>
-                            @game.AgeGroup
-                        </div>
-                        <div>
-                            @game.Notes
-                        </div>
-                        <div>
-                            @game.Views
-                        </div>
-                        <button onclick="javascript:joinGame('@game.Id');">Join</button>
-                        <button onclick="javascript:watchGame('@game.Id');">Watch</button>
-                        <button>Edit</button>
-                        <button onclick="javascript:deleteGame('@game.Id');">Delete</button>
-                    </div>
-                </div>
-            }
-        </div>
+    <div class="col-md-6 col-md-push-6" id="search" style="position: fixed; overflow-y: scroll; height: 100%;">
+        @*<div id="game-filter-toggle" class="row panel-body">*@
+            @*<button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default">Filters</button>*@
+        @*</div>*@
+        @*<div id="game-list" class="row panel-body">*@
+        @foreach (var game in Model.GameListModel)
+        {
+            @*<div data-id="@game.Id" class="row">
+                <div class="col-md-12">*@
+            <div>
+                @game.Name
+            </div>
+            <div>
+                @game.Sport
+            </div>
+            <div>
+                @game.GameDate
+            </div>
+            <div>
+                @game.GameTime
+            </div>
+            <div class="location" data-lat="@game.LocationLat" data-lng="@game.LocationLng">
+                @game.Location
+            </div>
+            <div>
+                @game.PlayerCount
+                <span>players joined</span>
+            </div>
+            <div>
+                @game.DistanceToCenterLocation
+            </div>
+            <div>
+                @game.Duration
+            </div>
+            <div>
+                @game.Status
+            </div>
+            <div>
+                @game.AgeGroup
+            </div>
+            <div>
+                @game.Notes
+            </div>
+            <div>
+                @game.Views
+            </div>
+            <button onclick="javascript:joinGame('@game.Id');">Join</button>
+            <button onclick="javascript:watchGame('@game.Id');">Watch</button>
+            <button>Edit</button>
+            <button onclick="javascript:deleteGame('@game.Id');">Delete</button>
+            @*</div>
+                </div>*@
+        }
     </div>
+
+    @*</div>*@
 </div>
 
 <div class="row">
-    <div id="map-canvas" style="left:0; width:100%; height:100%; top:0; position:absolute; background-color: white">
+    <div id="map-canvas" style="left:0; width:100%; height:100%; position:absolute; background-color: white">
     </div>    
 </div>
 
