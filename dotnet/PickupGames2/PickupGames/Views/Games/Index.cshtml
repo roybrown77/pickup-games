@@ -7,9 +7,7 @@
 }
 
 <div class="row">
-    <div id="map-canvas" style="left:0; position:absolute; width:100%; height:100%; top:4em; background-color: white">
-    </div>    
-    <div class="col-md-6 col-md-push-6" id="search">
+    <div class="col-md-6 col-md-push-6" id="search" style="position: fixed; overflow-y: scroll; height: 100%;">
         @Html.Partial("Search", Model.GameSearchModel)
         <div id="game-filter-toggle" class="row panel-body">
             <button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default">Filters</button>
@@ -67,7 +65,12 @@
     </div>
 </div>
 
-<div id="mobile-footer" class="navbar navbar-default navbar-fixed-bottom">    
+<div class="row">
+    <div id="map-canvas" style="left:0; width:100%; height:100%; top:0; position:absolute; background-color: white">
+    </div>    
+</div>
+
+@*<div id="mobile-footer" class="navbar navbar-default navbar-fixed-bottom">    
     <div class="navbar-header">
     </div>      
     <div>
@@ -88,7 +91,7 @@
             </li>
         </ul>
     </div>        
-</div>
+</div>*@
 
 <script id="gamesTemplate" type="text/html">
     {{#games}}
