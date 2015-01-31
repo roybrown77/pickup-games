@@ -6,14 +6,14 @@
     ViewBag.Title = "Games";
 }
 
-@Html.Partial("Search", Model.GameSearchModel)
+@Html.Partial("SearchLocation", Model.GameSearchModel)
 
 <div id="sidebar" style="position: fixed; top: 4em; left: 0; bottom: 0; width: 60%; overflow-y: scroll; -webkit-overflow-scrolling: touch">
-    <div>
-        @*<div id="game-filter-toggle" class="row panel-body">*@
-        @*<button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default">Filters</button>*@
-        @*</div>*@
-        @*<div id="game-list" class="row">*@
+    @Html.Partial("SearchExtra", Model.GameSearchModel)
+    <div id="game-filter-toggle" class="row">
+        <button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default">Filters</button>
+    </div>
+    <div id="search-results">
         @foreach (var game in Model.GameListModel)
         {
             <div @*class="col-md-6"*@>
@@ -58,12 +58,10 @@
                 <button onclick="javascript:watchGame('@game.Id');">Watch</button>
                 <button>Edit</button>
                 <button onclick="javascript:deleteGame('@game.Id');">Delete</button>
-            @*</div>*@
+                @*</div>*@
             </div>
         }
     </div>
-
-    @*</div>*@
 </div>
 
 <div id="map" style="display: block; width: 40%;position: fixed;top: 4em;right: 0;left: auto;bottom: 0">

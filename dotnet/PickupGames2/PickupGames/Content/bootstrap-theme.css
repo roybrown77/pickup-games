@@ -6586,13 +6586,7 @@ a.list-group-item-danger.active:focus {
     application changes
 */
 
-/*body {
-    padding-top: 59px !important;
-}
-
-.navbar {
-    margin-bottom: 0 !important;
-}
+/*
 
 @media (min-width: 992px) {
    #map-canvas {

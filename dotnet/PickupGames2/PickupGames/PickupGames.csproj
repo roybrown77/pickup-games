@@ -261,8 +261,8 @@
     <Content Include="Views\Shared\CreateGame.cshtml" />
     <Content Include="Views\Games\Edit.cshtml" />
     <Content Include="Views\Games\Index.cshtml" />
-    <Content Include="Views\Games\Search.cshtml" />
     <Content Include="Views\Games\SearchLocation.cshtml" />
+    <Content Include="Views\Games\SearchExtra.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
