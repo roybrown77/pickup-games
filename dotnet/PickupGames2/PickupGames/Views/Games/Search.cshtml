@@ -1,19 +1,19 @@
 ﻿@model PickupGames.Models.GameSearchModel
 
-<div class="row">
-    <div class="col-md-12">
+@*<div class="row">
+    <div class="col-md-12">*@
         @*<section id="creategame">*@
             @Html.HiddenFor(m => m.Zoom)
-            <div class="title">
+            <div id="search-location" style="position: fixed;top: .5em;z-index: 999999;left: 5em; width: 30em;">
                 @using (Ajax.BeginForm("SearchByAjax", "Games", FormMethod.Post, new AjaxOptions { }, new { id = "searchgamesform", @class="form-horizontal" }))
                 {
-                    <div id="game-location" class="row" style="position:absolute; z-index: 10000; width: 30em; top: 2em; left: 5em">
+                    <div id="game-location" class="row">
                         <div class="col-xs-12">
                             @Html.TextBoxFor(m => m.Location, new { data_lat = @Model.LocationLat, data_lng = @Model.LocationLng, @class = "form-control", placeholder = "Where do you want to play?" })
                         </div>
                     </div>
         
-                    <div id="searchgames" style="display:none">
+                    @*<div id="searchgames" style="display:none">
                         @Html.ValidationSummary(false)
                         <div class="form-group">
                             @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label pull-left" })
@@ -22,7 +22,7 @@
                         <div class="form-group">
                             @Html.LabelFor(m => m.Sport, new { @class = "col-md-2 control-label pull-left" })
                             @Html.TextBoxFor(m => m.Sport, new { @class = "form-control" })
-                        </div>
+                        </div>*@
                         @*<div class="form-group">
                                 @Html.LabelFor(m => m.GameDay, new { @class = "col-md-2 control-label" })
                                 @Html.EditorFor(m => m.GameDay, new { @class = "form-control" })
@@ -62,12 +62,12 @@
                                 @Html.LabelFor(m => m.Views, new { @class = "col-md-2 control-label" })
                                 @Html.TextBoxFor(m => m.Views, new { @class = "form-control" })
                             </div>*@
-                    </div>                
+                    @*</div>                
                     <div class="form-group" style="display:none">
                         <input type="submit" class="btn btn-large btn-primary" value="Search" />
-                    </div>
+                    </div>*@
                 }
             </div>
         @*</section>*@
-    </div>
-</div>
+    @*</div>
+</div>*@

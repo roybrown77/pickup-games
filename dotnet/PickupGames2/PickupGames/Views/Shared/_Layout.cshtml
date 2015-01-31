@@ -20,16 +20,6 @@
                 </button>
                 @Html.ActionLink("PiGa", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", @style="position:absolute;left:1%" })
             </div>
-            @*<div id="nav-location" style="display:none">
-                @using (Ajax.BeginForm("SearchByAjax", "Games", FormMethod.Post, new AjaxOptions {}, new {id = "searchgamesform", @class = "form-horizontal"}))
-                {
-                    <div id="game-location" class="row" style="position: absolute;width: 30em;top: .5em;left: 8em;">
-                        <div class="col-xs-12">
-                            <input id="Location" class="form-control" placeholder="Where do you want to play?">
-                        </div>
-                    </div>
-                }
-            </div>*@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" style="position:absolute;left:35%">
                     <li>@Html.ActionLink("Games", "Index", "Games")</li>
