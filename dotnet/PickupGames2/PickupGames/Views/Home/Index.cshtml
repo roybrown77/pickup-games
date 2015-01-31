@@ -18,15 +18,17 @@
 
 <div class="row">
     <div class="col-xs-12">
-        <div id="home-search">
-            @using (Html.BeginForm("SearchGames", "Home"))
-            {
-                @Html.TextBoxFor(m => m.Location, new { placeholder = "Where do you want to play?", @class = "form-control", style = "width:80%;float:left" })
-                <button type="submit" style="background-color: #ff5a5f;border-color: #ff5a5f;color: white" class="btn btn-default" aria-hidden="true">
-                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                </button>
+        @using (Html.BeginForm("SearchGames", "Home"))
+        {
+            <div class="form-group">
+                <div class="col-xs-offset-4 col-xs-12">
+                    @Html.TextBoxFor(m => m.Location, new { placeholder = "Where do you want to play?", @class = "form-control", style = "width:80%;float:left" })
+                    <button type="submit" class="btn btn-default" style="background-color: #ff5a5f;border-color: #ff5a5f;color: white" aria-hidden="true">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
             }
-        </div>
     </div>
 </div>
 
