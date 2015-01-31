@@ -6,69 +6,67 @@
     ViewBag.Title = "Games";
 }
 
-<div class="row">
-    
-        @Html.Partial("Search", Model.GameSearchModel)
-    <div class="col-md-6 col-md-push-6" id="search" style="position: fixed; overflow-y: scroll; height: 100%;">
+<div id="sidebar" style="position: fixed; top: 4em; left: 0; bottom: 0; width: 60%; overflow-y: scroll; -webkit-overflow-scrolling: touch">
+    @Html.Partial("Search", Model.GameSearchModel)
+    <div>
         @*<div id="game-filter-toggle" class="row panel-body">*@
-            @*<button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default">Filters</button>*@
+        @*<button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default">Filters</button>*@
         @*</div>*@
-        @*<div id="game-list" class="row panel-body">*@
+        @*<div id="game-list" class="row">*@
         @foreach (var game in Model.GameListModel)
         {
-            @*<div data-id="@game.Id" class="row">
-                <div class="col-md-12">*@
-            <div>
-                @game.Name
-            </div>
-            <div>
-                @game.Sport
-            </div>
-            <div>
-                @game.GameDate
-            </div>
-            <div>
-                @game.GameTime
-            </div>
-            <div class="location" data-lat="@game.LocationLat" data-lng="@game.LocationLng">
-                @game.Location
-            </div>
-            <div>
-                @game.PlayerCount
-                <span>players joined</span>
-            </div>
-            <div>
-                @game.DistanceToCenterLocation
-            </div>
-            <div>
-                @game.Duration
-            </div>
-            <div>
-                @game.Status
-            </div>
-            <div>
-                @game.AgeGroup
-            </div>
-            <div>
-                @game.Notes
-            </div>
-            <div>
-                @game.Views
-            </div>
-            <button onclick="javascript:joinGame('@game.Id');">Join</button>
-            <button onclick="javascript:watchGame('@game.Id');">Watch</button>
-            <button>Edit</button>
-            <button onclick="javascript:deleteGame('@game.Id');">Delete</button>
-            @*</div>
+            <div @*class="col-md-6"*@>
+                <div>
+                    @game.Name
+                </div>
+                <div>
+                    @game.Sport
+                </div>
+                <div>
+                    @game.GameDate
+                </div>
+                <div>
+                    @game.GameTime
+                </div>
+                <div class="location" data-lat="@game.LocationLat" data-lng="@game.LocationLng">
+                    @game.Location
+                </div>
+                @*<div>
+                    @game.PlayerCount
+                    <span>players joined</span>
+                </div>
+                <div>
+                    @game.DistanceToCenterLocation
+                </div>
+                <div>
+                    @game.Duration
+                </div>
+                <div>
+                    @game.Status
+                </div>
+                <div>
+                    @game.AgeGroup
+                </div>
+                <div>
+                    @game.Notes
+                </div>
+                <div>
+                    @game.Views
                 </div>*@
+                <button onclick="javascript:joinGame('@game.Id');">Join</button>
+                <button onclick="javascript:watchGame('@game.Id');">Watch</button>
+                <button>Edit</button>
+                <button onclick="javascript:deleteGame('@game.Id');">Delete</button>
+            @*</div>*@
+            </div>
         }
     </div>
 
     @*</div>*@
 </div>
 
-<div class="row">
-    <div id="map-canvas" style="left:0; width:100%; height:100%; position:absolute; background-color: white">
+<div id="map" style="display: block; width: 40%;position: fixed;top: 4em;right: 0;left: auto;bottom: 0">
+    <div id="map-canvas" style="position: relative;overflow: hidden;-webkit-transform: translateZ(0px);background-color: rgb(229, 227, 223);height: 100%;">                
     </div>    
 </div>
 

@@ -6586,7 +6586,7 @@ a.list-group-item-danger.active:focus {
     application changes
 */
 
-body {
+/*body {
     padding-top: 59px !important;
 }
 
@@ -6624,4 +6624,4 @@ body {
         top: -3.5em !important;
         left: 1em !important;
     }
-}
+}*/
