@@ -7,7 +7,8 @@
 }
 
 <div id="sidebar" style="position: fixed; top: 4em; left: 0; bottom: 0; width: 60%; overflow-y: scroll; -webkit-overflow-scrolling: touch">
-    @Html.Partial("Search", Model.GameSearchModel)
+    @*@Html.Partial("Search", Model.GameSearchModel)*@
+    @*@Html.HiddenFor(m => m.GameSearchModel.Zoom)*@
     <div>
         @*<div id="game-filter-toggle" class="row panel-body">*@
         @*<button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default">Filters</button>*@
@@ -142,3 +143,12 @@
     </div>
     {{/games}}
 </script>
+
+@*<script type="text/javascript">
+    function initialize() {
+        var input = (document.getElementById('Location'));
+        new google.maps.places.Autocomplete(input);
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>*@

@@ -4,14 +4,7 @@ var enableRecenter = false;
 var zoomValue = 8;
 
 $(function () {
-    $('#pagination').pagination({
-        items: 100,
-        itemsOnPage: 10,
-        cssStyle: 'light-theme'
-    });    
-
     initializeMap();
-
     $('#searchgamesform').submit(function (e) {
         e.preventDefault();
         var geocoder = new google.maps.Geocoder();
@@ -23,6 +16,8 @@ $(function () {
             }
         });        
     });
+
+    $("#nav-location").toggle();
 });
 
 function searchGamesByAjax(pageIndex) {

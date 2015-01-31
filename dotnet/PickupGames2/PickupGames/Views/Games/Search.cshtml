@@ -7,11 +7,11 @@
             <div class="title">
                 @using (Ajax.BeginForm("SearchByAjax", "Games", FormMethod.Post, new AjaxOptions { }, new { id = "searchgamesform", @class="form-horizontal" }))
                 {
-                    <div id="game-location" class="row" style="position:absolute; z-index: 10000; width: 30em; top: 2em; left: 5em">
+                    @*<div id="game-location" class="row" style="position:absolute; z-index: 10000; width: 30em; top: 2em; left: 5em">
                         <div class="col-xs-12">
                             @Html.TextBoxFor(m => m.Location, new { data_lat = @Model.LocationLat, data_lng = @Model.LocationLng, @class = "form-control", placeholder = "Where do you want to play?" })
                         </div>
-                    </div>
+                    </div>*@
         
                     <div id="searchgames" style="display:none">
                         @Html.ValidationSummary(false)
