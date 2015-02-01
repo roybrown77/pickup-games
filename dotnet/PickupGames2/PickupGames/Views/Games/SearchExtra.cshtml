@@ -2,7 +2,7 @@
 
 <div id="search-extra-filters" class="row" style="display:none">
     <div class="col-xs-12">
-        <form id="searchgamesextraform" class="form-horizontal">
+        <form id="searchgamesextraform" role="form" class="form-horizontal">
             @Html.ValidationSummary(false)
             <div class="form-group">
                 @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })

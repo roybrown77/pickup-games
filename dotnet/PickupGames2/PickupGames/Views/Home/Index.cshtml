@@ -18,7 +18,7 @@
 
 <div>
     <div>
-        @using (Html.BeginForm("SearchGames", "Home"))
+        @using (Html.BeginForm("SearchGames", "Home", new { role="form", @class="form-horizontal"}))
         {
             <div class="form-group">
                 <div>
