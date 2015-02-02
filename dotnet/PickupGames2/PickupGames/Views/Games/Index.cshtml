@@ -10,11 +10,13 @@
 
 <div id="sidebar" style="position: fixed; top: 4em; left: 0; bottom: 0; width: 60%; overflow-y: scroll; overflow-x:hidden; -webkit-overflow-scrolling: touch">
     <div class="col-xs-12">
-        @Html.Partial("SearchExtra", Model.GameSearchModel)
-        <div id="game-filter-toggle" class="row">
-            <div class="col-xs-12">
-                <button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default">Filters</button>
+        <div class="sidebar-header panel-body panel-bg-medium hide-sm clearfix">
+            <div id="game-filter-toggle" class="row">
+                <div class="col-xs-12">
+                    <button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default">More Filters</button>
+                </div>
             </div>
+            @Html.Partial("SearchExtra", Model.GameSearchModel)       
         </div>
         <div id="search-results" class="row">
             @foreach (var game in Model.GameListModel)
