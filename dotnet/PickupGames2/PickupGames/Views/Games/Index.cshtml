@@ -72,15 +72,12 @@
     </div>
 </div>
 
-
 <div id="map" style="display: block; width: 100%;position: fixed;top: 4em;right: 0;left: auto;bottom: 0">
-    <div id="map-canvas" style="position: relative;overflow: hidden;-webkit-transform: translateZ(0px);background-color: rgb(229, 227, 223);height: 100%;">                
-    </div>    
+    <div id="map-canvas" style="position: relative;overflow: hidden;-webkit-transform: translateZ(0px);background-color: rgb(229, 227, 223);height: 100%;">
+    </div>
 </div>
 
-@*<div id="mobile-footer" class="navbar navbar-default navbar-fixed-bottom">    
-    <div class="navbar-header">
-    </div>      
+<div id="mobile-footer" class="navbar navbar-default navbar-fixed-bottom" style="display:none;">
     <div>
         <ul class="nav navbar-nav navbar-left">
             <li class="dropdown" style="width:50%;float:left">
@@ -88,9 +85,9 @@
                     <li><a href="#">Test</a></li>
                     <li><a href="#">Test2</a></li>
                 </ul>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">List</a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">List Results</a>
             </li>
-            <li class="dropdown" style="display:none">
+            <li class="dropdown">
                 <ul class="dropdown-menu" role="menu">
                     <li><a href="#">Test</a></li>
                     <li><a href="#">Test2</a></li>
@@ -98,11 +95,34 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Filters</a>
             </li>
         </ul>
-    </div>        
-</div>*@
+    </div>    
+</div>
 
-<script id="gamesTemplate" type="text/html">
-    {{#games}}
+@*<div id="mobile-footer" class="navbar navbar-default navbar-fixed-bottom">
+            <div class="navbar-header">
+            </div>
+            <div>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown" style="width:50%;float:left">
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Test</a></li>
+                            <li><a href="#">Test2</a></li>
+                        </ul>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">List</a>
+                    </li>
+                    <li class="dropdown" style="display:none">
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Test</a></li>
+                            <li><a href="#">Test2</a></li>
+                        </ul>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Filters</a>
+                    </li>
+                </ul>
+            </div>
+        </div>*@
+
+    <script id="gamesTemplate" type="text/html">
+        {{#games}}
         <div class="col-md-6">
             <div>
                 {{Name}}
@@ -146,5 +166,5 @@
             <button>Edit</button>
             <button onclick="javascript:deleteGame('{{Id}}');">Delete</button>
         </div>
-    {{/games}}
-</script>
+        {{/games}}
+    </script>

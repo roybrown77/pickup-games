@@ -6630,13 +6630,16 @@ a.list-group-item-danger.active:focus {
 }
 
 @media (max-width: 767px) {    
-    #Location {
+    #location-input {
         width: 16em;
+    }
+    #mobile-footer {
+        display: block !important;
     }
 }
 
 @media (max-width: 1040px) {
     #Location {
-        width: 12em;
+        /*width: 12em;*/
     }
 }
