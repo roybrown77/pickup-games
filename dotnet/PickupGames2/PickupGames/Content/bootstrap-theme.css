@@ -6619,3 +6619,24 @@ a.list-group-item-danger.active:focus {
         left: 1em !important;
     }
 }*/
+
+@media (min-width: 768px) {    
+    #sidebar {
+        display: block !important;
+    }
+    #map {
+        width: 40% !important;
+    }
+}
+
+@media (max-width: 767px) {    
+    #Location {
+        width: 16em;
+    }
+}
+
+@media (max-width: 1040px) {
+    #Location {
+        width: 12em;
+    }
+}
