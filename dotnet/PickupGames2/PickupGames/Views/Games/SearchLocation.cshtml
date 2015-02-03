@@ -2,7 +2,7 @@
 
 @Html.HiddenFor(m => m.Zoom)
 
-<div id="search-location" class="row" style="position: fixed;top: .5em;z-index: 999999;left: 5em; width: 30em;">
+<div id="search-location" class="row" style="position: fixed;top: .5em;z-index: 999999;left: 5em; width: 20em;">
     <div class="col-xs-12">
         @using (Ajax.BeginForm("SearchByAjax", "Games", FormMethod.Post, new AjaxOptions { }, new { id = "searchgamesform", @class = "form-horizontal", role="form" }))
         {
