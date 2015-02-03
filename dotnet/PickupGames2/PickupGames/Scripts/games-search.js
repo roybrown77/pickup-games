@@ -61,8 +61,10 @@ function updateUrl(pageIndex) {
 }
 
 function showHideGameSearchFilter() {
-    $('#search-extra-filters').toggle(100);
+    $('#search-extra-filters').toggle();
     $('#search-results').toggle();
+    $('#more-filters-toggle').toggle();
+    $('#show-listings-toggle').toggle();
 };
 
 function getUrlSearchParameterArray() {

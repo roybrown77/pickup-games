@@ -10,14 +10,17 @@
 
 <div id="sidebar" style="position: fixed; top: 4em; left: 0; bottom: 0; width: 60%; overflow-y: scroll; overflow-x:hidden; -webkit-overflow-scrolling: touch">
     <div class="col-xs-12">
-        <div class="sidebar-header panel-body panel-bg-medium hide-sm clearfix">
-            <div id="game-filter-toggle" class="row">
-                <div class="col-xs-12">
-                    <button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default">More Filters</button>
-                </div>
+        <div id="more-filters-toggle" class="row" style="margin-top: 1em; margin-bottom: 1em">
+            <div class="col-xs-12">
+                <button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default">More Filters</button>
             </div>
-            @Html.Partial("SearchExtra", Model.GameSearchModel)       
         </div>
+        @Html.Partial("SearchExtra", Model.GameSearchModel)      
+        <div id="show-listings-toggle" class="row" style="margin-top: 1em; margin-bottom: 1em; display:none">
+            <div class="col-xs-12">
+                <button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default" style="width:100%;position:relative;bottom:0">Show Listings</button>
+            </div>
+        </div> 
         <div id="search-results" class="row">           
             @*<div itemscope="" itemtype="http://schema.org/Enumeration" class="col-sm-12 col-md-6">
                 <div data-lat="42.36975123868141" data-lng="-71.10122396394908" data-name="Harvard•MIT•Private Rm 1•Parking•TV" data-url="/rooms/4232852?checkin=02%2F04%2F2015&amp;checkout=02%2F05%2F2015&amp;s=wlbu" data-user="5608628" data-id="4232852" class="listing" itemscope="" itemtype="http://schema.org/Enumeration">
@@ -231,9 +234,9 @@
 </div>*@
 
 <script id="gamesTemplate" type="text/html">
-    @*{{#games}}
-    <div data-id={{Id}} class="row">
-        <div class="col-md-12">
+    {{#games}}
+    @*<div data-id={{Id}} class="row">*@
+        <div class="col-md-6">
             <div>
                 {{Name}}
             </div>
@@ -276,6 +279,6 @@
             <button>Edit</button>
             <button onclick="javascript:deleteGame('{{Id}}');">Delete</button>
         </div>
-    </div>
-    {{/games}}*@
+    @*</div>*@
+    {{/games}}
 </script>
