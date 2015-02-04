@@ -6638,11 +6638,11 @@ a.list-group-item-danger.active:focus {
     }
 }
 
-#mobile-footer > div > ul {
+#mobile-footer > ul {
     color: black;
 }
 
-#mobile-footer > div > ul > li > a {
+#mobile-footer > ul > li > a {
     color: grey;
     background-color: white;
     font-weight: bold; 

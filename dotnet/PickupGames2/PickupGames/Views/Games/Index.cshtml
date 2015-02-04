@@ -81,28 +81,27 @@
     <div id="map-canvas" style="position: relative;overflow: hidden;-webkit-transform: translateZ(0px);background-color: rgb(229, 227, 223);height: 100%;">
     </div>
 </div>
-<div id="mobile-footer" class="navbar navbar-default navbar-fixed-bottom" style="display:none;">    
-    <div>
-        <ul class="nav navbar-nav navbar-left">
-            <li class="dropdown">
-                <ul class="dropdown-menu" role="menu">
-                    @foreach (var game in Model.GameListModel)
-                    {
-                        <li>
-                            <div>
-                                @game.Name
-                            </div>
-                            <div>
-                                @game.Sport
-                            </div>
-                        </li>
-                    }
-                </ul>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">LIST RESULTS</a>
-            </li>
-        </ul>
-    </div>
+<div id="mobile-footer" class="navbar navbar-default navbar-fixed-bottom" style="display:none;">        
+    <ul class="nav navbar-nav">        
+        <li class="dropdown">
+            <ul class="dropdown-menu" role="menu">
+                @foreach (var game in Model.GameListModel)
+                {
+                    <li>
+                        <div>
+                            @game.Name
+                        </div>
+                        <div>
+                            @game.Sport
+                        </div>
+                    </li>
+                }
+            </ul>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">LIST RESULTS</a>
+        </li>        
+    </ul>
 </div>
+
 <script id="gamesTemplate" type="text/html">    
     {{#games}}
     <div class="col-md-6">
