@@ -6638,7 +6638,13 @@ a.list-group-item-danger.active:focus {
     }
 }
 
-#mobile-footer > ul {
+#mobile-footer > div > div {
+    color: grey;    
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/*#mobile-footer > ul {
     color: black;
 }
 
@@ -6660,4 +6666,4 @@ a.list-group-item-danger.active:focus {
 
 .navbar-nav {
     margin: 0 !important;
-}
+}*/
