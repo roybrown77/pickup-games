@@ -6638,14 +6638,14 @@ a.list-group-item-danger.active:focus {
     }
 }
 
-@media (max-width: 1040px) {
-    #Location {
-        /*width: 12em;*/
-    }
+#mobile-footer > div > ul {
+    color: black;
 }
 
-.navbar-default .navbar-nav>li>a {
-    color: black;
+#mobile-footer > div > ul > li > a {
+    color: grey;
+    background-color: white;
+    font-weight: bold; 
 }
 
 .navbar-default {
@@ -6653,6 +6653,11 @@ a.list-group-item-danger.active:focus {
     border-color: grey;
 }
 
-navbar {
-    border-width: 1px 0 1px 0;
+.navbar {
+    border-width: 1px 0 0 0;
+    min-height: 0 !important;
+}
+
+.navbar-nav {
+    margin: 0 !important;
 }

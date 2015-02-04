@@ -2,68 +2,64 @@
 
 @Html.HiddenFor(m => m.Zoom)
 
-<div id="search-location" class="row" style="position: fixed;top: .5em;z-index: 999999;left: 5em;">
-    <div class="col-xs-12">
-        @using (Ajax.BeginForm("SearchByAjax", "Games", FormMethod.Post, new AjaxOptions { }, new { id = "searchgamesform", @class = "form-horizontal", role="form" }))
-        {
-            <div id="game-location" class="row">
-                <div id="location-input" class="col-xs-12">
-                    @Html.TextBoxFor(m => m.Location, new { data_lat = @Model.LocationLat, data_lng = @Model.LocationLng, @class = "form-control", placeholder = "Where do you want to play?" })
-                </div>
+@using (Ajax.BeginForm("SearchByAjax", "Games", FormMethod.Post, new AjaxOptions { }, new { id = "searchgamesform", @class = "form-horizontal", role="form" }))
+{            
+    <div id="game-location" class="row">                
+        <div id="location-input" class="col-xs-12">
+            @Html.TextBoxFor(m => m.Location, new { data_lat = @Model.LocationLat, data_lng = @Model.LocationLng, @class = "form-control", placeholder = "Where do you want to play?" })
+        </div>
+    </div>
+
+    @*@Html.ValidationSummary(false)
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label pull-left" })
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Sport, new { @class = "col-md-2 control-label pull-left" })
+            @Html.TextBoxFor(m => m.Sport, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+                @Html.LabelFor(m => m.GameDay, new { @class = "col-md-2 control-label" })
+                @Html.EditorFor(m => m.GameDay, new { @class = "form-control" })
             </div>
 
-            @*@Html.ValidationSummary(false)
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label pull-left" })
-                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Sport, new { @class = "col-md-2 control-label pull-left" })
-                    @Html.TextBoxFor(m => m.Sport, new { @class = "form-control" })
-                </div>
-                <div class="form-group">
-                        @Html.LabelFor(m => m.GameDay, new { @class = "col-md-2 control-label" })
-                        @Html.EditorFor(m => m.GameDay, new { @class = "form-control" })
-                    </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.GameDateStart, new { @class = "col-md-2 control-label" })
+                @Html.EditorFor(m => m.GameDateStart, new { @class = "form-control" })
+            </div>
 
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.GameDateStart, new { @class = "col-md-2 control-label" })
-                        @Html.EditorFor(m => m.GameDateStart, new { @class = "form-control" })
-                    </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.GameDateEnd, new { @class = "col-md-2 control-label" })
+                @Html.EditorFor(m => m.GameDateEnd, new { @class = "form-control" })
+            </div>
 
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.GameDateEnd, new { @class = "col-md-2 control-label" })
-                        @Html.EditorFor(m => m.GameDateEnd, new { @class = "form-control" })
-                    </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.GameTimeStart, new { @class = "col-md-2 control-label" })
+                @Html.EditorFor(m => m.GameTimeStart, new { @class = "form-control" })
+            </div>
 
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.GameTimeStart, new { @class = "col-md-2 control-label" })
-                        @Html.EditorFor(m => m.GameTimeStart, new { @class = "form-control" })
-                    </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.GameTimeEnd, new { @class = "col-md-2 control-label" })
+                @Html.EditorFor(m => m.GameTimeEnd, new { @class = "form-control" })
+            </div>
 
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.GameTimeEnd, new { @class = "col-md-2 control-label" })
-                        @Html.EditorFor(m => m.GameTimeEnd, new { @class = "form-control" })
-                    </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Radius, new { @class = "col-md-2 control-label" })
+                @Html.TextBoxFor(m => m.Radius, new { @class = "form-control" })
+            </div>
 
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Radius, new { @class = "col-md-2 control-label" })
-                        @Html.TextBoxFor(m => m.Radius, new { @class = "form-control" })
-                    </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.PlayerCount, new { @class = "col-md-2 control-label" })
+                @Html.TextBoxFor(m => m.PlayerCount, new { @class = "form-control" })
+            </div>
 
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.PlayerCount, new { @class = "col-md-2 control-label" })
-                        @Html.TextBoxFor(m => m.PlayerCount, new { @class = "form-control" })
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Views, new { @class = "col-md-2 control-label" })
-                        @Html.TextBoxFor(m => m.Views, new { @class = "form-control" })
-                    </div>*@
-            @*</div>
-                <div class="form-group" style="display:none">
-                    <input type="submit" class="btn btn-large btn-primary" value="Search" />
-                </div>*@
-        }
-    </div>
-</div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Views, new { @class = "col-md-2 control-label" })
+                @Html.TextBoxFor(m => m.Views, new { @class = "form-control" })
+            </div>*@
+    @*</div>
+        <div class="form-group" style="display:none">
+            <input type="submit" class="btn btn-large btn-primary" value="Search" />
+        </div>*@
+}

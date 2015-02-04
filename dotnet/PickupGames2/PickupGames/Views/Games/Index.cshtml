@@ -1,12 +1,14 @@
 ﻿@using PickupGames.Models
 @using PickupGames.Domain.Objects
-@model PickupGames.Models.GamesModel          
-
+@model PickupGames.Models.GamesModel
 @{
     ViewBag.Title = "Games";
 }
-
-@Html.Partial("SearchLocation", Model.GameSearchModel)
+<div id="search-location" class="row" style="position: fixed;top: .5em;z-index: 999999;left: 5em;">
+    <div class="col-xs-12">
+        @Html.Partial("SearchLocation", Model.GameSearchModel)
+    </div>
+</div>
 
 <div id="sidebar" style="display: none; position: fixed; top: 4em; left: 0; bottom: 0; width: 60%; overflow-y: scroll; overflow-x:hidden; -webkit-overflow-scrolling: touch">
     <div class="col-xs-12">
@@ -15,13 +17,17 @@
                 <button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default">More Filters</button>
             </div>
         </div>
-        @Html.Partial("SearchExtra", Model.GameSearchModel)      
+        <div id="search-extra-filters" class="row" style="display:none">
+            <div class="col-xs-12">
+                @Html.Partial("SearchExtra", Model.GameSearchModel)
+            </div>
+        </div>
         <div id="show-listings-toggle" class="row" style="margin-top: 1em; margin-bottom: 1em; display:none">
             <div class="col-xs-12">
                 <button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default" style="width:100%;position:relative;bottom:0">Show Listings</button>
             </div>
-        </div> 
-        <div id="search-results" class="row">           
+        </div>
+        <div id="search-results" class="row">
             @foreach (var game in Model.GameListModel)
             {
                 <div class="col-md-6">
@@ -42,7 +48,7 @@
                     </div>
                     <div>
                         @game.PlayerCount
-                    <span>players joined</span>
+                        <span>players joined</span>
                     </div>
                     <div>
                         @game.DistanceToCenterLocation
@@ -71,100 +77,76 @@
         </div>
     </div>
 </div>
-
-<div id="map" style="display: block; width: 100%;position: fixed;top: 4em;right: 0;left: auto;bottom: 0">
+<div id="map" style="display: block; width: 100%;position: fixed;top: 4em;right: 0;left: auto;bottom: 0">    
     <div id="map-canvas" style="position: relative;overflow: hidden;-webkit-transform: translateZ(0px);background-color: rgb(229, 227, 223);height: 100%;">
     </div>
 </div>
-
-<div id="mobile-footer" class="navbar navbar-default navbar-fixed-bottom" style="display:none;">
+<div id="mobile-footer" class="navbar navbar-default navbar-fixed-bottom" style="display:none;">    
     <div>
         <ul class="nav navbar-nav navbar-left">
-            <li class="dropdown" style="width:50%;float:left">
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Test</a></li>
-                    <li><a href="#">Test2</a></li>
-                </ul>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">List Results</a>
-            </li>
             <li class="dropdown">
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Test</a></li>
-                    <li><a href="#">Test2</a></li>
+                    @foreach (var game in Model.GameListModel)
+                    {
+                        <li>
+                            <div>
+                                @game.Name
+                            </div>
+                            <div>
+                                @game.Sport
+                            </div>
+                        </li>
+                    }
                 </ul>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Filters</a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">LIST RESULTS</a>
             </li>
         </ul>
-    </div>    
+    </div>
 </div>
-
-@*<div id="mobile-footer" class="navbar navbar-default navbar-fixed-bottom">
-            <div class="navbar-header">
-            </div>
-            <div>
-                <ul class="nav navbar-nav navbar-left">
-                    <li class="dropdown" style="width:50%;float:left">
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Test</a></li>
-                            <li><a href="#">Test2</a></li>
-                        </ul>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">List</a>
-                    </li>
-                    <li class="dropdown" style="display:none">
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Test</a></li>
-                            <li><a href="#">Test2</a></li>
-                        </ul>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Filters</a>
-                    </li>
-                </ul>
-            </div>
-        </div>*@
-
-    <script id="gamesTemplate" type="text/html">
-        {{#games}}
-        <div class="col-md-6">
-            <div>
-                {{Name}}
-            </div>
-            <div>
-                {{Sport}}
-            </div>
-            <div>
-                {{GameDate}}
-            </div>
-            <div>
-                {{GameTime}}
-            </div>
-            <div class="location" data-lat={{LocationLat}} data-lng={{LocationLng}}>
-                {{Location}}
-            </div>
-            <div>
-                {{PlayerCount}}
-                <span>players joined</span>
-            </div>
-            <div>
-                {{DistanceToCenterLocation}}
-            </div>
-            <div>
-                {{Duration}}
-            </div>
-            <div>
-                {{Status}}
-            </div>
-            <div>
-                {{AgeGroup}}
-            </div>
-            <div>
-                {{Notes}}
-            </div>
-            <div>
-                {{Views}}
-            </div>
-            <button onclick="javascript:joinGame('{{Id}}');">Join</button>
-            <button onclick="javascript:watchGame('{{Id}}');">Watch</button>
-            <button>Edit</button>
-            <button onclick="javascript:deleteGame('{{Id}}');">Delete</button>
+<script id="gamesTemplate" type="text/html">    
+    {{#games}}
+    <div class="col-md-6">
+        <div>
+            {{Name}}
         </div>
-        {{/games}}
-    </script>
+        <div>
+            {{Sport}}
+        </div>
+        <div>
+            {{GameDate}}
+        </div>
+        <div>
+            {{GameTime}}
+        </div>
+        <div class="location" data-lat={{LocationLat}} data-lng={{LocationLng}}>
+            {{Location}}
+        </div>
+        <div>
+            {{PlayerCount}}
+            <span>players joined</span>
+        </div>
+        <div>
+            {{DistanceToCenterLocation}}
+        </div>
+        <div>
+            {{Duration}}
+        </div>
+        <div>
+            {{Status}}
+        </div>
+        <div>
+            {{AgeGroup}}
+        </div>
+        <div>
+            {{Notes}}
+        </div>
+        <div>
+            {{Views}}
+        </div>
+        <button onclick="javascript:joinGame('{{Id}}');">Join</button>
+        <button onclick="javascript:watchGame('{{Id}}');">Watch</button>
+        <button>Edit</button>
+        <button onclick="javascript:deleteGame('{{Id}}');">Delete</button>
+    </div>
+    {{/games}}
+</script>
