@@ -81,12 +81,15 @@
     <div id="map-canvas" style="position: relative;overflow: hidden;-webkit-transform: translateZ(0px);background-color: rgb(229, 227, 223);height: 100%;">
     </div>
 </div>
-<div id="mobile-footer" class="navbar-fixed-bottom" style="background-color: white;padding: .5em 0 .5em 0;display:none">  
+<div id="mobile-footer" class="navbar-fixed-bottom" style="background-color: white;padding: .5em 0 .5em 0;display:none;">  
     <div class="dropdown">
         <div class="dropdown-menu" role="menu" style="width: 100%; margin: 0 !important; border: 0;border-radius: 0;box-shadow: none;-webkit-box-shadow: none">
             @foreach (var game in Model.GameListModel)
             {
-                <div class="col-xs-12">
+                <div class="col-xs-1">
+                    <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+                </div>                
+                <div class="col-xs-11">                                    
                     <div>
                         @game.Name
                     </div>
@@ -94,12 +97,12 @@
                         @game.Sport
                     </div>
                 </div>
-            }
-        </div>
-        <div class="col-xs-6 text-center" data-toggle="dropdown">
+                    }
+                </div>
+        <div class="col-xs-6" data-toggle="dropdown">
             LIST RESULTS
         </div>
-        <div class="col-xs-6 text-center">
+        <div class="col-xs-6 text-right">
             FILTER
         </div>
     </div>    
