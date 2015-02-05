@@ -6625,7 +6625,7 @@ a.list-group-item-danger.active:focus {
         display: block !important;
     }
     #map {
-        width: 40% !important;
+        width: 50% !important;
     }
 }
 
@@ -6642,6 +6642,10 @@ a.list-group-item-danger.active:focus {
     color: grey;    
     font-weight: bold;
     cursor: pointer;
+}
+
+.navbar-inverse {
+    background-color: black;
 }
 
 /*#mobile-footer > ul {
