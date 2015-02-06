@@ -6604,6 +6604,10 @@ a.list-group-item-danger.active:focus {
     #map {
         width: 50% !important;
     }
+    #nav-items {
+        position: absolute !important; 
+        left: 35% !important;
+    }
 }
 
 @media (max-width: 767px) {    
