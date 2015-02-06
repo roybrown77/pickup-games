@@ -6586,10 +6586,14 @@ a.list-group-item-danger.active:focus {
     application changes
 */
 
-/*
+
 @media (min-width: 992px) {
+    #location-input {
+        width: 20em;
+    }
 }
 
+/*
 @media (max-width: 991px) {
 }
 
@@ -6598,15 +6602,15 @@ a.list-group-item-danger.active:focus {
 */
 
 @media (min-width: 768px) {    
+    #nav-items {
+        position: absolute !important; 
+        left: 40% !important;
+    }        
     #sidebar {
         display: block !important;
     }
     #map {
         width: 50% !important;
-    }
-    #nav-items {
-        position: absolute !important; 
-        left: 35% !important;
     }
 }
 
