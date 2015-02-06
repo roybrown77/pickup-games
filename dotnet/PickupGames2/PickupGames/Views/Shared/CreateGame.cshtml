@@ -1,10 +1,11 @@
 ﻿@model PickupGames.Models.GameCreateModel
 
-<h2>Create game.</h2>            
+<h2>Create game.</h2>
+
 <div class="row">
-    <div class="col-md-8">        
-        <section id="creategame">
-            @using (Html.BeginForm("Create", "Games", FormMethod.Post, new { id = "creategameform", @class = "form-horizontal" }))
+    <div class="col-xs-12">                
+        <section id="creategame">                        
+            @using (Html.BeginForm("Create", "Games", FormMethod.Post, new { id = "creategameform", @class = "form-horizontal", role = "form" }))
             {
                 <h4>Create an awesome game!</h4>
                 <hr />

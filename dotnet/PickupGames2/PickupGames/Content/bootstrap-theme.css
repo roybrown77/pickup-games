@@ -6624,3 +6624,8 @@ a.list-group-item-danger.active:focus {
     font-weight: bold;
     cursor: pointer;
 }
+
+html, body {
+    width: auto !important;
+    overflow-x: hidden!important;
+}

@@ -1,28 +1,25 @@
 ﻿@using PickupGames.Models
 @using PickupGames.Domain.Objects
-
 @model PickupGames.Models.GameSearchModel
 @{
     ViewBag.Title = "Index";
 }
 
-<div>
-    <div>
-        <div class="bs-example" data-example-id="responsive-embed-16by9-iframe-youtube">
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="//www.youtube.com/embed/vnfulwtcwKQ?rel=0&autoplay=1&loop=1&playlist=vnfulwtcwKQ" allowfullscreen=""></iframe>
-            </div>
-        </div>    
+<div data-example-id="responsive-embed-16by9-iframe-youtube">
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="//www.youtube.com/embed/vnfulwtcwKQ?rel=0&autoplay=1&loop=1&playlist=vnfulwtcwKQ"></iframe>
     </div>
 </div>
 
-<div>
-    <div>
-        @using (Html.BeginForm("SearchGames", "Home", new { role="form", @class="form-horizontal"}))
+<div class="row">
+    <div class="col-xs-12">
+        @using (Html.BeginForm("SearchGames", "Home", new { role = "form", @class = "form-horizontal" }))
         {
-            <div class="form-group">
-                <div>
-                    @Html.TextBoxFor(m => m.Location, new { placeholder = "Where do you want to play?", @class = "form-control", style = "width:80%;float:left" })
+            <div class="form-group">                
+                <div class="col-xs-6 col-xs-offset-1">
+                    @Html.TextBoxFor(m => m.Location, new { placeholder = "Where do you want to play?", @class = "form-control" })
+                </div>
+                <div class="col-xs-5">
                     <button type="submit" class="btn btn-default" style="background-color: #ff5a5f;border-color: #ff5a5f;color: white" aria-hidden="true">
                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                     </button>
@@ -33,26 +30,26 @@
 </div>
 
 @*<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>*@
+        <div class="col-md-4">
+            <h2>Getting started</h2>
+            <p>
+                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                enables a clean separation of concerns and gives you full control over markup
+                for enjoyable, agile development.
+            </p>
+            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Get more libraries</h2>
+            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Web Hosting</h2>
+            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        </div>
+    </div>*@
 
 <script type="text/javascript">
     function initialize() {
