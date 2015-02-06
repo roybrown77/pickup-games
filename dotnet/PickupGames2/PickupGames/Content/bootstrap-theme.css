@@ -6587,38 +6587,15 @@ a.list-group-item-danger.active:focus {
 */
 
 /*
-
 @media (min-width: 992px) {
-   #map-canvas {
-       width:50% !important;
-   } 
-   #game-location {
-        top: -3.5em !important;
-        left: 1em !important;
-    }  
-   #mobile-footer {
-       display: none;
-   }   
 }
 
 @media (max-width: 991px) {
-    #game-list, #game-filter-toggle {
-        display: none;
-    }            
 }
 
 @media (max-width: 767px) {
-    #map-canvas {
-        top: 0;
-    }
-    #game-list, #game-filter-toggle {
-        display: none;
-    }            
-    #game-location {
-        top: -3.5em !important;
-        left: 1em !important;
-    }
-}*/
+}
+*/
 
 @media (min-width: 768px) {    
     #sidebar {
@@ -6643,31 +6620,3 @@ a.list-group-item-danger.active:focus {
     font-weight: bold;
     cursor: pointer;
 }
-
-.navbar-inverse {
-    background-color: black;
-}
-
-/*#mobile-footer > ul {
-    color: black;
-}
-
-#mobile-footer > ul > li > a {
-    color: grey;
-    background-color: white;
-    font-weight: bold; 
-}
-
-.navbar-default {
-    background-color: white;
-    border-color: grey;
-}
-
-.navbar {
-    border-width: 1px 0 0 0;
-    min-height: 0 !important;
-}
-
-.navbar-nav {
-    margin: 0 !important;
-}*/
