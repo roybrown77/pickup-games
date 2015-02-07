@@ -6,7 +6,7 @@ namespace PickupGames.Controllers
 {
     public class ControllerBase : Controller
     {
-        public ControllerBase()
+        protected ControllerBase()
         {
             NinjectDependencyInjector.Dependencies = new StandardKernel(NinjectDependencyFactory.Create());
         }
