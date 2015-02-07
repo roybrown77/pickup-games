@@ -16,14 +16,10 @@
         @using (Html.BeginForm("SearchGames", "Home", new { role = "form", @class = "form-horizontal" }))
         {
             <div class="form-group">                
-                <div class="col-xs-8 col-xs-push-1">
-                    @Html.TextBoxFor(m => m.Location, new { placeholder = "Where do you want to play?", @class = "form-control" })
-                </div>
-                <div class="col-xs-4">
-                    <button type="submit" class="btn btn-default" style="background-color: #ff5a5f;border-color: #ff5a5f;color: white" aria-hidden="true">
-                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                    </button>
-                </div>
+                @Html.TextBoxFor(m => m.Location, new { placeholder = "Where do you want to play?", @class = "col-xs-8 form-control" })
+                <button type="submit" class="btn btn-default" style="background-color: #00bc8c;border-color: #00bc8c;color: white" aria-hidden="true">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </button>
             </div>
         }
     </div>
