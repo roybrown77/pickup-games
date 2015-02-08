@@ -8,20 +8,19 @@
 <div data-example-id="responsive-embed-16by9-iframe-youtube">
     <div class="embed-responsive embed-responsive-16by9" style="top:-2.5em">
         <iframe class="embed-responsive-item" src="//www.youtube.com/embed/vnfulwtcwKQ?rel=0&autoplay=1&loop=1&playlist=vnfulwtcwKQ"></iframe>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-push-4 col-xs-push-2 col-xs-12">
-        @using (Html.BeginForm("SearchGames", "Home", new { role = "form", @class = "form-horizontal" }))
-        {
-            <div class="form-group">
-                @Html.TextBoxFor(m => m.Location, new { placeholder = "Where do you want to play?", @class = "col-xs-8 form-control" })
-                <button type="submit" class="btn btn-default" style="background-color: #00bc8c;border-color: #00bc8c;color: white" aria-hidden="true">
-                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                </button>
+        <div class="row" style="background-color: white;top: 60%;position: absolute;padding-bottom: 100%;width: 110%;">
+            <div class="col-md-push-4 col-xs-push-2 col-xs-12">
+                @using (Html.BeginForm("SearchGames", "Home", new { role = "form", @class = "form-horizontal" }))
+                {
+                    <div class="form-group">
+                        @Html.TextBoxFor(m => m.Location, new { placeholder = "Where do you want to play?", @class = "col-xs-8 form-control" })
+                        <button type="submit" class="btn btn-default" style="background-color: #00bc8c;border-color: #00bc8c;color: white" aria-hidden="true">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                }
             </div>
-        }
+        </div>
     </div>
 </div>
 
