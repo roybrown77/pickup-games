@@ -6604,7 +6604,7 @@ a.list-group-item-danger.active:focus {
 @media (min-width: 768px) {    
     #nav-items {
         position: absolute !important; 
-        left: 40% !important;
+        left: 38% !important;
     }        
     #sidebar {
         display: block !important;
@@ -6635,5 +6635,5 @@ html, body {
 }
 
 body {
-    /*background-color: white !important;*/
+    background-color: white !important;
 }

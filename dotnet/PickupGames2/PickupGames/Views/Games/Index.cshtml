@@ -1,8 +1,10 @@
-﻿@using PickupGames.Models
+﻿@using System.Threading
+@using PickupGames.Models
 @using PickupGames.Domain.Objects
 @model PickupGames.Models.GamesModel
 @{
     ViewBag.Title = "Games";
+    int count = 0;
 }
 <div id="search-location" class="row" style="position: fixed;top: .5em;z-index: 999999;left: 5em;">
     <div class="col-xs-12 col-xs-offset-1">
@@ -10,7 +12,7 @@
     </div>
 </div>
 
-<div id="sidebar" style="display: none; position: fixed; top: 4em; left: 0; bottom: 0; width: 50%; overflow-y: scroll; overflow-x:hidden; -webkit-overflow-scrolling: touch">
+<div id="sidebar" style="display: none; background-color: whitesmoke; position: fixed; top: 4em; left: 0; bottom: 0; width: 50%; overflow-y: scroll; overflow-x:hidden; -webkit-overflow-scrolling: touch">
     <div class="col-xs-12">
         <div id="more-filters-toggle" class="row" style="margin-top: 1em; margin-bottom: 1em">
             <div class="col-xs-12">
@@ -30,48 +32,50 @@
         <div id="search-results" class="row">
             @foreach (var game in Model.GameListModel)
             {
-                <div class="col-md-6">
-                    <div>
-                        @game.Name
+                <div class="col-xs-12" style="padding-bottom:1em;">
+                    <div style="background-color:white;color:grey">
+                        <div>
+                            @game.Name
+                        </div>
+                        <div>
+                            @game.Sport
+                        </div>
+                        <div>
+                            @game.GameDate
+                        </div>
+                        <div>
+                            @game.GameTime
+                        </div>
+                        <div id="location" data-lat="@game.LocationLat" data-lng="@game.LocationLng">
+                            @game.Location
+                        </div>
+                        @*<div>
+                            @game.PlayerCount
+                            <span>players joined</span>
+                        </div>
+                        <div>
+                            @game.DistanceToCenterLocation
+                        </div>
+                        <div>
+                            @game.Duration
+                        </div>
+                        <div>
+                            @game.Status
+                        </div>
+                        <div>
+                            @game.AgeGroup
+                        </div>
+                        <div>
+                            @game.Notes
+                        </div>
+                        <div>
+                            @game.Views
+                        </div>
+                        <button onclick="javascript:joinGame('@game.Id');">Join</button>
+                        <button onclick="javascript:watchGame('@game.Id');">Watch</button>
+                        <button>Edit</button>
+                        <button onclick="javascript:deleteGame('@game.Id');">Delete</button>*@
                     </div>
-                    <div>
-                        @game.Sport
-                    </div>
-                    <div>
-                        @game.GameDate
-                    </div>
-                    <div>
-                        @game.GameTime
-                    </div>
-                    <div id="location" data-lat="@game.LocationLat" data-lng="@game.LocationLng">
-                        @game.Location
-                    </div>
-                    <div>
-                        @game.PlayerCount
-                        <span>players joined</span>
-                    </div>
-                    <div>
-                        @game.DistanceToCenterLocation
-                    </div>
-                    <div>
-                        @game.Duration
-                    </div>
-                    <div>
-                        @game.Status
-                    </div>
-                    <div>
-                        @game.AgeGroup
-                    </div>
-                    <div>
-                        @game.Notes
-                    </div>
-                    <div>
-                        @game.Views
-                    </div>
-                    <button onclick="javascript:joinGame('@game.Id');">Join</button>
-                    <button onclick="javascript:watchGame('@game.Id');">Watch</button>
-                    <button>Edit</button>
-                    <button onclick="javascript:deleteGame('@game.Id');">Delete</button>
                 </div>
             }
         </div>
@@ -110,50 +114,52 @@
     </div>    
 </div>
 
-<script id="gamesTemplate" type="text/html">    
+<script id="gamesTemplate" type="text/html">
     {{#games}}
-    <div class="col-md-6">
-        <div>
-            {{Name}}
+    <div class="col-xs-12" style="padding-bottom:1em;">
+        <div style="background-color:white;color:grey">
+            <div>
+                {{Name}}
+            </div>
+            <div>
+                {{Sport}}
+            </div>
+            <div>
+                {{GameDate}}
+            </div>
+            <div>
+                {{GameTime}}
+            </div>
+            <div class="location" data-lat={{LocationLat}} data-lng={{LocationLng}}>
+                {{Location}}
+            </div>
+            @*<div>
+                {{PlayerCount}}
+                <span>players joined</span>
+            </div>
+            <div>
+                {{DistanceToCenterLocation}}
+            </div>
+            <div>
+                {{Duration}}
+            </div>
+            <div>
+                {{Status}}
+            </div>
+            <div>
+                {{AgeGroup}}
+            </div>
+            <div>
+                {{Notes}}
+            </div>
+            <div>
+                {{Views}}
+            </div>
+            <button onclick="javascript:joinGame('{{Id}}');">Join</button>
+            <button onclick="javascript:watchGame('{{Id}}');">Watch</button>
+            <button>Edit</button>
+            <button onclick="javascript:deleteGame('{{Id}}');">Delete</button>*@
         </div>
-        <div>
-            {{Sport}}
-        </div>
-        <div>
-            {{GameDate}}
-        </div>
-        <div>
-            {{GameTime}}
-        </div>
-        <div class="location" data-lat={{LocationLat}} data-lng={{LocationLng}}>
-            {{Location}}
-        </div>
-        <div>
-            {{PlayerCount}}
-            <span>players joined</span>
-        </div>
-        <div>
-            {{DistanceToCenterLocation}}
-        </div>
-        <div>
-            {{Duration}}
-        </div>
-        <div>
-            {{Status}}
-        </div>
-        <div>
-            {{AgeGroup}}
-        </div>
-        <div>
-            {{Notes}}
-        </div>
-        <div>
-            {{Views}}
-        </div>
-        <button onclick="javascript:joinGame('{{Id}}');">Join</button>
-        <button onclick="javascript:watchGame('{{Id}}');">Watch</button>
-        <button>Edit</button>
-        <button onclick="javascript:deleteGame('{{Id}}');">Delete</button>
     </div>
     {{/games}}
 </script>
