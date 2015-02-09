@@ -9,16 +9,16 @@
     <div class="embed-responsive embed-responsive-16by9" style="top:-2.5em">
         <iframe class="embed-responsive-item" src="//www.youtube.com/embed/vnfulwtcwKQ?rel=0&autoplay=1&loop=1&playlist=vnfulwtcwKQ"></iframe>
         <div class="row" style="background-color: white;top: 60%;position: absolute;padding-bottom: 100%;width: 110%;">
-            <div class="col-md-push-4 col-xs-push-2 col-xs-12">
+            <div class="col-xs-push-1 col-xs-12">
                 @using (Html.BeginForm("SearchGames", "Home", new { role = "form", @class = "form-horizontal" }))
                 {
-                    <div class="center-block form-group">
+                    <div class="form-group">
                         
-                        <div class="col-xs-2">
+                        <div class="col-xs-8">
                             @Html.TextBoxFor(m => m.Location, new { placeholder = "Where do you want to play?", @class = "form-control" })
                         </div>
                         
-                        <div class="col-xs-1">
+                        <div class="col-xs-4">
                             <button type="submit" class="btn btn-default" style="background-color: #00bc8c;border-color: #00bc8c;color: white" aria-hidden="true">
                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                             </button>
