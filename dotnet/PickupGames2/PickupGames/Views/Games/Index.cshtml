@@ -89,29 +89,37 @@
 
 <div id="mobile-footer" class="navbar-fixed-bottom" style="background-color: white;padding: .5em 0 .5em 0;display:none;">  
     <div class="dropdown">
-        <div class="dropdown-menu" role="menu" style="width: 100%; margin: 0 !important; border: 0;border-radius: 0;box-shadow: none;-webkit-box-shadow: none">
+        <div class="dropdown-menu" role="menu" style="width: 100%; margin: 0 !important; border: 0;border-radius: 0;box-shadow: none;-webkit-box-shadow: none;background-color:whitesmoke">           
             @foreach (var game in Model.GameListModel)
             {
-                <div class="col-xs-1">
-                    <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
-                </div>                
-                <div class="col-xs-11">                                    
-                    <div>
-                        @game.Name
-                    </div>
-                    <div>
-                        @game.Sport
+                <div class="col-xs-12" style="padding-bottom: 1em;">
+                    <div style="background-color: white; color: grey">
+                        <div>
+                            @game.Name
+                        </div>
+                        <div>
+                            @game.Sport
+                        </div>
+                        <div>
+                            @game.GameDate
+                        </div>
+                        <div>
+                            @game.GameTime
+                        </div>
+                        <div id="location" data-lat="@game.LocationLat" data-lng="@game.LocationLng">
+                            @game.Location
+                        </div>
                     </div>
                 </div>
-                    }
-                </div>
+            }
+        </div>
         <div class="col-xs-6" data-toggle="dropdown">
             LIST RESULTS
         </div>
         <div class="col-xs-6 text-right">
             FILTER
         </div>
-    </div>    
+    </div>
 </div>
 
 <script id="gamesTemplate" type="text/html">
