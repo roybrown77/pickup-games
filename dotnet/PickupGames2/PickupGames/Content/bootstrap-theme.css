@@ -6616,7 +6616,7 @@ a.list-group-item-danger.active:focus {
 
 @media (max-width: 767px) {    
     #location-input {
-        width: 18em;
+        width: 20em !important;
     }
     #mobile-footer {
         display: block !important;
