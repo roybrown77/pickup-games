@@ -6629,15 +6629,19 @@ a.list-group-item-danger.active:focus {
     cursor: pointer;
 }
 
-html, body {
+html {
     width: auto !important;
     overflow-x: hidden!important;
 }
 
-body {
-    /*background-color: white !important;*/
-}
-
 #searchgamesextraform > div> label {
     color: grey;
+}
+
+
+#container, #container-fluid {
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
 }
