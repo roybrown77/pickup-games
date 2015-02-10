@@ -6616,7 +6616,7 @@ a.list-group-item-danger.active:focus {
 
 @media (max-width: 767px) {    
     #location-input {
-        width: 20em !important;
+        width: 17em !important;
     }
     #mobile-footer {
         display: block !important;
@@ -6637,7 +6637,6 @@ html, body {
 body {
     background-color: white !important;
 }
-
 
 #searchgamesextraform > div> label {
     color: grey;
