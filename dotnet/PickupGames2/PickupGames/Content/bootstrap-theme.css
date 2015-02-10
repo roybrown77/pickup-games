@@ -6645,3 +6645,7 @@ html {
     margin-right: auto !important;
     margin-left: auto !important;
 }
+
+#search-results > div > div {
+    box-shadow: 0 1px 1px #888888;
+}

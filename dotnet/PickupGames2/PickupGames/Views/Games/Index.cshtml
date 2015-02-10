@@ -37,15 +37,15 @@
                         @*<div>
                             @game.Name
                         </div>*@
-                        <div>
+                        <div style="color:black;font-weight:bold">
                             @game.Sport
                         </div>
                         <div>
                             @game.GameDate
                         </div>
-                        <div>
+                        @*<div>
                             @game.GameTime
-                        </div>
+                        </div>*@
                         <div id="location" data-lat="@game.LocationLat" data-lng="@game.LocationLng">
                             @game.Location
                         </div>
@@ -103,9 +103,9 @@
                         <div>
                             @game.GameDate
                         </div>
-                        <div>
+                        @*<div>
                             @game.GameTime
-                        </div>
+                        </div>*@
                         <div id="location" data-lat="@game.LocationLat" data-lng="@game.LocationLng">
                             @game.Location
                         </div>
@@ -135,9 +135,9 @@
             <div>
                 {{GameDate}}
             </div>
-            <div>
+            @*<div>
                 {{GameTime}}
-            </div>
+            </div>*@
             <div class="location" data-lat={{LocationLat}} data-lng={{LocationLng}}>
                 {{Location}}
             </div>
