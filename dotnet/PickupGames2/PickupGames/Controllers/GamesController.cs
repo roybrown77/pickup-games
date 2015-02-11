@@ -16,6 +16,15 @@ namespace PickupGames.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public JsonResult GetGames()
+        {
+            var domain = new GameDomain();
+            var response = domain.FindBy("usa"); //get by user set location or url country
+            var model = GamesMapper.ConvertGameListToGamesModel(response);
+            return Json(model.GameListModel);
+        }
+
         public ActionResult Create()
         {
             return View("CreateGame");

@@ -71,7 +71,7 @@ namespace PickupGames.Mappers
                        {
                            Location = searchModel.Location,
                            Index = searchModel.Index ?? 1,
-                           Zoom = searchModel.Zoom ?? 3
+                           Zoom = searchModel.Zoom ?? 4
                        };
         }
     }

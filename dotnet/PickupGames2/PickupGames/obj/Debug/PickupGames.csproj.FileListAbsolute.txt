@@ -169,3 +169,9 @@ C:\Users\rmirdb\Documents\Github\pickupgames\dotnet\PickupGames2\PickupGames\bin
 C:\Users\rmirdb\Documents\Github\pickupgames\dotnet\PickupGames2\PickupGames\obj\Debug\PickupGames.csprojResolveAssemblyReference.cache
 C:\Users\rmirdb\Documents\Github\pickupgames\dotnet\PickupGames2\PickupGames\obj\Debug\PickupGames.dll
 C:\Users\rmirdb\Documents\Github\pickupgames\dotnet\PickupGames2\PickupGames\obj\Debug\PickupGames.pdb
+C:\Users\rmirdb\Documents\Github\pickupgames\dotnet\PickupGames2\PickupGames\bin\System.Net.Http.Formatting.dll
+C:\Users\rmirdb\Documents\Github\pickupgames\dotnet\PickupGames2\PickupGames\bin\System.Web.Http.dll
+C:\Users\rmirdb\Documents\Github\pickupgames\dotnet\PickupGames2\PickupGames\bin\System.Web.Http.WebHost.dll
+C:\Users\rmirdb\Documents\Github\pickupgames\dotnet\PickupGames2\PickupGames\bin\System.Net.Http.Formatting.xml
+C:\Users\rmirdb\Documents\Github\pickupgames\dotnet\PickupGames2\PickupGames\bin\System.Web.Http.xml
+C:\Users\rmirdb\Documents\Github\pickupgames\dotnet\PickupGames2\PickupGames\bin\System.Web.Http.WebHost.xml

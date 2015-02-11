@@ -223,7 +223,7 @@ function onBoundsChanged() {
         geocoder.geocode({ 'latLng': latlng }, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 if (results[1]) {
-                    //$('#Location').val(results[1].formatted_address);
+                    $('#Location').val(results[1].formatted_address);
                     zoomValue = gamesMap.getZoom();
                     searchGamesByAjax(1);
                 }
