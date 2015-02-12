@@ -15,7 +15,7 @@ namespace PickupGames.Api
             return GamesMapper.ConvertGameListToGamesModel(response);
         }
 
-        public GamesModel GetGames(GameSearchModel searchModel)
+        public GamesModel Get(GameSearchModel searchModel)
         {
             var domain = new GameDomain();
             var searchQuery = GamesMapper.ConvertSearchModelToSearchQuery(searchModel);

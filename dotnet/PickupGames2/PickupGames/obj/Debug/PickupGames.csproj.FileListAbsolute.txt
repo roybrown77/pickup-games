@@ -174,3 +174,4 @@ C:\Users\rmirdb\Documents\Github\pickupgames\dotnet\PickupGames2\PickupGames\bin
 C:\Users\rmirdb\Documents\Github\pickupgames\dotnet\PickupGames2\PickupGames\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\rmirdb\Documents\Github\pickupgames\dotnet\PickupGames2\PickupGames\obj\Debug\PickupGames.dll
 C:\Users\rmirdb\Documents\Github\pickupgames\dotnet\PickupGames2\PickupGames\obj\Debug\PickupGames.pdb
+C:\Users\rmirdb\Documents\Github\pickupgames\dotnet\PickupGames2\PickupGames\obj\Debug\PickupGames.csprojResolveAssemblyReference.cache
