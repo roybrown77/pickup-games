@@ -6,128 +6,84 @@
     ViewBag.Title = "Games";
 }
 
-<div id="search-location" class="row" style="position: fixed;top: .5em;z-index: 999999;left:6em">
-    <div class="col-xs-12">
-        @Html.Partial("SearchLocation", Model.GameSearchModel)
-    </div>
-</div>
+<style>
+    #map-canvas {
+        position: relative;overflow: hidden;-webkit-transform: translateZ(0px);background-color: rgb(229, 227, 223);height: 100%;
+    } 
+</style>
 
-<div id="sidebar" style="display: none; background-color: whitesmoke; position: fixed; top: 4em; left: 0; bottom: 0; width: 50%; overflow-y: scroll; overflow-x:hidden; -webkit-overflow-scrolling: touch">
-    <div class="col-xs-12">
-        <div id="more-filters-toggle" class="row" style="margin-top: 1em; margin-bottom: 1em">
-            <div class="col-xs-12">
-                <button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default">More Filters</button>
-            </div>
+<section ng-controller="GameController">
+    <div id="search-location" class="row" style="position: fixed;top: .5em;z-index: 999999;left:6em">
+        <div class="col-xs-12">
+            @Html.Partial("SearchLocation", Model.GameSearchModel)
         </div>
-        <div id="search-extra-filters" class="row" style="display:none">
-            <div class="col-xs-12">
-                @Html.Partial("SearchExtra", Model.GameSearchModel)
-            </div>
-        </div>
-        <div id="show-listings-toggle" class="row" style="margin-top: 1em; margin-bottom: 1em; display:none">
-            <div class="col-xs-12">
-                <button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default" style="width:100%;position:relative;bottom:0">Show Listings</button>
-            </div>
-        </div>
-            
-        <div id="search-results" class="row" ng-repeat="game in games">
-            <div class="col-xs-12" style="padding-bottom: 1em;">
-                <div style="background-color: white; color: grey">
-                    <div>
-                        {{game.Sport}}
-                    </div>
-                    <div>
-                        {{game.GameDate}}
-                    </div>
-                    <div id="location" data-lat="{{LocationLat}}" data-lng="{{LocationLng}}">
-                        {{game.Location}}
-                    </div>
+    </div>
+    <div id="sidebar" style="display: none; background-color: whitesmoke; position: fixed; top: 4em; left: 0; bottom: 0; width: 50%; overflow-y: scroll; overflow-x:hidden; -webkit-overflow-scrolling: touch">
+        <div class="col-xs-12">
+            <div id="more-filters-toggle" class="row" style="margin-top: 1em; margin-bottom: 1em">
+                <div class="col-xs-12">
+                    <button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default">More Filters</button>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+            <div id="search-extra-filters" class="row" style="display:none">
+                <div class="col-xs-12">
+                    @Html.Partial("SearchExtra", Model.GameSearchModel)
+                </div>
+            </div>
+            <div id="show-listings-toggle" class="row" style="margin-top: 1em; margin-bottom: 1em; display:none">
+                <div class="col-xs-12">
+                    <button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default" style="width:100%;position:relative;bottom:0">Show Listings</button>
+                </div>
+            </div>
 
-<div id="map" style="display: block; width: 100%;position: fixed;top: 4em;right: 0;left: auto;bottom: 0">
-    <div id="map-canvas" style="position: relative;overflow: hidden;-webkit-transform: translateZ(0px);background-color: rgb(229, 227, 223);height: 100%;">
-    </div>
-</div>
-
-<div id="mobile-footer" class="navbar-fixed-bottom" style="background-color: white;padding: .5em 0 .5em 0;display:none;">
-    <div class="dropdown">
-        <div class="dropdown-menu" role="menu" style="width: 100%; margin: 0 !important; border: 0;border-radius: 0;box-shadow: none;-webkit-box-shadow: none;background-color:whitesmoke">
-            @foreach (var game in Model.GameListModel)
-            {
+            <div id="search-results" class="row" ng-repeat="game in games">
                 <div class="col-xs-12" style="padding-bottom: 1em;">
                     <div style="background-color: white; color: grey">
                         <div>
-                            @game.Sport
+                            {{game.Sport}}
                         </div>
                         <div>
-                            @game.GameDate
+                            {{game.GameDate}}
                         </div>
-                        <div id="location" data-lat="@game.LocationLat" data-lng="@game.LocationLng">
-                            @game.Location
+                        <div id="location" data-lat="{{game.LocationLat}}" data-lng="{{game.LocationLng}}">
+                            {{game.Location}}
                         </div>
                     </div>
                 </div>
-            }
-        </div>
-        <div class="col-xs-6" data-toggle="dropdown">
-            LIST RESULTS
-        </div>
-        <div class="col-xs-6 text-right">
-            FILTER
+            </div>
         </div>
     </div>
-</div>
-
-<script id="gamesTemplate" type="text/html">
-    {{#games}}
-    <div class="col-xs-12" style="padding-bottom:1em;">
-        <div style="background-color:white;color:grey">
-            @*<div>
-                {{Name}}
-            </div>*@
-            <div>
-                {{Sport}}
+    
+    <div id="map" style="display: block; width: 100%;position: fixed;top: 4em;right: 0;left: auto;bottom: 0">
+        <div my-map=""></div>
+    </div>
+    
+    <div id="mobile-footer" class="navbar-fixed-bottom" style="background-color: white;padding: .5em 0 .5em 0;display:none;">
+        <div class="dropdown">
+            <div class="dropdown-menu" role="menu" style="width: 100%; margin: 0 !important; border: 0;border-radius: 0;box-shadow: none;-webkit-box-shadow: none;background-color:whitesmoke">
+                @foreach (var game in Model.GameListModel)
+                {
+                    <div class="col-xs-12" style="padding-bottom: 1em;">
+                        <div style="background-color: white; color: grey">
+                            <div>
+                                @game.Sport
+                            </div>
+                            <div>
+                                @game.GameDate
+                            </div>
+                            <div id="location" data-lat="@game.LocationLat" data-lng="@game.LocationLng">
+                                @game.Location
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
-            <div>
-                {{GameDate}}
+            <div class="col-xs-6" data-toggle="dropdown">
+                LIST RESULTS
             </div>
-            @*<div>
-                {{GameTime}}
-            </div>*@
-            <div class="location" data-lat={{LocationLat}} data-lng={{LocationLng}}>
-                {{Location}}
+            <div class="col-xs-6 text-right">
+                FILTER
             </div>
-            @*<div>
-                {{PlayerCount}}
-                <span>players joined</span>
-            </div>
-            <div>
-                {{DistanceToCenterLocation}}
-            </div>
-            <div>
-                {{Duration}}
-            </div>
-            <div>
-                {{Status}}
-            </div>
-            <div>
-                {{AgeGroup}}
-            </div>
-            <div>
-                {{Notes}}
-            </div>
-            <div>
-                {{Views}}
-            </div>
-            <button onclick="javascript:joinGame('{{Id}}');">Join</button>
-            <button onclick="javascript:watchGame('{{Id}}');">Watch</button>
-            <button>Edit</button>
-            <button onclick="javascript:deleteGame('{{Id}}');">Delete</button>*@
         </div>
     </div>
-    {{/games}}
-</script>
+</section>

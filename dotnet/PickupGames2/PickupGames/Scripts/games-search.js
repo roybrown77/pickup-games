@@ -4,7 +4,8 @@ var enableRecenter = false;
 var zoomValue = 8;
 
 $(function () {
-    initializeMap();
+    //initializeMap();
+
     $('#searchgamesform').submit(function (e) {
         e.preventDefault();
         var geocoder = new google.maps.Geocoder();

@@ -5,9 +5,11 @@ using PickupGames.Models;
 
 namespace PickupGames.Api
 {
+    //[RoutePrefix("api/Games")]
     public class TestsController : ApiControllerBase
     {
         [HttpPost]
+        //[Route("")]
         public GamesModel Get()
         {
             var domain = new GameDomain();
@@ -15,6 +17,7 @@ namespace PickupGames.Api
             return GamesMapper.ConvertGameListToGamesModel(response);
         }
 
+        //[Route("{searchModel}")]
         public GamesModel Get(GameSearchModel searchModel)
         {
             var domain = new GameDomain();
