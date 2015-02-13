@@ -1,6 +1,5 @@
 var gamesApp = angular.module('gamesApp', [])
     .directive('myMap', function () {
-
         var link = function (scope, element, attrs) {
         var map, infoWindow;
         var markers = [];
@@ -26,6 +25,40 @@ var gamesApp = angular.module('gamesApp', [])
                     map.fitBounds(results[0].geometry.viewport);
                 }
             });
+        }
+
+        function addMarkers() {
+            var coordinates = [];
+            $('.location').each(function (i) {
+                coordinates[i] = [parseFloat($(this).attr('data-lat')), parseFloat($(this).attr('data-lng'))];
+            });
+
+            var marker;
+            $(coordinates).each(function (i, elem) {
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(elem[0], elem[1]),
+                    map: map,
+                    title: 'time to ball!',
+                    draggable: true
+                });
+
+                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                    return function () {
+                    }
+                })(marker, i));
+
+                markers.push(marker);
+            });
+        }
+
+        function setMapAutocomplete() {
+            var input = (document.getElementById('Location'));
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.bindTo('bounds', map);
+        }
+
+        function setMapEvents() {
+            google.maps.event.addListener(map, 'bounds_changed', onBoundsChanged);
         }
 
         function setMarker(map, position, title, content) {
@@ -56,11 +89,14 @@ var gamesApp = angular.module('gamesApp', [])
 
         initMap();
         setMapBounds();
+        addMarkers();
+        setMapAutocomplete();
+        setMapEvents();
 
-        //setMarker(map, new google.maps.LatLng(51.508515, -0.125487), 'London', 'Just some content');
-        //setMarker(map, new google.maps.LatLng(52.370216, 4.895168), 'Amsterdam', 'More content');
-        //setMarker(map, new google.maps.LatLng(48.856614, 2.352222), 'Paris', 'Text here');
-    };
+            //setMarker(map, new google.maps.LatLng(51.508515, -0.125487), 'London', 'Just some content');
+            //setMarker(map, new google.maps.LatLng(52.370216, 4.895168), 'Amsterdam', 'More content');
+            //setMarker(map, new google.maps.LatLng(48.856614, 2.352222), 'Paris', 'Text here');
+        };
 
     return {
         restrict: 'A',
@@ -71,17 +107,9 @@ var gamesApp = angular.module('gamesApp', [])
 });
 
 gamesApp.controller('GameController', function ($scope, $http) {
-    var gamesMap;
-    var markers = [];
-    var enableRecenter = false;
-    var zoomValue = 8;
-
-    $http.post("api/Tests")
-        .success(function (data) {
-            $scope.games = data.GameListModel;
-        });
-
-    //$scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+    $http.post("api/Tests").success(function (data) {
+        $scope.games = data.GameListModel;
+    });
 
     //$scope.submit = function ($searchgamesform) {
     //};
