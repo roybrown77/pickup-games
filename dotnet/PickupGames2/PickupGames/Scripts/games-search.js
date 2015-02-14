@@ -6,19 +6,19 @@ var zoomValue = 8;
 $(function () {
     //initializeMap();
 
-    $('#searchgamesform').submit(function (e) {
-        e.preventDefault();
-        var geocoder = new google.maps.Geocoder();
-        geocoder.geocode({ 'address': $('#Location').val() }, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                enableRecenter = false;
-                gamesMap.fitBounds(results[0].geometry.viewport);
-                searchGamesByAjax(1);
-            }
-        });        
-    });
+    //$('#searchgamesform').submit(function (e) {
+    //    e.preventDefault();
+    //    var geocoder = new google.maps.Geocoder();
+    //    geocoder.geocode({ 'address': $('#Location').val() }, function (results, status) {
+    //        if (status == google.maps.GeocoderStatus.OK) {
+    //            enableRecenter = false;
+    //            gamesMap.fitBounds(results[0].geometry.viewport);
+    //            searchGamesByAjax(1);
+    //        }
+    //    });        
+    //});
 
-    $("#nav-location").toggle();
+    //$("#nav-location").toggle();
 });
 
 function searchGamesByAjax(pageIndex) {
@@ -41,7 +41,7 @@ function searchGamesByAjax(pageIndex) {
         success: function (data) {
             if (data.Status == "Success") {
                 updateGameList(data.Games);
-                refreshMap();
+                refreshMarkers();
             } else {                
             }
         },
@@ -169,7 +169,7 @@ function setMapEvents() {
     google.maps.event.addListener(gamesMap, 'bounds_changed', onBoundsChanged);    
 }
 
-function refreshMap() {
+function refreshMarkers() {
     deleteMarkers();
     addMarkers();
 }
