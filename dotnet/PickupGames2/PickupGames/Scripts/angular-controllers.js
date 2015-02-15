@@ -1,6 +1,6 @@
-var gameAppControllers = angular.module('gameAppControllers', []);
+var gamesAppControllers = angular.module('gamesAppControllers', []);
 
-gameAppControllers.controller('HomeController', function ($scope, $http) {
+gamesAppControllers.controller('HomeController', function ($scope, $http) {
     function initialize() {
         var input = (document.getElementById('Location'));
         new google.maps.places.Autocomplete(input);
@@ -9,28 +9,33 @@ gameAppControllers.controller('HomeController', function ($scope, $http) {
     google.maps.event.addDomListener(window, 'load', initialize);
 
     $scope.searchgames = function($searchgamesform) {
-        $http.post("api/Tests/Get/" + $searchgamesform.serialize).success(function(data) {
+        $http.post("api/Tests/" + $searchgamesform.serialize).success(function(data) {
             var x = 1;
         });
     };
 });
 
-gameAppControllers.controller('GameController', function ($scope, $http) {
+gamesAppControllers.controller('GameController', ['$routeParams', function ($scope, $http, $routeParams) {
     this.Location = 'usa';
 
-    $http.post("api/Tests/Get").success(function(data) {
+    $http.post("api/Tests/" + $routeParams.phoneId + "?zoom=" + $("#Zoom").val()).success(function (data) {
         $scope.games = data.GameListModel;
     });
 
+    $scope.Location = 'usa';
+    $scope.zoom = $routeParams.Zoom;
+
     $scope.searchgames = function($searchgamesform) {
-        $http.post("api/Tests/Get/" + $searchgamesform.serialize).success(function(data) {
+        $http.post("api/Tests/" + $searchgamesform.serialize).success(function(data) {
             $scope.games = data.GameListModel;
+            $scope.Location = data.GameListModel.Location;
+            $scope.zoom = data.GameListModel.Zoom;
             refreshMarkers();
         });
     };
-});
+}]);
 
-gameAppControllers.directive('myMap', function () {
+gamesAppControllers.directive('myMap', function () {
     var link = function(scope, element) {
         var map;
         var markers = [];

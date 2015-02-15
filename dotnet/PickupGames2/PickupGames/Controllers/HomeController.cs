@@ -24,10 +24,10 @@ namespace PickupGames.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult SearchGames(GameSearchModel searchModel)
-        {
-            return RedirectToAction("Search", "Games", searchModel);
-        }
+        //[HttpPost]
+        //public ActionResult SearchGames(GameSearchModel searchModel)
+        //{
+        //    return RedirectToAction("Search", "Games", searchModel);
+        //}
     }
 }
