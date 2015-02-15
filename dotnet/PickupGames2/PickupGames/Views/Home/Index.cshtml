@@ -5,6 +5,13 @@
     ViewBag.Title = "Index";
 }
 
+<style>
+    #container, #container-fluid {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+</style>
+
 <div data-example-id="responsive-embed-16by9-iframe-youtube">
     <div class="embed-responsive embed-responsive-16by9" style="top:-2.5em">
         @*<iframe class="embed-responsive-item" src="//www.youtube.com/embed/vnfulwtcwKQ?rel=0&autoplay=1&loop=1&playlist=vnfulwtcwKQ"></iframe>*@
@@ -14,7 +21,7 @@
                 @using (Html.BeginForm("SearchGames", "Home", new { role = "form", @class = "form-horizontal" }))
                 {
                     <div class="form-group">
-                        <div class="col-xs-11">
+                        <div class="col-xs-12">
                             @Html.TextBoxFor(m => m.Location, new { placeholder = "Where do you want to play?", @class = "form-control pull-left" })
                             <button type="submit" class="btn btn-default" style="background-color: #00bc8c;border-color: #00bc8c;color: white" aria-hidden="true">
                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -23,7 +30,7 @@
                     </div>
                 }
             </div>
-</div>
+        </div>
     </div>
 </div>
 
