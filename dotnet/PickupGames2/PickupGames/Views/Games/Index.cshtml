@@ -8,7 +8,11 @@
 
 <style>
     #map-canvas {
-        position: relative;overflow: hidden;-webkit-transform: translateZ(0px);background-color: rgb(229, 227, 223);height: 100%;
+        position: relative;
+        overflow: hidden;
+        -webkit-transform: translateZ(0);
+        background-color: rgb(229, 227, 223);
+        height: 100%;
     } 
 </style>
 
@@ -35,9 +39,9 @@
                     <button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default" style="width:100%;position:relative;bottom:0">Show Listings</button>
                 </div>
             </div>
-            <div id="search-results" class="row" ng-repeat="game in games">
-                <div class="col-xs-12" style="padding-bottom: 1em;">
-                    <div style="background-color: white; color: grey">
+            <div id="search-results" ng-repeat="game in games" style="padding-bottom:1em">
+                <div class="row" style="background-color: white; color: grey;box-shadow: 0 1px 1px #888888;margin-left:0 !important;margin-right:60px !important">
+                    <div class="col-xs-7">
                         <div>
                             {{game.Sport}}
                         </div>
@@ -47,6 +51,9 @@
                         <div id="location" data-lat="{{game.LocationLat}}" data-lng="{{game.LocationLng}}">
                             {{game.Location}}
                         </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <img src="{{game.LocationImageUrl}}">
                     </div>
                 </div>
             </div>
