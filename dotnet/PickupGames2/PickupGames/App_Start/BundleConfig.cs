@@ -7,6 +7,8 @@ namespace PickupGames
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.UseCdn = true;
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -26,6 +28,14 @@ namespace PickupGames
                         "~/Scripts/angular.js",
                         "~/Scripts/angular-resource.js",
                         "~/Scripts/angular-route.js"));
+
+            var jqueryBundle = new ScriptBundle("~/bundles/google-maps","https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places");
+
+            bundles.Add(jqueryBundle);    
+
+            //jqueryBundle = new ScriptBundle("~/bundles/angular-google-maps","https://cdnjs.cloudflare.com/ajax/libs/angular-google-maps/2.0.12/angular-google-maps_dev_mapped.min.js");
+
+            //bundles.Add(jqueryBundle);
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                       "~/Scripts/app.js",
