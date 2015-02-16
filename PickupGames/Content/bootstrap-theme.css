@@ -6623,29 +6623,26 @@ a.list-group-item-danger.active:focus {
     }
 }
 
-#mobile-footer > div > div {
-    color: grey;    
-    font-weight: bold;
-    cursor: pointer;
-}
-
 html {
     width: auto !important;
     overflow-x: hidden!important;
 }
 
-#searchgamesextraform > div> label {
-    color: grey;
+body {
+    padding-top:0!important
 }
 
+#navigationbar {
+    margin-bottom:0!important
+}
+
+#homelink {
+    position:absolute;left:1%;font-weight:bold
+}
 
 #container, #container-fluid {
     padding-right: 15px !important;
     padding-left: 15px !important;
     margin-right: auto !important;
     margin-left: auto !important;
-}
-
-#search-results > div > div {
-    box-shadow: 0 1px 1px #888888;
 }
