@@ -1,6 +1,4 @@
-var gamesAppControllers = angular.module('gamesAppControllers', []);
-
-gamesAppControllers.controller('HomeController', function ($scope, $http) {
+appRoot.controller('HomeController', function ($scope, $http) {
     function initialize() {
         var input = (document.getElementById('Location'));
         new google.maps.places.Autocomplete(input);
@@ -15,7 +13,7 @@ gamesAppControllers.controller('HomeController', function ($scope, $http) {
     };
 });
 
-gamesAppControllers.controller('GameController', ['$routeParams', function ($scope, $http, $routeParams) {
+appRoot.controller('GameController', ['$routeParams', function ($scope, $http, $routeParams) {
     $scope.Location = 'usa';
     $scope.zoom = 3; //$routeParams.Zoom;
 
@@ -33,7 +31,7 @@ gamesAppControllers.controller('GameController', ['$routeParams', function ($sco
     };
 }]);
 
-gamesAppControllers.directive('myMap', function () {
+appRoot.directive('myMap', function () {
     var link = function(scope, element) {
         var map;
         var markers = [];

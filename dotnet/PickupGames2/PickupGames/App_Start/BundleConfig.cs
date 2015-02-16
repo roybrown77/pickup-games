@@ -22,12 +22,15 @@ namespace PickupGames
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                        "~/Scripts/angular.js",
+                        "~/Scripts/angular-resource.js",
+                        "~/Scripts/angular-route.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                       "~/Scripts/app.js",
                       "~/Scripts/main.js",
-                      "~/Scripts/angular-controllers",
-                      "~/Scripts/games-search.js"));
+                      "~/Scripts/angular-controllers"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-theme.css",
