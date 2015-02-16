@@ -2,7 +2,7 @@
 using Ninject;
 using PickupGames.Utilities.DependencyInjector;
 
-namespace PickupGames.Api
+namespace PickupGames.Controllers
 {
     public class ApiControllerBase : ApiController
     {

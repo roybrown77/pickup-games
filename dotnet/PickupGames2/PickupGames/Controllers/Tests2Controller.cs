@@ -3,7 +3,7 @@ using PickupGames.Domains;
 using PickupGames.Mappers;
 using PickupGames.Models;
 
-namespace PickupGames.Api
+namespace PickupGames.Controllers
 {
     public class Tests2Controller : ApiControllerBase
     {
@@ -14,11 +14,14 @@ namespace PickupGames.Api
             return GamesMapper.ConvertGameListToGamesModel(response);
         }
 
-        public GamesModel Get(GameSearchModel searchModel)
+        public GamesModel Get(string location)
         {
-            var domain = new GameDomain();
+            var searchModel = new GameSearchModel {Location = location};
             var searchQuery = GamesMapper.ConvertSearchModelToSearchQuery(searchModel);
+
+            var domain = new GameDomain();
             var response = domain.FindBy(searchQuery);
+            
             return GamesMapper.ConvertGameListToGamesModel(response);
         }
 

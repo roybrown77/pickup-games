@@ -168,8 +168,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Api\ApiControllerBase.cs" />
-    <Compile Include="Api\TestsController.cs" />
+    <Compile Include="Controllers\ApiControllerBase.cs" />
+    <Compile Include="Controllers\Tests2Controller.cs" />
+    <Compile Include="Controllers\TestsController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -220,8 +221,10 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\angular-directives.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\app\views\home\index.html" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\angular-controllers.js" />
     <Content Include="Scripts\games-search.js" />
@@ -281,9 +284,13 @@
     <Content Include="Views\Games\Index.cshtml" />
     <Content Include="Views\Games\SearchLocation.cshtml" />
     <Content Include="Views\Games\SearchExtra.cshtml" />
+    <Content Include="Views\Home\Main.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Api\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\app\js\" />
+    <Folder Include="Scripts\app\views\games\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

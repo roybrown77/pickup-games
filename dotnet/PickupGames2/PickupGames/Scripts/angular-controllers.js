@@ -16,17 +16,15 @@ gamesAppControllers.controller('HomeController', function ($scope, $http) {
 });
 
 gamesAppControllers.controller('GameController', ['$routeParams', function ($scope, $http, $routeParams) {
-    this.Location = 'usa';
+    $scope.Location = 'usa';
+    $scope.zoom = 3; //$routeParams.Zoom;
 
-    $http.post("api/Tests/" + $routeParams.phoneId + "?zoom=" + $("#Zoom").val()).success(function (data) {
+    $http.get("api/Tests2/" + 'usa'/*$routeParams.Location*/).success(function (data) {
         $scope.games = data.GameListModel;
     });
 
-    $scope.Location = 'usa';
-    $scope.zoom = $routeParams.Zoom;
-
     $scope.searchgames = function($searchgamesform) {
-        $http.post("api/Tests/" + $searchgamesform.serialize).success(function(data) {
+        $http.post("api/Tests2/" + $searchgamesform.serialize).success(function(data) {
             $scope.games = data.GameListModel;
             $scope.Location = data.GameListModel.Location;
             $scope.zoom = data.GameListModel.Zoom;
