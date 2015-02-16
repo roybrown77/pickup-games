@@ -1,5 +1,4 @@
 ﻿using System.Web.Mvc;
-using PickupGames.Models;
 
 namespace PickupGames.Controllers
 {
@@ -12,22 +11,17 @@ namespace PickupGames.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult SearchGames(GameSearchModel searchModel)
-        //{
-        //    return RedirectToAction("Search", "Games", searchModel);
-        //}
+        public ActionResult Main()
+        {
+            return View();
+        }
     }
 }
