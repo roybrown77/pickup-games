@@ -19,7 +19,7 @@ gamesAppControllers.controller('GameController', ['$routeParams', function ($sco
     $scope.Location = 'usa';
     $scope.zoom = 3; //$routeParams.Zoom;
 
-    $http.get("api/Tests2/" + 'usa'/*$routeParams.Location*/).success(function (data) {
+    $http.get("api/Tests2").success(function (data) {
         $scope.games = data.GameListModel;
     });
 

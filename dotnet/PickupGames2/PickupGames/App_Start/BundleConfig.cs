@@ -24,7 +24,9 @@ namespace PickupGames
 
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
+                      "~/Scripts/app.js",
                       "~/Scripts/main.js",
+                      "~/Scripts/angular-controllers",
                       "~/Scripts/games-search.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
