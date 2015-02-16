@@ -69,7 +69,12 @@
 
     #search-results > div > div, #search-results-mobile > div > div {
         box-shadow: 0 1px 2px lightgrey;
-        background-color:white;color:grey
+        background-color:white;color: grey;
+        padding: .75em;
+    }
+
+    .sport {
+        color:black;font-size: 13pt;
     }
 </style>
 
@@ -104,7 +109,7 @@
                         @*<div>
                             @game.Name
                         </div>*@
-                        <div style="color:black;font-weight:bold">
+                        <div class="sport">
                             @game.Sport
                         </div>
                         <div>
