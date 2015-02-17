@@ -1,9 +1,9 @@
 ﻿<input type="hidden" ng-model="Zoom"/>
 
-<form id="searchgamesform" name="searchgamesform" ng-submit="searchgames(searchgamesform)" enctype="multipart/form-data" class="form-horizontal" role="form">
-    <div id="game-location" class="row">
-        <div id="location-input" class="col-xs-12">
-            <input id="Location" name="Location" ng-model="Location" data-lat="{{LocationLat}}" data-lng="{{LocationLng}}" class="form-control" placeholder="Where do you want to play?" />
-        </div>
+<div id="game-location" class="row">
+    <div id="location-input" class="col-xs-12">     
+        <form id="searchgamesform" name="searchgamesform" ng-submit="searchgames(searchgamesform)" enctype="multipart/form-data" class="form-horizontal" role="form">
+            <input id="Location" name="Location" ng-model="Location" type="text" data-lat="{{LocationLat}}" data-lng="{{LocationLng}}" class="form-control" placeholder="Where do you want to play?" />
+        </form>
     </div>
-</form>
+</div>

@@ -227,7 +227,6 @@
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\app\views\home\index.html" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\angular-controllers.js" />
     <Content Include="Scripts\games-search.js" />
@@ -294,6 +293,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\app\js\" />
     <Folder Include="Scripts\app\views\games\" />
+    <Folder Include="Scripts\app\views\home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

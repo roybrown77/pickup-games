@@ -14,15 +14,23 @@ appRoot.controller('HomeController', function ($scope, $http) {
 });
 
 appRoot.controller('GameController', ['$routeParams', function ($scope, $http, $routeParams) {
+    function initialize() {
+        var input = (document.getElementById('Location'));
+        new google.maps.places.Autocomplete(input);
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+
     $scope.Location = 'usa';
     $scope.zoom = 3; //$routeParams.Zoom;
+    $scope.games = "[{\"Sport\":\"Basketball\"}]";
 
-    $http.get("api/Tests2").success(function (data) {
-        $scope.games = data.GameListModel;
-    });
+    //$http.get("api/Tests2").success(function (data) {
+    //    $scope.games = data.GameListModel;
+    //});
 
-    $scope.searchgames = function($searchgamesform) {
-        $http.post("api/Tests2/" + $searchgamesform.serialize).success(function(data) {
+    $scope.searchgames = function ($searchgamesform) {
+        $http.post("api/Tests2/" + $searchgamesform.serialize).success(function (data) {
             $scope.games = data.GameListModel;
             $scope.Location = data.GameListModel.Location;
             $scope.zoom = data.GameListModel.Zoom;
@@ -36,6 +44,7 @@ appRoot.directive('myMap', function () {
         var map;
         var markers = [];
         var enableRecenter = false;
+        var zoomValue;
 
         var mapOptions = {
             zoom: 6,
@@ -98,6 +107,24 @@ appRoot.directive('myMap', function () {
             google.maps.event.addListener(map, 'bounds_changed', onBoundsChanged);
         }
 
+        function onBoundsChanged() {
+            if (enableRecenter === true) {
+                var latlng = map.getCenter();
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        if (results[1]) {
+                            $('#Location').val(results[1].formatted_address);
+                            zoomValue = map.getZoom();
+                            //searchGamesByAjax(1);
+                        }
+                    }
+                });
+            } else {
+                enableRecenter = true;
+            }
+        }
+
         initMap();
         setMapBounds();
         addMarkers();
@@ -114,24 +141,6 @@ appRoot.directive('myMap', function () {
         map: map
     };
 });
-
-//gamesApp
-//    .controller('GameController', function ($scope, gameService) {
-//        (function (service) {
-//            return function () {
-//                var resultPromise = service.getGames();
-//                resultPromise.success(function(data) {
-//                    $scope.games = data;
-//                });
-//            };
-//        })(gameService);
-//    }).factory('gameService', function ($http) {
-//        return ({ getGames: getGames });
-//        function getGames() {
-//            var request = $http.post("Games/GetGames");
-//            return request;
-//        }
-//    });
 
 //'use strict';
 //angular.module("angular-google-maps-example", ['uiGmapgoogle-maps'])
