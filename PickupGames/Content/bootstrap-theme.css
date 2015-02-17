@@ -6629,7 +6629,8 @@ html {
 }
 
 body {
-    padding-top:0!important
+    padding-top: 0 !important;
+    background-color:white !important;
 }
 
 #navigationbar {
@@ -6638,6 +6639,12 @@ body {
 
 #homelink {
     position:absolute;left:1%;font-weight:bold
+}
+
+#location-div {
+    display: none;
+    width: 15em;
+    position: relative;
 }
 
 #container, #container-fluid {
