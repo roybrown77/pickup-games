@@ -29,6 +29,7 @@ namespace PickupGames.Models
 
         public string Notes { get; set; }
 
-        public int Views { get; set; }        
+        public int Views { get; set; }
+        public string LocationImageUrl { get; set; }
     }
 }

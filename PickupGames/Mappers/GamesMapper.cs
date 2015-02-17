@@ -58,7 +58,8 @@ namespace PickupGames.Mappers
                                           PlayerCount = game.PlayerCount,
                                           DistanceToCenterLocation = game.DistanceToCenterLocation.Value + " " + game.DistanceToCenterLocation.Unit,
                                           LocationLat = game.LocationLat,
-                                          LocationLng = game.LocationLng
+                                          LocationLng = game.LocationLng,
+                                          LocationImageUrl = "https://maps.googleapis.com/maps/api/streetview?size=300x200&location=40.720032,-73.988354&fov=90&heading=235&pitch=10"
                                       });
             }
 
@@ -71,7 +72,7 @@ namespace PickupGames.Mappers
                        {
                            Location = searchModel.Location,
                            Index = searchModel.Index ?? 1,
-                           Zoom = searchModel.Zoom ?? 3
+                           Zoom = searchModel.Zoom ?? 4
                        };
         }
     }

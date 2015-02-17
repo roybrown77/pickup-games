@@ -1,8 +1,9 @@
 ﻿@model PickupGames.Models.GameCreateModel
 
+<h2>Create game.</h2>
+
 <div class="row">
-    <div class="col-xs-12">
-        <h2>Create game.</h2>                
+    <div class="col-xs-12">                
         <section id="creategame">                        
             @using (Html.BeginForm("Create", "Games", FormMethod.Post, new { id = "creategameform", @class = "form-horizontal", role = "form" }))
             {
@@ -81,10 +82,6 @@
 </div>
 
 <script type="text/javascript">
-    function toggleCreateGameDisplay() {
-        $('#creategame').toggle(500);
-    };
-
     function initialize() {
         var input = (document.getElementById('Location'));
         new google.maps.places.Autocomplete(input);

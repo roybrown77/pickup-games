@@ -1,28 +1,25 @@
 ﻿<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>@ViewBag.Title - Pickup Games</title>
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places" type="text/javascript"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js" type="text/javascript"></script>    
-    </head>
-
-    <body>        
-        <div id="navigationbar" class="navbar navbar-inverse navbar-static-top navbar">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("PiGa", "Index", "Home", new { area = "" }, new { id="homelink", @class = "navbar-brand" })
-                </div>
-                <div class="navbar-collapse collapse">
-                    @*<ul class="nav navbar-nav">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Pickup Games</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="padding-top:0!important" data-ng-app="main" data-ng-controller="RootController">
+    <div id="navigationbar" class="navbar navbar-inverse navbar-static-top navbar" style="margin-bottom:0!important">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("PiGa", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", @style = "position:absolute;left:1%;font-weight:bold" })
+            </div>
+            <div class="navbar-collapse collapse">
+                @*<ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Games", "Index", "Games")</li>
                     <li>@Html.ActionLink("Create Game", "Create", "Games")</li>
                         <!--<li><a>My Games</a></li>
@@ -32,23 +29,26 @@
                         <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     </ul>*@
-                    @Html.Partial("_LoginPartial")
-                </div>
+                @Html.Partial("_LoginPartial")
             </div>
         </div>
-
-        <div id="container">        
-            @RenderBody()
-            @*<div id="footer" style="clear:both">                
+    </div>
+    <div id="container">
+        @RenderBody()
+        @*<div id="footer" style="clear:both">
                 <hr />
                 <footer>
                     <p>&copy; @DateTime.Now.Year - Pickup Games</p>
                 </footer>
             </div>*@
-        </div>    
-
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
-    </body>
+    </div>
+    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/google-maps")
+    @*@Scripts.Render("~/bundles/angular-google-maps")*@
+    @Scripts.Render("~/bundles/app")
+    @RenderSection("scripts", required: false)
+</body>
 </html>

@@ -6623,34 +6623,25 @@ a.list-group-item-danger.active:focus {
     }
 }
 
+#mobile-footer > div > div {
+    color: grey;    
+    font-weight: bold;
+    cursor: pointer;
+}
+
 html {
     width: auto !important;
     overflow-x: hidden!important;
 }
 
-body {
-    padding-top: 0 !important;
-    background-color:white !important;
+#searchgamesextraform > div> label {
+    color: grey;
 }
 
-#navigationbar {
-    margin-bottom:0!important
-}
-
-#homelink {
-    position:absolute;left:1%;font-weight:bold
-}
-
-#location-div {
-    display: none;
-    width: 15em;
-    position: relative;
-}
 
 #container, #container-fluid {
     padding-right: 15px !important;
     padding-left: 15px !important;
     margin-right: auto !important;
     margin-left: auto !important;
-    background-color: #222222;
 }
