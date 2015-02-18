@@ -25,12 +25,12 @@ appRoot.controller('GameController', ['$routeParams', function ($scope, $http, $
     $scope.zoom = 3; //$routeParams.Zoom;
     $scope.games = "[{\"Sport\":\"Basketball\"}]";
 
-    //$http.get("api/Tests2").success(function (data) {
-    //    $scope.games = data.GameListModel;
-    //});
+    $http.get("api/Tests2/" + $routeParams.Location).success(function (data) {
+        $scope.games = data.GameListModel;
+    });
 
-    $scope.searchgames = function ($searchgamesform) {
-        $http.post("api/Tests2/" + $searchgamesform.serialize).success(function (data) {
+    $scope.searchgames = function () {
+        $http.post("api/Tests2/" + this.serialize).success(function (data) {
             $scope.games = data.GameListModel;
             $scope.Location = data.GameListModel.Location;
             $scope.zoom = data.GameListModel.Zoom;
