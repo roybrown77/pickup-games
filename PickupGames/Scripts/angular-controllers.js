@@ -25,7 +25,7 @@ appRoot.controller('GameController', ['$routeParams', function ($scope, $http, $
     $scope.zoom = 3; //$routeParams.Zoom;
     $scope.games = "[{\"Sport\":\"Basketball\"}]";
 
-    $http.get("api/Tests2/" + $routeParams.Location).success(function (data) {
+    $http.get("api/Tests2").success(function (data) {
         $scope.games = data.GameListModel;
     });
 

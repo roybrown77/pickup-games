@@ -23,5 +23,10 @@ namespace PickupGames.Controllers
         {
             return View();
         }
+
+        public ActionResult Games()
+        {
+            return View();
+        }
     }
 }

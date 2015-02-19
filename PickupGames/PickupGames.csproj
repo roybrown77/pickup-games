@@ -283,7 +283,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\CreateGame.cshtml" />
     <Content Include="Views\Games\Edit.cshtml" />
-    <Content Include="Views\Games\Index.cshtml" />
+    <Content Include="Views\Home\Games.cshtml" />
     <Content Include="Views\Games\SearchLocation.cshtml" />
     <Content Include="Views\Games\SearchExtra.cshtml" />
     <Content Include="Views\Home\Main.cshtml" />
