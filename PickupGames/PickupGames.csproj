@@ -284,8 +284,8 @@
     <Content Include="Views\Shared\CreateGame.cshtml" />
     <Content Include="Views\Games2\Edit.cshtml" />
     <Content Include="Views\Home\Games.cshtml" />
-    <Content Include="Views\Games2\SearchLocation.cshtml" />
-    <Content Include="Views\Games2\SearchExtra.cshtml" />
+    <Content Include="Views\Home\SearchLocation.cshtml" />
+    <Content Include="Views\Home\SearchExtra.cshtml" />
     <Content Include="Views\Home\Main.cshtml" />
   </ItemGroup>
   <ItemGroup>

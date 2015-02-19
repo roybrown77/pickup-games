@@ -11,6 +11,12 @@ namespace PickupGames.Controllers
             new GameModel{Sport = "football"},
         };
 
+        List<GameModel> games2 = new List<GameModel>()
+        {
+            new GameModel{Sport = "hockey"},
+            new GameModel{Sport = "soccer"},
+        };
+
         public IEnumerable<GameModel> Get()
         {
             return games;
@@ -21,9 +27,9 @@ namespace PickupGames.Controllers
             return game;
         }
 
-        public GameModel Post(GameModel game)
+        public IEnumerable<GameModel> Post(GameModel game)
         {
-            return null;
+            return games2;
         }    
     }
 }
