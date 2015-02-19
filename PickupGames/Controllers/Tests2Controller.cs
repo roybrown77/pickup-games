@@ -1,4 +1,6 @@
-﻿using System.Web.Http;
+﻿using System.Collections.Generic;
+using System.Web.Http;
+using PickupGames.Domain.Objects;
 using PickupGames.Domains;
 using PickupGames.Mappers;
 using PickupGames.Models;
@@ -7,31 +9,24 @@ namespace PickupGames.Controllers
 {
     public class Tests2Controller : ApiControllerBase
     {
-        public GamesModel Get()
+        List<GameModel> games = new List<GameModel>()
         {
-            var domain = new GameDomain();
-            var response = domain.FindBy("usa");
-            return GamesMapper.ConvertGameListToGamesModel(response);
+            new GameModel{Sport = "basketball"},
+            new GameModel{Sport = "football"},
+        };
+        public IEnumerable<GameModel> Get()
+        {
+            return games;
         }
 
-        public GamesModel Get(string location)
+        public GameModel Put(GameModel game)
         {
-            var searchModel = new GameSearchModel {Location = location};
-            var searchQuery = GamesMapper.ConvertSearchModelToSearchQuery(searchModel);
-
-            var domain = new GameDomain();
-            var response = domain.FindBy(searchQuery);
-            
-            return GamesMapper.ConvertGameListToGamesModel(response);
+            return game;
         }
 
-        [HttpPost]
-        public GamesModel SearchGames(GameSearchModel searchModel)
+        public GameModel Post(GameModel game)
         {
-            var domain = new GameDomain();
-            var searchQuery = GamesMapper.ConvertSearchModelToSearchQuery(searchModel);
-            var response = domain.FindBy(searchQuery);
-            return GamesMapper.ConvertGameListToGamesModel(response);
+            return null;
         }    
     }
 }

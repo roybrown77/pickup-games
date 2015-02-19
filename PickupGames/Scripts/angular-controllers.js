@@ -13,7 +13,7 @@ appRoot.controller('HomeController', function ($scope, $http) {
     };
 });
 
-appRoot.controller('GameController', ['$routeParams', function ($scope, $http, $routeParams) {
+appRoot.controller('GameController', ['$routeParams', function ($scope, $http, $resource) {
     function initialize() {
         var input = (document.getElementById('Location'));
         new google.maps.places.Autocomplete(input);
@@ -23,11 +23,16 @@ appRoot.controller('GameController', ['$routeParams', function ($scope, $http, $
 
     $scope.Location = 'usa';
     $scope.zoom = 3; //$routeParams.Zoom;
-    $scope.games = "[{\"Sport\":\"Basketball\"}]";
 
-    $http.get("api/Tests2").success(function (data) {
-        $scope.games = data.GameListModel;
-    });
+    //var resource = $resource('/api/tests2', {}, { update: { method: 'PUT' } });
+    //$scope.games = [];
+
+    //resource.query(function (data) {
+    //    $scope.games = [];
+    //    angular.forEach(data, function (game) {
+    //        $scope.games.push(game);
+    //    });
+    //});
 
     $scope.searchgames = function () {
         $http.post("api/Tests2/" + this.serialize).success(function (data) {
@@ -60,7 +65,7 @@ appRoot.directive('myMap', function () {
 
         function setMapBounds() {
             var location = $('#Location').val();
-            if (location == "") {
+            if (location == undefined) {
                 location = 'usa';
             }
 
@@ -127,9 +132,9 @@ appRoot.directive('myMap', function () {
 
         initMap();
         setMapBounds();
-        addMarkers();
-        setMapAutocomplete();
-        setMapEvents();
+        //addMarkers();
+        //setMapAutocomplete();
+        //setMapEvents();
 
     };
 
