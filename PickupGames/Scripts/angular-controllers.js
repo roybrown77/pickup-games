@@ -13,7 +13,7 @@ appRoot.controller('HomeController', function ($scope, $http) {
     };
 });
 
-appRoot.controller('GameController', ['$routeParams', function ($scope, $http, $resource) {
+appRoot.controller('GameController', function ($scope, $location, $resource) {
     function initialize() {
         var input = (document.getElementById('Location'));
         new google.maps.places.Autocomplete(input);
@@ -21,28 +21,28 @@ appRoot.controller('GameController', ['$routeParams', function ($scope, $http, $
 
     google.maps.event.addDomListener(window, 'load', initialize);
 
-    $scope.Location = 'usa';
+    $scope.Location = 'usa'; //$routeParams.Location;
     $scope.zoom = 3; //$routeParams.Zoom;
 
-    //var resource = $resource('/api/tests2', {}, { update: { method: 'PUT' } });
-    //$scope.games = [];
+    var resource = $resource('/api/games', {}, { update: { method: 'PUT' } });
+    $scope.games = [];
 
-    //resource.query(function (data) {
-    //    $scope.games = [];
-    //    angular.forEach(data, function (game) {
-    //        $scope.games.push(game);
-    //    });
-    //});
+    resource.query(function (data) {
+        $scope.games = data;
+        //angular.forEach(data, function (game) {
+        //    $scope.games.push(game);
+        //});
+    });
 
     $scope.searchgames = function () {
-        $http.post("api/Tests2/" + this.serialize).success(function (data) {
+        $http.post("api/games/" + this.serialize).success(function (data) {
             $scope.games = data.GameListModel;
             $scope.Location = data.GameListModel.Location;
             $scope.zoom = data.GameListModel.Zoom;
             refreshMarkers();
         });
     };
-}]);
+});
 
 appRoot.directive('myMap', function () {
     var link = function(scope, element) {

@@ -169,7 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\ApiControllerBase.cs" />
-    <Compile Include="Controllers\Tests2Controller.cs" />
+    <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\TestsController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -179,7 +179,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
-    <Compile Include="Controllers\GamesController.cs" />
+    <Compile Include="Controllers\Games2Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Domain.Objects\BasicResponse.cs" />
@@ -282,10 +282,10 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\CreateGame.cshtml" />
-    <Content Include="Views\Games\Edit.cshtml" />
+    <Content Include="Views\Games2\Edit.cshtml" />
     <Content Include="Views\Home\Games.cshtml" />
-    <Content Include="Views\Games\SearchLocation.cshtml" />
-    <Content Include="Views\Games\SearchExtra.cshtml" />
+    <Content Include="Views\Games2\SearchLocation.cshtml" />
+    <Content Include="Views\Games2\SearchExtra.cshtml" />
     <Content Include="Views\Home\Main.cshtml" />
   </ItemGroup>
   <ItemGroup>
