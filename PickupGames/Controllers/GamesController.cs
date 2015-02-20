@@ -22,6 +22,11 @@ namespace PickupGames.Controllers
             return games;
         }
 
+        public IEnumerable<GameModel> Get(GameModel game)
+        {
+            return games2;
+        }
+
         public GameModel Put(GameModel game)
         {
             return game;

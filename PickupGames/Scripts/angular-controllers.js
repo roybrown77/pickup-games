@@ -1,4 +1,4 @@
-appRoot.controller('HomeController', function ($scope, $http) {
+appRoot.controller('MainController', function ($scope, $http, $routeParams) {
     function initialize() {
         var input = (document.getElementById('Location'));
         new google.maps.places.Autocomplete(input);
@@ -6,38 +6,30 @@ appRoot.controller('HomeController', function ($scope, $http) {
 
     google.maps.event.addDomListener(window, 'load', initialize);
 
-    $scope.searchgames = function($searchgamesform) {
-        $http.post("api/Tests/" + $searchgamesform.serialize).success(function(data) {
-            var x = 1;
-        });
+    $scope.searchgames = function () {
+        window.location = "#/games/" + $scope.Location + "/1";
     };
 });
 
-appRoot.controller('GamesController', function ($scope, $http, $location, $resource) {
+appRoot.controller('GamesController', function ($scope, $http, $location, $resource, $routeParams) {
     function initialize() {
         var input = (document.getElementById('Location'));
         new google.maps.places.Autocomplete(input);
     }
-
     google.maps.event.addDomListener(window, 'load', initialize);
 
-    $scope.zoom = 3; //$routeParams.Zoom;
-    $scope.Location = 'usa'; //$routeParams.Location;
-    //$scope.LocationLat = 'usa';
-    //$scope.LocationLng = 'usa';
-
-    var resource = $resource('/api/games', {}, { update: { method: 'PUT' } });
+    $scope.gamesearch = [];
+    $scope.gamesearch.Location = $routeParams.location;
     $scope.games = [];
 
+    var resource = $resource('/api/games/' + $routeParams.location + '/1', {}, { update: { method: 'PUT' } });
     resource.query(function (data) {
-        $scope.games = data;        
+        $scope.games = data;
     });
 
     $scope.searchgames = function () {
-        $http.post("api/games/", $scope.game).success(function (data) {
+        $http.post("api/games/", $scope.gamesearch).success(function (data) {
             $scope.games = data; //data.GameListModel;
-            //$scope.Location = data.GameListModel.Location;
-            //$scope.Zoom = data.GameListModel.Zoom;
             refreshMarkers();
         });
     };
@@ -64,7 +56,7 @@ appRoot.directive('myMap', function () {
 
         function setMapBounds() {
             var location = $('#Location').val();
-            if (location == undefined) {
+            if (location === undefined || location == "") {
                 location = 'usa';
             }
 

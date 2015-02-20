@@ -17,14 +17,14 @@
     } 
 </style>
 
-<input type="hidden" ng-model="Zoom" />
+@*<input type="hidden" ng-model="Zoom" />*@
 
 <div id="search-location" class="row" style="position: fixed;top: .5em;z-index: 999999;left:6em">    
     <div class="col-xs-12">
         <div id="game-location" class="row">
             <div id="location-input" class="col-xs-12">
                 <form id="searchgamesform" name="searchgamesform" ng-submit="searchgames()" enctype="multipart/form-data" class="form-horizontal" role="form">
-                    <input @*id="Location" name="Location"*@ ng-model="game.Location" type="text" @*data-lat="{{LocationLat}}" data-lng="{{LocationLng}}"*@ class="form-control" placeholder="Where do you want to play?" />
+                    <input id="Location" name="Location" ng-model="gamesearch.Location" type="text" @*data-lat="{{LocationLat}}" data-lng="{{LocationLng}}"*@ class="form-control" placeholder="Where do you want to play?" />
                 </form>
             </div>
         </div>
