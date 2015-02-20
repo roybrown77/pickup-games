@@ -22,14 +22,19 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
     $scope.gamesearch.Location = $routeParams.location;
     $scope.games = [];
 
-    var resource = $resource('/api/games/' + $routeParams.location + '/1', {}, { update: { method: 'PUT' } });
-    resource.query(function (data) {
+    //var resource = $resource('api/games/', $scope.gamesearch, { method: 'POST' });
+    //resource.query(function (data) {
+    //    $scope.games = data;
+    //});
+
+    $http.post("api/games/", $routeParams).success(function (data) {
         $scope.games = data;
+        refreshMarkers();
     });
 
     $scope.searchgames = function () {
         $http.post("api/games/", $scope.gamesearch).success(function (data) {
-            $scope.games = data; //data.GameListModel;
+            $scope.games = data;
             refreshMarkers();
         });
     };
