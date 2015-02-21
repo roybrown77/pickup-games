@@ -19,6 +19,7 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
     google.maps.event.addDomListener(window, 'load', initialize);
 
     $scope.gamesearch = [];
+    $scope.gamesearch.location = $routeParams.location;
     $scope.games = [];
 
     //var resource = $resource('api/games/', $scope.gamesearch, { method: 'POST' });
