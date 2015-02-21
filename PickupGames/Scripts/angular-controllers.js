@@ -22,6 +22,9 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
     $scope.gamesearch.location = $routeParams.location;
     $scope.games = [];
 
+    $scope.zoom = $routeParams.zoom;
+    $scope.location = $routeParams.location;
+
     //var resource = $resource('api/games/', $scope.gamesearch, { method: 'POST' });
     //resource.query(function (data) {
     //    $scope.games = data;
@@ -35,6 +38,7 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
     $scope.searchgames = function () {
         $routeParams.location = $scope.gamesearch.location;
         $routeParams.index = 1;
+        //$routeParams.zoom = $scope.map.getZoom();
         $http.post("api/games/", $routeParams).success(function (data) {
             $scope.games = data;
             updateUrl(1);
@@ -46,9 +50,9 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
         var urlSearchParameterArray = getUrlSearchParameterArray();
 
         if (urlSearchParameterArray.length > 0) {
-            $location.path("/games/" + $scope.gamesearch.location + "/" + pageIndex, false).search({ 'zoom':'2' }); //=" + 2 + "&" + urlSearchParameterArray.join("&"));
+            $location.path("/games/" + $scope.gamesearch.location + "/" + pageIndex, false).search({ 'zoom' : $scope.zoom, 'sport' : $scope.gamesearch.sport }); //=" + 2 + "&" + urlSearchParameterArray.join("&"));
         } else {
-            $location.path("/games/" + $scope.gamesearch.location + "/" + pageIndex, false).search({ 'zoom' : '3' });;
+            $location.path("/games/" + $scope.gamesearch.location + "/" + pageIndex, false).search({ 'zoom' : $scope.zoom });;
         }
     }
 
@@ -78,7 +82,7 @@ appRoot.directive('myMap', function () {
         var zoomValue;
 
         var mapOptions = {
-            zoom: 6,
+            zoom: scope.zoom,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             scrollwheel: false
         };
@@ -90,7 +94,7 @@ appRoot.directive('myMap', function () {
         }
 
         function setMapBounds() {
-            var location = $('#Location').val();
+            var location = scope.location;
             if (location === undefined || location == "") {
                 location = 'usa';
             }
@@ -169,7 +173,11 @@ appRoot.directive('myMap', function () {
         template: '<div id="map-canvas"></div>',
         replace: true,
         link: link,
-        map: map
+        scope: {
+            zoom: "=",
+            location: "=",
+            map: "=",
+        }
     };
 });
 
