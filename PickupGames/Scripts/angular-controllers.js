@@ -46,7 +46,7 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
         var urlSearchParameterArray = getUrlSearchParameterArray();
 
         if (urlSearchParameterArray.length > 0) {
-            $location.path("/games/" + $scope.gamesearch.location + "/" + pageIndex, false).search({ 'zoom' : '2' }); //=" + 2 + "&" + urlSearchParameterArray.join("&"));
+            $location.path("/games/" + $scope.gamesearch.location + "/" + pageIndex, false).search({ 'zoom':'2' }); //=" + 2 + "&" + urlSearchParameterArray.join("&"));
         } else {
             $location.path("/games/" + $scope.gamesearch.location + "/" + pageIndex, false).search({ 'zoom' : '3' });;
         }
@@ -55,7 +55,7 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
     function getUrlSearchParameterArray() {
         var urlSearchParameterArray = [];
 
-        var searchFormParameters = $("#searchgamesform").serializeArray();
+        var searchFormParameters = $("#searchgamesextraform").serializeArray();
         var encodedSearchFormParameters = $.param(searchFormParameters);
         var encodedSearchFormParametersArray = encodedSearchFormParameters.split('&');
 

@@ -37,9 +37,16 @@
                 <button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default">More Filters</button>
             </div>
         </div>
-        <div id="search-extra-filters" class="row" style="display:none">
+        <div id="search-extra-filters" class="row" style="display:block">
             <div class="col-xs-12">
-                @*@Html.Partial("SearchExtra", Model.GameSearchModel)*@
+                <form id="searchgamesextraform" name="searchgamesextraform" ng-submit="searchgames()" enctype="multipart/form-data" role="form" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Sport</label>
+                        <div class="col-md-10">
+                            <input id="Sport" name="Sport" ng-model="gamesearch.sport" class="form-control" />
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
         <div id="show-listings-toggle" class="row" style="margin-top: 1em; margin-bottom: 1em; display:none">
