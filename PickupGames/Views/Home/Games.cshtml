@@ -17,8 +17,6 @@
     } 
 </style>
 
-@*<input type="hidden" ng-model="Zoom" />*@
-
 <div id="search-location" class="row" style="position: fixed;top: .5em;z-index: 999999;left:6em">    
     <div class="col-xs-12">
         <div id="game-location" class="row">
@@ -72,7 +70,7 @@
     </div>
 </div>
 <div id="map" style="display: block; width: 100%;position: fixed;top: 4em;right: 0;left: auto;bottom: 0">    
-    <div my-map="" zoom="4" location="location" map="map"></div>
+    <div id="map-canvas" @*mymap="" zoom="4" location="location" map="map"*@></div>
 </div>
 <div id="mobile-footer" class="navbar-fixed-bottom" style="background-color: white;padding: .5em 0 .5em 0;display:none;">    
     <div class="dropdown">
