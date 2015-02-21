@@ -23,6 +23,7 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
     var map;
     var geocoder;
     var markers = [];
+    var enableRecenter = false;
 
     function initializeUrl() {
         if ($routeParams.location === undefined || $routeParams.location === "") {
@@ -37,7 +38,6 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
             $routeParams.zoom = 4;
         }
 
-    
         $location.path("/games/" + $routeParams.location + "/" + $routeParams.index, false).search({ 'zoom': $routeParams.zoom });
     }
 
@@ -53,7 +53,7 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
         var mapOptions = {
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             zoom: parseInt($routeParams.zoom),
-            maxZoom: parseInt($routeParams.zoom)
+            //maxZoom: parseInt($routeParams.zoom)
         };
         map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     }
@@ -62,6 +62,7 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
         geocoder = new google.maps.Geocoder();
         geocoder.geocode({ 'address': $routeParams.location }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
+                enableRecenter = false;
                 map.fitBounds(results[0].geometry.viewport);
                 map.setZoom(parseInt($routeParams.zoom));
             }
@@ -109,12 +110,15 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
             geocoder.geocode({ 'latLng': latlng }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     if (results[1]) {
-                        //$('#Location').val(results[1].address);
-                        $routeParams.zoom = map.getZoom();
+                        //$('#Location').val(results[1].formatted_address);
+                        //$location.path("/games/" + results[1].formatted_address + "/" + $routeParams.index, false).search({ 'zoom': map.getZoom() });
+                        //$scope.gamesearch.location = results[1].formatted_address;
+                        //$routeParams.zoom = map.getZoom();
                     }
                 }
             });
         //} else {
+        //    enableRecenter = true;
         //}
     }
 
@@ -177,6 +181,7 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
         geocoder.geocode({ 'address': $routeParams.location }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 map.fitBounds(results[0].geometry.viewport);
+                enableRecenter = false;
             }
         });        
 
