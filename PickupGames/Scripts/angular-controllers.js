@@ -19,7 +19,6 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
     google.maps.event.addDomListener(window, 'load', initialize);
 
     $scope.gamesearch = [];
-    $scope.gamesearch.Location = $routeParams.location;
     $scope.games = [];
 
     //var resource = $resource('api/games/', $scope.gamesearch, { method: 'POST' });
@@ -33,7 +32,9 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
     });
 
     $scope.searchgames = function () {
-        $http.post("api/games/", $scope.gamesearch).success(function (data) {
+        $routeParams.location = $scope.gamesearch.location;
+        $routeParams.index = 1;
+        $http.post("api/games/", $routeParams).success(function (data) {
             $scope.games = data;
             refreshMarkers();
         });

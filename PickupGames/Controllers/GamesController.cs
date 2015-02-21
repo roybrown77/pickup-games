@@ -22,12 +22,17 @@ namespace PickupGames.Controllers
             return games;
         }
 
+        public IEnumerable<GameModel> Get(GameSearchModel gameSearchModel)
+        {
+            return games;
+        }
+
         public GameModel Put(GameModel game)
         {
             return game;
         }
 
-        public IEnumerable<GameModel> Post(GameModel game)
+        public IEnumerable<GameModel> Post(GameSearchModel gameSearchModel)
         {
             return games2;
         }    
