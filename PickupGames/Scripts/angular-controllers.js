@@ -37,9 +37,37 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
         $routeParams.index = 1;
         $http.post("api/games/", $routeParams).success(function (data) {
             $scope.games = data;
-            refreshMarkers();
+            ///updateUrl(1);
+            //refreshMarkers();
         });
     };
+
+    function updateUrl(pageIndex) {
+        var urlSearchParameterArray = getUrlSearchParameterArray();
+
+        if (urlSearchParameterArray.length > 0) {
+            //window.history.pushState("searchcriteria", "searchcriteria", "/#/games/" + $scope.gamesearch.location + "/" + pageIndex + "?zoom=" + 2 + "&" + urlSearchParameterArray.join("&"));
+        } else {
+            //window.history.pushState("searchcriteria", "searchcriteria", "/#/games/" + $scope.gamesearch.location + "/" + pageIndex + "?zoom=" + 3);
+        }
+    }
+
+    function getUrlSearchParameterArray() {
+        var urlSearchParameterArray = [];
+
+        var searchFormParameters = $("#searchgamesform").serializeArray();
+        var encodedSearchFormParameters = $.param(searchFormParameters);
+        var encodedSearchFormParametersArray = encodedSearchFormParameters.split('&');
+
+        $.each(encodedSearchFormParametersArray, function (i, elem) {
+            if (elem.split("=")[1] != "" && elem.split("=")[0].toLowerCase() != "location") {
+                elem = elem.split("=")[0].toLowerCase() + '=' + elem.split("=")[1];
+                urlSearchParameterArray.push(elem);
+            }
+        });
+
+        return urlSearchParameterArray;
+    }
 });
 
 appRoot.directive('myMap', function () {
