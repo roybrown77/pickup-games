@@ -29,7 +29,7 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
 
     $http.post("api/games/", $routeParams).success(function (data) {
         $scope.games = data;
-        refreshMarkers();
+        //refreshMarkers();
     });
 
     $scope.searchgames = function () {
@@ -37,7 +37,7 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
         $routeParams.index = 1;
         $http.post("api/games/", $routeParams).success(function (data) {
             $scope.games = data;
-            ///updateUrl(1);
+            updateUrl(1);
             //refreshMarkers();
         });
     };
@@ -46,9 +46,9 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
         var urlSearchParameterArray = getUrlSearchParameterArray();
 
         if (urlSearchParameterArray.length > 0) {
-            //window.history.pushState("searchcriteria", "searchcriteria", "/#/games/" + $scope.gamesearch.location + "/" + pageIndex + "?zoom=" + 2 + "&" + urlSearchParameterArray.join("&"));
+            $location.path("/games/" + $scope.gamesearch.location + "/" + pageIndex, false).search({ 'zoom' : '2' }); //=" + 2 + "&" + urlSearchParameterArray.join("&"));
         } else {
-            //window.history.pushState("searchcriteria", "searchcriteria", "/#/games/" + $scope.gamesearch.location + "/" + pageIndex + "?zoom=" + 3);
+            $location.path("/games/" + $scope.gamesearch.location + "/" + pageIndex, false).search({ 'zoom' : '3' });;
         }
     }
 
