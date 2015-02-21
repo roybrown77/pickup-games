@@ -7,18 +7,12 @@ appRoot.controller('MainController', function ($scope, $http, $routeParams) {
     google.maps.event.addDomListener(window, 'load', initialize);
 
     $scope.searchgames = function () {
-        var location = 'usa';
-        if ($scope.location !== undefined && $scope.location !== "") {
-            location = 'usa';
-        }
-
-        window.location = "#/games/" + location;
+        window.location = "#/games/" + $scope.Location;
     };
 });
 
 appRoot.controller('GamesController', function ($scope, $http, $location, $resource, $routeParams) {
     $scope.gamesearch = [];
-    $scope.gamesearch.location = $routeParams.location;
 
     var map;
     var geocoder;
@@ -26,15 +20,15 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
     var enableRecenter = false;
 
     function initializeUrl() {
-        if ($routeParams.location === undefined || $routeParams.location === "") {
+        if ($routeParams.location === 'undefined' || $routeParams.location === undefined || $routeParams.location === "") {
             $routeParams.location = 'usa';
         }
 
-        if ($routeParams.index === undefined || $routeParams.index === "") {
+        if ($routeParams.index === 'undefined' || $routeParams.index === undefined || $routeParams.index === "") {
             $routeParams.index = 1;
         }
 
-        if ($routeParams.zoom === undefined || $routeParams.zoom === "") {
+        if ($routeParams.zoom === 'undefined' || $routeParams.zoom === undefined || $routeParams.zoom === "") {
             $routeParams.zoom = 4;
         }
 
@@ -136,7 +130,6 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
     }
 
     function updateUrl(pageIndex) {
-
         //var urlSearchParameterArray = getUrlSearchParameterArray();
 
         //if (urlSearchParameterArray.length > 0) {
@@ -166,6 +159,7 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
     function initializeScope() {
         $scope.map = map;
         $scope.markers = markers;
+        $scope.gamesearch.location = $routeParams.location;
     }
 
     initializeUrl();
