@@ -70,7 +70,7 @@ namespace PickupGames.Mappers
         {
             return new SearchQuery
                        {
-                           Location = searchModel.Location,
+                           Location = searchModel.Location ?? "all",
                            Index = searchModel.Index ?? 1,
                            Zoom = searchModel.Zoom ?? 4
                        };
