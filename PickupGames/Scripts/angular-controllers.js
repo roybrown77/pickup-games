@@ -9,14 +9,11 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
     function initializeRouteParams() {
         if ($routeParams.location === 'undefined' || $routeParams.location === undefined || $routeParams.location === "") {
             $routeParams.location = 'usa';
+            $routeParams.zoom = 3;
         }
 
         if ($routeParams.index === 'undefined' || $routeParams.index === undefined || $routeParams.index === "") {
             $routeParams.index = 1;
-        }
-
-        if ($routeParams.zoom === 'undefined' || $routeParams.zoom === undefined || $routeParams.zoom === "") {
-            $routeParams.zoom = 4;
         }
     }
 
@@ -41,6 +38,7 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
                 if (status == google.maps.GeocoderStatus.OK) {
                     map.fitBounds(results[0].geometry.viewport);
                     $routeParams.zoom = map.zoom;
+                    updateUrl();
                 }
             });
         } else {
@@ -49,11 +47,10 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
                     enableRecenter = false;
                     map.fitBounds(results[0].geometry.viewport);
                     map.setZoom(parseInt($routeParams.zoom));
+                    updateUrl();
                 }
             });
         }
-
-        updateUrl();
     }
 
     function setMapAutocomplete() {
