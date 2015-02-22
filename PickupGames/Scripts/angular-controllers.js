@@ -146,8 +146,6 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
     }
 
     function initializeScope() {
-        $scope.map = map;
-        $scope.markers = markers;
         $scope.gamesearch.location = $routeParams.location;
     }
 
