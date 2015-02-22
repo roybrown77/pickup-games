@@ -1,6 +1,4 @@
 appRoot.controller('GamesController', function ($scope, $http, $location, $resource, $routeParams) {
-    $scope.gamesearch = [];
-
     var map;
     var geocoder = new google.maps.Geocoder();;
     var markers = [];
@@ -146,6 +144,7 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
     }
 
     function initializeScope() {
+        $scope.gamesearch = [];
         $scope.gamesearch.location = $routeParams.location;
     }
 
