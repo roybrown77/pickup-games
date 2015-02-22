@@ -106,7 +106,7 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
     function initializeGames() {
         $scope.games = [];
         $http.post("api/games/", $routeParams).success(function (response) {
-            $scope.games = response.Games;
+            $scope.games = response.games;
             //refreshMarkers();
         });
 
@@ -162,8 +162,8 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
                 map.fitBounds(results[0].geometry.viewport);
                 $routeParams.zoom = map.zoom;
 
-                $http.post("api/games/", $routeParams).success(function (data) {
-                    $scope.games = data;
+                $http.post("api/games/", $routeParams).success(function (response) {
+                    $scope.games = response.games;
                     updateUrl();
                     //refreshMarkers();
                 });

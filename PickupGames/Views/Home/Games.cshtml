@@ -1,9 +1,4 @@
-﻿@using System.Threading
-@using PickupGames.Models
-@using PickupGames.Domain.Objects
-@*@model PickupGames.Models.GamesModel*@
-
-@{
+﻿@{
     Layout = null;
 }
 
@@ -30,12 +25,12 @@
 </div>
 <div id="sidebar" style="display: none; background-color: whitesmoke; position: fixed; top: 4em; left: 0; bottom: 0; width: 50%; overflow-y: scroll; overflow-x:hidden; -webkit-overflow-scrolling: touch">    
     <div class="col-xs-12">
-        <div id="more-filters-toggle" class="row" style="margin-top: 1em; margin-bottom: 1em">
+        @*<div id="more-filters-toggle" class="row" style="margin-top: 1em; margin-bottom: 1em">
             <div class="col-xs-12">
                 <button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default">More Filters</button>
             </div>
-        </div>
-        <div id="search-extra-filters" class="row" style="display:block">
+        </div>*@
+        @*<div id="search-extra-filters" class="row" style="display:block">
             <div class="col-xs-12">
                 <form id="searchgamesextraform" name="searchgamesextraform" ng-submit="searchgames()" enctype="multipart/form-data" role="form" class="form-horizontal">
                     <div class="form-group">
@@ -46,23 +41,23 @@
                     </div>
                 </form>
             </div>
-        </div>
-        <div id="show-listings-toggle" class="row" style="margin-top: 1em; margin-bottom: 1em; display:none">
+        </div>*@
+        @*<div id="show-listings-toggle" class="row" style="margin-top: 1em; margin-bottom: 1em; display:none">
             <div class="col-xs-12">
                 <button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default" style="width:100%;position:relative;bottom:0">Show Listings</button>
             </div>
-        </div>
+        </div>*@
         <div id="search-results" ng-repeat="game in games" style="padding-bottom:1em">
             <div class="row" style="background-color: white; color: grey;box-shadow: 0 1px 1px #888888;margin-left:0 !important;margin-right:60px !important">
                 <div>
                     <div>
-                        {{game.Sport}}
+                        {{game.sport}}
+                    </div>
+                    <div id="location" data-lat={{game.locationLat}} data-lng={{game.locationLng}}>
+                        {{game.location}}
                     </div>
                     <div>
-                        {{game.GameDate}}
-                    </div>
-                    <div id="location" data-lat="{{game.LocationLat}}" data-lng="{{game.LocationLng}}">
-                        {{game.Location}}
+                        {{game.gameDate}}
                     </div>
                 </div>
             </div>
@@ -70,7 +65,7 @@
     </div>
 </div>
 <div id="map" style="display: block; width: 100%;position: fixed;top: 4em;right: 0;left: auto;bottom: 0">    
-    <div id="map-canvas" @*mymap="" zoom="4" location="location" map="map"*@></div>
+    <div id="map-canvas"></div>
 </div>
 <div id="mobile-footer" class="navbar-fixed-bottom" style="background-color: white;padding: .5em 0 .5em 0;display:none;">    
     <div class="dropdown">
@@ -80,11 +75,11 @@
                     <div>
                         {{game.sport}}
                     </div>
-                    <div>
-                        {{game.GameDate}}
+                    <div id="location" data-lat={{game.locationLat}} data-lng={{game.locationLng}}>
+                        {{game.location}}
                     </div>
-                    <div id="location" data-lat="{{game.LocationLat}}" data-lng="{{game.LocationLng}}">
-                        {{game.Location}}
+                    <div>
+                        {{game.gameDate}}
                     </div>
                 </div>
             </div>
