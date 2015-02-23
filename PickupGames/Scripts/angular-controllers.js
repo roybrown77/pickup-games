@@ -19,7 +19,6 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
         createMap();
         setMapBoundsAndUrl();
         setMapEvents();
-        addMarkers();
         setMapAutocomplete();
     }
 
@@ -57,30 +56,6 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
         autocomplete.bindTo('bounds', map);
     }
 
-    function addMarkers() {
-        var coordinates = [];
-        $('.location').each(function (i) {
-            coordinates[i] = [parseFloat($(this).attr('data-lat')), parseFloat($(this).attr('data-lng'))];
-        });
-
-        var marker;
-        $(coordinates).each(function (i, elem) {
-            marker = new google.maps.Marker({
-                position: new google.maps.LatLng(elem[0], elem[1]),
-                map: map,
-                title: 'time to ball!',
-                draggable: true
-            });
-
-            google.maps.event.addListener(marker, 'click', (function () {
-                return function () {
-                }
-            })(marker, i));
-
-            markers.push(marker);
-        });
-    }
-
     function setMapEvents() {
         google.maps.event.addListener(map, 'bounds_changed', onBoundsChanged);
     }
@@ -107,7 +82,7 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
         $scope.games = [];
         $http.post("api/games/", $routeParams).success(function (response) {
             $scope.games = response.games;
-            //refreshMarkers();
+            addMarkers(response.games);
         });
 
         //var resource = $resource('api/games/', $scope.gamesearch, { method: 'POST' });
@@ -143,6 +118,38 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
         return urlSearchParameterArray;
     }
 
+    function refreshMarkers(games) {
+        deleteMarkers();
+        addMarkers(games);
+    }
+
+    function addMarkers(games) {
+        var marker;
+        for (var elem in games) {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(games[parseInt(elem)].locationLat, games[parseInt(elem)].locationLng),
+                map: map,
+                title: 'time to ball!',
+                draggable: true
+            });
+
+            //google.maps.event.addListener(marker, 'click', (function (marker, i) {
+            //    return function () {
+            //    }
+            //})(marker, i));
+
+            markers.push(marker);
+        };
+    }
+
+    function deleteMarkers() {
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(null);
+        }
+
+        markers = [];
+    }
+
     function initializeScope() {
         $scope.gamesearch = [];
         $scope.gamesearch.location = $routeParams.location;
@@ -165,7 +172,7 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
                 $http.post("api/games/", $routeParams).success(function (response) {
                     $scope.games = response.games;
                     updateUrl();
-                    //refreshMarkers();
+                    refreshMarkers(response.games);
                 });
 
                 enableRecenter = false;
