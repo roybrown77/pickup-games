@@ -219,15 +219,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\angular-directives.js" />
+    <Content Include="Scripts\app\controllers\root.js" />
+    <Content Include="Scripts\app\directives\google-map.js" />
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular.js" />
-    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\app\controllers\main.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\angular-controllers.js" />
+    <Content Include="Scripts\app\controllers\games.js" />
     <Content Include="Scripts\games-search.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -240,7 +241,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -289,8 +290,8 @@
     <Folder Include="Api\" />
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\app\js\" />
-    <Folder Include="Scripts\app\views\games\" />
-    <Folder Include="Scripts\app\views\home\" />
+    <Folder Include="Scripts\app\services\" />
+    <Folder Include="Scripts\views\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
