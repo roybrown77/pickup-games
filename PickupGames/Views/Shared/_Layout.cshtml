@@ -7,19 +7,25 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")       
 </head>
-<body style="padding-top:0!important" data-ng-app="main" data-ng-controller="RootController">
+<body data-ng-app="main" data-ng-controller="RootController">
     <div id="navigationbar" class="navbar navbar-inverse navbar-static-top navbar" style="margin-bottom:0!important">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href='#/home'>qPiGa</a>
+        <div class="row">
+            <div class="col-xs-2">
+                <a id="homelink" class ="navbar-brand" href='#/home'>qPiGa</a>
             </div>
-            <div class="navbar-collapse collapse">                
-                @Html.Partial("_LoginPartial")
+            <div id="nav-search" class="col-xs-4">
+            </div>
+            <div class="col-xs-6">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    @Html.Partial("_LoginPartial")
+                </div>
             </div>
         </div>
     </div>

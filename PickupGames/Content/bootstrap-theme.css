@@ -6604,13 +6604,16 @@ a.list-group-item-danger.active:focus {
 @media (min-width: 768px) {    
     #nav-items {
         position: absolute !important; 
-        left: 38% !important;
+        left: 38%;
     }        
     #sidebar {
         display: block !important;
     }
     #map {
         width: 50% !important;
+    }
+    #Location {
+        width: 20em;
     }
 }
 
@@ -6621,12 +6624,9 @@ a.list-group-item-danger.active:focus {
     #mobile-footer {
         display: block !important;
     }
-}
-
-#mobile-footer > div > div {
-    color: grey;    
-    font-weight: bold;
-    cursor: pointer;
+    #Location {
+        width:15em;
+    }
 }
 
 html {
@@ -6634,14 +6634,27 @@ html {
     overflow-x: hidden!important;
 }
 
-#searchgamesextraform > div> label {
-    color: grey;
+body {
+    padding-top: 0 !important;
+    background-color:white !important;
 }
 
+#navigationbar {
+    margin-bottom:0!important
+}
+
+#homelink {
+    font-weight:bold
+}
+
+#nav-search {
+    display: none;
+}
 
 #container, #container-fluid {
     padding-right: 15px !important;
     padding-left: 15px !important;
     margin-right: auto !important;
     margin-left: auto !important;
+    background-color: #222222;
 }

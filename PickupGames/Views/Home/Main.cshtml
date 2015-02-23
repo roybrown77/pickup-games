@@ -1,31 +1,58 @@
 ﻿@{
     Layout = null;
 }
-
-<style> 
+<style>
     #container, #container-fluid {
         padding-right: 0 !important;
         padding-left: 0 !important;
     }
+
+    #youtube-second-layer {
+        top: -2.5em;
+    }
+
+    #location-row {
+        padding-bottom: 1em;
+    }
+
+    #home-search-button {
+        background-color: #00bc8c;
+        border-color: #00bc8c;
+        color: white;
+    }
 </style>
 
-<div data-example-id="responsive-embed-16by9-iframe-youtube">
-    <div class="embed-responsive embed-responsive-16by9" style="top:-2.5em">
-        @*<iframe class="embed-responsive-item" src="//www.youtube.com/embed/vnfulwtcwKQ?rel=0&autoplay=1&loop=1&playlist=vnfulwtcwKQ"></iframe>*@
-        @*<iframe class="embed-responsive-item" src="//www.youtube.com/embed/zu-d5A-tEac?rel=0&autoplay=1&loop=1&playlist=zu-d5A-tEac"></iframe>*@        
-    </div>
-    <div class="row" style="background-color: white">
-        <div class="col-xs-12">
-            <form id="searchgamesform" name="searchgamesform" ng-submit="searchgames()" enctype="multipart/form-data" class="form-horizontal" role="form">
-                <div class="form-group">
-                    <div class="col-xs-12">
-                        <input id="Location" name="Location" ng-model="Location" class="form-control pull-left" placeholder="Where do you want to play?" data-lat="{{LocationLat}}" data-lng="{{LocationLng}}">
-                        <button type="submit" class="btn btn-default" style="background-color: #00bc8c;border-color: #00bc8c;color: white" aria-hidden="true">
-                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                        </button>
-                    </div>
-                </div>
-            </form>            
+@*<div data-example-id="responsive-embed-16by9-iframe-youtube">
+        <div id="youtube-second-layer" class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="//www.youtube.com/embed/vnfulwtcwKQ?rel=0&autoplay=1&loop=1&playlist=vnfulwtcwKQ"></iframe>
+            <iframe class="embed-responsive-item" src="//www.youtube.com/embed/zu-d5A-tEac?rel=0&autoplay=1&loop=1&playlist=zu-d5A-tEac"></iframe>
         </div>
+    </div>*@
+
+<div class=" row">
+    <div class="col-xs-12">
+        <h1 class="text-center">
+            <div>qpiga.</div>
+            <div>find</div>
+            <div>create</div>
+            <div>track</div>
+            <div>pickup games.</div>
+        </h1>
+    </div>
+</div>
+
+<div id="location-row" class=" row">
+    <div class="col-xs-12">
+        <form id="searchgamesform" name="searchgamesform" ng-submit="searchgames()" enctype="multipart/form-data" class="form-horizontal" role="form">
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <input id="Location" name="Location" ng-model="Location" class="form-control pull-left" placeholder="Where do you want to play?" data-lat="{{LocationLat}}" data-lng="{{LocationLng}}">
+                    <button id="home-search-button" type="submit" class="btn btn-default" aria-hidden="true">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true">
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>

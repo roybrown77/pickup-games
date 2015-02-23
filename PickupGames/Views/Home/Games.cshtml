@@ -1,56 +1,156 @@
 ﻿@{
     Layout = null;
 }
-
 <style>
+    #search-location {
+        position: fixed;
+        top: .5em;
+        z-index: 999999;
+        left: 6em;
+    }
+
+    #nav-search {
+        display: block;
+        padding-top: .5em;
+    }
+
+    #nav-items {
+        position: absolute !important;
+        left: 10% !important;
+    }
+
+    #sidebar {
+        display: none;
+        background-color: whitesmoke;
+        position: fixed;
+        top: 4em;
+        left: 0;
+        bottom: 0;
+        width: 50%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    #more-filters-toggle {
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    #show-listings-toggle {
+        margin-top: 1em;
+        margin-bottom: 1em;
+        display: none;
+    }
+
+    #showHideGameSearchToggle {
+        width: 100%;
+        position: relative;
+        bottom: 0;
+    }
+
+    #search-extra-filters {
+        display: none;
+    }
+
+    #searchgamesextraform > div > label {
+        color: grey;
+    }
+
+    #map {
+        display: block;
+        width: 100%;
+        position: fixed;
+        top: 4em;
+        right: 0;
+        left: auto;
+        bottom: 0;
+    }
+
     #map-canvas {
         position: relative;
         overflow: hidden;
-        -webkit-transform: translateZ(0);
+        -webkit-transform: translateZ(0px);
         background-color: rgb(229, 227, 223);
         height: 100%;
-    } 
+    }
+
+    #mobile-footer {
+        background-color: white;
+        padding: .5em 0 .5em 0;
+        display: none;
+    }
+
+    .mobile-nav-header {
+        color: grey;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    #search-results-mobile {
+        width: 100%;
+        margin: 0 !important;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        background-color: whitesmoke;
+        padding: .5em 0 0 0;
+    }
+
+        #search-results > div, #search-results-mobile > div {
+            padding: 0 .5em .5em .5em;
+        }
+
+            #search-results > div > div, #search-results-mobile > div > div {
+                box-shadow: 0 1px 2px lightgrey;
+                background-color: white;
+                color: grey;
+                padding: .75em;
+            }
+
+    .sport {
+        color: black;
+        font-size: 13pt;
+    }
 </style>
 
-<div id="search-location" class="row" style="position: fixed;top: .5em;z-index: 999999;left:6em">    
+<div id="search-location" class="row">
     <div class="col-xs-12">
-        <div id="game-location" class="row">
-            <div id="location-input" class="col-xs-12">
-                <form id="searchgamesform" name="searchgamesform" ng-submit="searchgames()" enctype="multipart/form-data" class="form-horizontal" role="form">
-                    <input id="Location" name="Location" ng-model="gamesearch.location" type="text" @*data-lat="{{LocationLat}}" data-lng="{{LocationLng}}"*@ class="form-control" placeholder="Where do you want to play?" />
-                </form>
-            </div>
-        </div>
+        <form id="searchgamesform" name="searchgamesform" ng-submit="searchgames()" enctype="multipart/form-data" class="form-horizontal" role="form">
+            <input id="Location" name="Location" ng-model="gamesearch.location" type="text" @*data-lat="{{LocationLat}}" data-lng="{{LocationLng}}"*@ class="form-control" placeholder="Where do you want to play?" />
+        </form>
     </div>
 </div>
-<div id="sidebar" style="display: none; background-color: whitesmoke; position: fixed; top: 4em; left: 0; bottom: 0; width: 50%; overflow-y: scroll; overflow-x:hidden; -webkit-overflow-scrolling: touch">    
+
+<div id="sidebar">
     <div class="col-xs-12">
-        @*<div id="more-filters-toggle" class="row" style="margin-top: 1em; margin-bottom: 1em">
-            <div class="col-xs-12">
-                <button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default">More Filters</button>
-            </div>
-        </div>*@
-        @*<div id="search-extra-filters" class="row" style="display:block">
-            <div class="col-xs-12">
-                <form id="searchgamesextraform" name="searchgamesextraform" ng-submit="searchgames()" enctype="multipart/form-data" role="form" class="form-horizontal">
-                    <div class="form-group">
-                        <label class="col-md-2 control-label">Sport</label>
-                        <div class="col-md-10">
-                            <input id="Sport" name="Sport" ng-model="gamesearch.sport" class="form-control" />
+        @*<div id="more-filters-toggle" class="row">
+                <div class="col-xs-12">
+                    <button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default">More Filters</button>
+                </div>
+            </div>*@
+        @*<div id="search-extra-filters" class="row">
+                <div class="col-xs-12">
+                    <form id="searchgamesextraform" name="searchgamesextraform" ng-submit="searchgames()" enctype="multipart/form-data" role="form" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Sport</label>
+                            <div class="col-md-10">
+                                <input id="Sport" name="Sport" ng-model="gamesearch.sport" class="form-control" />
+                            </div>
                         </div>
-                    </div>
-                </form>
-            </div>
-        </div>*@
-        @*<div id="show-listings-toggle" class="row" style="margin-top: 1em; margin-bottom: 1em; display:none">
-            <div class="col-xs-12">
-                <button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default" style="width:100%;position:relative;bottom:0">Show Listings</button>
-            </div>
-        </div>*@
-        <div id="search-results" ng-repeat="game in games" style="padding-bottom:1em">
-            <div class="row" style="background-color: white; color: grey;box-shadow: 0 1px 1px #888888;margin-left:0 !important;margin-right:60px !important">
+                    </form>
+                </div>
+            </div>*@
+        @*<div id="show-listings-toggle" class="row">
+                <div class="col-xs-12">
+                    <button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default">Show Listings</button>
+                </div>
+            </div>*@
+        <div id="search-results" class="row">
+            <div class="col-xs-12" ng-repeat="game in games">
                 <div>
-                    <div>
+                    <div class="sport">
                         {{game.sport}}
                     </div>
                     <div class="location" data-lat={{game.locationLat}} data-lng={{game.locationLng}}>
@@ -64,15 +164,15 @@
         </div>
     </div>
 </div>
-<div id="map" style="display: block; width: 100%;position: fixed;top: 4em;right: 0;left: auto;bottom: 0">    
+<div id="map">
     <div id="map-canvas"></div>
 </div>
-<div id="mobile-footer" class="navbar-fixed-bottom" style="background-color: white;padding: .5em 0 .5em 0;display:none;">    
+<div id="mobile-footer" class="navbar-fixed-bottom">
     <div class="dropdown">
-        <div class="dropdown-menu" role="menu" ng-repeat="game in games" style="width: 100%; margin: 0 !important; border: 0;border-radius: 0;box-shadow: none;-webkit-box-shadow: none;background-color:whitesmoke">                             
-            <div class="col-xs-12" style="padding-bottom: 1em;">
-                <div style="background-color: white; color: grey">
-                    <div>
+        <div id="search-results-mobile" class="dropdown-menu" role="menu">
+            <div class="col-xs-12" ng-repeat="game in games">
+                <div>
+                    <div class="sport">
                         {{game.sport}}
                     </div>
                     <div id="location" data-lat={{game.locationLat}} data-lng={{game.locationLng}}>
@@ -83,12 +183,12 @@
                     </div>
                 </div>
             </div>
-                
+
         </div>
-        <div class="col-xs-6" data-toggle="dropdown">
+        <div class="col-xs-6 mobile-nav-header" data-toggle="dropdown">
             LIST RESULTS
         </div>
-        <div class="col-xs-6 text-right">
+        <div class="col-xs-6 mobile-nav-header text-right">
             FILTER
         </div>
     </div>
