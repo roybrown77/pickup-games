@@ -14,8 +14,13 @@
                 <a id="homelink" class ="navbar-brand" href='#/home'>qPiGa</a>
             </div>
             <div id="nav-search" class="col-xs-4">
+                @*<div class="col-xs-12">
+                    <form id="searchgamesform" name="searchgamesform" ng-submit="searchgames()" enctype="multipart/form-data" class="form-horizontal" role="form">
+                        <input id="Location" name="Location" ng-model="gamesearch.location" type="text" data-lat={{locationLat}} data-lng={{locationLng}} class="form-control" placeholder="Where do you want to play?" />
+                    </form>
+                </div>*@
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-10">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
