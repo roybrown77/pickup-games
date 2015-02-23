@@ -17,6 +17,7 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
 
     function initializeMap() {
         createMap();
+        //map = $googleMapsFactory.createMap('map-canvas');
         setMapBoundsAndUrl();
         setMapEvents();
         setMapAutocomplete();

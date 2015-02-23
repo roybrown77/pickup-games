@@ -220,11 +220,13 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\app\controllers\root.js" />
-    <Content Include="Scripts\app\directives\google-map.js" />
+    <Content Include="Scripts\app\directives\myMap.js" />
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\app\controllers\main.js" />
+    <Content Include="Scripts\app\services\games.js" />
+    <Content Include="Scripts\app\services\googleMapsFactory.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -290,7 +292,6 @@
     <Folder Include="Api\" />
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\app\js\" />
-    <Folder Include="Scripts\app\services\" />
     <Folder Include="Scripts\views\" />
   </ItemGroup>
   <ItemGroup>
