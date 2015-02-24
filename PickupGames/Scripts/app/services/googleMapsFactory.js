@@ -2,8 +2,8 @@ appRoot.factory('googleMapsFactory', function ($q) {
     var service = {};
     var _map;
     var _geocoder = new google.maps.Geocoder();
-    var _markers = [];
     var _zoom;
+    var _markers = [];
 
     service.createMap = function (mapCanvasId) {
         var mapOptions = {
@@ -61,6 +61,39 @@ appRoot.factory('googleMapsFactory', function ($q) {
         //} else {
         //    enableRecenter = true;
         //}
+    }
+
+    service.refreshMarkers = function(locations) {
+        deleteMarkers();
+        addMarkers(locations);
+    }
+
+    function addMarkers(locations) {
+        var marker;
+
+        for (var index in locations) {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[parseInt(index)].locationLat, locations[parseInt(index)].locationLng),
+                map: _map,
+                title: 'time to ball!',
+                draggable: true
+            });
+
+            //google.maps.event.addListener(marker, 'click', (function (marker, i) {
+            //    return function () {
+            //    }
+            //})(marker, i));
+
+            _markers.push(marker);
+        };
+    }
+
+    function deleteMarkers() {
+        for (var i = 0; i < _markers.length; i++) {
+            _markers[i].setMap(null);
+        }
+
+        _markers = [];
     }
 
     return service;

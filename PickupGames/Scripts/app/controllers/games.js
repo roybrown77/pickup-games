@@ -1,5 +1,5 @@
 appRoot.controller('GamesController', function ($scope, $http, $q, $location, $resource, $routeParams, googleMapsFactory) {
-    function initializeRouteParams() {
+    function initializeVariables() {
         if ($routeParams.location === 'undefined' || $routeParams.location === undefined || $routeParams.location === "") {
             $routeParams.location = 'usa';
         }
@@ -7,14 +7,17 @@ appRoot.controller('GamesController', function ($scope, $http, $q, $location, $r
         if ($routeParams.index === 'undefined' || $routeParams.index === undefined || $routeParams.index === "") {
             $routeParams.index = 1;
         }
+
+        $scope.gamesearch = [];
+        $scope.gamesearch.location = $routeParams.location;
     }
 
-    function initializePage() {
+    function initializeMapAndUrl() {
         googleMapsFactory.createMap('map-canvas');
+        //googleMapsFactory.setMapEvents();
+        googleMapsFactory.setMapAutocomplete('Location');
         googleMapsFactory.setMapBounds($routeParams.location, $routeParams.zoom).then(function () {
             $routeParams.zoom = googleMapsFactory.getZoom();
-            //googleMapsFactory.setMapEvents();
-            googleMapsFactory.setMapAutocomplete('Location');
             updateUrl();
         });
     }
@@ -23,13 +26,8 @@ appRoot.controller('GamesController', function ($scope, $http, $q, $location, $r
         $scope.games = [];
         $http.post("api/games/", $routeParams).success(function (response) {
             $scope.games = response.games;
-            //addMarkers(response.games);
+            googleMapsFactory.addMarkers(response.games);
         });
-
-        //var resource = $resource('api/games/', $scope.gamesearch, { method: 'POST' });
-        //resource.query(function (data) {
-        //    $scope.games = data;
-        //});
     }
 
     function updateUrl() {
@@ -59,63 +57,22 @@ appRoot.controller('GamesController', function ($scope, $http, $q, $location, $r
         return urlSearchParameterArray;
     }
 
-    function refreshMarkers(games) {
-        deleteMarkers();
-        addMarkers(games);
-    }
-
-    function addMarkers(games) {
-        var marker;
-        for (var elem in games) {
-            marker = new google.maps.Marker({
-                position: new google.maps.LatLng(games[parseInt(elem)].locationLat, games[parseInt(elem)].locationLng),
-                map: map,
-                title: 'time to ball!',
-                draggable: true
-            });
-
-            //google.maps.event.addListener(marker, 'click', (function (marker, i) {
-            //    return function () {
-            //    }
-            //})(marker, i));
-
-            markers.push(marker);
-        };
-    }
-
-    function deleteMarkers() {
-        for (var i = 0; i < markers.length; i++) {
-            markers[i].setMap(null);
-        }
-
-        markers = [];
-    }
-
-    function initializeScope() {
-        $scope.gamesearch = [];
-        $scope.gamesearch.location = $routeParams.location;
-    }
-
-    initializeRouteParams();
-    initializePage();
+    initializeVariables();
+    initializeMapAndUrl();
     initializeGames();
-    initializeScope();
-
+    
     $scope.searchgames = function () {
         $routeParams.location = $scope.gamesearch.location;
-        $routeParams.index = 1;
+        $routeParams.index = 1; // pagination will change this
+        $routeParams.zoom = undefined;
 
-        geocoder.geocode({ 'address': $routeParams.location }, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                map.fitBounds(results[0].geometry.viewport);
-                $routeParams.zoom = map.zoom;
-
-                $http.post("api/games/", $routeParams).success(function (response) {
-                    $scope.games = response.games;
-                    updateUrl();
-                    refreshMarkers(response.games);
-                });
-            }
+        googleMapsFactory.setMapBounds($routeParams.location, $routeParams.zoom).then(function () {
+            $routeParams.zoom = googleMapsFactory.getZoom();
+            $http.post("api/games/", $routeParams).success(function (response) {
+                $scope.games = response.games;
+                updateUrl();
+                googleMapsFactory.refreshMarkers(response.games);
+            });
         });
     };
 });
