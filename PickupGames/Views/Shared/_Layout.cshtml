@@ -8,8 +8,15 @@
     @Scripts.Render("~/bundles/modernizr")       
 </head>
 <body data-ng-app="main" data-ng-controller="RootController">
-    <div id="yeahiknowmysiteisflycheckcsstekniq" class="navbar navbar-inverse navbar-static-top navbar">
+    <div id="yeahiknowmysiteisflylikerakimsaidcheckthetekniq" class="navbar navbar-inverse navbar-fixed-top">
         <a id="homelink" class="navbar-brand" href='#/home'>qPiGa</a>
+        <div id="nav-search" class="row">
+            <div class="col-xs-12">
+                <form id="searchgamesform" name="searchgamesform" ng-submit="searchgames()" enctype="multipart/form-data" class="form-horizontal" role="form">
+                    <input id="Location" name="Location" ng-model="gamesearch.location" type="text" data-lat={{locationLat}} data-lng={{locationLng}} class="form-control" placeholder="Where do you want to play?" />
+                </form>
+            </div>
+        </div>
         <div class="container">
             <div class="navbar-header">
                 <button id="mobile-navbar-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
