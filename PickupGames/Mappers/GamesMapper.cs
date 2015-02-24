@@ -31,8 +31,7 @@ namespace PickupGames.Mappers
             return new GameSearchModel
             {
                 LocationLat = response.SearchLocationLat,
-                LocationLng = response.SearchLocationLng,
-                Zoom = response.Zoom
+                LocationLng = response.SearchLocationLng
             };
         }
 

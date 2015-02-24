@@ -7,6 +7,5 @@ namespace PickupGames.Domain.Objects
         public string SearchLocationLat { get; set; }
         public string SearchLocationLng { get; set; }
         public List<Game> Games { get; set; }
-        public int Zoom { get; set; }
     }
 }

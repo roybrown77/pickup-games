@@ -92,8 +92,7 @@ namespace PickupGames.Domains
                     Status = "Success",
                     Games = games,
                     SearchLocationLat = centerCoordinates.Lat,
-                    SearchLocationLng = centerCoordinates.Lng,
-                    Zoom = searchQuery.Zoom
+                    SearchLocationLng = centerCoordinates.Lng
                 };
             }
             catch (Exception ex)

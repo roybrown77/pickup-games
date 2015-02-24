@@ -178,7 +178,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
-    <Compile Include="Controllers\Games2Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Domain.Objects\BasicResponse.cs" />
@@ -282,7 +281,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\CreateGame.cshtml" />
-    <Content Include="Views\Games2\Edit.cshtml" />
     <Content Include="Views\Home\Games.cshtml" />
     <Content Include="Views\Home\SearchLocation.cshtml" />
     <Content Include="Views\Home\SearchExtra.cshtml" />

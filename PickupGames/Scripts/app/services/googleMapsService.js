@@ -65,7 +65,7 @@ appRoot.factory('googleMapsService', function ($q) {
 
     service.refreshMarkers = function(locations) {
         deleteMarkers();
-        addMarkers(locations);
+        this.addMarkers(locations);
     }
 
     service.addMarkers = function(locations) {
