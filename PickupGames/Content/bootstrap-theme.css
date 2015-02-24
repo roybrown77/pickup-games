@@ -6620,6 +6620,9 @@ a.list-group-item-danger.active:focus {
     #mobile-footer {
         display: block !important;
     }
+    #search-location {
+        left: 1em !important;
+    }
     #Location {
         width:15em;
     }
@@ -6643,7 +6646,7 @@ body {
     display: none;
 }
 
-#nav-search-container {
+#nav-container {
     padding: .5em 0 0 0 !important;
 }
 
