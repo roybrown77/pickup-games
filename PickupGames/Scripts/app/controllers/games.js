@@ -1,13 +1,7 @@
-appRoot.controller('GamesController', function ($scope, $http, $location, $resource, $routeParams) {
-    var map;
-    var geocoder = new google.maps.Geocoder();;
-    var markers = [];
-    var enableRecenter = false;
-
+appRoot.controller('GamesController', function ($scope, $http, $q, $location, $resource, $routeParams, googleMapsFactory) {
     function initializeRouteParams() {
         if ($routeParams.location === 'undefined' || $routeParams.location === undefined || $routeParams.location === "") {
             $routeParams.location = 'usa';
-            $routeParams.zoom = 3;
         }
 
         if ($routeParams.index === 'undefined' || $routeParams.index === undefined || $routeParams.index === "") {
@@ -15,75 +9,21 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
         }
     }
 
-    function initializeMap() {
-        createMap();
-        //map = $googleMapsFactory.createMap('map-canvas');
-        setMapBoundsAndUrl();
-        setMapEvents();
-        setMapAutocomplete();
-    }
-
-    function createMap() {
-        var mapOptions = {
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-    }
-
-    function setMapBoundsAndUrl() {
-        if ($routeParams.zoom === 'undefined' || $routeParams.zoom === undefined || $routeParams.zoom === "") {
-            geocoder.geocode({ 'address': $routeParams.location }, function (results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    map.fitBounds(results[0].geometry.viewport);
-                    $routeParams.zoom = map.zoom;
-                    updateUrl();
-                }
-            });
-        } else {
-            geocoder.geocode({ 'address': $routeParams.location }, function (results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    enableRecenter = false;
-                    map.fitBounds(results[0].geometry.viewport);
-                    map.setZoom(parseInt($routeParams.zoom));
-                    updateUrl();
-                }
-            });
-        }
-    }
-
-    function setMapAutocomplete() {
-        var input = (document.getElementById('Location'));
-        var autocomplete = new google.maps.places.Autocomplete(input);
-        autocomplete.bindTo('bounds', map);
-    }
-
-    function setMapEvents() {
-        google.maps.event.addListener(map, 'bounds_changed', onBoundsChanged);
-    }
-
-    function onBoundsChanged() {
-        //if (enableRecenter === true) {
-            var latlng = map.getCenter();
-            geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    if (results[1]) {
-                        //$('#Location').val(results[1].formatted_address);
-                        //$location.path("/games/" + results[1].formatted_address + "/" + $routeParams.index, false).search({ 'zoom': map.getZoom() });
-                        //$scope.gamesearch.location = results[1].formatted_address;
-                        //$routeParams.zoom = map.getZoom();
-                    }
-                }
-            });
-        //} else {
-        //    enableRecenter = true;
-        //}
+    function initializePage() {
+        googleMapsFactory.createMap('map-canvas');
+        googleMapsFactory.setMapBounds($routeParams.location, $routeParams.zoom).then(function () {
+            $routeParams.zoom = googleMapsFactory.getZoom();
+            //googleMapsFactory.setMapEvents();
+            googleMapsFactory.setMapAutocomplete('Location');
+            updateUrl();
+        });
     }
 
     function initializeGames() {
         $scope.games = [];
         $http.post("api/games/", $routeParams).success(function (response) {
             $scope.games = response.games;
-            addMarkers(response.games);
+            //addMarkers(response.games);
         });
 
         //var resource = $resource('api/games/', $scope.gamesearch, { method: 'POST' });
@@ -157,7 +97,7 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
     }
 
     initializeRouteParams();
-    initializeMap();
+    initializePage();
     initializeGames();
     initializeScope();
 
@@ -175,8 +115,6 @@ appRoot.controller('GamesController', function ($scope, $http, $location, $resou
                     updateUrl();
                     refreshMarkers(response.games);
                 });
-
-                enableRecenter = false;
             }
         });
     };
