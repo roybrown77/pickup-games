@@ -1,4 +1,4 @@
-appRoot.factory('googleMapsFactory', function ($q) {
+appRoot.factory('googleMapsService', function ($q) {
     var service = {};
     var _map;
     var _geocoder = new google.maps.Geocoder();

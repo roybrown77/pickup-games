@@ -1,4 +1,4 @@
-appRoot.controller('GamesController', function ($scope, $http, $q, $location, $resource, $routeParams, googleMapsFactory) {
+appRoot.controller('GamesController', function ($scope, $http, $q, $location, $resource, $routeParams, googleMapsService) {
     function initializeVariables() {
         if ($routeParams.location === 'undefined' || $routeParams.location === undefined || $routeParams.location === "") {
             $routeParams.location = 'usa';
@@ -13,11 +13,11 @@ appRoot.controller('GamesController', function ($scope, $http, $q, $location, $r
     }
 
     function initializeMapAndUrl() {
-        googleMapsFactory.createMap('map-canvas');
-        //googleMapsFactory.setMapEvents();
-        googleMapsFactory.setMapAutocomplete('Location');
-        googleMapsFactory.setMapBounds($routeParams.location, $routeParams.zoom).then(function () {
-            $routeParams.zoom = googleMapsFactory.getZoom();
+        googleMapsService.createMap('map-canvas');
+        //googleMapsService.setMapEvents();
+        googleMapsService.setMapAutocomplete('Location');
+        googleMapsService.setMapBounds($routeParams.location, $routeParams.zoom).then(function () {
+            $routeParams.zoom = googleMapsService.getZoom();
             updateUrl();
         });
     }
@@ -26,7 +26,7 @@ appRoot.controller('GamesController', function ($scope, $http, $q, $location, $r
         $scope.games = [];
         $http.post("api/games/", $routeParams).success(function (response) {
             $scope.games = response.games;
-            googleMapsFactory.addMarkers(response.games);
+            googleMapsService.addMarkers(response.games);
         });
     }
 
@@ -66,12 +66,12 @@ appRoot.controller('GamesController', function ($scope, $http, $q, $location, $r
         $routeParams.index = 1; // pagination will change this
         $routeParams.zoom = undefined;
 
-        googleMapsFactory.setMapBounds($routeParams.location, $routeParams.zoom).then(function () {
-            $routeParams.zoom = googleMapsFactory.getZoom();
+        googleMapsService.setMapBounds($routeParams.location, $routeParams.zoom).then(function () {
+            $routeParams.zoom = googleMapsService.getZoom();
             $http.post("api/games/", $routeParams).success(function (response) {
                 $scope.games = response.games;
                 updateUrl();
-                googleMapsFactory.refreshMarkers(response.games);
+                googleMapsService.refreshMarkers(response.games);
             });
         });
     };
