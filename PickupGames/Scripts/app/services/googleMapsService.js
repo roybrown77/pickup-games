@@ -68,7 +68,7 @@ appRoot.factory('googleMapsService', function ($q) {
         addMarkers(locations);
     }
 
-    function addMarkers(locations) {
+    service.addMarkers = function(locations) {
         var marker;
 
         for (var index in locations) {
