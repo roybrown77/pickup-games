@@ -6627,7 +6627,7 @@ a.list-group-item-danger.active:focus {
 
 html {
     width: auto !important;
-    overflow-x: hidden!important;
+    /*overflow-x: hidden!important;*/
 }
 
 body {
