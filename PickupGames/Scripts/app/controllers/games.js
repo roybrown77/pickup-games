@@ -1,4 +1,4 @@
-appRoot.controller('GamesController', function ($scope, $http, $q, $location, $resource, $routeParams, googleMapsService) {
+appRoot.controller('GamesController', function ($scope, $http, $q, $location, $resource, $routeParams, googleMapsService, gamesService) {
     function initializeVariables() {
         if ($routeParams.location === 'undefined' || $routeParams.location === undefined || $routeParams.location === "") {
             $routeParams.location = 'usa';
@@ -24,9 +24,9 @@ appRoot.controller('GamesController', function ($scope, $http, $q, $location, $r
 
     function initializeGames() {
         $scope.games = [];
-        $http.post("api/games/", $routeParams).success(function (response) {
-            $scope.games = response.games;
-            googleMapsService.addMarkers(response.games);
+        gamesService.getGames($routeParams).then(function (games) {
+            $scope.games = games;
+            googleMapsService.addMarkers(games);
         });
     }
 
@@ -68,10 +68,10 @@ appRoot.controller('GamesController', function ($scope, $http, $q, $location, $r
 
         googleMapsService.setMapBounds($routeParams.location, $routeParams.zoom).then(function () {
             $routeParams.zoom = googleMapsService.getZoom();
-            $http.post("api/games/", $routeParams).success(function (response) {
-                $scope.games = response.games;
+            gamesService.getGames($routeParams).then(function (games) {
+                $scope.games = games;
+                googleMapsService.refreshMarkers(games);
                 updateUrl();
-                googleMapsService.refreshMarkers(response.games);
             });
         });
     };
