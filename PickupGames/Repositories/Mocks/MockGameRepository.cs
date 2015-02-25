@@ -35,9 +35,9 @@ namespace PickupGames.Repositories.Mocks
             };
         }
 
-        public List<Game> FindBy(SearchQuery searchQuery)
+        public List<Game> FindBy(GameSearchQuery gameSearchQuery)
         {
-            if (searchQuery.Index % 2 == 1)
+            if (gameSearchQuery.Index % 2 == 1)
             {
                 return new List<Game>
                        {

@@ -2,9 +2,9 @@
 
 namespace PickupGames.Models
 {
-    public class GamesModel
+    public class GamesPageModel
     {
-        public GamesModel()
+        public GamesPageModel()
         {
             GameSearchModel = new GameSearchModel();
         }

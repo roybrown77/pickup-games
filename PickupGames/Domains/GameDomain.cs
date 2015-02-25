@@ -71,19 +71,19 @@ namespace PickupGames.Domains
             }
         }
 
-        public GameSearchResponse FindBy(SearchQuery searchQuery)
+        public GameSearchResponse FindBy(GameSearchQuery gameSearchQuery)
         {
             try
             {
-                var centerCoordinates = _geographyRepository.GetCoordinates(searchQuery.Location);
+                var centerCoordinates = _geographyRepository.GetCoordinates(gameSearchQuery.Location);
 
                 // get all games by state, region or country and filter down by maxDistance; must convert to formatted address if zip specified? get by zip
 
-                var games = _gameRepository.FindBy(searchQuery);
+                var games = _gameRepository.FindBy(gameSearchQuery);
                 
                 SetDistanceToCenter(games, centerCoordinates);
 
-                var maxDistance = GetMaxDistance(searchQuery);
+                var maxDistance = GetMaxDistance(gameSearchQuery);
 
                 games = GetGamesWithinRadius(games, maxDistance);
 
@@ -105,14 +105,14 @@ namespace PickupGames.Domains
             }
         }
 
-        private static Distance GetMaxDistance(SearchQuery searchQuery)
+        private static Distance GetMaxDistance(GameSearchQuery gameSearchQuery)
         {
             var maxDistance = new Distance
             {
                 Unit = "mi"
             };
 
-            switch (searchQuery.Zoom)
+            switch (gameSearchQuery.Zoom)
             {
                 case 0:
                     maxDistance.Value = 10000;

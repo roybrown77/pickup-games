@@ -2,7 +2,7 @@
 
 namespace PickupGames.Domain.Objects
 {
-    public class SearchQuery
+    public class GameSearchQuery
     {
         private int _index = 1;
 

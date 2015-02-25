@@ -17,16 +17,16 @@ namespace PickupGames.Mappers
                        };
         }
 
-        public static GamesModel ConvertGameListToGamesModel(GameSearchResponse response)
+        public static GamesPageModel ConvertGameSearchResponseToGamesPageModel(GameSearchResponse response)
         {
-            return new GamesModel
+            return new GamesPageModel
                        {
-                           GameListModel = ConvertGameListToGamesModelList(response.Games),
-                           GameSearchModel = GetGameSearchModel(response)
+                           GameListModel = ConvertGameListToGameModelList(response.Games),
+                           GameSearchModel = ConvertGameSearchResponseToGameSearchModel(response)
                        };
         }
 
-        private static GameSearchModel GetGameSearchModel(GameSearchResponse response)
+        private static GameSearchModel ConvertGameSearchResponseToGameSearchModel(GameSearchResponse response)
         {
             return new GameSearchModel
             {
@@ -35,7 +35,7 @@ namespace PickupGames.Mappers
             };
         }
 
-        private static List<GameModel> ConvertGameListToGamesModelList(IEnumerable<Game> games)
+        private static List<GameModel> ConvertGameListToGameModelList(IEnumerable<Game> games)
         {
             var gameListModel = new List<GameModel>();
 
@@ -65,9 +65,9 @@ namespace PickupGames.Mappers
             return gameListModel;
         }
 
-        public static SearchQuery ConvertSearchModelToSearchQuery(GameSearchModel searchModel)
+        public static GameSearchQuery ConvertGameSearchModelToGameSearchQuery(GameSearchModel searchModel)
         {
-            return new SearchQuery
+            return new GameSearchQuery
                        {
                            Location = searchModel.Location ?? "usa",
                            Index = searchModel.Index ?? 1,

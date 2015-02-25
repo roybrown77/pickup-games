@@ -8,6 +8,6 @@ namespace PickupGames.Repositories.Interfaces
         void Add(Game game);
         List<Game> FindAll();
         List<Game> FindBy(string location);
-        List<Game> FindBy(SearchQuery searchQuery);        
+        List<Game> FindBy(GameSearchQuery gameSearchQuery);        
     }
 }

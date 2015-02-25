@@ -187,7 +187,7 @@
     <Compile Include="Domain.Objects\GameSearchResponse.cs" />
     <Compile Include="Domain.Objects\GamesSortBy.cs" />
     <Compile Include="Domain.Objects\ResponseBase.cs" />
-    <Compile Include="Domain.Objects\SearchQuery.cs" />
+    <Compile Include="Domain.Objects\GameSearchQuery.cs" />
     <Compile Include="Domains\GameDomain.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -197,7 +197,7 @@
     <Compile Include="Models\GameCreateModel.cs" />
     <Compile Include="Models\GameModel.cs" />
     <Compile Include="Models\GameSearchModel.cs" />
-    <Compile Include="Models\GamesModel.cs" />
+    <Compile Include="Models\GamesPageModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

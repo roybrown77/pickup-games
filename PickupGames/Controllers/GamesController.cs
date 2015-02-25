@@ -39,7 +39,7 @@ namespace PickupGames.Controllers
         //[Route("{location}/{index}?{parameters ie zoom, sport}")]
         public GameSearchResponse Post(GameSearchModel gameSearchModel)
         {
-            var searchQuery = GamesMapper.ConvertSearchModelToSearchQuery(gameSearchModel);
+            var searchQuery = GamesMapper.ConvertGameSearchModelToGameSearchQuery(gameSearchModel);
             var domain = new GameDomain();
             return domain.FindBy(searchQuery);
         }    
