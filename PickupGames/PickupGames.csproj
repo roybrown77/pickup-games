@@ -180,6 +180,7 @@
     <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Domain.Objects\BasicResponse.cs" />
     <Compile Include="Domain.Objects\Coordinates.cs" />
     <Compile Include="Domain.Objects\Distance.cs" />
@@ -218,6 +219,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\app\controllers\creategame.js" />
     <Content Include="Scripts\app\controllers\root.js" />
     <Content Include="Scripts\app\directives\mapDirective.js" />
     <Content Include="Scripts\angular-resource.js" />
@@ -280,7 +282,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Shared\CreateGame.cshtml" />
+    <Content Include="Views\Home\CreateGame.cshtml" />
     <Content Include="Views\Home\Games.cshtml" />
     <Content Include="Views\Home\SearchLocation.cshtml" />
     <Content Include="Views\Home\SearchExtra.cshtml" />

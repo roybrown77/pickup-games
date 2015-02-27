@@ -1,4 +1,33 @@
 appRoot.controller('GamesController', function ($scope, $http, $q, $location, $resource, $routeParams, googleMapsService, gamesService) {
+    $scope.searchgames = function () {
+        $routeParams.location = $scope.gamesearch.location;
+        $routeParams.index = 1; // pagination will change this
+        $routeParams.zoom = undefined;
+
+        googleMapsService.setMapBounds($routeParams.location, $routeParams.zoom).then(function () {
+            $routeParams.zoom = googleMapsService.getZoom();
+            gamesService.getGames($routeParams).then(function (games) {
+                $scope.games = games;
+                googleMapsService.refreshMarkers(games);
+                updateUrl();
+            });
+        });
+    };
+
+    initialize();
+
+    function initialize() {
+        initializeVariables();
+        googleMapsService.createMap('map-canvas');
+        //googleMapsService.setMapEvents();
+        googleMapsService.setMapAutocomplete('Location');
+        googleMapsService.setMapBounds($routeParams.location, $routeParams.zoom).then(function () {
+            $routeParams.zoom = googleMapsService.getZoom();
+            updateUrl();
+            initializeGames();
+        });
+    }
+
     function initializeVariables() {
         if ($routeParams.location === 'undefined' || $routeParams.location === undefined || $routeParams.location === "") {
             $routeParams.location = 'usa';
@@ -10,25 +39,7 @@ appRoot.controller('GamesController', function ($scope, $http, $q, $location, $r
 
         $scope.gamesearch = [];
         $scope.gamesearch.location = $routeParams.location;
-    }
-
-    function initializeMapAndUrl() {
-        googleMapsService.createMap('map-canvas');
-        //googleMapsService.setMapEvents();
-        googleMapsService.setMapAutocomplete('Location');
-        googleMapsService.setMapBounds($routeParams.location, $routeParams.zoom).then(function () {
-            $routeParams.zoom = googleMapsService.getZoom();
-            updateUrl();
-        });
-    }
-
-    function initializeGames() {
-        $scope.games = [];
-        gamesService.getGames($routeParams).then(function (games) {
-            $scope.games = games;
-            googleMapsService.addMarkers(games);
-        });
-    }
+    }    
 
     function updateUrl() {
         //var urlSearchParameterArray = getUrlSearchParameterArray();
@@ -57,22 +68,11 @@ appRoot.controller('GamesController', function ($scope, $http, $q, $location, $r
         return urlSearchParameterArray;
     }
 
-    initializeVariables();
-    initializeMapAndUrl();
-    initializeGames();
-    
-    $scope.searchgames = function () {
-        $routeParams.location = $scope.gamesearch.location;
-        $routeParams.index = 1; // pagination will change this
-        $routeParams.zoom = undefined;
-
-        googleMapsService.setMapBounds($routeParams.location, $routeParams.zoom).then(function () {
-            $routeParams.zoom = googleMapsService.getZoom();
-            gamesService.getGames($routeParams).then(function (games) {
-                $scope.games = games;
-                googleMapsService.refreshMarkers(games);
-                updateUrl();
-            });
+    function initializeGames() {
+        $scope.games = [];
+        gamesService.getGames($routeParams).then(function (games) {
+            $scope.games = games;
+            googleMapsService.addMarkers(games);
         });
-    };
+    }           
 });

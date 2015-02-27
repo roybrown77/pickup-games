@@ -1,0 +1,80 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h2>Create game.</h2>
+        <section id="creategame">
+            <form id="creategameform" name="creategameform" ng-submit="creategame()" enctype="multipart/form-data" class="form-horizontal" role="form">
+                <h4>Create an awesome game!</h4>
+                <hr>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="Name">Name</label>
+                    <div class="col-md-10">
+                        <input class="form-control" data-val="true" data-val-required="The Name field is required." id="Name" name="Name" type="text" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="Sport">Sport</label>
+                    <div class="col-md-10">
+                        <input class="form-control" data-val="true" data-val-required="The Sport field is required." id="Sport" name="Sport" type="text" value="" ng-model="creategame.sport">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="GameDate">Game Date</label>
+                    <div class="col-md-10">
+                        <input class="form-control" data-val="true" data-val-date="The field Game Date must be a date." data-val-required="The Game Date field is required." id="GameDate" name="GameDate" type="text" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="GameTime">Game Time</label>
+                    <div class="col-md-10">
+                        <input class="form-control" data-val="true" data-val-required="The Game Time field is required." id="GameTime" name="GameTime" type="text" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="Location">Location</label>
+                    <div class="col-md-10">
+                        <input class="form-control" data-val="true" data-val-required="The Location field is required." id="Location" name="Location" placeholder="Rucker Park, New York, Paris..." type="text" value="" autocomplete="off">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="RecurringDay">Recurring Day</label>
+                    <div class="col-md-10">
+                        <input class="form-control" id="RecurringDay" name="RecurringDay" type="text" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="Duration">Duration</label>
+                    <div class="col-md-10">
+                        <input class="form-control" data-val="true" data-val-required="The Duration field is required." id="Duration" name="Duration" type="text" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="Status">Status</label>
+                    <div class="col-md-10">
+                        <input class="form-control" id="Status" name="Status" type="text" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="AgeGroup">Age Group</label>
+                    <div class="col-md-10">
+                        <input class="form-control" id="AgeGroup" name="AgeGroup" type="text" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="Notes">Notes</label>
+                    <div class="col-md-10">
+                        <input class="form-control" id="Notes" name="Notes" type="text" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input type="submit" class="btn btn-large btn-primary" value="Create">
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
