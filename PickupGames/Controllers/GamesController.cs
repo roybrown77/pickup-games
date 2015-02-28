@@ -22,11 +22,15 @@ namespace PickupGames.Controllers
 
         public HttpResponseMessage Post(GameCreateModel gameCreateModel)
         {
-            var game = GamesMapper.ConvertGameCreateModelToGame(gameCreateModel);
-            var domain = new GameDomain();
-            domain.CreateGame(game);
+            if (ModelState.IsValid) { 
+                var game = GamesMapper.ConvertGameCreateModelToGame(gameCreateModel);
+                var domain = new GameDomain();
+                domain.CreateGame(game);
 
-            return new HttpResponseMessage(HttpStatusCode.OK);
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            }
+            
+            return Request.CreateResponse(HttpStatusCode.InternalServerError, "Invalid Model");
         }
     }
 }
