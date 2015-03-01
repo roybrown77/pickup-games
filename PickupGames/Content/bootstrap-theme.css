@@ -6608,7 +6608,7 @@ a.list-group-item-danger.active:focus {
     #map {
         width: 50% !important;
     }
-    #Location {
+    #search-location {
         width: 20em;
     }
 }
@@ -6620,10 +6620,10 @@ a.list-group-item-danger.active:focus {
     #mobile-footer {
         display: block !important;
     }
-    #search-location {
+    #search-location-row {
         left: 1em !important;
     }
-    #Location {
+    #search-location {
         width:15em;
     }
 }

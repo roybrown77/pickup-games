@@ -20,7 +20,7 @@ appRoot.controller('GamesController', function ($scope, $http, $q, $location, $r
         initializeVariables();
         googleMapsService.createMap('map-canvas');
         //googleMapsService.setMapEvents();
-        googleMapsService.setMapAutocomplete('Location');
+        googleMapsService.setMapAutocomplete('search-location');
         googleMapsService.setMapBounds($routeParams.location, $routeParams.zoom).then(function () {
             $routeParams.zoom = googleMapsService.getZoom();
             updateUrl();
