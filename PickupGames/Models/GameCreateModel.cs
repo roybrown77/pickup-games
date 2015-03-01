@@ -6,9 +6,6 @@ namespace PickupGames.Models
     public class GameCreateModel
     {
         [Required]
-        public string Name { get; set; }
-
-        [Required]
         public string Sport { get; set; }
 
         [Required]
@@ -19,11 +16,5 @@ namespace PickupGames.Models
 
         [Required]
         public string Location { get; set; }
-
-        public string RecurringDay { get; set; }
-        public TimeSpan Duration { get; set; }
-        public string Status { get; set; }
-        public string AgeGroup { get; set; }
-        public string Notes { get; set; }
     }
 }

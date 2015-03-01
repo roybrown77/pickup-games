@@ -5,7 +5,6 @@ namespace PickupGames.Models
 {
     public class GameSearchModel
     {
-        public string Name { get; set; }
         public string Sport { get; set; }
         public string GameDay { get; set; }
         public DateTime? GameDateStart { get; set; }
@@ -16,8 +15,10 @@ namespace PickupGames.Models
         public string LocationLat { get; set; }
         public string LocationLng { get; set; }
         public string Radius { get; set; }
+        
         public int? PlayerCount { get; set; }
         public int? Views { get; set; }
+
         public GamesSortBy? SortBy { get; set; }
         public int? Index { get; set; }
         public int? NumberOfResultsPerPage { get; set; }

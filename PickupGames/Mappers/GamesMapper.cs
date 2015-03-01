@@ -10,7 +10,6 @@ namespace PickupGames.Mappers
         {
             return new Game
                        {                          
-                           Name = gameModel.Name,
                            Sport = gameModel.Sport,
                            GameTime = gameModel.GameTime,
                            Location = gameModel.Location
@@ -49,7 +48,6 @@ namespace PickupGames.Mappers
                 gameListModel.Add(new GameModel
                                       {
                                           Id = game.Id,
-                                          Name = game.Name,
                                           Sport = game.Sport,
                                           GameDate = game.GameDate,
                                           GameTime = game.GameTime,
