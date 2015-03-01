@@ -49,7 +49,7 @@ namespace PickupGames.Repositories.Mocks
                 }
             };
 
-            _games.AddRange(games);
+            _games = games;
 
             return _games;
 
@@ -133,7 +133,7 @@ namespace PickupGames.Repositories.Mocks
                         };    
             }
 
-            _games.AddRange(games);
+            _games = games;
 
             return _games;
 

@@ -1,6 +1,7 @@
 ﻿@{
     Layout = null;
 }
+
 <style>
     #search-location-row {
         position: fixed;
@@ -121,10 +122,10 @@
     <div class="col-xs-12">
         @*<div id="more-filters-toggle" class="row">
                 <div class="col-xs-12">
-                    <button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default">More Filters</button>
+                    <button class="btn btn-default">More Filters</button>
                 </div>
-            </div>*@
-        @*<div id="search-extra-filters" class="row">
+            </div>
+        <div id="search-extra-filters" class="row">
                 <div class="col-xs-12">
                     <form id="searchgamesextraform" name="searchgamesextraform" ng-submit="searchgames()" enctype="multipart/form-data" role="form" class="form-horizontal">
                         <div class="form-group">
@@ -135,10 +136,10 @@
                         </div>
                     </form>
                 </div>
-            </div>*@
-        @*<div id="show-listings-toggle" class="row">
+            </div>
+        <div id="show-listings-toggle" class="row">
                 <div class="col-xs-12">
-                    <button onclick="javascript:showHideGameSearchFilter();" class="btn btn-default">Show Listings</button>
+                    <button class="btn btn-default">Show Listings</button>
                 </div>
             </div>*@
         <div id="search-results" class="row">

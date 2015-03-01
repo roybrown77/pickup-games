@@ -4,6 +4,7 @@ appRoot.factory('googleMapsService', function ($q) {
     var _geocoder = new google.maps.Geocoder();
     var _zoom;
     var _markers = [];
+    var _formattedAddress;
 
     service.createMap = function (mapCanvasId) {
         var mapOptions = {
@@ -24,6 +25,8 @@ appRoot.factory('googleMapsService', function ($q) {
                 }
 
                 _zoom = _map.getZoom();
+                //_formattedAddress = results[1].formatted_address;
+
                 deferred.resolve();
             }
         });
@@ -39,6 +42,10 @@ appRoot.factory('googleMapsService', function ($q) {
 
     service.getZoom = function() {
         return _zoom;
+    }
+
+    service.getFormattedAddress = function () {
+        return _formattedAddress;
     }
 
     service.setMapEvents = function() {
