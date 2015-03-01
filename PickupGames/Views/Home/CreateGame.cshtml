@@ -18,7 +18,9 @@
                 <div class="form-group">
                     <label class="col-md-2 control-label" for="Sport">Sport</label>
                     <div class="col-md-10">
-                        <input class="form-control" data-val="true" data-val-required="The Sport field is required." id="Sport" name="Sport" type="text" value="" ng-model="creategame.sport">
+                        <select class="form-control" ng-model="sportSelected"
+                            ng-options="sport as sport.label for sport in sports">
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
@@ -36,7 +38,7 @@
                 <div class="form-group">
                     <label class="col-md-2 control-label" for="Location">Location</label>
                     <div class="col-md-10">
-                        <input class="form-control" data-val="true" data-val-required="The Location field is required." id="CreateGameLocation" name="Location" placeholder="Rucker Park, New York, Paris..." type="text" value="" autocomplete="off" ng-model="creategame.location">
+                        <input class="form-control" data-val="true" data-val-required="The Location field is required." id="CreateGameLocation" name="Location" placeholder="Peters Park, West 4th St, Gillette..." type="text" value="" autocomplete="off" ng-model="creategame.location">
                     </div>
                 </div>
                 @*<div class="form-group">
