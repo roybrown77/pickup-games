@@ -11,7 +11,7 @@ namespace PickupGames.Mappers
             return new Game
                        {                          
                            Sport = gameModel.Sport,
-                           GameTime = gameModel.GameTime,
+                           GameDateTime = gameModel.GameDateTime,
                            Location = gameModel.Location
                        };
         }
@@ -49,8 +49,7 @@ namespace PickupGames.Mappers
                                       {
                                           Id = game.Id,
                                           Sport = game.Sport,
-                                          GameDate = game.GameDate,
-                                          GameTime = game.GameTime,
+                                          GameDateTime = game.GameDateTime,
                                           Location = game.Location,
                                           PlayerCount = game.PlayerCount,
                                           DistanceToCenterLocation = game.DistanceToCenterLocation.Value + " " + game.DistanceToCenterLocation.Unit,

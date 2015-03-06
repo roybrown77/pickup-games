@@ -9,10 +9,7 @@ namespace PickupGames.Models
         public string Sport { get; set; }
 
         [Required]
-        public DateTime GameDate { get; set; }
-
-        [Required]
-        public TimeSpan GameTime { get; set; }
+        public DateTime GameDateTime { get; set; }
 
         [Required]
         public string Location { get; set; }

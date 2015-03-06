@@ -7,8 +7,7 @@ namespace PickupGames.Domain.Objects
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Sport { get; set; }
-        public DateTime GameDate { get; set; }
-        public TimeSpan GameTime { get; set; }
+        public DateTime GameDateTime { get; set; }
         public string Location { get; set; }
         public int PlayerCount { get; set; }
         public Distance DistanceToCenterLocation { get; set; }
