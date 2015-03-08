@@ -2,7 +2,14 @@
 {
     public abstract class ResponseBase
     {
-        public string Status { get; set; }
+        private ResponseStatus _status = ResponseStatus.Success;
+
+        public ResponseStatus Status
+        {
+            get { return _status; }
+            set { _status = value; }
+
+        }
         public string Message { get; set; }
     }
 }

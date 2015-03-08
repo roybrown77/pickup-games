@@ -23,7 +23,7 @@ appRoot.controller('GamesController', function ($scope, $http, $q, $location, $r
         googleMapsService.setMapAutocomplete('search-location');
         googleMapsService.setMapBounds($routeParams.location, $routeParams.zoom).then(function () {
             $routeParams.zoom = googleMapsService.getZoom();
-            updateUrl();
+            //updateUrl();
             initializeGames();
         });
     }

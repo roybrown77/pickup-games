@@ -189,6 +189,7 @@
     <Compile Include="Domain.Objects\GamesSortBy.cs" />
     <Compile Include="Domain.Objects\ResponseBase.cs" />
     <Compile Include="Domain.Objects\GameSearchQuery.cs" />
+    <Compile Include="Domain.Objects\ResponseStatus.cs" />
     <Compile Include="Domains\GameDomain.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -221,7 +222,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\app\controllers\creategame.js" />
     <Content Include="Scripts\app\controllers\root.js" />
-    <Content Include="Scripts\app\directives\mapDirective.js" />
+    <Content Include="Scripts\app\directives\googleMapAutocompleteDirective.js" />
+    <Content Include="Scripts\app\directives\map.js" />
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular.js" />
@@ -245,6 +247,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\app\app.js" />
+    <Content Include="Scripts\app\controllers\popup.html" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

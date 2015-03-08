@@ -2,6 +2,10 @@
     Layout = null;
 }
 
+<style>
+    
+</style>
+
 <div class="row">
     <div id="create-game-container" class="col-xs-12">
         <h2>Create game.</h2>
@@ -37,7 +41,7 @@
                 <div class="form-group">
                     <label class="col-md-2 control-label" for="Location">Location</label>
                     <div class="col-md-10">
-                        <input class="form-control" data-val="true" data-val-required="The Location field is required." id="CreateGameLocation" name="Location" placeholder="Peters Park, West 4th St, Gillette..." type="text" value="" autocomplete="off" ng-model="creategame.location" required/>
+                        <input ng-autocomplete class="form-control" data-val="true" data-val-required="The Location field is required." id="CreateGameLocation" name="Location" placeholder="Peters Park, West 4th St, Gillette..." type="text" value="" autocomplete="off" ng-model="creategame.location" required />
                     </div>
                 </div>
                 @*<div class="form-group">
@@ -72,10 +76,11 @@
                         </div>*@
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input id="createbutton" type="submit" class="btn btn-large btn-primary col-xs-12" value="Create">
-                    </div>
-                    <div class="col-md-offset-2 col-md-10">
-                        <label id="create-status" class="control-label" style="display:none"></label>
+                        @*<input id="createbutton" type="submit" class="btn btn-large btn-primary col-xs-12 glyphicon glyphicon-plus" value="{{createbuttontext}}">*@
+                        <button id="createbutton" type="submit" class="btn btn-large btn-primary" aria-hidden="true" style="width:24.3%">
+                            <span id="creategameglyph"class="glyphicon {{creategameglyph}}" aria-hidden="true">
+                            </span>
+                        </button>
                     </div>
                 </div>
             </form>

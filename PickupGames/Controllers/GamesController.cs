@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using PickupGames.Domain.Objects;
 using PickupGames.Domains;
 using PickupGames.Mappers;
 using PickupGames.Models;
@@ -25,7 +26,12 @@ namespace PickupGames.Controllers
             if (ModelState.IsValid) { 
                 var game = GamesMapper.ConvertGameCreateModelToGame(gameCreateModel);
                 var domain = new GameDomain();
-                domain.CreateGame(game);
+                var response = domain.CreateGame(game);
+
+                if (response.Status == ResponseStatus.Failed)
+                {
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError, response.Message);
+                }
 
                 return new HttpResponseMessage(HttpStatusCode.OK);
             }

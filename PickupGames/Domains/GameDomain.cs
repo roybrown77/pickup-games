@@ -28,16 +28,13 @@ namespace PickupGames.Domains
 
                 _gameRepository.Add(game);
 
-                return new BasicResponse
-                {
-                    Status = "Success"
-                };
+                return new BasicResponse();
             }
             catch (Exception ex)
             {
                 return new BasicResponse
                 {
-                    Status = "Failed",
+                    Status = ResponseStatus.Failed,
                     Message = ex.Message
                 };
             }
@@ -55,7 +52,6 @@ namespace PickupGames.Domains
 
                 return new GameSearchResponse
                            {
-                               Status = "Success",
                                Games = games,
                                SearchLocationLat = centerCoordinates.Lat,
                                SearchLocationLng = centerCoordinates.Lng
@@ -65,7 +61,7 @@ namespace PickupGames.Domains
             {
                 return new GameSearchResponse
                            {
-                               Status = "Failed",
+                               Status = ResponseStatus.Failed,
                                Message = ex.Message
                            };
             }
@@ -89,7 +85,6 @@ namespace PickupGames.Domains
 
                 return new GameSearchResponse
                 {
-                    Status = "Success",
                     Games = games,
                     SearchLocationLat = centerCoordinates.Lat,
                     SearchLocationLng = centerCoordinates.Lng
@@ -99,7 +94,7 @@ namespace PickupGames.Domains
             {
                 return new GameSearchResponse
                 {
-                    Status = "Failed",
+                    Status = ResponseStatus.Failed,
                     Message = ex.Message
                 };
             }

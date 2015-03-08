@@ -3,6 +3,7 @@ appRoot.factory('googleMapsService', function ($q) {
     var _map;
     var _geocoder = new google.maps.Geocoder();
     var _zoom;
+    var _autocomplete;
     var _markers = [];
     var _formattedAddress;
 
@@ -16,6 +17,8 @@ appRoot.factory('googleMapsService', function ($q) {
 
     service.setMapBounds = function (location, zoom) {
         var deferred = $q.defer();
+
+        _autocomplete.bindTo('bounds', _map);
 
         _geocoder.geocode({ 'address': location }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
@@ -36,8 +39,7 @@ appRoot.factory('googleMapsService', function ($q) {
 
     service.setMapAutocomplete = function(locationId) {
         var input = (document.getElementById(locationId));
-        var autocomplete = new google.maps.places.Autocomplete(input);
-        autocomplete.bindTo('bounds', _map);
+        _autocomplete = new google.maps.places.Autocomplete(input);
     }
 
     service.getZoom = function() {
@@ -48,7 +50,7 @@ appRoot.factory('googleMapsService', function ($q) {
         return _formattedAddress;
     }
 
-    service.setMapEvents = function() {
+    service.setMapEvents = function () {
         google.maps.event.addListener(_map, 'bounds_changed', onBoundsChanged);
     }
 
