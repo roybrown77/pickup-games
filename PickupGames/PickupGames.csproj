@@ -222,8 +222,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\app\controllers\creategame.js" />
     <Content Include="Scripts\app\controllers\root.js" />
-    <Content Include="Scripts\app\directives\googleMapAutocompleteDirective.js" />
-    <Content Include="Scripts\app\directives\map.js" />
+    <Content Include="Scripts\app\directives\googleMapAutocomplete.js" />
+    <Content Include="Scripts\app\directives\googleMap.js" />
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular.js" />

@@ -1,5 +1,5 @@
-//angular.module('googleMapModule', [])
-//    .factory('mapDirective', function () {
+//angular.module('googleMapDirective', [])
+//    .factory('google-map', function () {
 //        var link = function (scope, element) {
 //        var map;
 //        var markers = [];
