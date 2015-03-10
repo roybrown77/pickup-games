@@ -79,7 +79,7 @@ namespace PickupGames.Domains
                 
                 SetDistanceToCenter(games, centerCoordinates);
 
-                var maxDistance = GetMaxDistance(gameSearchQuery);
+                var maxDistance = gameSearchQuery.GetZoomMaxDistance();
 
                 games = GetGamesWithinRadius(games, maxDistance);
 
@@ -98,80 +98,6 @@ namespace PickupGames.Domains
                     Message = ex.Message
                 };
             }
-        }
-
-        private static Distance GetMaxDistance(GameSearchQuery gameSearchQuery)
-        {
-            var maxDistance = new Distance
-            {
-                Unit = "mi"
-            };
-
-            switch (gameSearchQuery.Zoom)
-            {
-                case 0:
-                    maxDistance.Value = 10000;
-                    break;
-                case 1:
-                    maxDistance.Value = 9000;
-                    break;
-                case 2:
-                    maxDistance.Value = 7000;
-                    break;
-                case 3:
-                    maxDistance.Value = 5000;
-                    break;
-                case 4:
-                    maxDistance.Value = 2500;
-                    break;
-                case 5:
-                    maxDistance.Value = 1500;
-                    break;
-                case 6:
-                    maxDistance.Value = 750;
-                    break;
-                case 7:
-                    maxDistance.Value = 500;
-                    break;
-                case 8:
-                    maxDistance.Value = 200;
-                    break;
-                case 9:
-                    maxDistance.Value = 100;
-                    break;
-                case 10:
-                    maxDistance.Value = 50;
-                    break;
-                case 11:
-                    maxDistance.Value = 25;
-                    break;
-                case 12:
-                    maxDistance.Value = 15;
-                    break;
-                case 13:
-                    maxDistance.Value = 7.5;
-                    break;
-                case 14:
-                    maxDistance.Value = 3;
-                    break;
-                case 15:
-                    maxDistance.Value = 1.5;
-                    break;
-                case 16:
-                    maxDistance.Value = .75;
-                    break;
-                case 17:
-                    maxDistance.Value = .5;
-                    break;
-                case 18:
-                    maxDistance.Value = .25;
-                    break;
-                default:
-                    maxDistance.Value = 5000;
-                    break;
-            }
-
-            return maxDistance;
         }
 
         private List<Game> GetGamesWithinRadius(IEnumerable<Game> games, Distance maxDistance)

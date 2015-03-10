@@ -228,8 +228,8 @@
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\app\controllers\main.js" />
-    <Content Include="Scripts\app\services\gamesService.js" />
-    <Content Include="Scripts\app\services\googleMapsService.js" />
+    <Content Include="Scripts\app\services\games.js" />
+    <Content Include="Scripts\app\services\googleMaps.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
