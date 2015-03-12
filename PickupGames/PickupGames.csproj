@@ -169,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\ApiControllerBase.cs" />
+    <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -228,6 +229,7 @@
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\app\controllers\main.js" />
+    <Content Include="Scripts\app\services\game.js" />
     <Content Include="Scripts\app\services\games.js" />
     <Content Include="Scripts\app\services\googleMaps.js" />
     <Content Include="Scripts\bootstrap.js" />
