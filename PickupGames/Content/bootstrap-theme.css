@@ -6656,9 +6656,8 @@ body {
     margin-right: auto !important;
     margin-left: auto !important;
     background-color: #222222;
-    margin-top: 4em;
+    margin-top: 0 !important;
 }
-
 
 .spin {
   -webkit-animation: spin .5s infinite linear;
