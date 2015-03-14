@@ -6,7 +6,7 @@ namespace PickupGames.Models
     public class GameCreateModel
     {
         [Required]
-        public string Sport { get; set; }
+        public Guid SportId { get; set; }
 
         [Required]
         public DateTime DateTime { get; set; }

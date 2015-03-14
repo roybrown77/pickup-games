@@ -2,6 +2,8 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Ninject;
+using PickupGames.Utilities.DependencyInjector;
 
 namespace PickupGames
 {
@@ -14,6 +16,7 @@ namespace PickupGames
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            NinjectDependencyInjector.Dependencies = new StandardKernel(NinjectDependencyFactory.Create());
         }
     }
 }

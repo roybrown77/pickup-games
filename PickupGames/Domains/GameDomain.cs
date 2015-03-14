@@ -40,6 +40,43 @@ namespace PickupGames.Domains
             }
         }
 
+
+        public BasicResponse EditGame(Game game)
+        {
+            try
+            {
+                _gameRepository.Edit(game);
+
+                return new BasicResponse();
+            }
+            catch (Exception ex)
+            {
+                return new BasicResponse
+                {
+                    Status = ResponseStatus.Failed,
+                    Message = ex.Message
+                };
+            }
+        }
+
+        public BasicResponse DeleteGame(Game game)
+        {
+            try
+            {
+                _gameRepository.Delete(game);
+
+                return new BasicResponse();
+            }
+            catch (Exception ex)
+            {
+                return new BasicResponse
+                {
+                    Status = ResponseStatus.Failed,
+                    Message = ex.Message
+                };
+            }
+        }
+
         public GameSearchResponse FindBy(string location)
         {
             try
@@ -115,7 +152,7 @@ namespace PickupGames.Domains
             return newGames;
         }
 
-        private void SetDistanceToCenter(IEnumerable<Game> games, Coordinates centerCoordinate)
+        private void SetDistanceToCenter(List<Game> games, Coordinates centerCoordinate)
         {
             foreach (var game in games)
             {

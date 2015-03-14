@@ -10,6 +10,7 @@ namespace PickupGames.Utilities.DependencyInjector
         public override void Load()
         {
             Bind<IGameRepository>().ToMethod(context => new MockGameRepository());
+            Bind<ISportRepository>().ToMethod(context => new MockSportRepository());
             Bind<IGeographyRepository>().ToMethod(context => new GoogleGeographyRepository());
         }
     }

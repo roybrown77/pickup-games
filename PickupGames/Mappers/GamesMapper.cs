@@ -9,8 +9,8 @@ namespace PickupGames.Mappers
         public static Game ConvertGameCreateModelToGame(GameCreateModel gameModel)
         {
             return new Game
-                       {                          
-                           Sport = gameModel.Sport,
+                       {
+                           Sport = new Sport { Id = gameModel.SportId },
                            DateTime = gameModel.DateTime,
                            Location = gameModel.Location
                        };
@@ -48,7 +48,7 @@ namespace PickupGames.Mappers
                 gameListModel.Add(new GameModel
                                       {
                                           Id = game.Id,
-                                          Sport = game.Sport,
+                                          Sport = game.Sport.Name,
                                           DateTime = game.DateTime,
                                           Location = game.Location,
                                           PlayerCount = game.PlayerCount,

@@ -15,5 +15,19 @@ appRoot.factory('gamesService', function ($q, $http, $resource) {
         return deferred.promise;
     }
 
+    service.getSports = function (model) {
+        var deferred = $q.defer();
+
+        var resource = $resource('/api/sports', {
+            'get': { method: 'GET', isArray: false }
+        });
+
+        resource.get(function (response) {
+            deferred.resolve(response.sports);
+        });
+
+        return deferred.promise;
+    }
+
     return service;
 });
