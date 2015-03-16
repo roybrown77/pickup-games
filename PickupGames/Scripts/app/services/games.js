@@ -15,7 +15,61 @@ appRoot.factory('gamesService', function ($q, $http, $resource) {
         return deferred.promise;
     }
 
-    service.getSports = function (model) {
+    service.getGame = function (id) {
+        var deferred = $q.defer();
+
+        var resource = $resource('/api/games', id);
+
+        resource.get(function (response) {
+            deferred.resolve(response.game);
+        });
+
+        return deferred.promise;
+    }
+
+    service.deleteGame = function (id) {
+        var deferred = $q.defer();
+
+        var resource = $resource('/api/games', id.toString());
+
+        resource.delete(function (response) {
+            deferred.resolve(response);
+        });
+
+        return deferred.promise;
+    }
+
+    service.addGame = function (model) {
+        var deferred = $q.defer();
+
+        var resource = $resource('/api/games', model);
+
+        resource.save(function (response) {
+            deferred.resolve(response);
+        });
+
+        return deferred.promise;
+    }
+
+    service.updateGame = function (id, model) {
+        var deferred = $q.defer();
+
+        var resource = $resource('/api/games/:id', null,
+                        {
+                            'update': { method: 'PUT' }
+                        });
+
+        //var note = Notes.get({ id: id });
+        //$id = id;
+
+        resource.update({ id: id }, model, function (response) {
+            deferred.resolve(response);
+        });
+
+        return deferred.promise;
+    }
+
+    service.getSports = function () {
         var deferred = $q.defer();
 
         var resource = $resource('/api/sports', {

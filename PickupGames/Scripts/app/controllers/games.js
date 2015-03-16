@@ -14,6 +14,11 @@ appRoot.controller('GamesController', function ($scope, $http, $q, $location, $r
         });
     };
 
+    $scope.deletegame = function (id) {
+        gamesService.deleteGame(id).then(function () {
+        });
+    };
+
     initialize();
 
     function initialize() {

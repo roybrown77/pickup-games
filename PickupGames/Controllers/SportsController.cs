@@ -10,7 +10,7 @@ namespace PickupGames.Controllers
 {
     public class SportsController : ApiControllerBase
     {
-        public SportListResponse  Get()
+        public SportListResponse Get()
         {
             var domain = new SportDomain();
             var response = domain.FindAll();

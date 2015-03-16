@@ -59,11 +59,11 @@ namespace PickupGames.Domains
             }
         }
 
-        public BasicResponse DeleteGame(Game game)
+        public BasicResponse DeleteGame(Guid id)
         {
             try
             {
-                _gameRepository.Delete(game);
+                _gameRepository.Delete(id);
 
                 return new BasicResponse();
             }

@@ -11,7 +11,8 @@ namespace PickupGames.Repositories.Mocks
 
         public void Add(Game game)
         {
-            _games.Add(Guid.NewGuid(), game);
+            game.Id = Guid.NewGuid();
+            _games.Add(game.Id, game);
         }
 
         public void Edit(Game game)
@@ -24,11 +25,11 @@ namespace PickupGames.Repositories.Mocks
             throw new Exception("GameNotFoundToEdit");
         }
 
-        public void Delete(Game game)
+        public void Delete(Guid id)
         {
-            if (_games.ContainsKey(game.Id))
+            if (_games.ContainsKey(id))
             {
-                _games.Remove(game.Id);
+                _games.Remove(id);
             }
 
             throw new Exception("GameNotFoundToDelete");

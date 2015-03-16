@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System;
 using PickupGames.Domain.Objects;
 using PickupGames.Domains;
 using PickupGames.Mappers;
@@ -37,6 +38,18 @@ namespace PickupGames.Controllers
             }
             
             return Request.CreateResponse(HttpStatusCode.InternalServerError, "Invalid Model");
+        }
+
+        public void Put(string id, Game game)
+        {
+            //return Ok;
+        }
+
+        public void Delete(string id)
+        {
+            var domain = new GameDomain();
+            domain.DeleteGame(new Guid(id));
+            //return new HttpResponseMessage(HttpStatusCode.OK);
         }
     }
 }
