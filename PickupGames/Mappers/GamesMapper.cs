@@ -48,7 +48,7 @@ namespace PickupGames.Mappers
                 gameListModel.Add(new GameModel
                                       {
                                           Id = game.Id,
-                                          Sport = game.Sport.Name,
+                                          Sport = game.Sport,
                                           DateTime = game.DateTime,
                                           Location = game.Location,
                                           PlayerCount = game.PlayerCount,
@@ -70,6 +70,16 @@ namespace PickupGames.Mappers
                            Index = searchModel.Index ?? 1,
                            Zoom = searchModel.Zoom ?? 3
                        };
+        }
+
+        public static Game ConvertGameModelToGame(GameModel gameModel)
+        {
+            return new Game()
+            {
+                Sport = gameModel.Sport,
+                DateTime = gameModel.DateTime,
+                Location = gameModel.Location
+            };
         }
     }
 }

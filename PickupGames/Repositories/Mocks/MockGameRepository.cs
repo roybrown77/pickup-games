@@ -15,11 +15,11 @@ namespace PickupGames.Repositories.Mocks
             _games.Add(game.Id, game);
         }
 
-        public void Edit(Game game)
+        public void Edit(Guid id, Game game)
         {
-            if (_games.ContainsKey(game.Id))
+            if (_games.ContainsKey(id))
             {
-                _games[game.Id] = game;
+                _games[id] = game;
             }
             
             throw new Exception("GameNotFoundToEdit");

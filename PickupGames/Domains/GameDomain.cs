@@ -41,11 +41,11 @@ namespace PickupGames.Domains
         }
 
 
-        public BasicResponse EditGame(Game game)
+        public BasicResponse EditGame(Guid id, Game game)
         {
             try
             {
-                _gameRepository.Edit(game);
+                _gameRepository.Edit(id, game);
 
                 return new BasicResponse();
             }

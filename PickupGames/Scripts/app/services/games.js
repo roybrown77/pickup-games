@@ -4,7 +4,7 @@ appRoot.factory('gamesService', function ($q, $http, $resource) {
     service.getGames = function(model) {
         var deferred = $q.defer();
 
-        var resource = $resource('/api/games', model, {
+        var resource = $resource('/api/v1/games', model, {
             'get': { method: 'GET', isArray: false }
         });
 
@@ -18,7 +18,7 @@ appRoot.factory('gamesService', function ($q, $http, $resource) {
     service.getGame = function (id) {
         var deferred = $q.defer();
 
-        var resource = $resource('/api/games', id);
+        var resource = $resource('/api/v1/games', id);
 
         resource.get(function (response) {
             deferred.resolve(response.game);
@@ -30,7 +30,7 @@ appRoot.factory('gamesService', function ($q, $http, $resource) {
     service.deleteGame = function (id) {
         var deferred = $q.defer();
 
-        var resource = $resource('/api/games', id.toString());
+        var resource = $resource('/api/v1/games', id.toString());
 
         resource.delete(function (response) {
             deferred.resolve(response);
@@ -42,7 +42,7 @@ appRoot.factory('gamesService', function ($q, $http, $resource) {
     service.addGame = function (model) {
         var deferred = $q.defer();
 
-        var resource = $resource('/api/games', model);
+        var resource = $resource('/api/v1/games', model);
 
         resource.save(function (response) {
             deferred.resolve(response);
@@ -54,7 +54,7 @@ appRoot.factory('gamesService', function ($q, $http, $resource) {
     service.updateGame = function (id, model) {
         var deferred = $q.defer();
 
-        var resource = $resource('/api/games/:id', null,
+        var resource = $resource('/api/v1/games/:id', null,
                         {
                             'update': { method: 'PUT' }
                         });
@@ -64,20 +64,6 @@ appRoot.factory('gamesService', function ($q, $http, $resource) {
 
         resource.update({ id: id }, model, function (response) {
             deferred.resolve(response);
-        });
-
-        return deferred.promise;
-    }
-
-    service.getSports = function () {
-        var deferred = $q.defer();
-
-        var resource = $resource('/api/sports', {
-            'get': { method: 'GET', isArray: false }
-        });
-
-        resource.get(function (response) {
-            deferred.resolve(response.sports);
         });
 
         return deferred.promise;

@@ -14,7 +14,7 @@ namespace PickupGames
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/{version}/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }

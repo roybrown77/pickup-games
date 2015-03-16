@@ -9,17 +9,23 @@ using PickupGames.Models;
 
 namespace PickupGames.Controllers
 {
-    //[System.Web.Mvc.RoutePrefix("api/games")]
+    [System.Web.Mvc.RoutePrefix("api/v1/games")]
     public class GamesController : ApiControllerBase
     {
         //[System.Web.Mvc.Route("api/games/postcreategame/{gameSearchModel}")]
-        public GamesPageModel Get([FromUri] GameSearchModel gameSearchModel)
+        public HttpResponseMessage Get([FromUri] GameSearchModel gameSearchModel)
         {
             var searchQuery = GamesMapper.ConvertGameSearchModelToGameSearchQuery(gameSearchModel);
             var domain = new GameDomain();
             var response = domain.FindBy(searchQuery);
+
+            if (response.Status == ResponseStatus.Failed)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Unable to get games");
+            }
+
             var view = GamesMapper.ConvertGameSearchResponseToGamesPageModel(response);
-            return view;
+            return Request.CreateResponse(HttpStatusCode.OK, view);
         }
 
         public HttpResponseMessage Post(GameCreateModel gameCreateModel)
@@ -31,25 +37,40 @@ namespace PickupGames.Controllers
 
                 if (response.Status == ResponseStatus.Failed)
                 {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError, response.Message);
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError, "Unable to create game");
                 }
 
-                return new HttpResponseMessage(HttpStatusCode.OK);
+                return new HttpResponseMessage(HttpStatusCode.Created);
             }
             
-            return Request.CreateResponse(HttpStatusCode.InternalServerError, "Invalid Model");
+            return Request.CreateResponse(HttpStatusCode.BadRequest, ModelState.Values);
         }
 
-        public void Put(string id, Game game)
+        public HttpResponseMessage Put(string id, GameModel gameModel)
         {
-            //return Ok;
+            var game = GamesMapper.ConvertGameModelToGame(gameModel);
+            var domain = new GameDomain();
+            var response = domain.EditGame(new Guid(id), game);
+
+            if (response.Status == ResponseStatus.Failed)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Unable to update game");
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
-        public void Delete(string id)
+        public HttpResponseMessage Delete(string id)
         {
             var domain = new GameDomain();
-            domain.DeleteGame(new Guid(id));
-            //return new HttpResponseMessage(HttpStatusCode.OK);
+            var response = domain.DeleteGame(new Guid(id));
+
+            if (response.Status == ResponseStatus.Failed)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Unable to delete game");
+            }
+            
+            return new HttpResponseMessage(HttpStatusCode.NoContent);
         }
     }
 }

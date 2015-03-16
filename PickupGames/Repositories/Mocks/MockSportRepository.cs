@@ -12,13 +12,13 @@ namespace PickupGames.Repositories.Mocks
                 new Sport 
                 {
                     Id = Guid.NewGuid(),
-                    Name = "Basketball"
+                    Name = "basketball"
                 },
 
                 new Sport 
                 {
                     Id = Guid.NewGuid(),
-                    Name = "Football"
+                    Name = "football"
                 }
             };
 

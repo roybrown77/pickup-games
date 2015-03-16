@@ -8,6 +8,7 @@ using PickupGames.Models;
 
 namespace PickupGames.Controllers
 {
+    [System.Web.Mvc.RoutePrefix("api/v1/sports")]
     public class SportsController : ApiControllerBase
     {
         public SportListResponse Get()
