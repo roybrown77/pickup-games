@@ -7,6 +7,9 @@
         max-width: 280px !important;
         width: 100% !important;
     }
+    .well-sm {
+        padding:0 !important;
+    }
 </style>
 
 <div class="row">
@@ -31,20 +34,23 @@
                 <div class="form-group">
                     <label class="col-md-2 control-label" for="GameDate">Game Date</label>
                     <div class="col-md-10">
-                        <input class="form-control" data-val="true" data-val-date="The field Game Date must be a date." data-val-required="The Game Date field is required." id="GameDate" name="GameDate" type="date" ng-model="creategame.date" min="2015-01-01" max="2015-12-31" required />
-                        <span class="add-on"><i class="icon-calendar"></i></span>
+                        @*<input class="form-control" ng-model="creategame.date | date:'MM/dd/yyyy" placeholder="MM/dd/yyyy ex. 01/01/3027" required />*@
+                        <pre class="col-md-2" style="width: 20em;">{{creategame.date | date:'fullDate' }}</pre>
+                        <div class="col-md-12" style="padding:0!important; display:flex; min-height:290px;">
+                            <datepicker ng-model="creategame.date" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-2 control-label" for="GameTime">Game Time</label>
                     <div class="col-md-10">
-                        <input class="form-control" data-val="true" data-val-required="The Game Time field is required." id="GameTime" name="GameTime" type="time" value="" ng-model="creategame.time" required/>
+                        <input class="form-control" ng-model="creategame.time" placeholder="hh:mm:tt ex. 1:00 PM" required />
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-2 control-label" for="Location">Location</label>
                     <div class="col-md-10">
-                        <input google-map-autocomplete class="form-control" data-val="true" data-val-required="The Location field is required." id="CreateGameLocation" name="Location" placeholder="Peters Park, West 4th St, Gillette..." type="text" value="" autocomplete="off" ng-model="creategame.location" required />
+                        <input class="form-control" ng-model="creategame.location" placeholder="Peters Park, West 4th St, Gillette..." required />
                     </div>
                 </div>
                 @*<div class="form-group">
