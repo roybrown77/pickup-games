@@ -300,7 +300,7 @@
     <Folder Include="Api\" />
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\app\js\" />
-    <Folder Include="Scripts\views\" />
+    <Folder Include="Scripts\app\views\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -19,12 +19,6 @@
             <form id="creategameform" name="creategameform" ng-submit="creategame()" enctype="multipart/form-data" class="form-horizontal" role="form">
                 <h4>Create an awesome game!</h4>
                 <hr>
-                @*<div class="form-group">
-                            <label class="col-md-2 control-label" for="Name">Name</label>
-                            <div class="col-md-10">
-                                <input class="form-control" data-val="true" data-val-required="The Name field is required." id="Name" name="Name" type="text" value="">
-                            </div>
-                        </div>*@
                 <div class="form-group">
                     <label class="col-md-2 control-label" for="Sport">Sport</label>
                     <div class="col-md-10">
@@ -34,7 +28,6 @@
                 <div class="form-group">
                     <label class="col-md-2 control-label" for="GameDate">Game Date</label>
                     <div class="col-md-10">
-                        @*<input class="form-control" ng-model="creategame.date | date:'MM/dd/yyyy" placeholder="MM/dd/yyyy ex. 01/01/3027" required />*@
                         <pre class="col-md-2" style="width: 20em;">{{creategame.date | date:'fullDate' }}</pre>
                         <div class="col-md-12" style="padding:0!important; display:flex; min-height:290px;">
                             <datepicker ng-model="creategame.date" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker>
@@ -44,7 +37,7 @@
                 <div class="form-group">
                     <label class="col-md-2 control-label" for="GameTime">Game Time</label>
                     <div class="col-md-10">
-                        <input class="form-control" ng-model="creategame.time" placeholder="hh:mm:tt ex. 1:00 PM" required />
+                        <timepicker ng-model="creategame.time" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
                     </div>
                 </div>
                 <div class="form-group">
