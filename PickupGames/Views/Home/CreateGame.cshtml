@@ -8,7 +8,8 @@
         width: 100% !important;
     }
     .well-sm {
-        padding:0 !important;
+        padding:1em !important;
+        width: 18.75em !important;
     }
     .well {
         margin-bottom:0 !important;
@@ -31,10 +32,8 @@
                 <div class="form-group">
                     <label class="col-md-2 control-label" for="GameDate">Game Date</label>
                     <div class="col-md-10">
-                        <pre class="col-md-2" style="width: 20em;">{{creategame.date | date:'fullDate' }}</pre>
-                        <div class="col-md-12" style="padding:0!important; display:flex">
-                            <datepicker ng-model="creategame.date" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker>
-                        </div>
+                        <pre style="width: 20em;">{{creategame.date | date:'fullDate' }}</pre>
+                        <datepicker ng-model="creategame.date" min-date="minDate" show-weeks="false" class="well well-sm"></datepicker>
                     </div>
                 </div>
                 <div class="form-group">
