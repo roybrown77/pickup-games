@@ -9,7 +9,7 @@ namespace PickupGames.Api.Repositories
     public class AuthContext : IdentityDbContext<IdentityUser>
     {
         public AuthContext()
-            : base("AuthContext")
+            : base("name=AuthContext")
         {
         }
     }

@@ -40,7 +40,7 @@ namespace PickupGames.Api.Controllers
             {
                 return errorResult;
             }
-
+            
             return Ok();
         }
 
