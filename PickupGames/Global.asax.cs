@@ -14,12 +14,12 @@ namespace PickupGames
             AreaRegistration.RegisterAllAreas();
             
             //WebApiConfig.Register(GlobalConfiguration.Configuration);
-            GlobalConfiguration.Configure(WebApiConfig.Register);
+            //GlobalConfiguration.Configure(WebApiConfig.Register);
 
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            //FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
-            NinjectDependencyInjector.Dependencies = new StandardKernel(NinjectDependencyFactory.Create());
+            //BundleConfig.RegisterBundles(BundleTable.Bundles);
+            //NinjectDependencyInjector.Dependencies = new StandardKernel(NinjectDependencyFactory.Create());
         }
     }
 }

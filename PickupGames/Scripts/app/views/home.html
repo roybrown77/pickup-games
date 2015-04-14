@@ -1,0 +1,63 @@
+﻿<style class="ng-scope">
+    #container, #container-fluid {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+
+    #youtube-second-layer {
+        top: -2.5em;
+    }
+
+    #header-container {
+        margin-top: 0 !important;
+    }
+
+    #home-search-button {
+        background-color: #00bc8c;
+        border-color: #00bc8c;
+        color: white;
+        margin-bottom: .25em;
+    }
+
+    #location-row {
+        padding-bottom: 1em;
+        margin-top: 1em !important;
+    }
+
+    #Location {
+        display: inline-block;
+        width: 15em;
+    }
+
+    .row {
+        margin: 0 !important;
+    }
+</style>
+
+<div id="header-container" class="row ng-scope">
+    <div class="col-xs-12">
+        <h1 class="text-center">
+            <div>qpiga.</div>
+            <div>find</div>
+            <div>create</div>
+            <div>track</div>
+            <div>pickup games.</div>
+        </h1>
+    </div>
+</div>
+
+<div id="location-row" class="row ng-scope">
+    <div class="col-xs-12">
+        <form id="searchgamesform" name="searchgamesform" ng-submit="searchgames()" enctype="multipart/form-data" class="form-horizontal ng-pristine ng-valid" role="form">
+            <div class="form-group">
+                <div class="col-xs-12 text-center">
+                    <input id="Location" name="Location" ng-model="Location" class="form-control ng-pristine ng-valid" placeholder="Where do you want to play?" data-lat="" data-lng="">
+                    <button id="home-search-button" type="submit" class="btn btn-default" aria-hidden="true">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true">
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

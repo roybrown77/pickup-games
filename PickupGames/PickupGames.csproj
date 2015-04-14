@@ -237,8 +237,10 @@
     <Content Include="Scripts\app\services\sports.js" />
     <Content Include="Scripts\app\services\games.js" />
     <Content Include="Scripts\app\services\googleMaps.js" />
+    <Content Include="Scripts\app\views\home.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\app\views\index.html" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\app\controllers\games.js" />
     <Content Include="Scripts\games-search.js" />
@@ -297,11 +299,9 @@
     <Content Include="Views\Home\Main.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Api\" />
     <Folder Include="App_Data\" />
     <Folder Include="Migrations\" />
     <Folder Include="Scripts\app\js\" />
-    <Folder Include="Scripts\app\views\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
