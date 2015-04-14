@@ -35,3 +35,6 @@ C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api\bin\System.Web.H
 C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api\obj\Debug\PickupGames.Api.csprojResolveAssemblyReference.cache
 C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api\obj\Debug\PickupGames.Api.dll
 C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api\obj\Debug\PickupGames.Api.pdb
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api\bin\Microsoft.Owin.Cors.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api\bin\System.Web.Cors.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api\bin\Microsoft.Owin.Cors.xml

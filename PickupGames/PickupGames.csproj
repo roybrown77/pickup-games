@@ -199,7 +199,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mappers\GamesMapper.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\GameCreateModel.cs" />
     <Compile Include="Models\GameModel.cs" />
@@ -300,6 +299,7 @@
   <ItemGroup>
     <Folder Include="Api\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Migrations\" />
     <Folder Include="Scripts\app\js\" />
     <Folder Include="Scripts\app\views\" />
   </ItemGroup>
