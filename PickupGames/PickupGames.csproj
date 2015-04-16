@@ -226,6 +226,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\app\angular-local-storage.js" />
     <Content Include="Scripts\app\controllers\creategame.js" />
     <Content Include="Scripts\app\controllers\root.js" />
     <Content Include="Scripts\app\directives\googleMapAutocomplete.js" />
@@ -234,6 +235,8 @@
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\app\controllers\main.js" />
+    <Content Include="Scripts\app\services\authInteceptorService.js" />
+    <Content Include="Scripts\app\services\authService.js" />
     <Content Include="Scripts\app\services\sports.js" />
     <Content Include="Scripts\app\services\games.js" />
     <Content Include="Scripts\app\services\googleMaps.js" />
@@ -256,7 +259,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\app\app.js" />
-    <Content Include="Scripts\app\controllers\popup.html" />
+    <Content Include="Scripts\app\views\popup.html" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
