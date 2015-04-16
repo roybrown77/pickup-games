@@ -1,19 +1,29 @@
-appRoot.factory('sportsService', function ($q, $http, $resource) {
-    var service = {};
+'use strict';
+appRoot.factory('authInterceptorService', ['$q', '$location', 'localStorageService', function ($q, $location, localStorageService) {
 
-    service.getSports = function () {
-        var deferred = $q.defer();
+    var authInterceptorServiceFactory = {};
 
-        var resource = $resource('/api/v1/sports', {
-            'get': { method: 'GET', isArray: false }
-        });
+    var _request = function (config) {
 
-        resource.get(function (response) {
-            deferred.resolve(response.sports);
-        });
+        config.headers = config.headers || {};
 
-        return deferred.promise;
+        var authData = localStorageService.get('authorizationData');
+        if (authData) {
+            config.headers.Authorization = 'Bearer ' + authData.token;
+        }
+
+        return config;
     }
 
-    return service;
-});
+    var _responseError = function (rejection) {
+        if (rejection.status === 401) {
+            $location.path('/login');
+        }
+        return $q.reject(rejection);
+    }
+
+    authInterceptorServiceFactory.request = _request;
+    authInterceptorServiceFactory.responseError = _responseError;
+
+    return authInterceptorServiceFactory;
+}]);

@@ -228,6 +228,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\app\angular-local-storage.js" />
     <Content Include="Scripts\app\controllers\creategame.js" />
+    <Content Include="Scripts\app\controllers\index.js" />
+    <Content Include="Scripts\app\controllers\home.js" />
+    <Content Include="Scripts\app\controllers\login.js" />
+    <Content Include="Scripts\app\controllers\signup.js" />
     <Content Include="Scripts\app\controllers\root.js" />
     <Content Include="Scripts\app\directives\googleMapAutocomplete.js" />
     <Content Include="Scripts\app\directives\googleMap.js" />
@@ -240,10 +244,12 @@
     <Content Include="Scripts\app\services\sports.js" />
     <Content Include="Scripts\app\services\games.js" />
     <Content Include="Scripts\app\services\googleMaps.js" />
+    <Content Include="Scripts\app\views\login.html" />
+    <Content Include="Scripts\app\views\signup.html" />
     <Content Include="Scripts\app\views\home.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\app\views\index.html" />
+    <Content Include="index.html" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\app\controllers\games.js" />
     <Content Include="Scripts\games-search.js" />
