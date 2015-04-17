@@ -1,4 +1,4 @@
-﻿var app = angular.module('AngularAuthApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar']);
+﻿var app = angular.module('AngularAuthApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'ngResource']);
 
 app.config(function ($routeProvider) {
 
@@ -17,14 +17,24 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/signup.html"
     });
 
+    $routeProvider.when("/games/new", {
+        controller: "createGameController",
+        templateUrl: "/app/views/createGame.html"
+    });
+
     $routeProvider.when("/games", {
         controller: "gamesController",
         templateUrl: "/app/views/games.html"
     });
 
-    $routeProvider.when("/games/new", {
-        controller: "createGameController",
-        templateUrl: "/app/views/createGame.html"
+    $routeProvider.when("/games/:location", {
+        controller: "gamesController",
+        templateUrl: "/app/views/games.html"
+    });
+
+    $routeProvider.when("/games/:location/:index", {
+        controller: "gamesController",
+        templateUrl: "/app/views/games.html"
     });
 
     $routeProvider.when("/refresh", {
@@ -47,6 +57,7 @@ app.config(function ($routeProvider) {
 
 //var serviceBase = 'http://qpiga.apphb.com/';
 var serviceBase = 'http://localhost:59512/';
+
 app.constant('ngAuthSettings', {
     apiServiceBaseUri: serviceBase,
     clientId: 'ngAuthApp'
