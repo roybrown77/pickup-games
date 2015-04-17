@@ -74,6 +74,8 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\controllers\associateController.js" />
+    <Content Include="app\controllers\createGameController.js" />
+    <Content Include="app\controllers\gamesController.js" />
     <Content Include="app\controllers\homeController.js" />
     <Content Include="app\controllers\indexController.js" />
     <Content Include="app\controllers\loginController.js" />
@@ -83,11 +85,15 @@
     <Content Include="app\controllers\tokensManagerController.js" />
     <Content Include="app\services\authInterceptorService.js" />
     <Content Include="app\services\authService.js" />
+    <Content Include="app\services\gamesService.js" />
+    <Content Include="app\services\googleMapsService.js" />
     <Content Include="app\services\ordersService.js" />
     <Content Include="app\services\tokensManagerService.js" />
     <Content Include="app\views\associate.html" />
+    <Content Include="app\views\createGame.html" />
     <Content Include="app\views\home.html" />
     <Content Include="app\views\login.html" />
+    <Content Include="app\views\games.html" />
     <Content Include="app\views\orders.html" />
     <Content Include="app\views\refresh.html" />
     <Content Include="app\views\signup.html" />

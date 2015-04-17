@@ -1,5 +1,4 @@
-﻿
-var app = angular.module('AngularAuthApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar']);
+﻿var app = angular.module('AngularAuthApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar']);
 
 app.config(function ($routeProvider) {
 
@@ -18,9 +17,14 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/signup.html"
     });
 
-    $routeProvider.when("/orders", {
-        controller: "ordersController",
-        templateUrl: "/app/views/orders.html"
+    $routeProvider.when("/games", {
+        controller: "GamesController",
+        templateUrl: "/app/views/games.html"
+    });
+
+    $routeProvider.when("/games/new", {
+        controller: "CreateGameController",
+        templateUrl: "/app/views/createGame.html"
     });
 
     $routeProvider.when("/refresh", {

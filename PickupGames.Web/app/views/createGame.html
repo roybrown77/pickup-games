@@ -1,0 +1,90 @@
+﻿    <style class="ng-scope">
+        #createbutton {
+            max-width: 280px !important;
+            width: 100% !important;
+        }
+
+        .well-sm {
+            padding: 1em !important;
+            width: 18.75em !important;
+        }
+
+        .well {
+            margin-bottom: 0 !important;
+        }
+    </style>
+
+    <div class="row ng-scope">
+        <div id="create-game-container" class="col-xs-12">
+            <h2>Create game.</h2>
+            <section id="creategame">
+                <form id="creategameform" name="creategameform" ng-submit="creategame()" enctype="multipart/form-data" class="form-horizontal" role="form">
+                    <h4>Create an awesome game!</h4>
+                    <hr>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="Sport">Sport</label>
+                        <div class="col-md-10">
+                            <select class="form-control" ng-model="creategame.sportSelected" ng-options="sport as sport.name for sport in sports" required=""></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="GameDate">Game Date</label>
+                        <div class="col-md-10">
+                            <pre style="width: 20em;">{{creategame.date | date:'fullDate' }}</pre>
+                            <div ng-switch="datepickerMode" role="application" ng-keydown="keydown($event)" ng-model="creategame.date" min-date="minDate" show-weeks="false" class="well well-sm">
+                                <!-- ngSwitchWhen: day -->
+                                <!-- ngSwitchWhen: month -->
+                                <!-- ngSwitchWhen: year -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="GameTime">Game Time</label>
+                        <div class="col-md-10">
+                            <table ng-model="creategame.time" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian">
+                                <tbody>
+                                    <tr class="text-center">
+                                        <td><a ng-click="incrementHours()" class="btn btn-link"><span class="glyphicon glyphicon-chevron-up"></span></a></td>
+                                        <td>&nbsp;</td>
+                                        <td><a ng-click="incrementMinutes()" class="btn btn-link"><span class="glyphicon glyphicon-chevron-up"></span></a></td>
+                                        <td ng-show="showMeridian"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:50px;" class="form-group" ng-class="{'has-error': invalidHours}">
+                                            <input type="text" ng-model="hours" ng-change="updateHours()" class="form-control text-center" ng-mousewheel="incrementHours()" ng-readonly="readonlyInput" maxlength="2">
+                                        </td>
+                                        <td>:</td>
+                                        <td style="width:50px;" class="form-group" ng-class="{'has-error': invalidMinutes}">
+                                            <input type="text" ng-model="minutes" ng-change="updateMinutes()" class="form-control text-center" ng-readonly="readonlyInput" maxlength="2">
+                                        </td>
+                                        <td ng-show="showMeridian"><button type="button" class="btn btn-default text-center" ng-click="toggleMeridian()">{{meridian}}</button></td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td><a ng-click="decrementHours()" class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></td>
+                                        <td>&nbsp;</td>
+                                        <td><a ng-click="decrementMinutes()" class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></td>
+                                        <td ng-show="showMeridian"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="Location">Location</label>
+                        <div class="col-md-10">
+                            <input class="form-control" ng-model="creategame.location" placeholder="Peters Park, West 4th St, Gillette..." required="">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <button id="createbutton" type="submit" class="btn btn-large btn-primary col-xs-2" aria-hidden="true">
+                                <span id="creategameglyph" class="glyphicon {{creategameglyph}}" aria-hidden="true">
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
