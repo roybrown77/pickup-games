@@ -1,4 +1,4 @@
-app.controller('GamesController', function ($scope, $http, $q, $location, $resource, $routeParams, googleMapsService, gamesService) {
+app.controller('gamesController', function ($scope, $http, $q, $location, $resource, $routeParams, googleMapsService, gamesService) {
     $scope.searchgames = function () {
         $routeParams.location = $scope.gamesearch.location;
         $routeParams.index = 1; // pagination will change this

@@ -18,12 +18,12 @@ app.config(function ($routeProvider) {
     });
 
     $routeProvider.when("/games", {
-        controller: "GamesController",
+        controller: "gamesController",
         templateUrl: "/app/views/games.html"
     });
 
     $routeProvider.when("/games/new", {
-        controller: "CreateGameController",
+        controller: "createGameController",
         templateUrl: "/app/views/createGame.html"
     });
 
@@ -43,10 +43,9 @@ app.config(function ($routeProvider) {
     });
 
     $routeProvider.otherwise({ redirectTo: "/home" });
-
 });
 
-//var serviceBase = 'http://localhost:26264/';
+//var serviceBase = 'http://qpiga.apphb.com/';
 var serviceBase = 'http://localhost:59512/';
 app.constant('ngAuthSettings', {
     apiServiceBaseUri: serviceBase,
