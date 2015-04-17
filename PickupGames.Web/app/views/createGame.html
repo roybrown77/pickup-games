@@ -6,7 +6,7 @@
 
         .well-sm {
             padding: 1em !important;
-            width: 18.75em !important;
+            width: 18.65em !important;
         }
 
         .well {
@@ -24,7 +24,7 @@
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="Sport">Sport</label>
                         <div class="col-md-10">
-                            <select class="form-control" ng-model="creategame.sportSelected" ng-options="sport as sport.name for sport in sports" required=""></select>
+                            <select style="width:18.65em"class="form-control" ng-model="creategame.sportSelected" ng-options="sport as sport.name for sport in sports" required=""></select>
                         </div>
                     </div>
                     <div class="form-group">
@@ -72,7 +72,7 @@
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="Location">Location</label>
                         <div class="col-md-10">
-                            <input class="form-control" ng-model="creategame.location" placeholder="Peters Park, West 4th St, Gillette..." required="">
+                            <input id="CreateGameLocation" style="width:18.65em" class="form-control" ng-model="creategame.location" placeholder="Peters Park, West 4th St, Gillette..." required="">
                         </div>
                     </div>
 
