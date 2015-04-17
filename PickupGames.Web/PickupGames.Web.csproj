@@ -93,11 +93,14 @@
     <Content Include="app\views\signup.html" />
     <Content Include="app\views\tokens.html" />
     <Content Include="authComplete.html" />
+    <Content Include="content\css\bootstrap-theme.css" />
+    <Content Include="content\css\bootstrap.css" />
     <Content Include="content\css\bootstrap.min.css" />
     <Content Include="content\css\font-awesome.min.css" />
     <Content Include="content\css\loading-bar.css" />
     <Content Include="content\css\loading-bar.min.css" />
-    <Content Include="content\css\site.css" />
+    <Content Include="content\css\Site.css" />
+    <Content Include="content\css\site1.css" />
     <Content Include="content\css\social-buttons.css" />
     <Content Include="content\fonts\fontawesome-webfont.svg" />
     <Content Include="content\fonts\glyphicons-halflings-regular.svg" />

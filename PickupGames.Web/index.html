@@ -6,11 +6,12 @@
     <meta name="description" content="SPA built using angularjs,authentication is done using bearer token,back end built using Asp.net web api 2 and OWIN Framework,creatd by Taiseer Joudeh" />
     <meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible" />
     <title>AngularJS Authentication</title>
-    <link href="content/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="content/css/site.css" rel="stylesheet" />
-    <link href="content/css/loading-bar.css" rel="stylesheet" />
+    <link href="content/css/bootstrap.css" rel="stylesheet" />
+    <link href="content/css/bootstrap-theme.css" rel="stylesheet" />
+    <!--<link href="content/css/site.css" rel="stylesheet" />-->
+    <!--<link href="content/css/loading-bar.css" rel="stylesheet" />
     <link href="content/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="content/css/social-buttons.css" rel="stylesheet" />
+    <link href="content/css/social-buttons.css" rel="stylesheet" />-->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 </head>
 <body>
@@ -25,40 +26,57 @@
             </div>
             <div class="collapse navbar-collapse" data-collapse="!navbarExpanded">
                 <ul class="nav navbar-nav navbar-right">
-                    <li data-ng-hide="!authentication.isAuth"><a href="#">Welcome {{authentication.userName}}</a></li>
+                    <li><a href="#/games">Find Games</a></li>
+                    <li><a href="#/games/new">Create Game</a></li>
+                    <li><a href="#/mygames">My Games</a></li>
+                    <li><a href="#/myfitnessstats">My Fitness Stats</a></li>
+
+                    <li><a href="#/signup">Sign up</a></li>
+                    <li><a href="#/login">Log in</a></li>
+
+                    <li><a href="#/feedback">Feedback</a></li>
+
+                    <!--<li data-ng-hide="!authentication.isAuth"><a href="#">Welcome {{authentication.userName}}</a></li>
                     <li data-ng-hide="!authentication.isAuth"><a href="#/orders">My Orders</a></li>
                     <li data-ng-hide="!authentication.isAuth"><a href="#/refresh">Refresh Token</a></li>
                     <li data-ng-hide="!authentication.isAuth"><a href="" data-ng-click="logOut()">Logout</a></li>
                     <li data-ng-hide="authentication.isAuth"> <a href="#/login">Login</a></li>
-                    <li data-ng-hide="authentication.isAuth"> <a href="#/signup">Sign Up</a></li>
+                    <li data-ng-hide="authentication.isAuth"> <a href="#/signup">Sign Up</a></li>-->
                 </ul>
             </div>
         </div>
     </div>
     <div class="jumbotron">
         <div class="container">
-            <div class="page-header text-center">
+            <div data-ng-view="">
+            </div>
+            <!--<div class="page-header text-center">
                 <h1>AngularJS Authentication</h1>
             </div>
-            <p>AngularJS Application which uses OAuth Bearer Token for authentication and implements Refresh Tokens. The backend API is built using ASP.NET Web API 2, OWIN middleware, and ASP.NET Identity.</p>
+            <p>AngularJS Application which uses OAuth Bearer Token for authentication and implements Refresh Tokens. The backend API is built using ASP.NET Web API 2, OWIN middleware, and ASP.NET Identity.</p>-->
         </div>
     </div>
 
-    <div class="container">
+    <!--<div class="container">
         <div data-ng-view="">
         </div>
-    </div>
+    </div>-->
 
-    <hr />
+    <!--<hr />-->
 
     <div id="footer">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <p class="text-muted">Created by Taiseer Joudeh. Twitter: <a target="_blank" href="http://twitter.com/tjoudeh">@tjoudeh</a></p>
-                </div>
-                <div class="col-md-6">
-                    <p class="text-muted">Taiseer Joudeh Blog: <a target="_blank" href="http://bitoftech.net">bitoftech.net</a></p>
+                    <p class="text-primary">
+                        developed by roy brown
+                        <br>
+                        train + play + laugh
+                        <br>
+                        suggestions + ideas + thoughts
+                        <br>
+                        qpiga.ballhard@gmail.com
+                    </p>
                 </div>
             </div>
         </div>

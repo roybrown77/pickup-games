@@ -20,7 +20,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
 
         _logOut();
 
-        return $http.post(serviceBase + 'api/account/register', registration).then(function (response) {
+        return $http.post(serviceBase + 'api/v1/account/register', registration).then(function (response) {
             return response;
         });
 
