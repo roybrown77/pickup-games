@@ -24,49 +24,20 @@
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="Sport">Sport</label>
                         <div class="col-md-10">
-                            <select style="width:18.65em"class="form-control" ng-model="creategame.sportSelected" ng-options="sport as sport.name for sport in sports" required=""></select>
+                            <select style="width:18.65em" class="form-control" ng-init="creategame.sportSelected = sports[0]" ng-model="creategame.sportSelected" ng-options="sport as sport.name for sport in sports" required=""></select>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="GameDate">Game Date</label>
                         <div class="col-md-10">
                             <pre style="width: 20em;">{{creategame.date | date:'fullDate' }}</pre>
-                            <div ng-switch="datepickerMode" role="application" ng-keydown="keydown($event)" ng-model="creategame.date" min-date="minDate" show-weeks="false" class="well well-sm">
-                                <!-- ngSwitchWhen: day -->
-                                <!-- ngSwitchWhen: month -->
-                                <!-- ngSwitchWhen: year -->
-                            </div>
+                            <datepicker ng-model="creategame.date" min-date="minDate" show-weeks="false" class="well well-sm"></datepicker>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="GameTime">Game Time</label>
                         <div class="col-md-10">
-                            <table ng-model="creategame.time" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian">
-                                <tbody>
-                                    <tr class="text-center">
-                                        <td><a ng-click="incrementHours()" class="btn btn-link"><span class="glyphicon glyphicon-chevron-up"></span></a></td>
-                                        <td>&nbsp;</td>
-                                        <td><a ng-click="incrementMinutes()" class="btn btn-link"><span class="glyphicon glyphicon-chevron-up"></span></a></td>
-                                        <td ng-show="showMeridian"></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width:50px;" class="form-group" ng-class="{'has-error': invalidHours}">
-                                            <input type="text" ng-model="hours" ng-change="updateHours()" class="form-control text-center" ng-mousewheel="incrementHours()" ng-readonly="readonlyInput" maxlength="2">
-                                        </td>
-                                        <td>:</td>
-                                        <td style="width:50px;" class="form-group" ng-class="{'has-error': invalidMinutes}">
-                                            <input type="text" ng-model="minutes" ng-change="updateMinutes()" class="form-control text-center" ng-readonly="readonlyInput" maxlength="2">
-                                        </td>
-                                        <td ng-show="showMeridian"><button type="button" class="btn btn-default text-center" ng-click="toggleMeridian()">{{meridian}}</button></td>
-                                    </tr>
-                                    <tr class="text-center">
-                                        <td><a ng-click="decrementHours()" class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></td>
-                                        <td>&nbsp;</td>
-                                        <td><a ng-click="decrementMinutes()" class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></td>
-                                        <td ng-show="showMeridian"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <timepicker ng-model="creategame.time" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
                         </div>
                     </div>
                     <div class="form-group">
