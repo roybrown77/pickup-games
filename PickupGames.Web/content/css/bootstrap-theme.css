@@ -6650,7 +6650,7 @@ body {
     padding: .5em 0 0 0 !important;
 }
 
-#container, #container-fluid {
+.container-fluid {
     padding-right: 15px !important;
     padding-left: 15px !important;
     margin-right: auto !important;
