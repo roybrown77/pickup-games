@@ -38,3 +38,5 @@ C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api\obj\Debug\Pickup
 C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api\bin\Microsoft.Owin.Cors.dll
 C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api\bin\System.Web.Cors.dll
 C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api\bin\Microsoft.Owin.Cors.xml
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api\bin\Ninject.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api\bin\Ninject.xml

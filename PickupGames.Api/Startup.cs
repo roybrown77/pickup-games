@@ -1,7 +1,9 @@
 ﻿using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
+using Ninject;
 using Owin;
 using PickupGames.Api.Providers;
+using PickupGames.Api.Utilities.DependencyInjector;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +17,8 @@ namespace PickupGames.Api
     {
         public void Configuration(IAppBuilder app)
         {
+            NinjectDependencyInjector.Dependencies = new StandardKernel(NinjectDependencyFactory.Create());
+
             ConfigureOAuth(app);
 
             HttpConfiguration config = new HttpConfiguration();

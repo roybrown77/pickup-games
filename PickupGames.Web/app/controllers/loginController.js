@@ -13,7 +13,7 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
 
         authService.login($scope.loginData).then(function (response) {
 
-            $location.path('/orders');
+            $location.path('/games');
 
         },
          function (err) {
@@ -25,7 +25,7 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
 
         var redirectUri = location.protocol + '//' + location.host + '/authcomplete.html';
 
-        var externalProviderUrl = ngAuthSettings.apiServiceBaseUri + "api/Account/ExternalLogin?provider=" + provider
+        var externalProviderUrl = ngAuthSettings.apiServiceBaseUri + "api/v1/Account/ExternalLogin?provider=" + provider
                                                                     + "&response_type=token&client_id=" + ngAuthSettings.clientId
                                                                     + "&redirect_uri=" + redirectUri;
         window.$windowScope = $scope;
@@ -55,7 +55,7 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
                 var externalData = { provider: fragment.provider, externalAccessToken: fragment.external_access_token };
                 authService.obtainAccessToken(externalData).then(function (response) {
 
-                    $location.path('/orders');
+                    $location.path('/games');
 
                 },
              function (err) {
