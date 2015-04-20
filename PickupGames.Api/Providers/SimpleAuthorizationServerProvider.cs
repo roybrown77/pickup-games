@@ -21,6 +21,8 @@ namespace PickupGames.Api.Providers
 
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
 
+            ClaimsIdentity identity;
+
             using (var _repo = new AuthRepository())
             {
                 var user = await _repo.FindUser(context.UserName, context.Password);
@@ -30,11 +32,12 @@ namespace PickupGames.Api.Providers
                     context.SetError("invalid_grant", "The user name or password is incorrect.");
                     return;
                 }
-            }
 
-            var identity = new ClaimsIdentity(context.Options.AuthenticationType);
-            identity.AddClaim(new Claim("sub", context.UserName));
-            identity.AddClaim(new Claim("role", "user"));
+                identity = new ClaimsIdentity(context.Options.AuthenticationType);
+                identity.AddClaim(new Claim("username", context.UserName));
+                identity.AddClaim(new Claim("userid", user.Id));
+                identity.AddClaim(new Claim("role", "user"));
+            }
 
             context.Validated(identity);
         }

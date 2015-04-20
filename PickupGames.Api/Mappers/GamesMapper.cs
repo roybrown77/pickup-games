@@ -1,18 +1,20 @@
 ﻿using System.Collections.Generic;
 using PickupGames.Api.Domain.Objects;
 using PickupGames.Api.Models;
+using System.Security.Claims;
 
 namespace PickupGames.Mappers
 {
     public static class GamesMapper
     {
-        public static Game ConvertGameCreateModelToGame(GameCreateModel gameModel)
+        public static Game ConvertGameCreateModelToGame(string userId, GameCreateModel gameModel)
         {
             return new Game
                        {
                            Sport = new Sport { Id = gameModel.SportId },
                            DateTime = gameModel.DateTime,
-                           Location = gameModel.Location
+                           Location = gameModel.Location,
+                           UserId = userId
                        };
         }
 

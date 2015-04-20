@@ -6,6 +6,11 @@ using PickupGames.Api.Domain.Objects;
 using PickupGames.Api.Domains;
 using PickupGames.Mappers;
 using PickupGames.Api.Models;
+using System.Web;
+using System.Security.Claims;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Security;
 
 namespace PickupGames.Api.Controllers
 {
@@ -32,8 +37,15 @@ namespace PickupGames.Api.Controllers
 
         public HttpResponseMessage Post(GameCreateModel gameCreateModel)
         {
-            if (ModelState.IsValid) { 
-                var game = GamesMapper.ConvertGameCreateModelToGame(gameCreateModel);
+            if (ModelState.IsValid) {
+
+                // move to controller/routing filter
+                //var user = HttpContext.Current.User;
+                var identity = (ClaimsIdentity)User.Identity;
+                var claims = identity.Claims;
+                var userId = claims.Where(c => c.Type == "userid").Single().Value;
+
+                var game = GamesMapper.ConvertGameCreateModelToGame(userId, gameCreateModel);
                 var domain = new GameDomain();
                 var response = domain.CreateGame(game);
 
