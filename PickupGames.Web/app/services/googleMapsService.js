@@ -37,9 +37,17 @@ app.factory('googleMapsService', function ($q) {
         return deferred.promise;
     }
 
-    service.setMapAutocomplete = function(locationId) {
+    service.setAutocomplete = function(locationId) {
         var input = (document.getElementById(locationId));
         _autocomplete = new google.maps.places.Autocomplete(input);
+    }
+
+    service.setAddressOnlyAutocomplete = function (locationId) {
+        var input = (document.getElementById(locationId));
+        var options = {
+            types: ['address']
+        };
+        _autocomplete = new google.maps.places.Autocomplete(input, options);
     }
 
     service.getZoom = function() {

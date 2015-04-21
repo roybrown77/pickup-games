@@ -1,6 +1,6 @@
 ﻿'use strict';
 app.controller('homeController', ['$scope', 'googleMapsService', function ($scope, googleMapsService) {
-    googleMapsService.setMapAutocomplete('Location');
+    googleMapsService.setAutocomplete('Location');
 
     $scope.searchgames = function () {
         var location = $.trim($scope.Location);
