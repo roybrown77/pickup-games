@@ -22,9 +22,9 @@ namespace PickupGames.Api.Controllers
             _repo = new AuthRepository();
         }
 
-        // POST api/Account/Register
-        [AllowAnonymous]
         [Route("Register")]
+        [AllowAnonymous]
+        //[ValidateAntiForgeryToken]
         public async Task<IHttpActionResult> Register(UserModel userModel)
         {
             if (!ModelState.IsValid)

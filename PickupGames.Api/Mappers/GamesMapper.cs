@@ -13,7 +13,7 @@ namespace PickupGames.Mappers
                        {
                            Sport = new Sport { Id = gameModel.SportId },
                            DateTime = gameModel.DateTime,
-                           Location = gameModel.Location,
+                           Location = new Location { Address = gameModel.Location },
                            UserId = userId
                        };
         }
@@ -23,7 +23,8 @@ namespace PickupGames.Mappers
             return new GamesPageModel
                        {
                            GameListModel = ConvertGameListToGameModelList(response.Games),
-                           GameSearchModel = ConvertGameSearchResponseToGameSearchModel(response)
+                           GameSearchModel = ConvertGameSearchResponseToGameSearchModel(response),
+                           PlacesToPlayGamesModel = response.PlacesToPlayGames
                        };
         }
 
@@ -52,12 +53,15 @@ namespace PickupGames.Mappers
                                           Id = game.Id,
                                           Sport = game.Sport,
                                           DateTime = game.DateTime,
-                                          Location = game.Location,
                                           PlayerCount = game.PlayerCount,
-                                          DistanceToCenterLocation = game.DistanceToCenterLocation.Value + " " + game.DistanceToCenterLocation.Unit,
-                                          LocationLat = game.LocationLat,
-                                          LocationLng = game.LocationLng,
-                                          LocationImageUrl = "https://maps.googleapis.com/maps/api/streetview?size=300x200&location=40.720032,-73.988354&fov=90&heading=235&pitch=10"
+                                          Location = new Location
+                                          {
+                                              Address = game.Location.Address,
+                                              DistanceToCenterLocation = game.Location.DistanceToCenterLocation,
+                                              Lat = game.Location.Lat,
+                                              Lng = game.Location.Lng,
+                                              ImageUrl = "https://maps.googleapis.com/maps/api/streetview?size=300x200&location=40.720032,-73.988354&fov=90&heading=235&pitch=10"
+                                          }
                                       });
             }
 

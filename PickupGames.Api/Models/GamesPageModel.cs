@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using PickupGames.Api.Domain.Objects;
+using System.Collections.Generic;
 
 namespace PickupGames.Api.Models
 {
@@ -11,5 +12,6 @@ namespace PickupGames.Api.Models
 
         public GameSearchModel GameSearchModel { get; set; }
         public List<GameModel> GameListModel { get; set; }
+        public List<Location> PlacesToPlayGamesModel { get; set; }
     }
 }

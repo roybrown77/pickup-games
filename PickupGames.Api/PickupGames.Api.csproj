@@ -72,6 +72,10 @@
     <Reference Include="Microsoft.Owin.Security.OAuth">
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
@@ -111,9 +115,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Http.WebHost">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
@@ -132,6 +133,8 @@
     <Compile Include="Domain.Objects\BasicResponse.cs" />
     <Compile Include="Domain.Objects\Coordinates.cs" />
     <Compile Include="Domain.Objects\Distance.cs" />
+    <Compile Include="Domain.Objects\GeographySearchQuery.cs" />
+    <Compile Include="Domain.Objects\Location.cs" />
     <Compile Include="Domain.Objects\Game.cs" />
     <Compile Include="Domain.Objects\GameSearchQuery.cs" />
     <Compile Include="Domain.Objects\GameSearchResponse.cs" />
@@ -140,7 +143,8 @@
     <Compile Include="Domain.Objects\ResponseStatus.cs" />
     <Compile Include="Domain.Objects\Sport.cs" />
     <Compile Include="Domain.Objects\SportListResponse.cs" />
-    <Compile Include="Domains\GameDomain.cs" />
+    <Compile Include="Domains\GameCrudDomain.cs" />
+    <Compile Include="Domains\GameSearchDomain.cs" />
     <Compile Include="Mappers\GamesMapper.cs" />
     <Compile Include="Models\GameCreateModel.cs" />
     <Compile Include="Models\GameModel.cs" />

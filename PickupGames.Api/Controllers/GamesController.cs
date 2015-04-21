@@ -19,20 +19,19 @@ namespace PickupGames.Api.Controllers
     public class GamesController : ApiController
     {
         [AllowAnonymous]
-        //[System.Web.Mvc.Route("api/games/postcreategame/{gameSearchModel}")]
         public HttpResponseMessage Get([FromUri] GameSearchModel gameSearchModel)
         {
             var searchQuery = GamesMapper.ConvertGameSearchModelToGameSearchQuery(gameSearchModel);
-            var domain = new GameDomain();
-            var response = domain.FindBy(searchQuery);
+            var domain = new GameSearchDomain();
+            var rawResponse = domain.FindBy(searchQuery);
 
-            if (response.Status == ResponseStatus.Failed)
+            if (rawResponse.Status == ResponseStatus.Failed)
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, "Unable to get games");
             }
 
-            var view = GamesMapper.ConvertGameSearchResponseToGamesPageModel(response);
-            return Request.CreateResponse(HttpStatusCode.OK, view);
+            var response = GamesMapper.ConvertGameSearchResponseToGamesPageModel(rawResponse);
+            return Request.CreateResponse(HttpStatusCode.OK, response);
         }
 
         public HttpResponseMessage Post(GameCreateModel gameCreateModel)
@@ -46,7 +45,7 @@ namespace PickupGames.Api.Controllers
                 var userId = claims.Where(c => c.Type == "userid").Single().Value;
 
                 var game = GamesMapper.ConvertGameCreateModelToGame(userId, gameCreateModel);
-                var domain = new GameDomain();
+                var domain = new GameCrudDomain();
                 var response = domain.CreateGame(game);
 
                 if (response.Status == ResponseStatus.Failed)
@@ -63,7 +62,7 @@ namespace PickupGames.Api.Controllers
         public HttpResponseMessage Put(string id, GameModel gameModel)
         {
             var game = GamesMapper.ConvertGameModelToGame(gameModel);
-            var domain = new GameDomain();
+            var domain = new GameCrudDomain();
             var response = domain.EditGame(new Guid(id), game);
 
             if (response.Status == ResponseStatus.Failed)
@@ -76,7 +75,7 @@ namespace PickupGames.Api.Controllers
 
         public HttpResponseMessage Delete(string id)
         {
-            var domain = new GameDomain();
+            var domain = new GameCrudDomain();
             var response = domain.DeleteGame(new Guid(id));
 
             if (response.Status == ResponseStatus.Failed)
