@@ -36,10 +36,15 @@ namespace PickupGames.Api.Repositories
             return result;
         }
 
-        public async Task<IdentityUser> FindUser(string userName, string password)
+        public async Task<IdentityUser> FindUserBy(string userName, string password)
         {
             IdentityUser user = await _userManager.FindAsync(userName, password);
+            return user;
+        }
 
+        public async Task<IdentityUser> FindUserBy(string email)
+        {
+            IdentityUser user = await _userManager.FindByEmailAsync(email);
             return user;
         }
 

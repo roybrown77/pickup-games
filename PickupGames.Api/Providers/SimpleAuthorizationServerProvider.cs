@@ -25,11 +25,12 @@ namespace PickupGames.Api.Providers
 
             using (var _repo = new AuthRepository())
             {
-                var user = await _repo.FindUser(context.UserName, context.Password);
+                var user = await _repo.FindUserBy(context.UserName, context.Password);
+                //var userByEmail = await _repo.FindUserBy(user.Email);
 
-                if (user == null)
+                if (user == null /*&& userByEmail == null*/)
                 {
-                    context.SetError("invalid_grant", "The user name or password is incorrect.");
+                    context.SetError("invalid_grant", "Login info is incorrect.");
                     return;
                 }
 
