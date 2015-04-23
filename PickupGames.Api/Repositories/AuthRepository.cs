@@ -25,6 +25,13 @@ namespace PickupGames.Api.Repositories
 
         public async Task<IdentityResult> RegisterUser(UserModel userModel)
         {
+            var userByEmail = await FindUserBy(userModel.Email);
+
+            if (userByEmail != null)
+            {
+                return IdentityResult.Failed("Login info is incorrect.");
+            }
+
             IdentityUser user = new IdentityUser
             {
                 UserName = userModel.UserName,
@@ -39,6 +46,17 @@ namespace PickupGames.Api.Repositories
         public async Task<IdentityUser> FindUserBy(string userName, string password)
         {
             IdentityUser user = await _userManager.FindAsync(userName, password);
+            
+            if (user == null)
+            {
+                user = await _userManager.FindByEmailAsync(userName);
+                
+                if (user != null)
+                {
+                    user = await _userManager.FindAsync(user.UserName, password);
+                }
+            }
+
             return user;
         }
 
