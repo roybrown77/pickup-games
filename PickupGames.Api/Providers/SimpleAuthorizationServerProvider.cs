@@ -32,16 +32,6 @@ namespace PickupGames.Api.Providers
                     context.SetError("invalid_grant", "Login info is incorrect.");
                     return;
                 }
-                else
-                {
-                    var userByEmail = await _repo.FindUserBy(user.Email);
-
-                    if (userByEmail == null)
-                    {
-                        context.SetError("invalid_grant", "Login info is incorrect.");
-                        return;
-                    }
-                }
 
                 identity = new ClaimsIdentity(context.Options.AuthenticationType);
                 identity.AddClaim(new Claim("username", context.UserName));
