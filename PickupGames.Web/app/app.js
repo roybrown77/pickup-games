@@ -52,6 +52,11 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/associate.html"
     });
 
+    $routeProvider.when("/loaderio-85e6d01631ee98b6ed29f2165037efe9", {
+        controller: "homeController",
+        templateUrl: "/app/views/loaderio-85e6d01631ee98b6ed29f2165037efe9.html"
+    });
+
     $routeProvider.otherwise({ redirectTo: "/home" });
 });
 
