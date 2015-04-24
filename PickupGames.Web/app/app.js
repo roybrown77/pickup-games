@@ -1,8 +1,8 @@
-﻿var app = angular.module('AngularAuthApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'ngResource', 'ui.bootstrap']);
+﻿var app = angular.module('AngularAuthApp', ['ngRoute', 'ngResource', 'LocalStorageModule', 'angular-loading-bar', 'ui.bootstrap']);
 
 app.config(function ($routeProvider) {
 
-    $routeProvider.when("/home", {
+    $routeProvider.when("/", {
         controller: "homeController",
         templateUrl: "/app/views/home.html"
     });
@@ -52,12 +52,13 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/associate.html"
     });
 
+    // requires html5 mode true due to hashtag being in url
     $routeProvider.when("/loaderio-85e6d01631ee98b6ed29f2165037efe9", {
         controller: "homeController",
         templateUrl: "/app/views/loaderio-85e6d01631ee98b6ed29f2165037efe9.html"
     });
 
-    $routeProvider.otherwise({ redirectTo: "/home" });
+    $routeProvider.otherwise({ redirectTo: "/" });
 });
 
 //var serviceBase = 'http://qpiga.apphb.com/';

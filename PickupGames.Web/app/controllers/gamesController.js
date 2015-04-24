@@ -1,4 +1,5 @@
-app.controller('gamesController', function ($scope, $http, $q, $location, $resource, $routeParams, googleMapsService, gamesService) {
+'use strict';
+app.controller('gamesController', ['$scope', '$http', '$q', '$location', '$resource', '$routeParams', 'googleMapsService', 'gamesService', function ($scope, $http, $q, $location, $resource, $routeParams, googleMapsService, gamesService) {
     $scope.searchgames = function () {
         $routeParams.location = $scope.gamesearch.location;
         $routeParams.index = 1; // pagination will change this
@@ -80,4 +81,4 @@ app.controller('gamesController', function ($scope, $http, $q, $location, $resou
             googleMapsService.addMarkers(games);
         });
     }           
-});
+}]);

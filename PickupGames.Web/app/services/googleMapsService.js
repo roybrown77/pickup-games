@@ -1,4 +1,4 @@
-app.factory('googleMapsService', function ($q) {
+app.factory('googleMapsService', ['$q', function ($q) {
     var service = {};
     var _map;
     var _geocoder = new google.maps.Geocoder();
@@ -20,7 +20,7 @@ app.factory('googleMapsService', function ($q) {
 
         _autocomplete.bindTo('bounds', _map);
 
-        _geocoder.geocode({ 'address': location }, function (results, status) {
+        _geocoder.geocode({ 'address' : location }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 _map.fitBounds(results[0].geometry.viewport);
                 if (zoom !== 'undefined' && zoom !== undefined && zoom !== "") {
@@ -114,4 +114,4 @@ app.factory('googleMapsService', function ($q) {
     }
 
     return service;
-});
+}]);

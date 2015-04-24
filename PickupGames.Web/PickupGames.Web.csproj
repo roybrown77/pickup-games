@@ -91,6 +91,7 @@
     <Content Include="app\services\tokensManagerService.js" />
     <Content Include="app\views\associate.html" />
     <Content Include="app\views\createGame.html" />
+    <Content Include="app\views\loaderio-85e6d01631ee98b6ed29f2165037efe9.html" />
     <Content Include="app\views\home.html" />
     <Content Include="app\views\login.html" />
     <Content Include="app\views\games.html" />

@@ -1,4 +1,4 @@
-app.factory('gamesService', 'ngAuthSettings', function ($q, $http, $resource, ngAuthSettings) {
+app.factory('gamesService', ['$q', '$http', '$resource', 'ngAuthSettings', function ($q, $http, $resource, ngAuthSettings) {
     var service = {};
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
 
@@ -71,4 +71,4 @@ app.factory('gamesService', 'ngAuthSettings', function ($q, $http, $resource, ng
     }
 
     return service;
-});
+}]);
