@@ -31,10 +31,16 @@ namespace PickupGames.Api
         {
             var OAuthServerOptions = new OAuthAuthorizationServerOptions()
             {
+                //AllowInsecureHttp = true,
+                //TokenEndpointPath = new PathString("/token"),
+                //AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
+                //Provider = new SimpleAuthorizationServerProvider()
+
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/token"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
-                Provider = new SimpleAuthorizationServerProvider()
+                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
+                Provider = new SimpleAuthorizationServerProvider(),
+                RefreshTokenProvider = new SimpleRefreshTokenProvider()
             };
 
             // Token Generation

@@ -151,9 +151,11 @@
     <Compile Include="Models\GameSearchModel.cs" />
     <Compile Include="Models\GamesPageModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\SimpleRefreshTokenProvider.cs" />
     <Compile Include="Providers\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="Repositories\AuthContext.cs" />
     <Compile Include="Repositories\AuthRepository.cs" />
+    <Compile Include="Repositories\Models\Client.cs" />
     <Compile Include="Repositories\GoogleGeographyRepository.cs" />
     <Compile Include="Repositories\Interfaces\IGameRepository.cs" />
     <Compile Include="Repositories\Interfaces\IGeographyRepository.cs" />
@@ -165,6 +167,7 @@
     <Compile Include="Utilities\DependencyInjector\MockNinjectDependencies.cs" />
     <Compile Include="Utilities\DependencyInjector\NinjectDependencyFactory.cs" />
     <Compile Include="Utilities\DependencyInjector\NinjectDependencyInjector.cs" />
+    <Compile Include="Utilities\Helpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -175,7 +178,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Repositories\Entities\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
