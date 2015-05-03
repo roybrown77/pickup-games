@@ -9,6 +9,7 @@ namespace PickupGames.Api.Tests
     public interface IDataAccessor
     {
         IDataReader ExecuteReader();
+        void SetParameter<T>(string key, T value);
     }
 
     public class DataAccessor : IDataAccessor, IDisposable
@@ -22,6 +23,14 @@ namespace PickupGames.Api.Tests
         {
             _dbConnection = dbConnection;
             _dbCommand = dbConnection.CreateCommand();
+        }
+
+        public void SetParameter<T>(string key, T value)
+        {
+            var param = _dbCommand.CreateParameter();
+            param.ParameterName = "@" + key;
+            param.Value = value;
+            _dbCommand.Parameters.Add(param);
         }
 
         public IDataReader ExecuteReader()
@@ -81,17 +90,22 @@ namespace PickupGames.Api.Tests
             var stubConnection = MockRepository.GenerateStub<IDbConnection>();
             var stubCommand = MockRepository.GenerateMock<IDbCommand>();
             var stubReader = MockRepository.GenerateStub<IDataReader>();
+            var stubParameter = MockRepository.GenerateStub<IDbDataParameter>();
+            var stubParameterCollection = MockRepository.GenerateStub<IDataParameterCollection>();
 
-            stubCommand.Expect(c => c.Connection = stubConnection);
-            
             stubConnection.Stub(conn => conn.CreateCommand()).Return(stubCommand);
+            
             stubCommand.Stub(comm => comm.ExecuteReader()).Return(stubReader);
+            stubCommand.Stub(comm => comm.CreateParameter()).Return(stubParameter);
+            stubCommand.Stub(comm => comm.Parameters).Return(stubParameterCollection);
+
             stubReader.Stub(rdr => rdr.Read()).Return(true).Repeat.Times(1);
             stubReader.Stub(rdr => rdr.Read()).Return(false).Repeat.Once();
             stubReader.Stub(rdr => rdr.GetInt32(0)).Return(2).Repeat.Once();
             
             using (var dataAccessor = new DataAccessor(stubConnection))
             {
+                dataAccessor.SetParameter("UserId", Guid.NewGuid());
                 var reader = dataAccessor.ExecuteReader();
                 reader.Read();
                 var val = reader.GetInt32(0);
