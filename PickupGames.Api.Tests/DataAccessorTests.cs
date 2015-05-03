@@ -6,10 +6,70 @@ using Rhino.Mocks;
 
 namespace PickupGames.Api.Tests
 {
+    public interface IUserRepository
+    {
+        List<User> GetBy(UserSearchRequest userSearchRequest);
+    }
+
+    public class UserSearchRequest
+    {
+        public string Name { get; set; }
+    }
+
+    public class User
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+
     public interface IDataAccessor
     {
         IDataReader ExecuteReader();
-        void SetParameter<T>(string key, T value);
+        void AddParameter<T>(string key, T value);
+        void Save();
+    }
+
+    public class UserRepository : IUserRepository
+    {
+        private readonly IDataAccessor _dataAccessor;
+
+        public UserRepository(IDataAccessor dataAccessor)
+        {
+            _dataAccessor = dataAccessor;
+        }
+
+        public List<User> GetBy(UserSearchRequest userSearchRequest)
+        {
+            using (var reader = _dataAccessor.ExecuteReader())
+            {
+                //_dataAccessor.AddParameter("Id", 1);
+                //_dataAccessor.AddParameter("Name", "Roy");
+                //_dataAccessor.Save();
+
+                reader.Read();
+                return new List<User>();
+            }
+        }
+    }
+
+    public class MockUserRepository : IUserRepository
+    {
+        private List<User> _users = new List<User>();
+
+        public List<User> Users
+        {
+            get { return _users; }
+            set { _users = value; }
+        }
+
+        public MockUserRepository(IDataAccessor dataAccessor)
+        {
+        }
+
+        public List<User> GetBy(UserSearchRequest userSearchRequest)
+        {
+            return Users;
+        }
     }
 
     public class DataAccessor : IDataAccessor, IDisposable
@@ -25,12 +85,17 @@ namespace PickupGames.Api.Tests
             _dbCommand = dbConnection.CreateCommand();
         }
 
-        public void SetParameter<T>(string key, T value)
+        public void AddParameter<T>(string key, T value)
         {
             var param = _dbCommand.CreateParameter();
             param.ParameterName = "@" + key;
             param.Value = value;
             _dbCommand.Parameters.Add(param);
+        }
+
+        public void Save()
+        {
+            _dbCommand.ExecuteNonQuery();
         }
 
         public IDataReader ExecuteReader()
@@ -105,14 +170,21 @@ namespace PickupGames.Api.Tests
             
             using (var dataAccessor = new DataAccessor(stubConnection))
             {
-                dataAccessor.SetParameter("UserId", Guid.NewGuid());
+                dataAccessor.AddParameter("Id", 1);
                 var reader = dataAccessor.ExecuteReader();
                 reader.Read();
                 var val = reader.GetInt32(0);
                 Assert.IsTrue(true);
             }
+        }
 
-            Assert.IsTrue(true);
+        [Test]
+        public void Test2()
+        {
+            var stubDataAccessor = MockRepository.GenerateStub<IDataAccessor>();
+            var userRepository = new MockUserRepository(stubDataAccessor);
+            var users = userRepository.GetBy(new UserSearchRequest());
+            Assert.AreEqual(0, users.Count);
         }
     }
 

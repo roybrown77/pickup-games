@@ -40,3 +40,9 @@ C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api\bin\System.Web.C
 C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api\bin\Microsoft.Owin.Cors.xml
 C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api\bin\Ninject.dll
 C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api\bin\Ninject.xml
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api\bin\CavemanTools.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api\bin\SqlFu.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api\bin\CavemanTools.pdb
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api\bin\CavemanTools.xml
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api\bin\SqlFu.pdb
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api\bin\SqlFu.xml
