@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using NUnit.Framework;
 using Rhino.Mocks;
 
@@ -52,6 +53,40 @@ namespace PickupGames.Api.Tests
         }
     }
 
+    public class UserRepository2 : IUserRepository
+    {
+        private readonly string _connectionString;
+
+        public UserRepository2(string connectionString)
+        {
+            _connectionString = connectionString;
+        }
+
+        public List<User> GetBy(UserSearchRequest userSearchRequest)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                var dbCommand = conn.CreateCommand();
+                
+                var param = dbCommand.CreateParameter();
+                param.ParameterName = "@Id";
+                param.Value = 1;
+                dbCommand.Parameters.Add(param);
+
+                conn.Open();
+
+                using (var reader = dbCommand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                    }
+
+                    return new List<User>();
+                }
+            }
+        }
+    }
+
     public class MockUserRepository : IUserRepository
     {
         private List<User> _users = new List<User>();
@@ -60,6 +95,10 @@ namespace PickupGames.Api.Tests
         {
             get { return _users; }
             set { _users = value; }
+        }
+
+        public MockUserRepository()
+        {
         }
 
         public MockUserRepository(IDataAccessor dataAccessor)
@@ -183,6 +222,14 @@ namespace PickupGames.Api.Tests
         {
             var stubDataAccessor = MockRepository.GenerateStub<IDataAccessor>();
             var userRepository = new MockUserRepository(stubDataAccessor);
+            var users = userRepository.GetBy(new UserSearchRequest());
+            Assert.AreEqual(0, users.Count);
+        }
+
+        [Test]
+        public void Test3()
+        {
+            var userRepository = new MockUserRepository();
             var users = userRepository.GetBy(new UserSearchRequest());
             Assert.AreEqual(0, users.Count);
         }
