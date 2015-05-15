@@ -51,9 +51,9 @@ namespace PickupGames.Api.Repositories
             };
         }
 
-        public List<PickupGames.Api.Domain.Objects.Location> GetPlaces(GeographySearchQuery geographySearchQuery)
+        public List<Domain.Objects.Location> GetPlaces(GeographySearchQuery geographySearchQuery)
         {
-            var locations = new List<PickupGames.Api.Domain.Objects.Location>();
+            var locations = new List<Domain.Objects.Location>();
 
             var request = (HttpWebRequest)WebRequest.Create("https://maps.googleapis.com/maps/api/place/textsearch/json?query=court+field+gym+park+basketball&key=AIzaSyCx7-UeC9DGPev5LeZWCc6ikS20hZLfx6w");
             var response = (HttpWebResponse)request.GetResponse();
@@ -64,7 +64,7 @@ namespace PickupGames.Api.Repositories
 
             foreach (var entry in results)
             {
-                locations.Add(new PickupGames.Api.Domain.Objects.Location
+                locations.Add(new Domain.Objects.Location
                 {
                     Name = entry.name   
                 });

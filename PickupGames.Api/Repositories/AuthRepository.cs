@@ -1,13 +1,10 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using PickupGames.Api.Repositories.Models;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
+using PickupGames.Api.Models;
 
 namespace PickupGames.Api.Repositories
 {

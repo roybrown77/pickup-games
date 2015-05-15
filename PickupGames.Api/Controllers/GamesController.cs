@@ -6,11 +6,8 @@ using PickupGames.Api.Domain.Objects;
 using PickupGames.Api.Domains;
 using PickupGames.Mappers;
 using PickupGames.Api.Models;
-using System.Web;
 using System.Security.Claims;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web.Security;
 
 namespace PickupGames.Api.Controllers
 {

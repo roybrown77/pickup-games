@@ -135,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\RefreshTokensController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Domain.Objects\BasicResponse.cs" />
@@ -162,14 +163,14 @@
     <Compile Include="Providers\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="Repositories\AuthContext.cs" />
     <Compile Include="Repositories\AuthRepository.cs" />
-    <Compile Include="Repositories\Models\Client.cs" />
+    <Compile Include="Models\Client.cs" />
     <Compile Include="Repositories\GoogleGeographyRepository.cs" />
     <Compile Include="Repositories\Interfaces\IGameRepository.cs" />
     <Compile Include="Repositories\Interfaces\IGeographyRepository.cs" />
     <Compile Include="Repositories\Interfaces\ISportRepository.cs" />
     <Compile Include="Repositories\Mocks\MockGameRepository.cs" />
     <Compile Include="Repositories\Mocks\MockSportRepository.cs" />
-    <Compile Include="Repositories\Models\UserModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utilities\DependencyInjector\MockNinjectDependencies.cs" />
     <Compile Include="Utilities\DependencyInjector\NinjectDependencyFactory.cs" />

@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using PickupGames.Api.Domain.Objects;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace PickupGames.Api.Repositories.Models
+namespace PickupGames.Api.Models
 {
     public class Client
     {

@@ -5,9 +5,6 @@ using Owin;
 using PickupGames.Api.Providers;
 using PickupGames.Api.Utilities.DependencyInjector;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
 
 [assembly: OwinStartup(typeof(PickupGames.Api.Startup))]

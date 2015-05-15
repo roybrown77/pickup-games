@@ -65,9 +65,8 @@ namespace PickupGames.Api.Tests
         public List<User> GetBy(UserSearchRequest userSearchRequest)
         {
             using (var conn = new SqlConnection(_connectionString))
+            using (var dbCommand = conn.CreateCommand())
             {
-                var dbCommand = conn.CreateCommand();
-                
                 var param = dbCommand.CreateParameter();
                 param.ParameterName = "@Id";
                 param.Value = 1;

@@ -1,14 +1,8 @@
 ﻿using Microsoft.AspNet.Identity;
 using PickupGames.Api.Repositories;
-using PickupGames.Api.Repositories.Models;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
+using PickupGames.Api.Models;
 
 namespace PickupGames.Api.Controllers
 {
@@ -34,7 +28,7 @@ namespace PickupGames.Api.Controllers
 
             var result = await _repo.RegisterUser(userModel);
 
-            IHttpActionResult errorResult = GetErrorResult(result);
+            var errorResult = GetErrorResult(result);
 
             if (errorResult != null)
             {
