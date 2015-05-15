@@ -9,63 +9,7 @@ namespace PickupGames.Api.Repositories.Mocks
     {
         public static Dictionary<Guid, Game> _games = new Dictionary<Guid, Game>();
 
-        public void Add(Game game)
-        {
-            game.Id = Guid.NewGuid();
-            _games.Add(game.Id, game);
-        }
-
-        public void Edit(Guid id, Game game)
-        {
-            if (_games.ContainsKey(id))
-            {
-                _games[id] = game;
-            }
-            
-            throw new Exception("GameNotFoundToEdit");
-        }
-
-        public void Delete(Guid id)
-        {
-            if (_games.ContainsKey(id))
-            {
-                _games.Remove(id);
-            }
-
-            throw new Exception("GameNotFoundToDelete");
-        }
-
-        private List<Game> GetGames()
-        {
-            var gameList = new List<Game>();
-
-            foreach (var game in _games)
-            {
-                game.Value.Sport.Name = GetSportName(game.Value.Sport.Id);
-                gameList.Add(game.Value);
-            }
-
-            return gameList;
-        }
-
-        private string GetSportName(string sportId)
-        {
-            return MockSportRepository._sports.Find(x => x.Id == sportId).Name;
-        }
-
-        public List<Game> FindAll()
-        {
-            return GetGames();
-        }
-
-        public List<Game> FindBy(string location)
-        {
-            return GetGames();
-
-            //return _games.FindAll(x => x.Location == location);
-        }
-
-        public List<Game> FindBy(GameSearchQuery gameSearchQuery)
+        public MockGameRepository()
         {
             //var games = new List<Game>();
 
@@ -139,9 +83,99 @@ namespace PickupGames.Api.Repositories.Mocks
 
             //_games = games;
 
-            //return _games;
+            var games = new List<Game>
+                       {
+                           new Game
+                               {
+                                   Id = Guid.NewGuid(),
+                                   Sport = new Sport { Id = "Football", Name = "Football"},
+                                   DateTime = DateTime.Now,
+                                   Location = new Location{Address = "Boston, MA"},
+                                   PlayerCount = 6
+                               },
+                           new Game
+                               {
+                                   Id = Guid.NewGuid(),
+                                   Sport = new Sport { Id = "Football", Name = "Football"},
+                                   DateTime = DateTime.Now.Date,
+                                   Location = new Location{Address = "Brookline, MA"},
+                                   PlayerCount = 6
+                               },
+                           new Game
+                               {
+                                   Id = Guid.NewGuid(),
+                                   Sport = new Sport { Id = "Football", Name = "Football"},
+                                   DateTime = DateTime.Now,
+                                   Location = new Location{Address = "Chicago, IL"},
+                                   PlayerCount = 6
+                               },
+                       };
 
+            foreach (var game in games)
+            {
+                Add(game);
+            }
+        }
+
+        public void Add(Game game)
+        {
+            game.Id = Guid.NewGuid();
+            _games.Add(game.Id, game);
+        }
+
+        public void Edit(Guid id, Game game)
+        {
+            if (_games.ContainsKey(id))
+            {
+                _games[id] = game;
+            }
+            
+            throw new Exception("GameNotFoundToEdit");
+        }
+
+        public void Delete(Guid id)
+        {
+            if (_games.ContainsKey(id))
+            {
+                _games.Remove(id);
+            }
+
+            throw new Exception("GameNotFoundToDelete");
+        }
+
+        private List<Game> GetGames()
+        {
+            var gameList = new List<Game>();
+
+            foreach (var game in _games)
+            {
+                game.Value.Sport.Name = GetSportName(game.Value.Sport.Id);
+                gameList.Add(game.Value);
+            }
+
+            return gameList;
+        }
+
+        private string GetSportName(string sportId)
+        {
+            return MockSportRepository._sports.Find(x => x.Id == sportId).Name;
+        }
+
+        public List<Game> FindAll()
+        {
             return GetGames();
+        }
+
+        public List<Game> FindBy(string address)
+        {
+            var games = GetGames();
+            return games.FindAll(x => x.Location.Address == address);
+        }
+
+        public List<Game> FindBy(GameSearchQuery gameSearchQuery)
+        {
+            var games = GetGames();
+            return games.FindAll(x => x.Location.Address == gameSearchQuery.Location || x.Sport.Id == gameSearchQuery.Sport || x.DateTime >= gameSearchQuery.GameTimeStart || x.DateTime <= gameSearchQuery.GameTimeEnd || x.DateTime.Date >= gameSearchQuery.GameDateStart || x.DateTime.Date <= gameSearchQuery.GameDateEnd);
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PickupGames.Api.Domain.Objects
+﻿namespace PickupGames.Api.Domain.Objects
 {
     public class Sport
     {
