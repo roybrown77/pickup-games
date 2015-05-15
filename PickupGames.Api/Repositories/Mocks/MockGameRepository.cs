@@ -158,7 +158,7 @@ namespace PickupGames.Api.Repositories.Mocks
 
         private string GetSportName(string sportId)
         {
-            return MockSportRepository._sports.Find(x => x.Id == sportId).Name;
+            return MockSportRepository._sports.Find(x => x.Id == sportId.ToLower()).Name;
         }
 
         public List<Game> FindAll()

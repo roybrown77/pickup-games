@@ -10,7 +10,7 @@ app.factory('gamesService', ['$q', '$http', '$resource', 'ngAuthSettings', funct
         });
 
         resource.get(function (response) {
-            deferred.resolve(response.gameListModel);            
+            deferred.resolve(response);            
         });
 
         return deferred.promise;
