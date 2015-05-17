@@ -90,7 +90,7 @@ namespace PickupGames.Api.Repositories.Mocks
                                    Id = Guid.NewGuid(),
                                    Sport = new Sport { Id = "Football", Name = "Football"},
                                    DateTime = DateTime.Now,
-                                   Location = new Location{Address = "Boston, MA"},
+                                   Location = new Location{Address = "Somerville, MA", Lat = "42.387597", Lng = "-71.099497"},
                                    PlayerCount = 6
                                },
                            new Game
@@ -98,7 +98,7 @@ namespace PickupGames.Api.Repositories.Mocks
                                    Id = Guid.NewGuid(),
                                    Sport = new Sport { Id = "Football", Name = "Football"},
                                    DateTime = DateTime.Now.Date,
-                                   Location = new Location{Address = "Brookline, MA"},
+                                   Location = new Location{Address = "Brookline, MA", Lat = "42.331764", Lng = "-71.121163" },
                                    PlayerCount = 6
                                },
                            new Game
@@ -106,10 +106,12 @@ namespace PickupGames.Api.Repositories.Mocks
                                    Id = Guid.NewGuid(),
                                    Sport = new Sport { Id = "Football", Name = "Football"},
                                    DateTime = DateTime.Now,
-                                   Location = new Location{Address = "Chicago, IL"},
+                                   Location = new Location{Address = "Chicago, IL", Lat = "41.878114", Lng = "-87.629798",},
                                    PlayerCount = 6
                                },
                        };
+            
+            _games = new Dictionary<Guid, Game>();
 
             foreach (var game in games)
             {
@@ -168,12 +170,14 @@ namespace PickupGames.Api.Repositories.Mocks
 
         public List<Game> FindBy(string address)
         {
+            return GetGames();
             var games = GetGames();
             return games.FindAll(x => x.Location.Address == address);
         }
 
         public List<Game> FindBy(GameSearchQuery gameSearchQuery)
         {
+            return GetGames();
             var games = GetGames();
             return games.FindAll(x => x.Location.Address == gameSearchQuery.Location || x.Sport.Id == gameSearchQuery.Sport || x.DateTime >= gameSearchQuery.GameTimeStart || x.DateTime <= gameSearchQuery.GameTimeEnd || x.DateTime.Date >= gameSearchQuery.GameDateStart || x.DateTime.Date <= gameSearchQuery.GameDateEnd);
         }

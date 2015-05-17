@@ -77,9 +77,9 @@ app.controller('gamesController', ['$scope', '$http', '$q', '$location', '$resou
     function initializeGames() {
         $scope.games = [];
         gamesService.getGames($routeParams).then(function (response) {
-            $scope.games = response.placesToPlayGamesModel;
+            $scope.games = response.gameListModel;
             $scope.placesToPlayGames = response.placesToPlayGamesModel;
-            googleMapsService.addMarkers(games);
+            //googleMapsService.addMarkers($scope.games);
         });
     }           
 }]);

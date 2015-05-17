@@ -118,7 +118,33 @@
         <div class="col-xs-12">
 
             <div id="search-results" class="row">
-                <!-- ngRepeat: game in games -->
+                <div class="col-xs-12" ng-repeat="game in games">
+                    <div>
+                        <div class="sport">
+                            {{game.sport.name}}
+                        </div>
+                        <div class="location" data-lat={{game.location.lat}} data-lng={{game.location.lng}}>
+                            {{game.location.address}}
+                        </div>
+                        <div>
+                            {{game.distanceToCenterLocation.value}} {{game.distanceToCenterLocation.unit}}
+                        </div>
+                        <div>
+                            {{game.dateTime}}
+                        </div>
+                        <span class="glyphicon glyphicon-remove" style="cursor: pointer" ng-click="deletegame(game.id)"></span>
+                        <span class="glyphicon glyphicon-pencil" style="cursor: pointer"></span>
+                    </div>
+                </div>
+
+                <div class="col-xs-12" ng-repeat="place in placesToPlayGames" style="border: .25em solid yellow">
+                    <div>
+                        <div class="sport">
+                            {{place.name}}
+                        </div>
+                        <span class="glyphicon glyphicon-plus" style="cursor: pointer" ng-click="creategame(game.id)"></span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -128,7 +154,22 @@
     <div id="mobile-footer" class="navbar-fixed-bottom ng-scope">
         <div class="dropdown">
             <div id="search-results-mobile" class="dropdown-menu" role="menu">
-                <!-- ngRepeat: game in games -->
+                <div class="col-xs-12" ng-repeat="game in games">
+                    <div>
+                        <div class="sport">
+                            {{game.sport.name}}
+                        </div>
+                        <div id="location" data-lat={{game.location.lat}} data-lng={{game.location.lat}}>
+                            {{game.location.address}}
+                        </div>
+                        <div>
+                            {{game.distanceToCenterLocation.value}} {{game.distanceToCenterLocation.unit}}
+                        </div>
+                        <div>
+                            {{game.dateTime}}
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-xs-6 mobile-nav-header" data-toggle="dropdown">
                 LIST RESULTS
