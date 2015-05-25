@@ -12,11 +12,12 @@ using System.Linq;
 namespace PickupGames.Api.Controllers
 {
     [Authorize]
-    [RoutePrefix("api/v1/games")]
     public class GamesController : ApiController
     {
         [AllowAnonymous]
-        public HttpResponseMessage Get([FromUri] GameSearchModel gameSearchModel)
+        [Route("api/v1/games")]
+        [HttpGet]
+        public HttpResponseMessage GetGamesByQuery([FromUri] GameSearchModel gameSearchModel)
         {
             var searchQuery = GamesMapper.ConvertGameSearchModelToGameSearchQuery(gameSearchModel);
             var domain = new GameSearchDomain();
@@ -31,7 +32,9 @@ namespace PickupGames.Api.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
 
-        public HttpResponseMessage Post(GameCreateModel gameCreateModel)
+        [Route("api/v1/games")]
+        [HttpPost]
+        public HttpResponseMessage CreateGame(GameCreateModel gameCreateModel)
         {
             if (ModelState.IsValid) {
 
@@ -56,7 +59,9 @@ namespace PickupGames.Api.Controllers
             return Request.CreateResponse(HttpStatusCode.BadRequest, ModelState.Values);
         }
 
-        public HttpResponseMessage Put(string id, GameModel gameModel)
+        [Route("api/v1/games")]
+        [HttpPut]
+        public HttpResponseMessage UpdateGame(string id, GameModel gameModel)
         {
             var game = GamesMapper.ConvertGameModelToGame(gameModel);
             var domain = new GameCrudDomain();
@@ -70,7 +75,9 @@ namespace PickupGames.Api.Controllers
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
-        public HttpResponseMessage Delete(string id)
+        [Route("api/v1/games")]
+        [HttpDelete]
+        public HttpResponseMessage DeleteGame(string id)
         {
             var domain = new GameCrudDomain();
             var response = domain.DeleteGame(new Guid(id));
