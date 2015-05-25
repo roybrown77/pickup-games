@@ -90,7 +90,7 @@ app.factory('googleMapsService', ['$q', function ($q) {
 
         for (var index in locations) {
             marker = new google.maps.Marker({
-                position: new google.maps.LatLng(locations[parseInt(index)].locationLat, locations[parseInt(index)].locationLng),
+                position: new google.maps.LatLng(locations[parseInt(index)].location.lat, locations[parseInt(index)].location.lng),
                 map: _map,
                 title: 'time to ball!',
                 draggable: true

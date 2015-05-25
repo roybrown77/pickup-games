@@ -4,6 +4,7 @@ using System.Xml.Linq;
 using PickupGames.Api.Domain.Objects;
 using PickupGames.Api.Repositories.Interfaces;
 using System.Collections.Generic;
+using System.Globalization;
 using Newtonsoft.Json;
 using System.IO;
 
@@ -55,7 +56,7 @@ namespace PickupGames.Api.Repositories
         {
             var locations = new List<Domain.Objects.Location>();
 
-            var request = (HttpWebRequest)WebRequest.Create("https://maps.googleapis.com/maps/api/place/textsearch/json?query=court+field+gym+park+basketball&key=AIzaSyCx7-UeC9DGPev5LeZWCc6ikS20hZLfx6w");
+            var request = (HttpWebRequest)WebRequest.Create("https://maps.googleapis.com/maps/api/place/textsearch/json?query=court+field+gym+park+basketball+" + geographySearchQuery.Address + "&radius=" + geographySearchQuery.Radius + "&key=AIzaSyCx7-UeC9DGPev5LeZWCc6ikS20hZLfx6w");
             var response = (HttpWebResponse)request.GetResponse();
             var stream = response.GetResponseStream(); 
             var streamReader = new StreamReader(stream);
@@ -66,7 +67,10 @@ namespace PickupGames.Api.Repositories
             {
                 locations.Add(new Domain.Objects.Location
                 {
-                    Name = entry.name   
+                    Name = entry.name,   
+                    Lat = entry.geometry.location.lat.ToString(CultureInfo.InvariantCulture),
+                    Lng = entry.geometry.location.lng.ToString(CultureInfo.InvariantCulture),
+                    Address = entry.formatted_address
                 });
             }
 

@@ -7,9 +7,9 @@ app.controller('gamesController', ['$scope', '$http', '$q', '$location', '$resou
 
         googleMapsService.setMapBounds($routeParams.location, $routeParams.zoom).then(function () {
             $routeParams.zoom = googleMapsService.getZoom();
-            gamesService.getGames($routeParams).then(function (games) {
-                $scope.games = games;
-                googleMapsService.refreshMarkers(games);
+            gamesService.getGames($routeParams).then(function (response) {
+                $scope.games = response.gameListModel;
+                googleMapsService.refreshMarkers(response.gameListModel);
                 updateUrl();
             });
         });
@@ -79,7 +79,7 @@ app.controller('gamesController', ['$scope', '$http', '$q', '$location', '$resou
         gamesService.getGames($routeParams).then(function (response) {
             $scope.games = response.gameListModel;
             $scope.placesToPlayGames = response.placesToPlayGamesModel;
-            //googleMapsService.addMarkers($scope.games);
+            googleMapsService.addMarkers($scope.games);
         });
     }           
 }]);

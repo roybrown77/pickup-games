@@ -26,6 +26,11 @@ namespace PickupGames.Api.Domain.Objects
 
         public int NumberOfResultsPerPage { get; set; }
         public int Zoom { get; set; }
+        
+        public double ZoomInMeters 
+        {
+            get { return GetZoomMaxDistance().Value*1609.34; }
+        }
 
         public Distance GetZoomMaxDistance()
         {

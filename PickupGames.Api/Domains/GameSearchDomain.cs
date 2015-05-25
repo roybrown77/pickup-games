@@ -90,7 +90,7 @@ namespace PickupGames.Api.Domains
         {
             var placesToPlayGames = new List<Location>();
 
-            placesToPlayGames = _geographyRepository.GetPlaces(new GeographySearchQuery { Address = gameSearchQuery.Location });
+            placesToPlayGames = _geographyRepository.GetPlaces(new GeographySearchQuery { Address = gameSearchQuery.Location, Radius = gameSearchQuery.ZoomInMeters.ToString()});
 
             return placesToPlayGames;
         }
