@@ -56,7 +56,7 @@ namespace PickupGames.Api.Repositories
         {
             var locations = new List<Domain.Objects.Location>();
 
-            var request = (HttpWebRequest)WebRequest.Create("https://maps.googleapis.com/maps/api/place/textsearch/json?query=court+field+gym+park+basketball+" + geographySearchQuery.Address + "&radius=" + geographySearchQuery.Radius + "&key=AIzaSyCx7-UeC9DGPev5LeZWCc6ikS20hZLfx6w");
+            var request = (HttpWebRequest)WebRequest.Create("https://maps.googleapis.com/maps/api/place/textsearch/json?query=court+field+gym+park+basketball+" + geographySearchQuery.Address + "&radius=5&key=AIzaSyCx7-UeC9DGPev5LeZWCc6ikS20hZLfx6w");
             var response = (HttpWebResponse)request.GetResponse();
             var stream = response.GetResponseStream(); 
             var streamReader = new StreamReader(stream);
