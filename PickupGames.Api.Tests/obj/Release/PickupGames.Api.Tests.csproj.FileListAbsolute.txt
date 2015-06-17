@@ -1,0 +1,9 @@
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api.Tests\bin\Release\PickupGames.Api.Tests.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api.Tests\bin\Release\PickupGames.Api.Tests.pdb
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api.Tests\bin\Release\nunit.framework.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api.Tests\bin\Release\Rhino.Mocks.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api.Tests\bin\Release\nunit.framework.xml
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api.Tests\bin\Release\Rhino.Mocks.xml
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api.Tests\obj\Release\PickupGames.Api.Tests.csprojResolveAssemblyReference.cache
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api.Tests\obj\Release\PickupGames.Api.Tests.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Api.Tests\obj\Release\PickupGames.Api.Tests.pdb
