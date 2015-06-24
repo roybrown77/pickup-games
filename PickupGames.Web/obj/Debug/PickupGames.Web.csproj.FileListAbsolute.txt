@@ -1,6 +1,0 @@
-C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Web\bin\PickupGames.Web.dll.config
-C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Web\bin\PickupGames.Web.dll
-C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Web\bin\PickupGames.Web.pdb
-C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Web\obj\Debug\PickupGames.Web.csprojResolveAssemblyReference.cache
-C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Web\obj\Debug\PickupGames.Web.dll
-C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Web\obj\Debug\PickupGames.Web.pdb
