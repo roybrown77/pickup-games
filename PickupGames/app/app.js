@@ -1,4 +1,4 @@
-﻿var app = angular.module('AngularAuthApp', ['ngRoute', 'ngResource', 'LocalStorageModule', 'angular-loading-bar', 'ui.bootstrap']);
+var app = angular.module('AngularAuthApp', ['ngRoute', 'ngResource', 'LocalStorageModule', 'angular-loading-bar', 'ui.bootstrap']);
 
 app.config(function ($routeProvider) {
 
@@ -61,8 +61,8 @@ app.config(function ($routeProvider) {
     $routeProvider.otherwise({ redirectTo: "/" });
 });
 
-//var serviceBase = 'http://qpiga.apphb.com/';
-var serviceBase = 'http://localhost:59512/';
+var serviceBase = 'http://qpiga.apphb.com/';
+//var serviceBase = 'http://localhost:59512/';
 
 app.constant('ngAuthSettings', {
     apiServiceBaseUri: serviceBase,
