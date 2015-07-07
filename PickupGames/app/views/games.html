@@ -106,6 +106,60 @@
         }
     </style>
 
+
+<script type="text/ng-template" id="firstDialog">
+    <div class="ngdialog-message">
+        <h2>Native Angular.js solution</h2>
+        <div>With ngDialog you don't need jQuery or Bootstrap to create dialogs for <code>ng-app:</code></div>
+        <ul class="mt">
+            <li>Use it in controllers, factories or directives</li>
+            <li>Create your own directives</li>
+            <li>Style all UI and templates</li>
+            <li>Configure themes</li>
+            <li>Add animations and effects</li>
+        </ul>
+        <div class="mt">Module is shipped with both <code>ngDialog</code> service and default directive.</div>
+    </div>
+    <div class="ngdialog-buttons mt">
+        <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="next()">►</button>
+    </div>
+</script>
+
+<script>
+    var app = angular.module('AngularAuthApp', ['ngDialog']);
+
+			app.controller('MainCtrl', function ($scope, ngDialog) {
+				$scope.open = function () {
+					ngDialog.open({
+						template: 'firstDialog',
+						controller: 'FirstDialogCtrl',
+						className: 'ngdialog-theme-default ngdialog-theme-custom'
+					});
+				};
+			});
+
+			app.controller('FirstDialogCtrl', function ($scope, ngDialog) {
+				$scope.next = function () {
+					ngDialog.close('ngdialog1');
+					ngDialog.open({
+						template: 'secondDialog',
+						className: 'ngdialog-theme-flat ngdialog-theme-custom'
+					});
+				};
+			});
+
+			app.directive('ngLike', function () {
+				return {
+					restrict: 'E',
+					link: function (scope, elem, attrs) {
+						elem.on('click', function () {
+							window.open(attr.href, 'Share', 'width=600,height=400,resizable=yes');
+						});
+					}
+				};
+			});
+</script>
+
     <div id="search-location-row" class="row ng-scope">
         <div class="col-xs-12">
             <form id="searchgamesform" name="searchgamesform" ng-submit="searchgames()" enctype="multipart/form-data" class="form-horizontal ng-pristine ng-valid" role="form">
