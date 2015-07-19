@@ -1,3 +1,6 @@
+Bin\
+Obj\
+
 lib-cov
 *.seed
 *.log
