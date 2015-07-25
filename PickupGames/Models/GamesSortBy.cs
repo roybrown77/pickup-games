@@ -1,4 +1,4 @@
-﻿namespace PickupGames.Domain.Objects
+﻿namespace PickupGames.Models
 {
     public enum GamesSortBy
     {

@@ -45,3 +45,4 @@ C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\System.Web.Http.
 C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\System.Web.Http.WebHost.xml
 C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\obj\Debug\PickupGames.dll
 C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\obj\Debug\PickupGames.pdb
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\obj\Debug\PickupGames.csprojResolveAssemblyReference.cache

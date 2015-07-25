@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
-using PickupGames.Domain.Objects;
 using PickupGames.Models;
+using PickupGames.ViewModels;
 using System.Security.Claims;
 
 namespace PickupGames.Mappers
 {
     public static class GamesMapper
     {
-        public static Game ConvertGameCreateModelToGame(string userId, GameCreateModel gameModel)
+        public static Game ConvertGameCreateModelToGame(string userId, GameModel gameModel)
         {
             return new Game
                        {
@@ -18,9 +18,9 @@ namespace PickupGames.Mappers
                        };
         }
 
-        public static GamesPageModel ConvertGameSearchResponseToGamesPageModel(GameSearchResponse response)
+        public static GamesPageViewModel ConvertGameSearchResponseToGamesPageModel(GameSearchResponse response)
         {
-            return new GamesPageModel
+            return new GamesPageViewModel
                        {
                            GameListModel = ConvertGameListToGameModelList(response.Games),
                            GameSearchModel = ConvertGameSearchResponseToGameSearchModel(response),
@@ -28,18 +28,18 @@ namespace PickupGames.Mappers
                        };
         }
 
-        private static GameSearchModel ConvertGameSearchResponseToGameSearchModel(GameSearchResponse response)
+        private static GameSearchViewModel ConvertGameSearchResponseToGameSearchModel(GameSearchResponse response)
         {
-            return new GameSearchModel
+            return new GameSearchViewModel
             {
                 LocationLat = response.SearchLocationLat,
                 LocationLng = response.SearchLocationLng
             };
         }
 
-        private static List<GameModel> ConvertGameListToGameModelList(IEnumerable<Game> games)
+        private static List<GameViewModel> ConvertGameListToGameModelList(IEnumerable<Game> games)
         {
-            var gameListModel = new List<GameModel>();
+            var gameListModel = new List<GameViewModel>();
 
             if (games == null)
             {
@@ -48,7 +48,7 @@ namespace PickupGames.Mappers
 
             foreach (var game in games)
             {
-                gameListModel.Add(new GameModel
+                gameListModel.Add(new GameViewModel
                                       {
                                           Id = game.Id,
                                           Sport = game.Sport,
@@ -68,7 +68,7 @@ namespace PickupGames.Mappers
             return gameListModel;
         }
 
-        public static GameSearchQuery ConvertGameSearchModelToGameSearchQuery(GameSearchModel searchModel)
+        public static GameSearchQuery ConvertGameSearchModelToGameSearchQuery(GameSearchViewModel searchModel)
         {
             return new GameSearchQuery
                        {
@@ -78,7 +78,7 @@ namespace PickupGames.Mappers
                        };
         }
 
-        public static Game ConvertGameModelToGame(GameModel gameModel)
+        public static Game ConvertGameModelToGame(GameViewModel gameModel)
         {
             return new Game()
             {

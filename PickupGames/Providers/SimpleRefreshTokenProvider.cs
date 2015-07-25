@@ -1,8 +1,10 @@
-﻿using Microsoft.Owin.Security.Infrastructure;
+﻿using System;
+using System.Threading.Tasks;
+using Microsoft.Owin.Security.Infrastructure;
+using PickupGames.ViewModels;
 using PickupGames.Repositories;
 using PickupGames.Utilities;
-using System;
-using System.Threading.Tasks;
+using PickupGames.Services;
 using PickupGames.Models;
 
 namespace PickupGames.Providers
@@ -21,25 +23,21 @@ namespace PickupGames.Providers
 
         public async Task ReceiveAsync(AuthenticationTokenReceiveContext context)
         {
-
             var allowedOrigin = context.OwinContext.Get<string>("as:clientAllowedOrigin");
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { allowedOrigin });
 
             string hashedTokenId = Helpers.GetHash(context.Token);
 
-            using (AuthRepository _repo = new AuthRepository())
-            {
-                var refreshToken = await _repo.FindRefreshToken(hashedTokenId);
+            var authService = new AuthService();
+            var refreshToken = await authService.FindRefreshToken(hashedTokenId);
 
-                if (refreshToken != null)
-                {
-                    //Get protectedTicket from refreshToken class
-                    context.DeserializeTicket(refreshToken.ProtectedTicket);
-                    var result = await _repo.RemoveRefreshToken(hashedTokenId);
-                }
+            if (refreshToken != null)
+            {
+                //Get protectedTicket from refreshToken class
+                context.DeserializeTicket(refreshToken.ProtectedTicket);
+                var result = await authService.RemoveRefreshToken(hashedTokenId);
             }
         }
-
 
         public async Task CreateAsync(AuthenticationTokenCreateContext context)
         {
@@ -51,31 +49,30 @@ namespace PickupGames.Providers
             }
  
             var refreshTokenId = Guid.NewGuid().ToString("n");
+
+            var authService = new AuthService();
+            
+            var refreshTokenLifeTime = context.OwinContext.Get<string>("as:clientRefreshTokenLifeTime"); 
+            
+            var token = new RefreshToken() 
+            { 
+                Id = Helpers.GetHash(refreshTokenId),
+                ClientId = clientid, 
+                Subject = context.Ticket.Identity.Name,
+                IssuedUtc = DateTime.UtcNow,
+                ExpiresUtc = DateTime.UtcNow.AddMinutes(Convert.ToDouble(refreshTokenLifeTime)) 
+            };
  
-            using (AuthRepository _repo = new AuthRepository())
+            context.Ticket.Properties.IssuedUtc = token.IssuedUtc;
+            context.Ticket.Properties.ExpiresUtc = token.ExpiresUtc;
+            
+            token.ProtectedTicket = context.SerializeTicket();
+ 
+            var result = await authService.AddRefreshToken(token);
+ 
+            if (result)
             {
-                var refreshTokenLifeTime = context.OwinContext.Get<string>("as:clientRefreshTokenLifeTime"); 
-               
-                var token = new RefreshToken() 
-                { 
-                    Id = Helpers.GetHash(refreshTokenId),
-                    ClientId = clientid, 
-                    Subject = context.Ticket.Identity.Name,
-                    IssuedUtc = DateTime.UtcNow,
-                    ExpiresUtc = DateTime.UtcNow.AddMinutes(Convert.ToDouble(refreshTokenLifeTime)) 
-                };
- 
-                context.Ticket.Properties.IssuedUtc = token.IssuedUtc;
-                context.Ticket.Properties.ExpiresUtc = token.ExpiresUtc;
-                
-                token.ProtectedTicket = context.SerializeTicket();
- 
-                var result = await _repo.AddRefreshToken(token);
- 
-                if (result)
-                {
-                    context.SetToken(refreshTokenId);
-                }
+                context.SetToken(refreshTokenId);
             }
         }
     }

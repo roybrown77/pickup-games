@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
-using PickupGames.Models;
+using PickupGames.ViewModels;
 
 namespace PickupGames.Repositories
 {
@@ -11,7 +11,7 @@ namespace PickupGames.Repositories
         {
         }
 
-        public DbSet<Client> Clients { get; set; }
-        public DbSet<RefreshToken> RefreshTokens { get; set; }
+        public DbSet<ClientViewModel> Clients { get; set; }
+        public DbSet<RefreshTokenViewModel> RefreshTokens { get; set; }
     }
 }

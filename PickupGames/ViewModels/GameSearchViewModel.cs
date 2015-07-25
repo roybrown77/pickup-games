@@ -1,9 +1,9 @@
 ﻿using System;
-using PickupGames.Domain.Objects;
+using PickupGames.Models;
 
-namespace PickupGames.Models
+namespace PickupGames.ViewModels
 {
-    public class GameSearchModel
+    public class GameSearchViewModel
     {
         public string Sport { get; set; }
         public string GameDay { get; set; }

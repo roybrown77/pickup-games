@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PickupGames.Models
+namespace PickupGames.ViewModels
 {
-    public class UserModel
+    public class UserViewModel
     {
         [Required]
         [Display(Name = "User name")]

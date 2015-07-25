@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using Ninject;
-using PickupGames.Domain.Objects;
+using PickupGames.Models;
 using PickupGames.Repositories.Interfaces;
 using PickupGames.Utilities.DependencyInjector;
 
 namespace PickupGames.Domains
 {
-    public class GameCrudDomain
+    public class GameCommandService
     {
         private readonly IGameRepository _gameRepository;
         private readonly IGeographyRepository _geographyRepository;
 
-        public GameCrudDomain()
+        public GameCommandService()
         {
             _gameRepository = NinjectDependencyInjector.Dependencies.Get<IGameRepository>();
             _geographyRepository = NinjectDependencyInjector.Dependencies.Get<IGeographyRepository>();

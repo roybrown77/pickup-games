@@ -1,9 +1,9 @@
 ﻿using System;
-using PickupGames.Domain.Objects;
+using PickupGames.Models;
 
-namespace PickupGames.Models
+namespace PickupGames.ViewModels
 {
-    public class GameModel
+    public class GameViewModel
     {
         public Guid Id { get; set; }
         public Sport Sport { get; set; }

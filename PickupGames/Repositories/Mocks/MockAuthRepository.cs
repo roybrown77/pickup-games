@@ -1,41 +1,38 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using PickupGames.ViewModels;
+using PickupGames.Repositories.Interfaces;
 using PickupGames.Models;
 
-namespace PickupGames.Repositories
+namespace PickupGames.Repositories.Mocks
 {
     public class MockAuthRepository : IAuthRepository
     {
         private AuthContext _ctx;
-
         private UserManager<IdentityUser> _userManager;
 
-        public MockAuthRepository()
+        public async Task<ResponseResult> RegisterUser(UserViewModel userModel)
         {
+            return new ResponseResult { Succeeded = true };
         }
 
-        public async Task<IdentityResult> RegisterUser(UserModel userModel)
+        public async Task<User> FindUserBy(string userName, string password)
         {
-            return new IdentityResult();
+            return new User { Id = "1", Name = userName, Password = password };
         }
 
-        public async Task<IdentityUser> FindUserBy(string userName, string password)
+        public async Task<User> FindUserBy(string email)
         {
-            return new IdentityUser();
+            return new User();
         }
 
-        public async Task<IdentityUser> FindUserBy(string email)
+        public ClientViewModel FindClient(string clientId)
         {
-            return new IdentityUser();
-        }
-
-        public Client FindClient(string clientId)
-        {
-            return new Client();
+            return new ClientViewModel { ClientId = clientId, Active = true };
         }
 
         public async Task<bool> AddRefreshToken(RefreshToken token)
@@ -62,6 +59,5 @@ namespace PickupGames.Repositories
         {
             return new List<RefreshToken>();
         }
-
     }
 }

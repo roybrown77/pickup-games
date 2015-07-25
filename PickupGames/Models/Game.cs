@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PickupGames.Domain.Objects
+namespace PickupGames.Models
 {
     public class Game
     {

@@ -1,24 +1,22 @@
-﻿using PickupGames.Repositories;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web.Http;
+using Ninject;
+using PickupGames.Repositories;
+using PickupGames.Repositories.Interfaces;
+using PickupGames.Utilities.DependencyInjector;
+using PickupGames.Services;
 
 namespace PickupGames.Controllers
 {
     [RoutePrefix("api/RefreshTokens")]
     public class RefreshTokensController : ApiController
     {
-        private AuthRepository _repo = null;
-
-        public RefreshTokensController()
-        {
-            _repo = new AuthRepository();
-        }
-
         [Authorize(Users = "Admin")]
         [Route("")]
         public IHttpActionResult Get()
         {
-            return Ok(_repo.GetAllRefreshTokens());
+            var authService = new AuthService();
+            return Ok(authService.GetAllRefreshTokens());
         }
 
         //[Authorize(Users = "Admin")]
@@ -26,23 +24,15 @@ namespace PickupGames.Controllers
         [Route("")]
         public async Task<IHttpActionResult> Delete(string tokenId)
         {
-            var result = await _repo.RemoveRefreshToken(tokenId);
+            var authService = new AuthService();
+            var result = await authService.RemoveRefreshToken(tokenId);
+
             if (result)
             {
                 return Ok();
             }
+
             return BadRequest("Token Id does not exist");
-
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                _repo.Dispose();
-            }
-
-            base.Dispose(disposing);
         }
     }
 }

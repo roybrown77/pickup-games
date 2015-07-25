@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace PickupGames.Domain.Objects
+namespace PickupGames.Models
 {
     public class GameSearchResponse : ResponseBase
     {

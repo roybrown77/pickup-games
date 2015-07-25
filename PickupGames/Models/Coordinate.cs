@@ -1,6 +1,6 @@
-﻿namespace PickupGames.Domain.Objects
+﻿namespace PickupGames.Models
 {
-    public class Coordinates
+    public class Coordinate
     {
         public string Lat { get; set; }
         public string Lng { get; set; }        

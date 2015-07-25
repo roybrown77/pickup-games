@@ -1,15 +1,18 @@
-﻿using Microsoft.Owin.Security;
+﻿using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using PickupGames.Repositories;
 using PickupGames.Utilities;
-using System.Collections.Generic;
-using System.Security.Claims;
-using System.Threading.Tasks;
 using PickupGames.Models;
+using PickupGames.ViewModels;
+using PickupGames.Services;
+using PickupGames.Providers;
 
 namespace PickupGames.Providers
 {
-    public class SimpleAuthorizationServerProvider : OAuthAuthorizationServerProvider
+    public class SimpleAuthorizationServerProvider : OAuthAuthorizationServerProvider, IAuthorizationServerProvider
     {
         //public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         //{
@@ -20,27 +23,25 @@ namespace PickupGames.Providers
         {
             string clientId = string.Empty;
             string clientSecret = string.Empty;
-            Client client = null;
+            ClientViewModel client = null;
 
             if (!context.TryGetBasicCredentials(out clientId, out clientSecret))
             {
                 context.TryGetFormCredentials(out clientId, out clientSecret);
             }
 
-            if (context.ClientId == null)
-            {
+            //if (context.ClientId == null)
+            //{
                 //Remove the comments from the below line context.SetError, and invalidate context 
                 //if you want to force sending clientId/secrects once obtain access tokens. 
                 //context.Validated();
-                context.SetError("invalid_clientId", "ClientId should be sent.");
-                return Task.FromResult<object>(null);
-            }
+                //context.SetError("invalid_clientId", "ClientId should be sent.");
+                //return Task.FromResult<object>(null);
+            //}
 
-            using (AuthRepository _repo = new AuthRepository())
-            {
-                client = _repo.FindClient(context.ClientId);
-            }
-
+            var authService = new AuthService();
+            client = authService.FindClient(context.ClientId);
+            
             if (client == null)
             {
                 context.SetError("invalid_clientId", string.Format("Client '{0}' is not registered in the system.", context.ClientId));
@@ -102,7 +103,6 @@ namespace PickupGames.Providers
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-
             var allowedOrigin = context.OwinContext.Get<string>("as:clientAllowedOrigin");
 
             if (allowedOrigin == null) allowedOrigin = "*";
@@ -111,22 +111,20 @@ namespace PickupGames.Providers
 
             ClaimsIdentity identity;
 
-            using (AuthRepository _repo = new AuthRepository())
+            var authService = new AuthService();
+            var user = await authService.FindUserBy(context.UserName, context.Password);
+
+            if (user == null)
             {
-                var user = await _repo.FindUserBy(context.UserName, context.Password);
-
-                if (user == null)
-                {
-                    context.SetError("invalid_grant", "The user name or password is incorrect.");
-                    return;
-                }
-
-                identity = new ClaimsIdentity(context.Options.AuthenticationType);
-                identity.AddClaim(new Claim("username", context.UserName));
-                identity.AddClaim(new Claim("userid", user.Id));
-                identity.AddClaim(new Claim("role", "user"));
+                context.SetError("invalid_grant", "The user name or password is incorrect.");
+                return;
             }
 
+            identity = new ClaimsIdentity(context.Options.AuthenticationType);
+            identity.AddClaim(new Claim("username", context.UserName));
+            identity.AddClaim(new Claim("userid", user.Id));
+            identity.AddClaim(new Claim("role", "user"));
+            
             //var identity = new ClaimsIdentity(context.Options.AuthenticationType);
             //identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
             //identity.AddClaim(new Claim("sub", context.UserName));

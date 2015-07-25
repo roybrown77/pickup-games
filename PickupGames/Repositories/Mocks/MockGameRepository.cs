@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using PickupGames.Domain.Objects;
+using PickupGames.Models;
 using PickupGames.Repositories.Interfaces;
 
 namespace PickupGames.Repositories.Mocks
@@ -83,40 +83,40 @@ namespace PickupGames.Repositories.Mocks
 
             //_games = games;
 
-            var games = new List<Game>
-                       {
-                           new Game
-                               {
-                                   Id = Guid.NewGuid(),
-                                   Sport = new Sport { Id = "Football", Name = "Football"},
-                                   DateTime = DateTime.Now,
-                                   Location = new Location{Address = "Somerville, MA", Lat = "42.387597", Lng = "-71.099497"},
-                                   PlayerCount = 6
-                               },
-                           new Game
-                               {
-                                   Id = Guid.NewGuid(),
-                                   Sport = new Sport { Id = "Football", Name = "Football"},
-                                   DateTime = DateTime.Now.Date,
-                                   Location = new Location{Address = "Brookline, MA", Lat = "42.331764", Lng = "-71.121163" },
-                                   PlayerCount = 6
-                               },
-                           new Game
-                               {
-                                   Id = Guid.NewGuid(),
-                                   Sport = new Sport { Id = "Football", Name = "Football"},
-                                   DateTime = DateTime.Now,
-                                   Location = new Location{Address = "Chicago, IL", Lat = "41.878114", Lng = "-87.629798",},
-                                   PlayerCount = 6
-                               },
-                       };
+            //var games = new List<Game>
+            //           {
+            //               new Game
+            //                   {
+            //                       Id = Guid.NewGuid(),
+            //                       Sport = new Sport { Id = "Football", Name = "Football"},
+            //                       DateTime = DateTime.Now,
+            //                       Location = new Location{Address = "Somerville, MA", Lat = "42.387597", Lng = "-71.099497"},
+            //                       PlayerCount = 6
+            //                   },
+            //               new Game
+            //                   {
+            //                       Id = Guid.NewGuid(),
+            //                       Sport = new Sport { Id = "Football", Name = "Football"},
+            //                       DateTime = DateTime.Now.Date,
+            //                       Location = new Location{Address = "Brookline, MA", Lat = "42.331764", Lng = "-71.121163" },
+            //                       PlayerCount = 6
+            //                   },
+            //               new Game
+            //                   {
+            //                       Id = Guid.NewGuid(),
+            //                       Sport = new Sport { Id = "Football", Name = "Football"},
+            //                       DateTime = DateTime.Now,
+            //                       Location = new Location{Address = "Chicago, IL", Lat = "41.878114", Lng = "-87.629798",},
+            //                       PlayerCount = 6
+            //                   },
+            //           };
             
-            _games = new Dictionary<Guid, Game>();
+            //_games = new Dictionary<Guid, Game>();
 
-            foreach (var game in games)
-            {
-                Add(game);
-            }
+            //foreach (var game in games)
+            //{
+            //    Add(game);
+            //}
         }
 
         public void Add(Game game)

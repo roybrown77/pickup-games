@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using Ninject;
-using PickupGames.Domain.Objects;
+using PickupGames.Models;
 using PickupGames.Repositories.Interfaces;
 using PickupGames.Utilities.DependencyInjector;
 
 namespace PickupGames.Domains
 {
-    public class GameSearchDomain
+    public class GameQueryService
     {
         private readonly IGameRepository _gameRepository;
         private readonly IGeographyRepository _geographyRepository;
 
-        public GameSearchDomain()
+        public GameQueryService()
         {
             _gameRepository = NinjectDependencyInjector.Dependencies.Get<IGameRepository>();
             _geographyRepository = NinjectDependencyInjector.Dependencies.Get<IGeographyRepository>();
@@ -71,7 +71,7 @@ namespace PickupGames.Domains
             }
         }
 
-        private List<Game> GetUserSavedGames(GameSearchQuery gameSearchQuery, Coordinates centerCoordinates)
+        private List<Game> GetUserSavedGames(GameSearchQuery gameSearchQuery, Coordinate centerCoordinates)
         {
             // get all games by state, region or country and filter down by maxDistance; must convert to formatted address if zip specified? get by zip
 
@@ -86,7 +86,7 @@ namespace PickupGames.Domains
             return games;
         }
 
-        private List<Location> GetPlacesToPlayGames(GameSearchQuery gameSearchQuery, Coordinates centerCoordinates)
+        private List<Location> GetPlacesToPlayGames(GameSearchQuery gameSearchQuery, Coordinate centerCoordinates)
         {
             var placesToPlayGames = new List<Location>();
 
@@ -110,11 +110,11 @@ namespace PickupGames.Domains
             return newGames;
         }
 
-        private void SetDistanceToCenter(List<Game> games, Coordinates centerCoordinate)
+        private void SetDistanceToCenter(List<Game> games, Coordinate centerCoordinate)
         {
             foreach (var game in games)
             {
-                var gameCoordinate = new Coordinates
+                var gameCoordinate = new Coordinate
                 {
                     Lat = game.Location.Lat,
                     Lng = game.Location.Lng

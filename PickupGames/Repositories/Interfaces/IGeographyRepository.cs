@@ -1,12 +1,12 @@
-﻿using PickupGames.Domain.Objects;
+﻿using PickupGames.Models;
 using System.Collections.Generic;
 
 namespace PickupGames.Repositories.Interfaces
 {
     public interface IGeographyRepository
     {
-        Coordinates GetCoordinates(string address);
-        Distance DistanceBetweenCoordinates(Coordinates start, Coordinates end);
+        Coordinate GetCoordinates(string address);
+        Distance DistanceBetweenCoordinates(Coordinate start, Coordinate end);
         List<Location> GetPlaces(GeographySearchQuery geographySearchQuery);
     }
 }

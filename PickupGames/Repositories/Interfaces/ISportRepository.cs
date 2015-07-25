@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using PickupGames.Domain.Objects;
+using PickupGames.Models;
 
 namespace PickupGames.Repositories.Interfaces
 {

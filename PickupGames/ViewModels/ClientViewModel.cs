@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace PickupGames.Models
+namespace PickupGames.ViewModels
 {
-    public class Client
+    public class ClientViewModel
     {
         [Key]
         public string Id { get; set; }
@@ -17,9 +17,11 @@ namespace PickupGames.Models
         public int RefreshTokenLifeTime { get; set; }
         [MaxLength(100)]
         public string AllowedOrigin { get; set; }
+
+        public string ClientId { get; set; }
     }
 
-    public class RefreshToken
+    public class RefreshTokenViewModel
     {
         [Key]
         public string Id { get; set; }

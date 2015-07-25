@@ -1,26 +1,24 @@
-﻿using Microsoft.AspNet.Identity;
-using PickupGames.Repositories;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web.Http;
-using PickupGames.Models;
 using System;
+using Microsoft.AspNet.Identity;
+using Ninject;
+using PickupGames.Repositories.Interfaces;
+using PickupGames.Models;
+using PickupGames.Repositories;
+using PickupGames.ViewModels;
+using PickupGames.Utilities.DependencyInjector;
+using PickupGames.Services;
 
 namespace PickupGames.Controllers
 {
     [RoutePrefix("api/v1/Account")]
     public class AccountController : ApiController
     {
-        private AuthRepository _repo = null;
-
-        public AccountController()
-        {
-            _repo = new AuthRepository();
-        }
-
         [Route("Register")]
         [AllowAnonymous]
         //[ValidateAntiForgeryToken]
-        public async Task<IHttpActionResult> Register(UserModel userModel)
+        public async Task<IHttpActionResult> Register(UserViewModel userModel)
         {
             if (!ModelState.IsValid)
             {
@@ -29,8 +27,8 @@ namespace PickupGames.Controllers
 
             try
             {
-
-                var result = await _repo.RegisterUser(userModel);
+                var authService = new AuthService();
+                var result = await authService.RegisterUser(userModel);
 
                 var errorResult = GetErrorResult(result);
 
@@ -48,17 +46,7 @@ namespace PickupGames.Controllers
             }
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                _repo.Dispose();
-            }
-
-            base.Dispose(disposing);
-        }
-
-        private IHttpActionResult GetErrorResult(IdentityResult result)
+        private IHttpActionResult GetErrorResult(ResponseResult result)
         {
             if (result == null)
             {

@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Net;
 using System.Xml.Linq;
-using PickupGames.Domain.Objects;
+using PickupGames.Models;
 using PickupGames.Repositories.Interfaces;
 using System.Collections.Generic;
 using System.Globalization;
 using Newtonsoft.Json;
 using System.IO;
+using PickupGames.Repositories.Interfaces;
 
 namespace PickupGames.Repositories
 {
     public class GoogleGeographyRepository : IGeographyRepository
     {
-        public Coordinates GetCoordinates(string address)
+        public Coordinate GetCoordinates(string address)
         {
-            var coordinates = new Coordinates();
+            var coordinates = new Coordinate();
 
             var geocoderUri = string.Format(@"http://maps.googleapis.com/maps/api/geocode/xml?address={0}&sensor=false", address);
 
@@ -30,7 +31,7 @@ namespace PickupGames.Repositories
             return coordinates;
         }
 
-        public Distance DistanceBetweenCoordinates(Coordinates start, Coordinates end)
+        public Distance DistanceBetweenCoordinates(Coordinate start, Coordinate end)
         {
             var geocoderUri =
                 string.Format(
@@ -52,9 +53,9 @@ namespace PickupGames.Repositories
             };
         }
 
-        public List<Domain.Objects.Location> GetPlaces(GeographySearchQuery geographySearchQuery)
+        public List<Location> GetPlaces(GeographySearchQuery geographySearchQuery)
         {
-            var locations = new List<Domain.Objects.Location>();
+            var locations = new List<Models.Location>();
 
             var request = (HttpWebRequest)WebRequest.Create("https://maps.googleapis.com/maps/api/place/textsearch/json?query=court+field+gym+park+basketball+" + geographySearchQuery.Address + "&radius=5&key=AIzaSyCx7-UeC9DGPev5LeZWCc6ikS20hZLfx6w");
             var response = (HttpWebResponse)request.GetResponse();
@@ -65,7 +66,7 @@ namespace PickupGames.Repositories
 
             foreach (var entry in results)
             {
-                locations.Add(new Domain.Objects.Location
+                locations.Add(new Models.Location
                 {
                     Name = entry.name,   
                     Lat = entry.geometry.location.lat.ToString(CultureInfo.InvariantCulture),
@@ -77,7 +78,7 @@ namespace PickupGames.Repositories
             return locations;
         }
 
-        public class Location
+        public class RepoLocation
         {
             public double lat { get; set; }
             public double lng { get; set; }
@@ -85,7 +86,7 @@ namespace PickupGames.Repositories
 
         public class Geometry
         {
-            public Location location { get; set; }
+            public RepoLocation location { get; set; }
         }
 
         public class OpeningHours

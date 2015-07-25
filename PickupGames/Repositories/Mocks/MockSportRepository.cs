@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using PickupGames.Domain.Objects;
+using PickupGames.Models;
 using PickupGames.Repositories.Interfaces;
 
 namespace PickupGames.Repositories.Mocks

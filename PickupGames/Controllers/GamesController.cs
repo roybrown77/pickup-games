@@ -2,10 +2,10 @@
 using System.Net.Http;
 using System.Web.Http;
 using System;
-using PickupGames.Domain.Objects;
+using PickupGames.Models;
 using PickupGames.Domains;
 using PickupGames.Mappers;
-using PickupGames.Models;
+using PickupGames.ViewModels;
 using System.Security.Claims;
 using System.Linq;
 
@@ -17,10 +17,10 @@ namespace PickupGames.Controllers
         [AllowAnonymous]
         [Route("api/v1/games")]
         [HttpGet]
-        public HttpResponseMessage GetGamesByQuery([FromUri] GameSearchModel gameSearchModel)
+        public HttpResponseMessage GetGamesByQuery([FromUri] GameSearchViewModel gameSearchModel)
         {
             var searchQuery = GamesMapper.ConvertGameSearchModelToGameSearchQuery(gameSearchModel);
-            var domain = new GameSearchDomain();
+            var domain = new GameQueryService();
             var rawResponse = domain.FindBy(searchQuery);
 
             if (rawResponse.Status == ResponseStatus.Failed)
@@ -34,7 +34,7 @@ namespace PickupGames.Controllers
 
         [Route("api/v1/games")]
         [HttpPost]
-        public HttpResponseMessage CreateGame(GameCreateModel gameCreateModel)
+        public HttpResponseMessage CreateGame(GameModel gameCreateModel)
         {
             if (ModelState.IsValid) {
 
@@ -45,7 +45,7 @@ namespace PickupGames.Controllers
                 var userId = claims.Where(c => c.Type == "userid").Single().Value;
 
                 var game = GamesMapper.ConvertGameCreateModelToGame(userId, gameCreateModel);
-                var domain = new GameCrudDomain();
+                var domain = new GameCommandService();
                 var response = domain.CreateGame(game);
 
                 if (response.Status == ResponseStatus.Failed)
@@ -61,10 +61,10 @@ namespace PickupGames.Controllers
 
         [Route("api/v1/games")]
         [HttpPut]
-        public HttpResponseMessage UpdateGame(string id, GameModel gameModel)
+        public HttpResponseMessage UpdateGame(string id, GameViewModel gameModel)
         {
             var game = GamesMapper.ConvertGameModelToGame(gameModel);
-            var domain = new GameCrudDomain();
+            var domain = new GameCommandService();
             var response = domain.EditGame(new Guid(id), game);
 
             if (response.Status == ResponseStatus.Failed)
@@ -79,7 +79,7 @@ namespace PickupGames.Controllers
         [HttpDelete]
         public HttpResponseMessage DeleteGame(string id)
         {
-            var domain = new GameCrudDomain();
+            var domain = new GameCommandService();
             var response = domain.DeleteGame(new Guid(id));
 
             if (response.Status == ResponseStatus.Failed)
