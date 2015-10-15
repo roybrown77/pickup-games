@@ -35,6 +35,8 @@ namespace PickupGames.Providers
                 //Remove the comments from the below line context.SetError, and invalidate context 
                 //if you want to force sending clientId/secrects once obtain access tokens. 
                 //context.Validated();
+
+                //Remove the comments after mocking context or creating db
                 //context.SetError("invalid_clientId", "ClientId should be sent.");
                 //return Task.FromResult<object>(null);
             //}

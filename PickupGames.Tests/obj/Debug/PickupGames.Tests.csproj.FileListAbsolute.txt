@@ -4,6 +4,6 @@ C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Tests\bin\Debug\nuni
 C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Tests\bin\Debug\Rhino.Mocks.dll
 C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Tests\bin\Debug\nunit.framework.xml
 C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Tests\bin\Debug\Rhino.Mocks.xml
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Tests\obj\Debug\PickupGames.Tests.csprojResolveAssemblyReference.cache
 C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Tests\obj\Debug\PickupGames.Tests.dll
 C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Tests\obj\Debug\PickupGames.Tests.pdb
-C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Tests\obj\Debug\PickupGames.Tests.csprojResolveAssemblyReference.cache

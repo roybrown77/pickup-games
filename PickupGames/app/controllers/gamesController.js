@@ -27,6 +27,8 @@ app.controller('gamesController', ['$scope', '$http', '$q', '$location', '$resou
         googleMapsService.createMap('map-canvas');
         //googleMapsService.setMapEvents();
         googleMapsService.setAutocomplete('search-location');
+        $scope.displayGamesLoading = "display:block";
+        $scope.displayGames = "display:none";
         googleMapsService.setMapBounds($routeParams.location, $routeParams.zoom).then(function () {
             $routeParams.zoom = googleMapsService.getZoom();
             //updateUrl();
@@ -80,6 +82,8 @@ app.controller('gamesController', ['$scope', '$http', '$q', '$location', '$resou
             $scope.games = response.gameListModel;
             $scope.placesToPlayGames = response.placesToPlayGamesModel;
             googleMapsService.addMarkers($scope.games);
+            $scope.displayGamesLoading = "display:none";
+            $scope.displayGames = "display:block";
         });
     }           
 }]);

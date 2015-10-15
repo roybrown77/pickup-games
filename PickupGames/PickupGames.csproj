@@ -171,9 +171,9 @@
     <Content Include="content\fonts\fontawesome-webfont.svg" />
     <Content Include="content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="index.html" />
-    <Content Include="Scripts\angular-local-storage.min.js" />
-    <Content Include="Scripts\authComplete.js" />
-    <Content Include="Scripts\loading-bar.min.js" />
+    <Content Include="scripts\angular-local-storage.min.js" />
+    <Content Include="scripts\authComplete.js" />
+    <Content Include="scripts\loading-bar.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -246,6 +246,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Infrastructure\" />
     <Folder Include="Services\Messaging\" />
   </ItemGroup>
   <PropertyGroup>

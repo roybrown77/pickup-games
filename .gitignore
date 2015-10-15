@@ -22,3 +22,6 @@ node_modules
 
 config/secretDatabase.js
 config/secretAuth.js
+*.dll
+PickupGames/obj/Debug/PickupGames.dll
+*.dll

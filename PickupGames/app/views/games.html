@@ -169,8 +169,10 @@
     </div>
 
     <div id="sidebar" class="ng-scope">
-        <div class="col-xs-12">
-
+        <div style="color: black; margin: 45% 40% 45% 40%; font-size: 200%;{{displayGamesLoading}}">
+            Loading...
+        </div>
+        <div style={{displayGames}} class="col-xs-12">
             <div id="search-results" class="row">
                 <div class="col-xs-12" ng-repeat="game in games">
                     <div>

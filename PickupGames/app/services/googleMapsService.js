@@ -20,6 +20,8 @@ app.factory('googleMapsService', ['$q', function ($q) {
 
         _autocomplete.bindTo('bounds', _map);
 
+        //google.maps.event.addListener(_map, 'dragend', resetMapCenter);
+
         _geocoder.geocode({ 'address' : location }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 _map.fitBounds(results[0].geometry.viewport);
@@ -111,6 +113,23 @@ app.factory('googleMapsService', ['$q', function ($q) {
         }
 
         _markers = [];
+    }
+
+    function resetMapCenter() {
+        var latlng = gamesMap.getCenter();
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                if (results[1]) {
+                    $('#Location').val(results[1].formatted_address);
+                    pageGames(1);
+                } else {
+                    alert('No results found');
+                }
+            } else {
+                alert('Geocoder failed due to: ' + status);
+            }
+        });
     }
 
     return service;

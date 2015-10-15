@@ -36,7 +36,8 @@ namespace PickupGames.Controllers
         [HttpPost]
         public HttpResponseMessage CreateGame(GameModel gameCreateModel)
         {
-            if (ModelState.IsValid) {
+            if (ModelState.IsValid)
+            {
 
                 // move to controller/routing filter
                 //var user = HttpContext.Current.User;
@@ -55,7 +56,7 @@ namespace PickupGames.Controllers
 
                 return new HttpResponseMessage(HttpStatusCode.Created);
             }
-            
+
             return Request.CreateResponse(HttpStatusCode.BadRequest, ModelState.Values);
         }
 
