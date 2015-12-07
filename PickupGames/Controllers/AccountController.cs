@@ -7,7 +7,6 @@ using PickupGames.Repositories.Interfaces;
 using PickupGames.Models;
 using PickupGames.Repositories;
 using PickupGames.ViewModels;
-using PickupGames.Utilities.DependencyInjector;
 using PickupGames.Services;
 
 namespace PickupGames.Controllers

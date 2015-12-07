@@ -1,9 +1,5 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
-using Ninject;
-using PickupGames.Repositories;
-using PickupGames.Repositories.Interfaces;
-using PickupGames.Utilities.DependencyInjector;
 using PickupGames.Services;
 
 namespace PickupGames.Controllers

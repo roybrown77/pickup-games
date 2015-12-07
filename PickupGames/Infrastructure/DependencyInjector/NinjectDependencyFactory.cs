@@ -1,6 +1,6 @@
 ﻿using Ninject.Modules;
 
-namespace PickupGames.Utilities.DependencyInjector
+namespace PickupGames.Infrastructure.DependencyInjector
 {
     public static class NinjectDependencyFactory
     {

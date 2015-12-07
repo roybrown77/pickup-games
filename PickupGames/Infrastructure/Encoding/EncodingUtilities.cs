@@ -1,13 +1,9 @@
-﻿using Ninject.Modules;
-using PickupGames.Repositories;
-using PickupGames.Repositories.Interfaces;
-using PickupGames.Repositories.Mocks;
-using System;
+﻿using System;
 using System.Security.Cryptography;
 
-namespace PickupGames.Utilities
+namespace PickupGames.Infrastructure.Encoding
 {
-    public static class Helpers
+    public static class EncodingUtilities
     {
         public static string GetHash(string input)
         {

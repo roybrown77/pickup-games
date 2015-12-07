@@ -3,8 +3,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
+using PickupGames.Infrastructure.Encoding;
 using PickupGames.Repositories;
-using PickupGames.Utilities;
 using PickupGames.Models;
 using PickupGames.ViewModels;
 using PickupGames.Services;
@@ -58,7 +58,7 @@ namespace PickupGames.Providers
                     return Task.FromResult<object>(null);
                 }
 
-                if (client.Secret != Helpers.GetHash(clientSecret))
+                if (client.Secret != EncodingUtilities.GetHash(clientSecret))
                 {
                     context.SetError("invalid_clientId", "Client secret is invalid.");
                     return Task.FromResult<object>(null);

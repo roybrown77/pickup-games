@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.Owin.Security.Infrastructure;
+using PickupGames.Infrastructure.Encoding;
 using PickupGames.ViewModels;
 using PickupGames.Repositories;
-using PickupGames.Utilities;
 using PickupGames.Services;
 using PickupGames.Models;
 
@@ -26,7 +26,7 @@ namespace PickupGames.Providers
             var allowedOrigin = context.OwinContext.Get<string>("as:clientAllowedOrigin");
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { allowedOrigin });
 
-            string hashedTokenId = Helpers.GetHash(context.Token);
+            string hashedTokenId = EncodingUtilities.GetHash(context.Token);
 
             var authService = new AuthService();
             var refreshToken = await authService.FindRefreshToken(hashedTokenId);
@@ -56,7 +56,7 @@ namespace PickupGames.Providers
             
             var token = new RefreshToken() 
             { 
-                Id = Helpers.GetHash(refreshTokenId),
+                Id = EncodingUtilities.GetHash(refreshTokenId),
                 ClientId = clientid, 
                 Subject = context.Ticket.Identity.Name,
                 IssuedUtc = DateTime.UtcNow,

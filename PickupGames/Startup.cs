@@ -3,9 +3,9 @@ using Microsoft.Owin.Security.OAuth;
 using Ninject;
 using Owin;
 using PickupGames.Providers;
-using PickupGames.Utilities.DependencyInjector;
 using System;
 using System.Web.Http;
+using PickupGames.Infrastructure.DependencyInjector;
 
 [assembly: OwinStartup(typeof(PickupGames.Startup))]
 namespace PickupGames

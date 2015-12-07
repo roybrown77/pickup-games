@@ -1,6 +1,6 @@
 ﻿using Ninject;
 
-namespace PickupGames.Utilities.DependencyInjector
+namespace PickupGames.Infrastructure.DependencyInjector
 {
     public class NinjectDependencyInjector
     {

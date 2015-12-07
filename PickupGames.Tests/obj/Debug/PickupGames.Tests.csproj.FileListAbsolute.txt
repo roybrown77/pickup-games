@@ -7,3 +7,12 @@ C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Tests\bin\Debug\Rhin
 C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Tests\obj\Debug\PickupGames.Tests.csprojResolveAssemblyReference.cache
 C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Tests\obj\Debug\PickupGames.Tests.dll
 C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames.Tests\obj\Debug\PickupGames.Tests.pdb
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames.Tests\bin\Debug\PickupGames.Tests.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames.Tests\bin\Debug\PickupGames.Tests.pdb
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames.Tests\bin\Debug\nunit.framework.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames.Tests\bin\Debug\Rhino.Mocks.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames.Tests\bin\Debug\nunit.framework.xml
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames.Tests\bin\Debug\Rhino.Mocks.xml
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames.Tests\obj\Debug\PickupGames.Tests.csprojResolveAssemblyReference.cache
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames.Tests\obj\Debug\PickupGames.Tests.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames.Tests\obj\Debug\PickupGames.Tests.pdb

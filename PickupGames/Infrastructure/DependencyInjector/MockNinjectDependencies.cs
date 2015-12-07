@@ -4,7 +4,7 @@ using PickupGames.Repositories;
 using PickupGames.Repositories.Interfaces;
 using PickupGames.Repositories.Mocks;
 
-namespace PickupGames.Utilities.DependencyInjector
+namespace PickupGames.Infrastructure.DependencyInjector
 {
     public class MockNinjectDependencies : NinjectModule
     {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Ninject;
+using PickupGames.Infrastructure.DependencyInjector;
 using PickupGames.Models;
 using PickupGames.Repositories.Interfaces;
-using PickupGames.Utilities.DependencyInjector;
 
 namespace PickupGames.Domains
 {

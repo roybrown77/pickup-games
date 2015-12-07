@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Ninject;
-using PickupGames.Utilities.DependencyInjector;
+using PickupGames.Infrastructure.DependencyInjector;
 using PickupGames.Repositories.Interfaces;
 using PickupGames.ViewModels;
 using PickupGames.Models;

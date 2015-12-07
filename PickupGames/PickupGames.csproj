@@ -224,10 +224,10 @@
     <Compile Include="Repositories\Mocks\MockSportRepository.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Utilities\DependencyInjector\MockNinjectDependencies.cs" />
-    <Compile Include="Utilities\DependencyInjector\NinjectDependencyFactory.cs" />
-    <Compile Include="Utilities\DependencyInjector\NinjectDependencyInjector.cs" />
-    <Compile Include="Utilities\Helpers.cs" />
+    <Compile Include="Infrastructure\DependencyInjector\MockNinjectDependencies.cs" />
+    <Compile Include="Infrastructure\DependencyInjector\NinjectDependencyFactory.cs" />
+    <Compile Include="Infrastructure\DependencyInjector\NinjectDependencyInjector.cs" />
+    <Compile Include="Infrastructure\Encoding\EncodingUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -246,7 +246,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Infrastructure\" />
+    <Folder Include="Domain\AccountManagement\" />
+    <Folder Include="Domain\GameManagement\" />
+    <Folder Include="Domain\Scheduling\" />
     <Folder Include="Services\Messaging\" />
   </ItemGroup>
   <PropertyGroup>
