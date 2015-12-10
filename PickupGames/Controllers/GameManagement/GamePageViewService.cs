@@ -1,27 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
 using Ninject;
-using PickupGames.Domain.GameLocationManagement.Models;
-using PickupGames.Domain.GameLocationManagement.Repositories;
+using PickupGames.Domain.GameLocationManagement.Services;
 using PickupGames.Domain.GameManagement.Models;
 using PickupGames.Domain.GameManagement.Services;
 using PickupGames.Infrastructure.DependencyInjector;
 using PickupGames.Infrastructure.Geography;
 using PickupGames.Infrastructure.Response;
 
-namespace PickupGames.Domain.GameLocationManagement.Services
+namespace PickupGames.Controllers.GameManagement
 {
     public class GamePageViewService
     {
         private readonly IGameService _gameService;
-        private readonly IGameLocationRepository _gameLocationRepository;
-        private readonly IGeographyService _geographyService;        
+        private readonly IGeographyService _geographyService;
+        private readonly IGameLocationService _gameLocationService;
 
         public GamePageViewService()
         {
-            _gameService = NinjectDependencyInjector.Dependencies.Get<IGameService>();
-            _gameLocationRepository = NinjectDependencyInjector.Dependencies.Get<IGameLocationRepository>();
             _geographyService = NinjectDependencyInjector.Dependencies.Get<IGeographyService>();
+            _gameService = NinjectDependencyInjector.Dependencies.Get<IGameService>();
+            _gameLocationService = NinjectDependencyInjector.Dependencies.Get<IGameLocationService>();            
         }
 
         //public GameSearchResponse FindBy(string location)
@@ -57,7 +55,7 @@ namespace PickupGames.Domain.GameLocationManagement.Services
             {
                 var centerCoordinates = _geographyService.GetCoordinates(gameSearchQuery.Location);
                 var userSavedGames = _gameService.FindBy(gameSearchQuery, centerCoordinates);
-                var placesToPlayGames = GetPlacesToPlayGames(gameSearchQuery);
+                var placesToPlayGames = _gameLocationService.FindBy(gameSearchQuery);
                 
                 return new GameSearchResponse
                 {
@@ -75,15 +73,6 @@ namespace PickupGames.Domain.GameLocationManagement.Services
                     Message = ex.Message
                 };
             }
-        }
-
-        public List<Location> GetPlacesToPlayGames(GameSearchQuery gameSearchQuery)
-        {
-            var placesToPlayGames = new List<Location>();
-
-            placesToPlayGames = _gameLocationRepository.GetPlaces(new GeographySearchQuery { Address = gameSearchQuery.Location, Radius = gameSearchQuery.ZoomInMeters.ToString() });
-
-            return placesToPlayGames;
-        }        
+        }       
     }
 }

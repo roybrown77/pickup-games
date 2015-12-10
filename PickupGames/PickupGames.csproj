@@ -178,6 +178,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Domain\GameLocationManagement\Services\GameLocationService.cs" />
+    <Compile Include="Domain\GameLocationManagement\Services\IGameLocationService.cs" />
     <Compile Include="Domain\GameManagement\Services\IGameService.cs" />
     <Compile Include="Infrastructure\Geography\IGeographyService.cs" />
     <Compile Include="Domain\AccountManagement\Models\RefreshToken.cs" />
@@ -206,7 +208,7 @@
     <Compile Include="Domain\GameManagement\Models\Sport.cs" />
     <Compile Include="Domain\GameManagement\ViewModels\SportListResponse.cs" />
     <Compile Include="Domain\GameManagement\Services\GameService.cs" />
-    <Compile Include="Domain\GameLocationManagement\Services\GamePageViewService.cs" />
+    <Compile Include="Controllers\GameManagement\GamePageViewService.cs" />
     <Compile Include="Domain\GameManagement\Mappers\GamesMapper.cs" />
     <Compile Include="Domain\GameManagement\Models\GameModel.cs" />
     <Compile Include="Domain\GameManagement\ViewModels\GameViewModel.cs" />

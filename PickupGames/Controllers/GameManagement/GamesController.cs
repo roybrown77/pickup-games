@@ -4,7 +4,6 @@ using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Web.Http;
-using PickupGames.Domain.GameLocationManagement.Services;
 using PickupGames.Domain.GameManagement.Mappers;
 using PickupGames.Domain.GameManagement.Models;
 using PickupGames.Domain.GameManagement.Services;
@@ -22,8 +21,8 @@ namespace PickupGames.Controllers.GameManagement
         public HttpResponseMessage GetGamesByQuery([FromUri] GameSearchViewModel gameSearchModel)
         {
             var searchQuery = GamesMapper.ConvertGameSearchModelToGameSearchQuery(gameSearchModel);
-            var domain = new GamePageViewService();
-            var rawResponse = domain.FindBy(searchQuery);
+            var gamePageService = new GamePageViewService();
+            var rawResponse = gamePageService.FindBy(searchQuery);
 
             if (rawResponse.Status == ResponseStatus.Failed)
             {
@@ -48,8 +47,8 @@ namespace PickupGames.Controllers.GameManagement
                 var userId = claims.Where(c => c.Type == "userid").Single().Value;
 
                 var game = GamesMapper.ConvertGameCreateModelToGame(userId, gameCreateModel);
-                var domain = new GameService();
-                var response = domain.CreateGame(game);
+                var service = new GameService();
+                var response = service.CreateGame(game);
 
                 if (response.Status == ResponseStatus.Failed)
                 {
@@ -67,8 +66,8 @@ namespace PickupGames.Controllers.GameManagement
         public HttpResponseMessage UpdateGame(string id, GameViewModel gameModel)
         {
             var game = GamesMapper.ConvertGameModelToGame(gameModel);
-            var domain = new GameService();
-            var response = domain.EditGame(new Guid(id), game);
+            var service = new GameService();
+            var response = service.EditGame(new Guid(id), game);
 
             if (response.Status == ResponseStatus.Failed)
             {
@@ -82,8 +81,8 @@ namespace PickupGames.Controllers.GameManagement
         [HttpDelete]
         public HttpResponseMessage DeleteGame(string id)
         {
-            var domain = new GameService();
-            var response = domain.DeleteGame(new Guid(id));
+            var service = new GameService();
+            var response = service.DeleteGame(new Guid(id));
 
             if (response.Status == ResponseStatus.Failed)
             {
