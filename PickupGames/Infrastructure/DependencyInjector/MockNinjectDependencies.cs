@@ -1,8 +1,7 @@
 ﻿using Ninject.Modules;
-using PickupGames.Providers;
-using PickupGames.Repositories;
-using PickupGames.Repositories.Interfaces;
-using PickupGames.Repositories.Mocks;
+using PickupGames.Domain.AccountManagement.Repositories;
+using PickupGames.Domain.GameManagement.Repositories;
+using PickupGames.Infrastructure.Geography;
 
 namespace PickupGames.Infrastructure.DependencyInjector
 {
@@ -10,9 +9,9 @@ namespace PickupGames.Infrastructure.DependencyInjector
     {
         public override void Load()
         {
-            Bind<IGameRepository>().ToMethod(context => new MockGameRepository());
+            Bind<IGameRepository>().ToMethod(context => new MockGameRepository());            
             Bind<ISportRepository>().ToMethod(context => new MockSportRepository());
-            Bind<IGeographyRepository>().ToMethod(context => new GoogleGeographyRepository());
+            Bind<IGeographyService>().ToMethod(context => new GeographyService());
             Bind<IAuthRepository>().ToMethod(context => new MockAuthRepository());
             Bind<IAuthorizationServerProvider>().ToMethod(context => new MockAuthorizationServerProvider());
         }

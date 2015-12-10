@@ -2,9 +2,9 @@
 using Microsoft.Owin.Security.OAuth;
 using Ninject;
 using Owin;
-using PickupGames.Providers;
 using System;
 using System.Web.Http;
+using PickupGames.Domain.AccountManagement.Repositories;
 using PickupGames.Infrastructure.DependencyInjector;
 
 [assembly: OwinStartup(typeof(PickupGames.Startup))]
