@@ -3,7 +3,7 @@ using Ninject;
 using PickupGames.Domain.GameLocationManagement.Models;
 using PickupGames.Domain.GameLocationManagement.Repositories;
 using PickupGames.Domain.GameManagement.Models;
-using PickupGames.Infrastructure.DependencyInjector;
+using PickupGames.Infrastructure.DependencyInjector2;
 using PickupGames.Infrastructure.Geography;
 
 namespace PickupGames.Domain.GameLocationManagement.Services

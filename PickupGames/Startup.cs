@@ -5,7 +5,7 @@ using Owin;
 using System;
 using System.Web.Http;
 using PickupGames.Domain.AccountManagement.Repositories;
-using PickupGames.Infrastructure.DependencyInjector;
+using PickupGames.Infrastructure.DependencyInjector2;
 
 [assembly: OwinStartup(typeof(PickupGames.Startup))]
 namespace PickupGames

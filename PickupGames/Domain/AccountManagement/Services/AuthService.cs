@@ -4,12 +4,23 @@ using Ninject;
 using PickupGames.Domain.AccountManagement.Models;
 using PickupGames.Domain.AccountManagement.Repositories;
 using PickupGames.Domain.AccountManagement.ViewModels;
-using PickupGames.Infrastructure.DependencyInjector;
+using PickupGames.Infrastructure.DependencyInjector2;
 using PickupGames.Infrastructure.Response;
 
 namespace PickupGames.Domain.AccountManagement.Services
 {
-    public class AuthService
+    public interface IAuthService
+    {
+        Task<bool> AddRefreshToken(RefreshToken token);
+        ClientViewModel FindClient(string clientId);
+        Task<User> FindUserBy(string userName, string password);
+        Task<bool> RemoveRefreshToken(string refreshTokenId);
+        Task<ResponseResult> RegisterUser(UserViewModel userModel);
+        List<RefreshToken> GetAllRefreshTokens();
+        Task<RefreshToken> FindRefreshToken(string refreshTokenId);
+    }
+
+    public class AuthService : IAuthService
     {
         private IAuthRepository _authRepository = null;
 

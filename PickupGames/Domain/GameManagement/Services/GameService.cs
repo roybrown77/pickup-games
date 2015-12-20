@@ -4,7 +4,7 @@ using Ninject;
 using PickupGames.Domain.GameLocationManagement.Models;
 using PickupGames.Domain.GameManagement.Models;
 using PickupGames.Domain.GameManagement.Repositories;
-using PickupGames.Infrastructure.DependencyInjector;
+using PickupGames.Infrastructure.DependencyInjector2;
 using PickupGames.Infrastructure.Geography;
 using PickupGames.Infrastructure.Response;
 
