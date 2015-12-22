@@ -181,6 +181,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Domain\AccountManagement\Models\ApplicationType.cs" />
+    <Compile Include="Domain\AccountManagement\Models\Client.cs" />
+    <Compile Include="Domain\AccountManagement\Services\IAuthService.cs" />
+    <Compile Include="Domain\AccountManagement\ViewModels\RefreshTokenViewModel.cs" />
     <Compile Include="Domain\GameLocationManagement\Services\GameLocationService.cs" />
     <Compile Include="Domain\GameLocationManagement\Services\IGameLocationService.cs" />
     <Compile Include="Domain\GameManagement\Services\IGameService.cs" />

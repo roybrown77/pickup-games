@@ -3,112 +3,74 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
+using PickupGames.Domain.AccountManagement.Models;
 using PickupGames.Domain.AccountManagement.Services;
-using PickupGames.Domain.AccountManagement.ViewModels;
 using PickupGames.Infrastructure.Encoding;
 
 namespace PickupGames.Domain.AccountManagement.Repositories
 {
     public class SimpleAuthorizationServerProvider : OAuthAuthorizationServerProvider, IAuthorizationServerProvider
     {
-        //public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
-        //{
-        //    context.Validated();
-        //}
-
-        public override Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
+        public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
-            string clientId = string.Empty;
-            string clientSecret = string.Empty;
-            ClientViewModel client = null;
-
+            var clientId = string.Empty;
+            var clientSecret = string.Empty;
+            
             if (!context.TryGetBasicCredentials(out clientId, out clientSecret))
             {
                 context.TryGetFormCredentials(out clientId, out clientSecret);
             }
 
-            //if (context.ClientId == null)
-            //{
+            if (context.ClientId == null)
+            {
                 //Remove the comments from the below line context.SetError, and invalidate context 
                 //if you want to force sending clientId/secrects once obtain access tokens. 
-                //context.Validated();
-
-                //Remove the comments after mocking context or creating db
+                context.Validated();
                 //context.SetError("invalid_clientId", "ClientId should be sent.");
-                //return Task.FromResult<object>(null);
-            //}
+                return;
+            }
 
             var authService = new AuthService();
-            client = authService.FindClient(context.ClientId);
+            var client = authService.FindClient(context.ClientId);
             
             if (client == null)
             {
                 context.SetError("invalid_clientId", string.Format("Client '{0}' is not registered in the system.", context.ClientId));
-                return Task.FromResult<object>(null);
+                return;
             }
 
-            if (client.ApplicationType == ApplicationTypes.NativeConfidential)
+            if (client.ApplicationType == ApplicationType.NativeConfidential)
             {
                 if (string.IsNullOrWhiteSpace(clientSecret))
                 {
                     context.SetError("invalid_clientId", "Client secret should be sent.");
-                    return Task.FromResult<object>(null);
+                    return;
                 }
-
+                
                 if (client.Secret != EncodingUtilities.GetHash(clientSecret))
                 {
                     context.SetError("invalid_clientId", "Client secret is invalid.");
-                    return Task.FromResult<object>(null);
+                    return;
                 }
             }
 
             if (!client.Active)
             {
                 context.SetError("invalid_clientId", "Client is inactive.");
-                return Task.FromResult<object>(null);
+                return;
             }
 
             context.OwinContext.Set("as:clientAllowedOrigin", client.AllowedOrigin);
             context.OwinContext.Set("as:clientRefreshTokenLifeTime", client.RefreshTokenLifeTime.ToString());
 
-            context.Validated();
-            return Task.FromResult<object>(null);
+            context.Validated();            
         }
-
-        //public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
-        //{
-        //    context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
-
-        //    ClaimsIdentity identity;
-
-        //    using (var _repo = new AuthRepository())
-        //    {
-        //        var user = await _repo.FindUserBy(context.UserName, context.Password);
-
-        //        if (user == null)
-        //        {
-        //            context.SetError("invalid_grant", "Login info is incorrect.");
-        //            return;
-        //        }
-
-        //        identity = new ClaimsIdentity(context.Options.AuthenticationType);
-        //        identity.AddClaim(new Claim("username", context.UserName));
-        //        identity.AddClaim(new Claim("userid", user.Id));
-        //        identity.AddClaim(new Claim("role", "user"));
-        //    }
-
-        //    context.Validated(identity);
-        //}
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            var allowedOrigin = context.OwinContext.Get<string>("as:clientAllowedOrigin");
-
-            if (allowedOrigin == null) allowedOrigin = "*";
+            var allowedOrigin = context.OwinContext.Get<string>("as:clientAllowedOrigin") ?? "*";
 
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { allowedOrigin });
-
-            ClaimsIdentity identity;
 
             var authService = new AuthService();
             var user = await authService.FindUserBy(context.UserName, context.Password);
@@ -119,20 +81,15 @@ namespace PickupGames.Domain.AccountManagement.Repositories
                 return;
             }
 
-            identity = new ClaimsIdentity(context.Options.AuthenticationType);
+            var identity = new ClaimsIdentity(context.Options.AuthenticationType);
             identity.AddClaim(new Claim("username", context.UserName));
             identity.AddClaim(new Claim("userid", user.Id));
             identity.AddClaim(new Claim("role", "user"));
             
-            //var identity = new ClaimsIdentity(context.Options.AuthenticationType);
-            //identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
-            //identity.AddClaim(new Claim("sub", context.UserName));
-            //identity.AddClaim(new Claim("role", "user"));
-
             var props = new AuthenticationProperties(new Dictionary<string, string>
                 {
                     { 
-                        "as:client_id", (context.ClientId == null) ? string.Empty : context.ClientId
+                        "as:client_id", context.ClientId ?? string.Empty
                     },
                     { 
                         "userName", context.UserName
@@ -163,8 +120,7 @@ namespace PickupGames.Domain.AccountManagement.Repositories
                 context.SetError("invalid_clientId", "Refresh token is issued to a different clientId.");
                 return Task.FromResult<object>(null);
             }
-
-            // Change auth ticket for refresh token requests
+            
             var newIdentity = new ClaimsIdentity(context.Ticket.Identity);
             newIdentity.AddClaim(new Claim("newClaim", "newValue"));
 

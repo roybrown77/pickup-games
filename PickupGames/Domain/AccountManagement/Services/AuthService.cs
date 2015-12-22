@@ -9,20 +9,9 @@ using PickupGames.Infrastructure.Response;
 
 namespace PickupGames.Domain.AccountManagement.Services
 {
-    public interface IAuthService
-    {
-        Task<bool> AddRefreshToken(RefreshToken token);
-        ClientViewModel FindClient(string clientId);
-        Task<User> FindUserBy(string userName, string password);
-        Task<bool> RemoveRefreshToken(string refreshTokenId);
-        Task<ResponseResult> RegisterUser(UserViewModel userModel);
-        List<RefreshToken> GetAllRefreshTokens();
-        Task<RefreshToken> FindRefreshToken(string refreshTokenId);
-    }
-
     public class AuthService : IAuthService
     {
-        private IAuthRepository _authRepository = null;
+        private readonly IAuthRepository _authRepository;
 
         public AuthService()
         {
@@ -34,14 +23,14 @@ namespace PickupGames.Domain.AccountManagement.Services
             return _authRepository.AddRefreshToken(token);
         }
 
-        public ClientViewModel FindClient(string clientId)
-        {
-            return _authRepository.FindClient(clientId);
-        }
-
         public Task<User> FindUserBy(string userName, string password)
         {
             return _authRepository.FindUserBy(userName, password);
+        }
+
+        public Client FindClient(string clientId)
+        {
+            return _authRepository.FindClient(clientId);
         }
 
         public Task<bool> RemoveRefreshToken(string refreshTokenId)

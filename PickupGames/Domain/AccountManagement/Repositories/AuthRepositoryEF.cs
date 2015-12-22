@@ -4,18 +4,18 @@
 //using System.Threading.Tasks;
 //using Microsoft.AspNet.Identity;
 //using Microsoft.AspNet.Identity.EntityFramework;
-//using PickupGames.ViewModels;
-//using PickupGames.Repositories.Interfaces;
-//using PickupGames.Models;
+//using PickupGames.Domain.AccountManagement.Models;
+//using PickupGames.Domain.AccountManagement.ViewModels;
+//using PickupGames.Infrastructure.Response;
 
-//namespace PickupGames.Repositories
+//namespace PickupGames.Domain.AccountManagement.Repositories
 //{
 //    public class AuthRepositoryEF : IDisposable, IAuthRepository
 //    {
 //        private AuthContext _ctx;
 //        private UserManager<IdentityUser> _userManager;
 
-//        public AuthRepository()
+//        public AuthRepositoryEF()
 //        {
 //            _ctx = new AuthContext();
 //            _userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(_ctx));
@@ -78,7 +78,7 @@
 //        public async Task<bool> AddRefreshToken(RefreshToken token)
 //        {
 
-//            var existingToken = _ctx.RefreshTokens.Where(r => r.Subject == token.Subject && r.ClientId == token.ClientId).SingleOrDefault();
+//            var existingToken = _ctx.RefreshTokens.SingleOrDefault(r => r.Subject == token.Subject && r.ClientId == token.ClientId);
 
 //            if (existingToken != null)
 //            {

@@ -1,9 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using PickupGames.Domain.AccountManagement.Models;
 
-namespace PickupGames.Domain.AccountManagement.ViewModels
+namespace PickupGames.Domain.AccountManagement.Models
 {
-    public class ClientViewModel
+    public class Client
     {
         [Key]
         public string Id { get; set; }
@@ -17,7 +16,5 @@ namespace PickupGames.Domain.AccountManagement.ViewModels
         public int RefreshTokenLifeTime { get; set; }
         [MaxLength(100)]
         public string AllowedOrigin { get; set; }
-
-        public string ClientId { get; set; }
-    }    
+    }
 }

@@ -18,7 +18,7 @@ namespace PickupGames
 
             ConfigureOAuth(app);
 
-            HttpConfiguration config = new HttpConfiguration();
+            var config = new HttpConfiguration();
             WebApiConfig.Register(config);
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             app.UseWebApi(config);
@@ -28,11 +28,6 @@ namespace PickupGames
         {
             var OAuthServerOptions = new OAuthAuthorizationServerOptions()
             {
-                //AllowInsecureHttp = true,
-                //TokenEndpointPath = new PathString("/token"),
-                //AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
-                //Provider = new SimpleAuthorizationServerProvider()
-
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
@@ -40,7 +35,6 @@ namespace PickupGames
                 RefreshTokenProvider = new SimpleRefreshTokenProvider()
             };
 
-            // Token Generation
             app.UseOAuthAuthorizationServer(OAuthServerOptions);
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
         }

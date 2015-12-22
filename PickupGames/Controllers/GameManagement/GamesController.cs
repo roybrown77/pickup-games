@@ -39,7 +39,6 @@ namespace PickupGames.Controllers.GameManagement
         {
             if (ModelState.IsValid)
             {
-
                 // move to controller/routing filter
                 //var user = HttpContext.Current.User;
                 var identity = (ClaimsIdentity)User.Identity;

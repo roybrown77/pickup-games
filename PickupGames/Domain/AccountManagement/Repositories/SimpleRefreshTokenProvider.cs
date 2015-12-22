@@ -31,9 +31,8 @@ namespace PickupGames.Domain.AccountManagement.Repositories
 
             if (refreshToken != null)
             {
-                //Get protectedTicket from refreshToken class
                 context.DeserializeTicket(refreshToken.ProtectedTicket);
-                var result = await authService.RemoveRefreshToken(hashedTokenId);
+                await authService.RemoveRefreshToken(hashedTokenId);
             }
         }
 
@@ -52,7 +51,7 @@ namespace PickupGames.Domain.AccountManagement.Repositories
             
             var refreshTokenLifeTime = context.OwinContext.Get<string>("as:clientRefreshTokenLifeTime"); 
             
-            var token = new RefreshToken() 
+            var token = new RefreshToken
             { 
                 Id = EncodingUtilities.GetHash(refreshTokenId),
                 ClientId = clientid, 
