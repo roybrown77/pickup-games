@@ -6,12 +6,12 @@
 
         public static void InitializeLogFactory(IApplicationLogger logger)
         {
-            _logger = logger;
+            _logger = new MockApplicationLogger();
         }
 
         public static IApplicationLogger GetLogger()
         {
-            return _logger;
+            return new MockApplicationLogger();
         }
     }
 }

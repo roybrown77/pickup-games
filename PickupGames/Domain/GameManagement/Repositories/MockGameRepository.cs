@@ -6,7 +6,7 @@ namespace PickupGames.Domain.GameManagement.Repositories
 {
     public class MockGameRepository : IGameRepository
     {
-        public static Dictionary<Guid, Game> _games = new Dictionary<Guid, Game>();
+        public static List<Game> Games = new List<Game>();
 
         public MockGameRepository()
         {
@@ -120,15 +120,19 @@ namespace PickupGames.Domain.GameManagement.Repositories
 
         public void Add(Game game)
         {
-            game.Id = Guid.NewGuid();
-            _games.Add(game.Id, game);
+            game.Id = Guid.NewGuid();            
+            Games.Add(game);
         }
 
         public void Edit(Guid id, Game game)
         {
-            if (_games.ContainsKey(id))
+            var gameFound = Games.Find(x => x.Id == id);
+
+            if (gameFound != null)
             {
-                _games[id] = game;
+                gameFound.DateTime = game.DateTime;
+                gameFound.Sport = game.Sport;
+                gameFound.Location = game.Location;                
             }
             
             throw new Exception("GameNotFoundToEdit");
@@ -136,9 +140,11 @@ namespace PickupGames.Domain.GameManagement.Repositories
 
         public void Delete(Guid id)
         {
-            if (_games.ContainsKey(id))
+            var gameFound = Games.Find(x => x.Id == id);
+
+            if (gameFound != null)
             {
-                _games.Remove(id);
+                Games.Remove(gameFound);
             }
 
             throw new Exception("GameNotFoundToDelete");
@@ -148,10 +154,10 @@ namespace PickupGames.Domain.GameManagement.Repositories
         {
             var gameList = new List<Game>();
 
-            foreach (var game in _games)
+            foreach (var game in Games)
             {
-                game.Value.Sport.Name = GetSportName(game.Value.Sport.Id);
-                gameList.Add(game.Value);
+                game.Sport.Name = GetSportName(game.Sport.Id);
+                gameList.Add(game);
             }
 
             return gameList;
@@ -159,7 +165,7 @@ namespace PickupGames.Domain.GameManagement.Repositories
 
         private string GetSportName(string sportId)
         {
-            return MockSportRepository._sports.Find(x => x.Id == sportId.ToLower()).Name;
+            return MockSportRepository.Sports.Find(x => x.Id == sportId.ToLower()).Name;
         }
 
         public List<Game> FindAll()

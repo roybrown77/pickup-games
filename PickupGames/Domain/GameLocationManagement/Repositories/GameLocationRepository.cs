@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Net;
 using Newtonsoft.Json;
 using PickupGames.Domain.GameLocationManagement.Models;
@@ -15,24 +16,29 @@ namespace PickupGames.Domain.GameLocationManagement.Repositories
             var locations = new List<Location>();
 
             var request = (HttpWebRequest)WebRequest.Create("https://maps.googleapis.com/maps/api/place/textsearch/json?query=court+field+gym+park+basketball+" + geographySearchQuery.Address + "&radius=5&key=AIzaSyCx7-UeC9DGPev5LeZWCc6ikS20hZLfx6w");
-            var response = (HttpWebResponse)request.GetResponse();
-            var stream = response.GetResponseStream(); 
-            var streamReader = new StreamReader(stream);
-            var jsonObject = JsonConvert.DeserializeObject<RootObject>(streamReader.ReadToEnd());
-            var results = jsonObject.results;
 
-            foreach (var entry in results)
-            {
-                locations.Add(new Location
+            using (var response = (HttpWebResponse) request.GetResponse())
+            using (var stream = response.GetResponseStream())
+                if (stream != null)
                 {
-                    Name = entry.name,   
-                    Lat = entry.geometry.location.lat.ToString(CultureInfo.InvariantCulture),
-                    Lng = entry.geometry.location.lng.ToString(CultureInfo.InvariantCulture),
-                    Address = entry.formatted_address
-                });
-            }
+                    using (var streamReader = new StreamReader(stream))
+                    {
+                        var jsonObject = JsonConvert.DeserializeObject<RootObject>(streamReader.ReadToEnd());
+                        var results = jsonObject.results;
 
-            return locations;
+                        locations.AddRange(results.Select(entry => new Location
+                        {
+                            Name = entry.name,
+                            Lat = entry.geometry.location.lat.ToString(CultureInfo.InvariantCulture),
+                            Lng = entry.geometry.location.lng.ToString(CultureInfo.InvariantCulture),
+                            Address = entry.formatted_address
+                        }));
+
+                        return locations;
+                    }
+                }
+
+            return null;
         }
 
         public class RepoLocation

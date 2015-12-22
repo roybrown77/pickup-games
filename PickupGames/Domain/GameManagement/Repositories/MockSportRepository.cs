@@ -5,7 +5,7 @@ namespace PickupGames.Domain.GameManagement.Repositories
 {
     public class MockSportRepository : ISportRepository
     {
-        public static List<Sport> _sports = new List<Sport>
+        public static List<Sport> Sports = new List<Sport>
             {
                 new Sport 
                 {
@@ -22,7 +22,7 @@ namespace PickupGames.Domain.GameManagement.Repositories
 
         public List<Sport> FindAll()
         {
-            return _sports;
+            return Sports;
         }
     }
 }

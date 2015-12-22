@@ -215,6 +215,7 @@
     <Compile Include="Infrastructure\Exceptions\WarningType.cs" />
     <Compile Include="Infrastructure\Geography\IGeographyService.cs" />
     <Compile Include="Domain\AccountManagement\Models\RefreshToken.cs" />
+    <Compile Include="Infrastructure\Logging\MockApplicationLogger.cs" />
     <Compile Include="Infrastructure\Logging\IApplicationLogger.cs" />
     <Compile Include="Infrastructure\Logging\LoggingFactory.cs" />
     <Compile Include="Infrastructure\Logging\LogMessage.cs" />
@@ -225,7 +226,6 @@
     <Compile Include="Infrastructure\Response\ResponseResult.cs" />
     <Compile Include="Domain\AccountManagement\Models\User.cs" />
     <Compile Include="Domain\AccountManagement\Repositories\IAuthorizationServerProvider.cs" />
-    <Compile Include="Domain\AccountManagement\Repositories\MockAuthorizationServerProvider.cs" />
     <Compile Include="Domain\GameLocationManagement\Repositories\GameLocationRepository.cs" />
     <Compile Include="Domain\GameLocationManagement\Repositories\IGameLocationRepository.cs" />
     <Compile Include="Domain\AccountManagement\Services\AuthService.cs" />

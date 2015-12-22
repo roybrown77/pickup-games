@@ -6,6 +6,7 @@ using PickupGames.Domain.GameLocationManagement.Repositories;
 using PickupGames.Domain.GameLocationManagement.Services;
 using PickupGames.Domain.GameManagement.Repositories;
 using PickupGames.Domain.GameManagement.Services;
+using PickupGames.Infrastructure.Logging;
 using StructureMap;
 
 namespace PickupGames.Infrastructure.DependencyInjection
@@ -21,7 +22,7 @@ namespace PickupGames.Infrastructure.DependencyInjection
 
         public IContainer Initialize()
         {
-            return new Container(c =>
+            using (var container = new Container(c =>
             {
                 //c.For<HttpContextBase>()
                 //    .HttpContextScoped()
@@ -39,15 +40,15 @@ namespace PickupGames.Infrastructure.DependencyInjection
                 //c.For<IServiceAccessor>()
                 //    .Use<HttpClientServiceAccessor>();
 
-                //c.For<IApplicationLogger>()
-                //    .Use<InternalLog4NetAdapter>();
+                c.For<IApplicationLogger>()
+                    .Use<MockApplicationLogger>();
 
                 c.For<IAuthService>()
                     .Use<AuthService>();
 
                 c.For<IGameService>()
                     .Use<GameService>();
-                
+
                 c.For<IGameLocationService>()
                     .Use<GameLocationService>();
 
@@ -70,7 +71,10 @@ namespace PickupGames.Infrastructure.DependencyInjection
                 //    .Use<DepartmentRepository>()
                 //    .Ctor<string>()
                 //    .Is(() => _serviceSettings.TinCansServiceUri);
-            });
+            }))
+            {
+                return container;
+            }
         }
     }
 }
