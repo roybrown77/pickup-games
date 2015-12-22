@@ -20,7 +20,8 @@ namespace PickupGames.Controllers.AccountManagement
         public IHttpActionResult Get()
         {
             var authService = new AuthService(new MockAuthRepository());
-            return Ok(authService.GetAllRefreshTokens());
+            var tokens = authService.GetAllRefreshTokens();
+            return Ok(tokens);
         }
 
         //[Authorize(Users = "Admin")]
@@ -29,14 +30,8 @@ namespace PickupGames.Controllers.AccountManagement
         public async Task<IHttpActionResult> Delete(string tokenId)
         {
             var authService = new AuthService(new MockAuthRepository());
-            var result = await authService.RemoveRefreshToken(tokenId);
-
-            if (result)
-            {
-                return Ok();
-            }
-
-            return BadRequest("Token Id does not exist");
+            await authService.RemoveRefreshToken(tokenId);
+            return Ok();
         }
     }
 }

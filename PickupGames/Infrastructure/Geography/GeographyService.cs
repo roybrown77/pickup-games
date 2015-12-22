@@ -16,16 +16,20 @@ namespace PickupGames.Infrastructure.Geography
             var request = WebRequest.Create(geocoderUri);
 
             using (var response = request.GetResponse())
-            {
-                var xdoc = XDocument.Load(response.GetResponseStream());
-                var result = xdoc.Element("GeocodeResponse").Element("result");
-                var locationElement = result.Element("geometry").Element("location");
+            using (var stream = response.GetResponseStream())
+                if (stream != null)
+                {
+                    var xdoc = XDocument.Load(stream);
+                    var result = xdoc.Element("GeocodeResponse").Element("result");
+                    var locationElement = result.Element("geometry").Element("location");
 
-                coordinates.Lat = locationElement.Element("lat").Value;
-                coordinates.Lng = locationElement.Element("lng").Value;
+                    coordinates.Lat = locationElement.Element("lat").Value;
+                    coordinates.Lng = locationElement.Element("lng").Value;
 
-                return coordinates;
-            }            
+                    return coordinates;
+                }
+
+            return null;
         }
 
         public Distance DistanceBetweenCoordinates(Coordinate start, Coordinate end)
@@ -37,20 +41,24 @@ namespace PickupGames.Infrastructure.Geography
             var request = WebRequest.Create(geocoderUri);
 
             using (var response = request.GetResponse())
-            {
-                var xdoc = XDocument.Load(response.GetResponseStream());
-                var result = xdoc.Element("DistanceMatrixResponse").Element("row");
-                var distanceElement = result.Element("element").Element("distance");
-                var distance = distanceElement.Element("text").Value;
-
-                var array = distance.Split(Convert.ToChar(" "));
-
-                return new Distance
+            using (var stream = response.GetResponseStream())
+                if (stream != null)
                 {
-                    Value = double.Parse(array[0]),
-                    Unit = array[1]
-                };
-            }            
+                    var xdoc = XDocument.Load(stream);
+                    var result = xdoc.Element("DistanceMatrixResponse").Element("row");
+                    var distanceElement = result.Element("element").Element("distance");
+                    var distance = distanceElement.Element("text").Value;
+
+                    var array = distance.Split(Convert.ToChar(" "));
+
+                    return new Distance
+                    {
+                        Value = double.Parse(array[0]),
+                        Unit = array[1]
+                    };
+                }
+
+            return null;
         }
     }
 }

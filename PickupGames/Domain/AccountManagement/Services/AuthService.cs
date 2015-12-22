@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using PickupGames.Domain.AccountManagement.Models;
 using PickupGames.Domain.AccountManagement.Repositories;
 using PickupGames.Domain.AccountManagement.Services.Messaging;
-using PickupGames.Domain.AccountManagement.ViewModels;
+using PickupGames.Infrastructure.Exceptions;
 using PickupGames.Infrastructure.Response;
 
 namespace PickupGames.Domain.AccountManagement.Services
@@ -32,9 +34,24 @@ namespace PickupGames.Domain.AccountManagement.Services
             return _authRepository.FindClient(clientId);
         }
 
-        public Task<bool> RemoveRefreshToken(string refreshTokenId)
+        public async Task<bool> RemoveRefreshToken(string refreshTokenId)
         {
-            return _authRepository.RemoveRefreshToken(refreshTokenId);
+            try
+            {
+                var result = await _authRepository.RemoveRefreshToken(refreshTokenId);
+
+                if (!result)
+                {
+                    throw new ApplicationLayerException(HttpStatusCode.BadRequest, "Token Id was not removed for unknown reasons.");
+                }
+
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationLayerException(HttpStatusCode.BadRequest, "Token Id does not exist due to: " + ex.Message);
+            }                        
         }
 
         public Task<ResponseResult> RegisterUser(RegisterUserRequest registerUserModel)

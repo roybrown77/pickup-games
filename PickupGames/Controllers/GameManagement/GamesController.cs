@@ -11,7 +11,6 @@ using PickupGames.Domain.GameManagement.Repositories;
 using PickupGames.Domain.GameManagement.Services;
 using PickupGames.Domain.GameManagement.Services.Messaging;
 using PickupGames.Infrastructure.Geography;
-using PickupGames.Infrastructure.Response;
 
 namespace PickupGames.Controllers.GameManagement
 {
@@ -36,41 +35,23 @@ namespace PickupGames.Controllers.GameManagement
 
             var gamePageService = new GamePageViewService(new GeographyService(), new GameService(new MockGameRepository(), new GeographyService()),  new GameLocationService(new GameLocationRepository()));
             var rawResponse = gamePageService.FindBy(searchQuery);
-
-            if (rawResponse.Status == ResponseStatus.Failed)
-            {
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Unable to get games");
-            }
-
             var response = GamesMapper.ConvertGameSearchResponseToGamesPageModel(rawResponse);
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
 
         [Route("api/v1/games")]
         [HttpPost]
-        public HttpResponseMessage CreateGame(CreateGameRequest reqest)
+        public HttpResponseMessage CreateGame(CreateGameRequest request)
         {
-            if (ModelState.IsValid)
-            {
-                //var user = HttpContext.Current.User;
-                var identity = (ClaimsIdentity)User.Identity;
-                var claims = identity.Claims;
-                var userId = claims.Where(c => c.Type == "userid").Single().Value;
+            //var user = HttpContext.Current.User;
+            var identity = (ClaimsIdentity)User.Identity;
+            var claims = identity.Claims;
+            var userId = claims.Single(c => c.Type == "userid").Value;
+            var game = GamesMapper.ConvertGameCreateModelToGame(userId, request);
 
-                var game = GamesMapper.ConvertGameCreateModelToGame(userId, reqest);
-
-                var gameService = new GameService(new MockGameRepository(), new GeographyService());
-                var response = gameService.CreateGame(game);
-
-                if (response.Status == ResponseStatus.Failed)
-                {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError, "Unable to create game");
-                }
-
-                return new HttpResponseMessage(HttpStatusCode.Created);
-            }
-
-            return Request.CreateResponse(HttpStatusCode.BadRequest, ModelState.Values);
+            var gameService = new GameService(new MockGameRepository(), new GeographyService());
+            gameService.CreateGame(game);
+            return new HttpResponseMessage(HttpStatusCode.Created);                        
         }
 
         [Route("api/v1/games")]
@@ -78,15 +59,8 @@ namespace PickupGames.Controllers.GameManagement
         public HttpResponseMessage UpdateGame(string id, EditGameRequest request)
         {
             var game = GamesMapper.ConvertGameModelToGame(request);
-
             var gameService = new GameService(new MockGameRepository(), new GeographyService());
-            var response = gameService.EditGame(new Guid(id), game);
-
-            if (response.Status == ResponseStatus.Failed)
-            {
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Unable to update game");
-            }
-
+            gameService.EditGame(new Guid(id), game);
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
@@ -95,13 +69,7 @@ namespace PickupGames.Controllers.GameManagement
         public HttpResponseMessage DeleteGame(string id)
         {
             var gameService = new GameService(new MockGameRepository(), new GeographyService());
-            var response = gameService.DeleteGame(new Guid(id));
-
-            if (response.Status == ResponseStatus.Failed)
-            {
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Unable to delete game");
-            }
-            
+            gameService.DeleteGame(new Guid(id));
             return new HttpResponseMessage(HttpStatusCode.NoContent);
         }
     }

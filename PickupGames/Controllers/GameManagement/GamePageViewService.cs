@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Net;
 using PickupGames.Domain.GameLocationManagement.Services;
 using PickupGames.Domain.GameManagement.Models;
 using PickupGames.Domain.GameManagement.Repositories.Messaging;
 using PickupGames.Domain.GameManagement.Services;
+using PickupGames.Infrastructure.Exceptions;
 using PickupGames.Infrastructure.Geography;
-using PickupGames.Infrastructure.Response;
 
 namespace PickupGames.Controllers.GameManagement
 {
@@ -66,11 +67,7 @@ namespace PickupGames.Controllers.GameManagement
             }
             catch (Exception ex)
             {
-                return new GameSearchResponse
-                {
-                    Status = ResponseStatus.Failed,
-                    Message = ex.Message
-                };
+                throw new ApplicationLayerException(HttpStatusCode.InternalServerError, "Unable to get games: due to" + ex.Message);
             }
         }       
     }

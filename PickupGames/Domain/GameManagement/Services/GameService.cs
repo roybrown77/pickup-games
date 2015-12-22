@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using PickupGames.Domain.GameLocationManagement.Models;
 using PickupGames.Domain.GameManagement.Models;
 using PickupGames.Domain.GameManagement.Repositories;
 using PickupGames.Domain.GameManagement.Repositories.Messaging;
+using PickupGames.Infrastructure.Exceptions;
 using PickupGames.Infrastructure.Geography;
-using PickupGames.Infrastructure.Response;
 
 namespace PickupGames.Domain.GameManagement.Services
 {
@@ -20,60 +21,42 @@ namespace PickupGames.Domain.GameManagement.Services
             _geographyService = geographyService;
         }
 
-        public BasicResponse CreateGame(Game game)
+        public void CreateGame(Game game)
         {
             try
             {
                 var coordinates = _geographyService.GetCoordinates(game.Location.Address);
                 game.Location = new Location { Lat = coordinates.Lat, Lng = coordinates.Lng };
 
-                _gameRepository.Add(game);
-
-                return new BasicResponse();
+                _gameRepository.Add(game);                
             }
             catch (Exception ex)
             {
-                return new BasicResponse
-                {
-                    Status = ResponseStatus.Failed,
-                    Message = ex.Message
-                };
+                throw new ApplicationLayerException(HttpStatusCode.InternalServerError, "Unable to create game due to: " + ex.Message);
             }
         }
 
-        public BasicResponse EditGame(Guid id, Game game)
+        public void EditGame(Guid id, Game game)
         {
             try
             {
                 _gameRepository.Edit(id, game);
-
-                return new BasicResponse();
             }
             catch (Exception ex)
             {
-                return new BasicResponse
-                {
-                    Status = ResponseStatus.Failed,
-                    Message = ex.Message
-                };
+                throw new ApplicationLayerException(HttpStatusCode.InternalServerError, "Unable to update game due to: " + ex.Message);
             }
         }
 
-        public BasicResponse DeleteGame(Guid id)
+        public void DeleteGame(Guid id)
         {
             try
             {
                 _gameRepository.Delete(id);
-
-                return new BasicResponse();
             }
             catch (Exception ex)
             {
-                return new BasicResponse
-                {
-                    Status = ResponseStatus.Failed,
-                    Message = ex.Message
-                };
+                throw new ApplicationLayerException(HttpStatusCode.InternalServerError, "Unable to delete game due to: " + ex.Message);
             }
         }
 
