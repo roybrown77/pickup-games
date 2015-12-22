@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Ninject;
 using PickupGames.Domain.GameLocationManagement.Models;
 using PickupGames.Domain.GameManagement.Models;
 using PickupGames.Domain.GameManagement.Repositories;
-using PickupGames.Infrastructure.DependencyInjector2;
 using PickupGames.Infrastructure.Geography;
 using PickupGames.Infrastructure.Response;
 
@@ -15,10 +13,10 @@ namespace PickupGames.Domain.GameManagement.Services
         private readonly IGameRepository _gameRepository;
         private readonly IGeographyService _geographyService;
 
-        public GameService()
+        public GameService(IGameRepository gameRepository, IGeographyService geographyService)
         {
-            _gameRepository = NinjectDependencyInjector.Dependencies.Get<IGameRepository>();
-            _geographyService = NinjectDependencyInjector.Dependencies.Get<IGeographyService>();
+            _gameRepository = gameRepository;
+            _geographyService = geographyService;
         }
 
         public BasicResponse CreateGame(Game game)

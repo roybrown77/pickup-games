@@ -28,6 +28,11 @@ namespace PickupGames.Domain.AccountManagement.Repositories
                 {
                     return new User { Id = user.Id, Name = userName, Password = password };
                 }
+
+                if (string.Equals(user.Password, password, StringComparison.CurrentCultureIgnoreCase) && string.Equals(user.Email, userName, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    return new User { Id = user.Id, Name = userName, Password = password };
+                }
             }
 
             return null;

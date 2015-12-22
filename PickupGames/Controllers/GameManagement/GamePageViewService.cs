@@ -1,25 +1,23 @@
 ﻿using System;
-using Ninject;
 using PickupGames.Domain.GameLocationManagement.Services;
 using PickupGames.Domain.GameManagement.Models;
 using PickupGames.Domain.GameManagement.Services;
-using PickupGames.Infrastructure.DependencyInjector2;
 using PickupGames.Infrastructure.Geography;
 using PickupGames.Infrastructure.Response;
 
 namespace PickupGames.Controllers.GameManagement
 {
-    public class GamePageViewService
+    public class GamePageViewService : IGamePageViewService
     {
         private readonly IGameService _gameService;
         private readonly IGeographyService _geographyService;
         private readonly IGameLocationService _gameLocationService;
 
-        public GamePageViewService()
+        public GamePageViewService(IGeographyService geographyService, IGameService gameService, IGameLocationService gameLocationService)
         {
-            _geographyService = NinjectDependencyInjector.Dependencies.Get<IGeographyService>();
-            _gameService = NinjectDependencyInjector.Dependencies.Get<IGameService>();
-            _gameLocationService = NinjectDependencyInjector.Dependencies.Get<IGameLocationService>();            
+            _geographyService = geographyService;
+            _gameService = gameService;
+            _gameLocationService = gameLocationService;            
         }
 
         //public GameSearchResponse FindBy(string location)

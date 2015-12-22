@@ -1,20 +1,18 @@
 ﻿using System.Collections.Generic;
-using Ninject;
 using PickupGames.Domain.GameLocationManagement.Models;
 using PickupGames.Domain.GameLocationManagement.Repositories;
 using PickupGames.Domain.GameManagement.Models;
-using PickupGames.Infrastructure.DependencyInjector2;
 using PickupGames.Infrastructure.Geography;
 
 namespace PickupGames.Domain.GameLocationManagement.Services
 {
     public class GameLocationService : IGameLocationService
     {
-        private readonly IGameLocationRepository _gameLocationRepository;        
+        private readonly IGameLocationRepository _gameLocationRepository;
 
-        public GameLocationService()
+        public GameLocationService(IGameLocationRepository gameLocationRepository)
         {
-            _gameLocationRepository = NinjectDependencyInjector.Dependencies.Get<IGameLocationRepository>();
+            _gameLocationRepository = gameLocationRepository;
         }
 
         //public GameSearchResponse FindBy(string location)

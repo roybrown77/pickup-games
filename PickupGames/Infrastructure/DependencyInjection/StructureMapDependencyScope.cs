@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Web.Http.Dependencies;
+using Microsoft.Practices.ServiceLocation;
+using StructureMap;
 
 namespace PickupGames.Infrastructure.DependencyInjection {
     /// <summary>
@@ -62,12 +64,12 @@ namespace PickupGames.Infrastructure.DependencyInjection {
         /// </returns>
         protected override IEnumerable<object> DoGetAllInstances(Type serviceType)
         {
-            return Container.GetAllInstances(serviceType).Cast<object>();
+            return (IEnumerable<object>) Container.GetAllInstances(serviceType).Cast<object>();
         }
 
         public IEnumerable<object> GetServices(Type serviceType)
         {
-            return Container.GetAllInstances(serviceType).Cast<object>();
+            return (IEnumerable<object>) Container.GetAllInstances(serviceType).Cast<object>();
         }
 
         public void Dispose()

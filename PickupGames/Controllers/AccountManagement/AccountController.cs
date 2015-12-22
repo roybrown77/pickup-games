@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Web.Http;
+using PickupGames.Domain.AccountManagement.Repositories;
 using PickupGames.Domain.AccountManagement.Services;
 using PickupGames.Domain.AccountManagement.ViewModels;
 using PickupGames.Infrastructure.Response;
@@ -10,6 +11,13 @@ namespace PickupGames.Controllers.AccountManagement
     [RoutePrefix("api/v1/Account")]
     public class AccountController : ApiController
     {
+        private readonly IAuthService _authService;
+
+        //public AccountController(IAuthService authService)
+        //{
+        //    _authService = new AuthService(new MockAuthRepository());
+        //}
+
         [Route("Register")]
         [AllowAnonymous]
         //[ValidateAntiForgeryToken]
@@ -22,7 +30,7 @@ namespace PickupGames.Controllers.AccountManagement
 
             try
             {
-                var authService = new AuthService();
+                var authService = new AuthService(new MockAuthRepository());
                 var result = await authService.RegisterUser(userModel);
 
                 var errorResult = GetErrorResult(result);

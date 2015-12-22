@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Ninject;
 using PickupGames.Domain.AccountManagement.Models;
 using PickupGames.Domain.AccountManagement.Repositories;
 using PickupGames.Domain.AccountManagement.ViewModels;
-using PickupGames.Infrastructure.DependencyInjector2;
 using PickupGames.Infrastructure.Response;
 
 namespace PickupGames.Domain.AccountManagement.Services
@@ -13,9 +11,9 @@ namespace PickupGames.Domain.AccountManagement.Services
     {
         private readonly IAuthRepository _authRepository;
 
-        public AuthService()
+        public AuthService(IAuthRepository authRepository)
         {
-            _authRepository = NinjectDependencyInjector.Dependencies.Get<IAuthRepository>();
+            _authRepository = authRepository;
         }
 
         public Task<bool> AddRefreshToken(RefreshToken token)

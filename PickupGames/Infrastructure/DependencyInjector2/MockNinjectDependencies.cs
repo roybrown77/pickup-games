@@ -13,17 +13,17 @@ namespace PickupGames.Infrastructure.DependencyInjector2
     {
         public override void Load()
         {
-            Bind<IAuthorizationServerProvider>().ToMethod(context => new MockAuthorizationServerProvider());
+            //Bind<IAuthorizationServerProvider>().ToMethod(context => new MockAuthorizationServerProvider());
 
-            Bind<IGameRepository>().ToMethod(context => new MockGameRepository());
-            Bind<IGameLocationRepository>().ToMethod(context => new GameLocationRepository());            
-            Bind<ISportRepository>().ToMethod(context => new MockSportRepository());
-            Bind<IGeographyService>().ToMethod(context => new GeographyService());
-            Bind<IAuthRepository>().ToMethod(context => new MockAuthRepository());
+            //Bind<IGameRepository>().ToMethod(context => new MockGameRepository());
+            //Bind<IGameLocationRepository>().ToMethod(context => new GameLocationRepository());            
+            //Bind<ISportRepository>().ToMethod(context => new MockSportRepository());
+            //Bind<IGeographyService>().ToMethod(context => new GeographyService());
+            //Bind<IAuthRepository>().ToMethod(context => new MockAuthRepository());
 
-            Bind<IAuthService>().ToMethod(context => new AuthService());
-            Bind<IGameService>().ToMethod(context => new GameService());
-            Bind<IGameLocationService>().ToMethod(context => new GameLocationService());            
+            //Bind<IAuthService>().ToMethod(context => new AuthService());
+            //Bind<IGameService>().ToMethod(context => new GameService());
+            //Bind<IGameLocationService>().ToMethod(context => new GameLocationService());            
         }
     }
 }

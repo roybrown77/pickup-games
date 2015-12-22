@@ -4,10 +4,14 @@ using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Web.Http;
+using PickupGames.Domain.GameLocationManagement.Repositories;
+using PickupGames.Domain.GameLocationManagement.Services;
 using PickupGames.Domain.GameManagement.Mappers;
 using PickupGames.Domain.GameManagement.Models;
+using PickupGames.Domain.GameManagement.Repositories;
 using PickupGames.Domain.GameManagement.Services;
 using PickupGames.Domain.GameManagement.ViewModels;
+using PickupGames.Infrastructure.Geography;
 using PickupGames.Infrastructure.Response;
 
 namespace PickupGames.Controllers.GameManagement
@@ -15,13 +19,23 @@ namespace PickupGames.Controllers.GameManagement
     [Authorize]
     public class GamesController : ApiController
     {
+        readonly IGamePageViewService _gamePageService;
+        private readonly IGameService _gameService;
+
+        //public GamesController(IGamePageViewService gamePageService, IGameService gameService)
+        //{
+        //    _gamePageService = new GamePageViewService(new GeographyService(), new GameService(new MockGameRepository(), new GeographyService()),  new GameLocationService(new GameLocationRepository()));
+        //    _gameService = new GameService(new MockGameRepository(), new GeographyService());
+        //}
+
         [AllowAnonymous]
         [Route("api/v1/games")]
         [HttpGet]
         public HttpResponseMessage GetGamesByQuery([FromUri] GameSearchViewModel gameSearchModel)
         {
             var searchQuery = GamesMapper.ConvertGameSearchModelToGameSearchQuery(gameSearchModel);
-            var gamePageService = new GamePageViewService();
+
+            var gamePageService = new GamePageViewService(new GeographyService(), new GameService(new MockGameRepository(), new GeographyService()),  new GameLocationService(new GameLocationRepository()));
             var rawResponse = gamePageService.FindBy(searchQuery);
 
             if (rawResponse.Status == ResponseStatus.Failed)
@@ -39,15 +53,15 @@ namespace PickupGames.Controllers.GameManagement
         {
             if (ModelState.IsValid)
             {
-                // move to controller/routing filter
                 //var user = HttpContext.Current.User;
                 var identity = (ClaimsIdentity)User.Identity;
                 var claims = identity.Claims;
                 var userId = claims.Where(c => c.Type == "userid").Single().Value;
 
                 var game = GamesMapper.ConvertGameCreateModelToGame(userId, gameCreateModel);
-                var service = new GameService();
-                var response = service.CreateGame(game);
+
+                var gameService = new GameService(new MockGameRepository(), new GeographyService());
+                var response = gameService.CreateGame(game);
 
                 if (response.Status == ResponseStatus.Failed)
                 {
@@ -65,8 +79,9 @@ namespace PickupGames.Controllers.GameManagement
         public HttpResponseMessage UpdateGame(string id, GameViewModel gameModel)
         {
             var game = GamesMapper.ConvertGameModelToGame(gameModel);
-            var service = new GameService();
-            var response = service.EditGame(new Guid(id), game);
+
+            var gameService = new GameService(new MockGameRepository(), new GeographyService());
+            var response = gameService.EditGame(new Guid(id), game);
 
             if (response.Status == ResponseStatus.Failed)
             {
@@ -80,8 +95,8 @@ namespace PickupGames.Controllers.GameManagement
         [HttpDelete]
         public HttpResponseMessage DeleteGame(string id)
         {
-            var service = new GameService();
-            var response = service.DeleteGame(new Guid(id));
+            var gameService = new GameService(new MockGameRepository(), new GeographyService());
+            var response = gameService.DeleteGame(new Guid(id));
 
             if (response.Status == ResponseStatus.Failed)
             {

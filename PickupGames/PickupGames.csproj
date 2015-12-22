@@ -79,6 +79,9 @@
     <Reference Include="Microsoft.Owin.Security.OAuth">
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocation.1.0.0\lib\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -92,6 +95,12 @@
     <Reference Include="SqlFu">
       <HintPath>..\packages\SqlFu.2.3.5\lib\Net45\SqlFu.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.4.0.1.318\lib\net40\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap.Net4">
+      <HintPath>..\packages\structuremap.4.0.1.318\lib\net40\StructureMap.Net4.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
@@ -180,7 +189,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\CustomHttpActionInvoker.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\GameManagement\IGamePageViewService.cs" />
     <Compile Include="Domain\AccountManagement\Models\ApplicationType.cs" />
     <Compile Include="Domain\AccountManagement\Models\Client.cs" />
     <Compile Include="Domain\AccountManagement\Services\IAuthService.cs" />
@@ -192,6 +203,10 @@
     <Compile Include="Infrastructure\DatabaseAccessor\AdoDatabaseAccessor.cs" />
     <Compile Include="Infrastructure\DatabaseAccessor\DataReaderExtensions.cs" />
     <Compile Include="Infrastructure\DatabaseAccessor\IDatabaseAccessor.cs" />
+    <Compile Include="Infrastructure\DependencyInjection\IoCContainer.cs" />
+    <Compile Include="Infrastructure\DependencyInjection\IStructureMapContainer.cs" />
+    <Compile Include="Infrastructure\DependencyInjection\StructureMapDependencyResolver.cs" />
+    <Compile Include="Infrastructure\DependencyInjection\StructureMapDependencyScope.cs" />
     <Compile Include="Infrastructure\Email\EmailUtilities.cs" />
     <Compile Include="Infrastructure\Exceptions\ApplicationLayerException.cs" />
     <Compile Include="Infrastructure\Exceptions\CustomException.cs" />
@@ -280,7 +295,6 @@
     <Folder Include="Controllers\GameLocationManagement\" />
     <Folder Include="Domain\GameLocationManagement\ViewModels\" />
     <Folder Include="Infrastructure\Configuration\" />
-    <Folder Include="Infrastructure\DependencyInjection\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

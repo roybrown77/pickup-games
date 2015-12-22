@@ -92,3 +92,9 @@ C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\System.Web.Http.We
 C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\obj\Debug\PickupGames.csprojResolveAssemblyReference.cache
 C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\obj\Debug\PickupGames.dll
 C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\obj\Debug\PickupGames.pdb
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.Practices.ServiceLocation.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\StructureMap.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\StructureMap.Net4.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\StructureMap.pdb
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\StructureMap.xml
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\StructureMap.Net4.pdb

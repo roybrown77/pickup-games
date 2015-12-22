@@ -26,7 +26,7 @@ namespace PickupGames.Domain.AccountManagement.Repositories
 
             string hashedTokenId = EncodingUtilities.GetHash(context.Token);
 
-            var authService = new AuthService();
+            var authService = new AuthService(new MockAuthRepository());
             var refreshToken = await authService.FindRefreshToken(hashedTokenId);
 
             if (refreshToken != null)
@@ -47,7 +47,7 @@ namespace PickupGames.Domain.AccountManagement.Repositories
  
             var refreshTokenId = Guid.NewGuid().ToString("n");
 
-            var authService = new AuthService();
+            var authService = new AuthService(new MockAuthRepository());
             
             var refreshTokenLifeTime = context.OwinContext.Get<string>("as:clientRefreshTokenLifeTime"); 
             

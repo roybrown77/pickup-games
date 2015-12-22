@@ -30,7 +30,7 @@ namespace PickupGames.Domain.AccountManagement.Repositories
                 return;
             }
 
-            var authService = new AuthService();
+            var authService = new AuthService(new MockAuthRepository());
             var client = authService.FindClient(context.ClientId);
             
             if (client == null)
@@ -72,7 +72,7 @@ namespace PickupGames.Domain.AccountManagement.Repositories
 
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { allowedOrigin });
 
-            var authService = new AuthService();
+            var authService = new AuthService(new MockAuthRepository());
             var user = await authService.FindUserBy(context.UserName, context.Password);
 
             if (user == null)
