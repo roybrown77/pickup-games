@@ -2,7 +2,6 @@
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Threading;
 using Newtonsoft.Json;
 using PickupGames.Infrastructure.Exceptions;
 using PickupGames.Infrastructure.Logging;

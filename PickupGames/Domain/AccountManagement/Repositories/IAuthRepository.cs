@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using PickupGames.Domain.AccountManagement.Models;
-using PickupGames.Domain.AccountManagement.ViewModels;
+using PickupGames.Domain.AccountManagement.Services.Messaging;
 using PickupGames.Infrastructure.Response;
 
 namespace PickupGames.Domain.AccountManagement.Repositories
@@ -14,7 +14,7 @@ namespace PickupGames.Domain.AccountManagement.Repositories
         Task<User> FindUserBy(string userName, string password);
         Client FindClient(string clientId);
         List<RefreshToken> GetAllRefreshTokens();
-        Task<ResponseResult> RegisterUser(UserViewModel userModel);
+        Task<ResponseResult> RegisterUser(RegisterUserRequest registerUserModel);
         Task<bool> RemoveRefreshToken(RefreshToken refreshToken);
         Task<bool> RemoveRefreshToken(string refreshTokenId);
     }

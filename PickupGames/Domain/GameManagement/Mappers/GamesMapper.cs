@@ -1,19 +1,21 @@
 ﻿using System.Collections.Generic;
 using PickupGames.Domain.GameLocationManagement.Models;
 using PickupGames.Domain.GameManagement.Models;
+using PickupGames.Domain.GameManagement.Repositories.Messaging;
+using PickupGames.Domain.GameManagement.Services.Messaging;
 using PickupGames.Domain.GameManagement.ViewModels;
 
 namespace PickupGames.Domain.GameManagement.Mappers
 {
     public static class GamesMapper
     {
-        public static Game ConvertGameCreateModelToGame(string userId, GameModel gameModel)
+        public static Game ConvertGameCreateModelToGame(string userId, CreateGameRequest createGameRequest)
         {
             return new Game
                        {
-                           Sport = new Sport { Id = gameModel.SportId },
-                           DateTime = gameModel.DateTime,
-                           Location = new Location { Address = gameModel.Location },
+                           Sport = new Sport { Id = createGameRequest.SportId },
+                           DateTime = createGameRequest.DateTime,
+                           Location = new Location { Address = createGameRequest.Location },
                            UserId = userId
                        };
         }
@@ -28,18 +30,18 @@ namespace PickupGames.Domain.GameManagement.Mappers
                        };
         }
 
-        private static GameSearchViewModel ConvertGameSearchResponseToGameSearchModel(GameSearchResponse response)
+        private static GameSearchRequest ConvertGameSearchResponseToGameSearchModel(GameSearchResponse response)
         {
-            return new GameSearchViewModel
+            return new GameSearchRequest
             {
                 LocationLat = response.SearchLocationLat,
                 LocationLng = response.SearchLocationLng
             };
         }
 
-        private static List<GameViewModel> ConvertGameListToGameModelList(IEnumerable<Game> games)
+        private static List<EditGameRequest> ConvertGameListToGameModelList(IEnumerable<Game> games)
         {
-            var gameListModel = new List<GameViewModel>();
+            var gameListModel = new List<EditGameRequest>();
 
             if (games == null)
             {
@@ -48,7 +50,7 @@ namespace PickupGames.Domain.GameManagement.Mappers
 
             foreach (var game in games)
             {
-                gameListModel.Add(new GameViewModel
+                gameListModel.Add(new EditGameRequest
                                       {
                                           Id = game.Id,
                                           Sport = game.Sport,
@@ -68,7 +70,7 @@ namespace PickupGames.Domain.GameManagement.Mappers
             return gameListModel;
         }
 
-        public static GameSearchQuery ConvertGameSearchModelToGameSearchQuery(GameSearchViewModel searchModel)
+        public static GameSearchQuery ConvertGameSearchModelToGameSearchQuery(GameSearchRequest searchModel)
         {
             return new GameSearchQuery
                        {
@@ -78,13 +80,13 @@ namespace PickupGames.Domain.GameManagement.Mappers
                        };
         }
 
-        public static Game ConvertGameModelToGame(GameViewModel gameModel)
+        public static Game ConvertGameModelToGame(EditGameRequest editGameModel)
         {
             return new Game()
             {
-                Sport = gameModel.Sport,
-                DateTime = gameModel.DateTime,
-                Location = gameModel.Location
+                Sport = editGameModel.Sport,
+                DateTime = editGameModel.DateTime,
+                Location = editGameModel.Location
             };
         }
     }

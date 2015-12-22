@@ -21,7 +21,7 @@
 //            _userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(_ctx));
 //        }
 
-//        public async Task<ResponseResult> RegisterUser(UserViewModel userModel)
+//        public async Task<ResponseResult> RegisterUser(RegisterUserRequest userModel)
 //        {
 //            var userByEmail = await FindUserBy(userModel.Email);
 

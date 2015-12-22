@@ -2,9 +2,9 @@
 using PickupGames.Domain.GameLocationManagement.Models;
 using PickupGames.Domain.GameManagement.Models;
 
-namespace PickupGames.Domain.GameManagement.ViewModels
+namespace PickupGames.Domain.GameManagement.Services.Messaging
 {
-    public class GameViewModel
+    public class EditGameRequest
     {
         public Guid Id { get; set; }
         public Sport Sport { get; set; }

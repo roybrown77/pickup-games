@@ -1,6 +1,7 @@
 ﻿using System;
+using PickupGames.Domain.GameManagement.Models;
 
-namespace PickupGames.Domain.GameManagement.Models
+namespace PickupGames.Domain.GameManagement.Repositories.Messaging
 {
     public class GameSearchQuery
     {

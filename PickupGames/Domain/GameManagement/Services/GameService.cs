@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using PickupGames.Domain.GameLocationManagement.Models;
 using PickupGames.Domain.GameManagement.Models;
 using PickupGames.Domain.GameManagement.Repositories;
+using PickupGames.Domain.GameManagement.Repositories.Messaging;
 using PickupGames.Infrastructure.Geography;
 using PickupGames.Infrastructure.Response;
 

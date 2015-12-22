@@ -1,6 +1,7 @@
 ﻿using System;
 using PickupGames.Domain.GameLocationManagement.Services;
 using PickupGames.Domain.GameManagement.Models;
+using PickupGames.Domain.GameManagement.Repositories.Messaging;
 using PickupGames.Domain.GameManagement.Services;
 using PickupGames.Infrastructure.Geography;
 using PickupGames.Infrastructure.Response;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using PickupGames.Domain.GameManagement.Models;
+using PickupGames.Domain.GameManagement.Repositories.Messaging;
 
 namespace PickupGames.Domain.GameManagement.Repositories
 {

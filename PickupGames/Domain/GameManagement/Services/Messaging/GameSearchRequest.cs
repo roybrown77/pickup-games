@@ -1,9 +1,9 @@
 ﻿using System;
 using PickupGames.Domain.GameManagement.Models;
 
-namespace PickupGames.Domain.GameManagement.ViewModels
+namespace PickupGames.Domain.GameManagement.Services.Messaging
 {
-    public class GameSearchViewModel
+    public class GameSearchRequest
     {
         public string Sport { get; set; }
         public string GameDay { get; set; }

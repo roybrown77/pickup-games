@@ -7,10 +7,9 @@ using System.Web.Http;
 using PickupGames.Domain.GameLocationManagement.Repositories;
 using PickupGames.Domain.GameLocationManagement.Services;
 using PickupGames.Domain.GameManagement.Mappers;
-using PickupGames.Domain.GameManagement.Models;
 using PickupGames.Domain.GameManagement.Repositories;
 using PickupGames.Domain.GameManagement.Services;
-using PickupGames.Domain.GameManagement.ViewModels;
+using PickupGames.Domain.GameManagement.Services.Messaging;
 using PickupGames.Infrastructure.Geography;
 using PickupGames.Infrastructure.Response;
 
@@ -31,9 +30,9 @@ namespace PickupGames.Controllers.GameManagement
         [AllowAnonymous]
         [Route("api/v1/games")]
         [HttpGet]
-        public HttpResponseMessage GetGamesByQuery([FromUri] GameSearchViewModel gameSearchModel)
+        public HttpResponseMessage GetGamesByQuery([FromUri] GameSearchRequest request)
         {
-            var searchQuery = GamesMapper.ConvertGameSearchModelToGameSearchQuery(gameSearchModel);
+            var searchQuery = GamesMapper.ConvertGameSearchModelToGameSearchQuery(request);
 
             var gamePageService = new GamePageViewService(new GeographyService(), new GameService(new MockGameRepository(), new GeographyService()),  new GameLocationService(new GameLocationRepository()));
             var rawResponse = gamePageService.FindBy(searchQuery);
@@ -49,7 +48,7 @@ namespace PickupGames.Controllers.GameManagement
 
         [Route("api/v1/games")]
         [HttpPost]
-        public HttpResponseMessage CreateGame(GameModel gameCreateModel)
+        public HttpResponseMessage CreateGame(CreateGameRequest reqest)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +57,7 @@ namespace PickupGames.Controllers.GameManagement
                 var claims = identity.Claims;
                 var userId = claims.Where(c => c.Type == "userid").Single().Value;
 
-                var game = GamesMapper.ConvertGameCreateModelToGame(userId, gameCreateModel);
+                var game = GamesMapper.ConvertGameCreateModelToGame(userId, reqest);
 
                 var gameService = new GameService(new MockGameRepository(), new GeographyService());
                 var response = gameService.CreateGame(game);
@@ -76,9 +75,9 @@ namespace PickupGames.Controllers.GameManagement
 
         [Route("api/v1/games")]
         [HttpPut]
-        public HttpResponseMessage UpdateGame(string id, GameViewModel gameModel)
+        public HttpResponseMessage UpdateGame(string id, EditGameRequest request)
         {
-            var game = GamesMapper.ConvertGameModelToGame(gameModel);
+            var game = GamesMapper.ConvertGameModelToGame(request);
 
             var gameService = new GameService(new MockGameRepository(), new GeographyService());
             var response = gameService.EditGame(new Guid(id), game);

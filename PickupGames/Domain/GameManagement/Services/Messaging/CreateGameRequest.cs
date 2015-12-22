@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace PickupGames.Domain.GameManagement.Models
+namespace PickupGames.Domain.GameManagement.Services.Messaging
 {
-    public class GameModel
+    public class CreateGameRequest
     {
         [Required]
         public string SportId { get; set; }

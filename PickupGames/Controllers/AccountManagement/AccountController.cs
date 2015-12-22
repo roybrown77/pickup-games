@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using PickupGames.Domain.AccountManagement.Repositories;
 using PickupGames.Domain.AccountManagement.Services;
-using PickupGames.Domain.AccountManagement.ViewModels;
+using PickupGames.Domain.AccountManagement.Services.Messaging;
 using PickupGames.Infrastructure.Response;
 
 namespace PickupGames.Controllers.AccountManagement
@@ -21,7 +21,7 @@ namespace PickupGames.Controllers.AccountManagement
         [Route("Register")]
         [AllowAnonymous]
         //[ValidateAntiForgeryToken]
-        public async Task<IHttpActionResult> Register(UserViewModel userModel)
+        public async Task<IHttpActionResult> Register(RegisterUserRequest request)
         {
             if (!ModelState.IsValid)
             {
@@ -31,7 +31,7 @@ namespace PickupGames.Controllers.AccountManagement
             try
             {
                 var authService = new AuthService(new MockAuthRepository());
-                var result = await authService.RegisterUser(userModel);
+                var result = await authService.RegisterUser(request);
 
                 var errorResult = GetErrorResult(result);
 

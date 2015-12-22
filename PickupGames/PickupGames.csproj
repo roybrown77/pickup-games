@@ -238,7 +238,7 @@
     <Compile Include="Infrastructure\Geography\GeographySearchQuery.cs" />
     <Compile Include="Domain\GameLocationManagement\Models\Location.cs" />
     <Compile Include="Domain\GameManagement\Models\Game.cs" />
-    <Compile Include="Domain\GameManagement\Models\GameSearchQuery.cs" />
+    <Compile Include="Domain\GameManagement\Repositories\Messaging\GameSearchQuery.cs" />
     <Compile Include="Domain\GameManagement\Models\GameSearchResponse.cs" />
     <Compile Include="Domain\GameManagement\Models\GamesSortBy.cs" />
     <Compile Include="Infrastructure\Response\ResponseBase.cs" />
@@ -248,9 +248,9 @@
     <Compile Include="Domain\GameManagement\Services\GameService.cs" />
     <Compile Include="Controllers\GameManagement\GamePageViewService.cs" />
     <Compile Include="Domain\GameManagement\Mappers\GamesMapper.cs" />
-    <Compile Include="Domain\GameManagement\Models\GameModel.cs" />
-    <Compile Include="Domain\GameManagement\ViewModels\GameViewModel.cs" />
-    <Compile Include="Domain\GameManagement\ViewModels\GameSearchViewModel.cs" />
+    <Compile Include="Domain\GameManagement\Services\Messaging\CreateGameRequest.cs" />
+    <Compile Include="Domain\GameManagement\Services\Messaging\EditGameRequest.cs" />
+    <Compile Include="Domain\GameManagement\Services\Messaging\GameSearchRequest.cs" />
     <Compile Include="Domain\GameManagement\ViewModels\GamesPageViewModel.cs" />
     <Compile Include="Infrastructure\ServiceAccessor\HttpClientServiceAccessor.cs" />
     <Compile Include="Infrastructure\ServiceAccessor\IServiceAccessor.cs" />
@@ -268,7 +268,7 @@
     <Compile Include="Domain\GameManagement\Repositories\ISportRepository.cs" />
     <Compile Include="Domain\GameManagement\Repositories\MockGameRepository.cs" />
     <Compile Include="Domain\GameManagement\Repositories\MockSportRepository.cs" />
-    <Compile Include="Domain\AccountManagement\ViewModels\UserViewModel.cs" />
+    <Compile Include="Domain\AccountManagement\Services\Messaging\RegisterUserRequest.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Infrastructure\DependencyInjector2\MockNinjectDependencies.cs" />
     <Compile Include="Infrastructure\DependencyInjector2\NinjectDependencyFactory.cs" />

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using PickupGames.Domain.AccountManagement.Models;
 using PickupGames.Domain.AccountManagement.Repositories;
+using PickupGames.Domain.AccountManagement.Services.Messaging;
 using PickupGames.Domain.AccountManagement.ViewModels;
 using PickupGames.Infrastructure.Response;
 
@@ -36,9 +37,9 @@ namespace PickupGames.Domain.AccountManagement.Services
             return _authRepository.RemoveRefreshToken(refreshTokenId);
         }
 
-        public Task<ResponseResult> RegisterUser(UserViewModel userModel)
+        public Task<ResponseResult> RegisterUser(RegisterUserRequest registerUserModel)
         {
-            return _authRepository.RegisterUser(userModel);
+            return _authRepository.RegisterUser(registerUserModel);
         }
 
         public List<RefreshToken> GetAllRefreshTokens()

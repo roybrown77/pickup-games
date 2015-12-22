@@ -2,6 +2,7 @@
 using PickupGames.Domain.GameLocationManagement.Models;
 using PickupGames.Domain.GameLocationManagement.Repositories;
 using PickupGames.Domain.GameManagement.Models;
+using PickupGames.Domain.GameManagement.Repositories.Messaging;
 using PickupGames.Infrastructure.Geography;
 
 namespace PickupGames.Domain.GameLocationManagement.Services

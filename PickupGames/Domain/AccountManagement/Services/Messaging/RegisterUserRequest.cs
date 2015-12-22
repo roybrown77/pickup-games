@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PickupGames.Domain.AccountManagement.ViewModels
+namespace PickupGames.Domain.AccountManagement.Services.Messaging
 {
-    public class UserViewModel
+    public class RegisterUserRequest
     {
         [Required]
         [Display(Name = "User name")]
