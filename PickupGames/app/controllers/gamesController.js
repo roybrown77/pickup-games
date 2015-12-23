@@ -1,7 +1,8 @@
 'use strict';
 app.controller('gamesController', ['$scope', '$http', '$q', '$location', '$resource', '$routeParams', 'googleMapsService', 'gamesService', function ($scope, $http, $q, $location, $resource, $routeParams, googleMapsService, gamesService) {
-    var _map;
-    
+    var _map;   
+    var _disableRecenter = true;
+
     function updateUrl(location, index, zoom) {
         try {
             //var urlSearchParameterArray = getUrlSearchParameterArray();
@@ -9,29 +10,32 @@ app.controller('gamesController', ['$scope', '$http', '$q', '$location', '$resou
             //if (urlSearchParameterArray.length > 0) {
             $location.path("/games/" + location + "/" + index, false).search({ 'zoom': zoom }); //=" + 2 + "&" + urlSearchParameterArray.join("&"));            
             //} else {
-            //    $location.path("/games/1", false).search({ 'zoom' : 6 });;
+            //    $location.path("/games/usa/1", false).search({ 'zoom' : 4 });;
             //}  
         } catch (e) {
             var temp = e;
         }         
     }
 
-    function initializeGames() {
+    function resetGames() {
         try {
             $scope.games = [];
+            $scope.displayGamesLoading = "display:block";
+            $scope.displayGames = "display:none";
             gamesService.getGames($routeParams).then(function (response) {
                 $scope.games = response.gameListModel;
                 $scope.placesToPlayGames = response.placesToPlayGamesModel;
                 googleMapsService.addMarkers(_map, $scope.games);
                 $scope.displayGamesLoading = "display:none";
-                $scope.displayGames = "display:block";
+                $scope.displayGames = "display:block";                
             });
         } catch (e) {
             var temp = e;
         }         
     }
 
-    function initializeVariables() {
+    function initializeRouteParams() {
+        _disableRecenter = true;
         try {
             if ($routeParams.location === 'undefined' || $routeParams.location === undefined || $routeParams.location === "") {
                 $routeParams.location = 'usa';
@@ -41,31 +45,52 @@ app.controller('gamesController', ['$scope', '$http', '$q', '$location', '$resou
                 $routeParams.index = 1;
             }
 
+            if (($routeParams.zoom === 'undefined' || $routeParams.zoom === undefined || $routeParams.zoom === "") && $routeParams.location === 'usa') {
+                $routeParams.zoom = 4;
+                updateUrl($routeParams.location, $routeParams.index, $routeParams.zoom);                
+            } else {
+                googleMapsService.setMapBounds(_map, $routeParams.location, undefined).then(function () {
+                    $routeParams.zoom = _map.getZoom();
+                    updateUrl($routeParams.location, $routeParams.index, $routeParams.zoom);                    
+                });
+            }
+
+        } catch (e) {
+            var temp = e;
+        }        
+    }
+
+    function initializeSearchLocationEditBox() {
+        try {
             $scope.gamesearch = {};
             $scope.gamesearch.location = $routeParams.location;
         } catch (e) {
             var temp = e;
-        }         
+        }
     }
 
     function initialize() {
         try {
-            initializeVariables();
             _map = googleMapsService.createMap('map-canvas');
-            google.maps.event.addListener(_map, 'drag', onDragEnd);
-            google.maps.event.addListener(_map, 'zoom_changed', onDragEnd);
+            google.maps.event.addListener(_map, 'drag', onMapEvent);
+            google.maps.event.addListener(_map, 'zoom_changed', onMapEvent);
             googleMapsService.setAutocomplete('search-location');
-            $scope.displayGamesLoading = "display:block";
-            $scope.displayGames = "display:none";
+            initializeRouteParams();
+            initializeSearchLocationEditBox();
             googleMapsService.setMapBounds(_map, $routeParams.location, $routeParams.zoom).then(function () {
-                initializeGames();
+                resetGames();
+                _disableRecenter = false;
             });            
         } catch (e) {
             var temp = e;
         }         
     }
 
-    function onDragEnd() {
+    function onMapEvent() {
+        if (_disableRecenter) {
+            return;
+        }
+
         try {
             var latlng = _map.getCenter();
             var _geocoder = new google.maps.Geocoder();
@@ -78,7 +103,7 @@ app.controller('gamesController', ['$scope', '$http', '$q', '$location', '$resou
 
                         googleMapsService.setMapBounds(_map, $routeParams.location, $routeParams.zoom).then(function () {                            
                             updateUrl($routeParams.location, 1, $routeParams.zoom);
-                            initializeGames();
+                            resetGames();
                             $scope.gamesearch = {};
                             $scope.gamesearch.location = $routeParams.location;
                         });                    
@@ -111,11 +136,12 @@ app.controller('gamesController', ['$scope', '$http', '$q', '$location', '$resou
         try {
             $routeParams.location = $scope.gamesearch.location;
             $routeParams.index = 1;
-            $routeParams.zoom = undefined;
-
+            $routeParams.zoom = undefined;            
+            
             googleMapsService.setMapBounds(_map, $routeParams.location, $routeParams.zoom).then(function () {
-                $routeParams.zoom = _map.getZoom();
-                updateUrl($routeParams.location, 1, $routeParams.zoom);
+                $routeParams.zoom = _map.getZoom();                
+                resetGames();
+                updateUrl($routeParams.location, 1, $routeParams.zoom);                
             });
         } catch (e) {
             var temp = e;
