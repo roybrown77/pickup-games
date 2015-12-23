@@ -13,6 +13,7 @@ app.factory('googleMapsService', ['$q', function ($q) {
         };
 
         _map = new google.maps.Map(document.getElementById(mapCanvasId), mapOptions);
+        return _map;
     }
 
     service.setMapBounds = function (location, zoom) {
@@ -22,7 +23,7 @@ app.factory('googleMapsService', ['$q', function ($q) {
 
         //google.maps.event.addListener(_map, 'dragend', resetMapCenter);
 
-        _geocoder.geocode({ 'address' : location }, function (results, status) {
+        _geocoder.geocode({ 'address': location }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 _map.fitBounds(results[0].geometry.viewport);
                 if (zoom !== 'undefined' && zoom !== undefined && zoom !== "") {
@@ -39,7 +40,7 @@ app.factory('googleMapsService', ['$q', function ($q) {
         return deferred.promise;
     }
 
-    service.setAutocomplete = function(locationId) {
+    service.setAutocomplete = function (locationId) {
         var input = (document.getElementById(locationId));
         _autocomplete = new google.maps.places.Autocomplete(input);
     }
@@ -52,7 +53,7 @@ app.factory('googleMapsService', ['$q', function ($q) {
         _autocomplete = new google.maps.places.Autocomplete(input, options);
     }
 
-    service.getZoom = function() {
+    service.getZoom = function () {
         return _zoom;
     }
 
@@ -82,12 +83,12 @@ app.factory('googleMapsService', ['$q', function ($q) {
         //}
     }
 
-    service.refreshMarkers = function(locations) {
+    service.refreshMarkers = function (locations) {
         deleteMarkers();
         this.addMarkers(locations);
     }
 
-    service.addMarkers = function(locations) {
+    service.addMarkers = function (locations) {
         var marker;
 
         for (var index in locations) {

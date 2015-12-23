@@ -1,5 +1,7 @@
 'use strict';
 app.controller('gamesController', ['$scope', '$http', '$q', '$location', '$resource', '$routeParams', 'googleMapsService', 'gamesService', function ($scope, $http, $q, $location, $resource, $routeParams, googleMapsService, gamesService) {
+    var _map;
+    
     $scope.searchgames = function () {
         $routeParams.location = $scope.gamesearch.location;
         $routeParams.index = 1; // pagination will change this
@@ -7,11 +9,11 @@ app.controller('gamesController', ['$scope', '$http', '$q', '$location', '$resou
 
         googleMapsService.setMapBounds($routeParams.location, $routeParams.zoom).then(function () {
             $routeParams.zoom = googleMapsService.getZoom();
-            gamesService.getGames($routeParams).then(function (response) {
-                $scope.games = response.gameListModel;
-                googleMapsService.refreshMarkers(response.gameListModel);
+            //gamesService.getGames($routeParams).then(function (response) {
+              //  $scope.games = response.gameListModel;
+                //googleMapsService.refreshMarkers(response.gameListModel);
                 updateUrl();
-            });
+            //});
         });
     };
 
@@ -24,8 +26,10 @@ app.controller('gamesController', ['$scope', '$http', '$q', '$location', '$resou
 
     function initialize() {
         initializeVariables();
-        googleMapsService.createMap('map-canvas');
+        _map = googleMapsService.createMap('map-canvas');
         //googleMapsService.setMapEvents();
+        google.maps.event.addListener(_map, 'dragend', onDragEnd);
+        //google.maps.event.addListener(_map, 'zoom_changed', onZoomChanged);
         googleMapsService.setAutocomplete('search-location');
         $scope.displayGamesLoading = "display:block";
         $scope.displayGames = "display:none";
@@ -34,6 +38,60 @@ app.controller('gamesController', ['$scope', '$http', '$q', '$location', '$resou
             //updateUrl();
             initializeGames();
         });
+    }
+
+    function onDragEnd() {
+        //if (enableRecenter === true) {
+        var latlng = _map.getCenter();
+        var _geocoder = new google.maps.Geocoder();
+        _geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                if (results[1]) {
+                    $routeParams.location = results[1].formatted_address;
+                    $routeParams.index = 1; // pagination will change this                    
+                    $routeParams.zoom = _map.getZoom();
+
+                    googleMapsService.setMapBounds($routeParams.location, $routeParams.zoom).then(function () {
+                        //$routeParams.zoom = googleMapsService.getZoom();
+                        //gamesService.getGames($routeParams).then(function (response) {
+                        //  $scope.games = response.gameListModel;
+                        //googleMapsService.refreshMarkers(response.gameListModel);
+                        updateUrl();
+                        //});
+                    });                    
+                }
+            }
+        });
+        //} else {
+        //    enableRecenter = true;
+        //}
+    }
+
+    function onZoomChanged() {
+        //if (enableRecenter === true) {
+        var latlng = _map.getCenter();
+        $routeParams.zoom = _map.getZoom();
+        var _geocoder = new google.maps.Geocoder();
+        _geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                if (results[1]) {
+                    $routeParams.location = results[1].formatted_address;
+                    $routeParams.index = 1; // pagination will change this                                        
+
+                    googleMapsService.setMapBounds($routeParams.location, $routeParams.zoom).then(function () {
+                        //$routeParams.zoom = googleMapsService.getZoom();
+                        //gamesService.getGames($routeParams).then(function (response) {
+                        //  $scope.games = response.gameListModel;
+                        //googleMapsService.refreshMarkers(response.gameListModel);
+                        updateUrl();
+                        //});
+                    });                    
+                }
+            }
+        });
+        //} else {
+        //    enableRecenter = true;
+        //}
     }
 
     function initializeVariables() {
@@ -47,7 +105,7 @@ app.controller('gamesController', ['$scope', '$http', '$q', '$location', '$resou
 
         $scope.gamesearch = [];
         $scope.gamesearch.location = $routeParams.location;
-    }    
+    }
 
     function updateUrl() {
         //var urlSearchParameterArray = getUrlSearchParameterArray();
@@ -85,5 +143,5 @@ app.controller('gamesController', ['$scope', '$http', '$q', '$location', '$resou
             $scope.displayGamesLoading = "display:none";
             $scope.displayGames = "display:block";
         });
-    }           
+    }
 }]);

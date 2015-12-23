@@ -2,7 +2,7 @@ app.factory('gamesService', ['$q', '$http', '$resource', 'ngAuthSettings', funct
     var service = {};
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
 
-    service.getGames = function(model) {
+    service.getGames = function (model) {
         var deferred = $q.defer();
 
         var resource = $resource(serviceBase + 'api/v1/games', model, {
@@ -10,7 +10,7 @@ app.factory('gamesService', ['$q', '$http', '$resource', 'ngAuthSettings', funct
         });
 
         resource.get(function (response) {
-            deferred.resolve(response);            
+            deferred.resolve(response);
         });
 
         return deferred.promise;
