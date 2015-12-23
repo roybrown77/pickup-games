@@ -1,137 +1,113 @@
 app.factory('googleMapsService', ['$q', function ($q) {
     var service = {};
-    var _map;
-    var _geocoder = new google.maps.Geocoder();
-    var _zoom;
     var _autocomplete;
     var _markers = [];
-    var _formattedAddress;
 
-    service.createMap = function (mapCanvasId) {
-        var mapOptions = {
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
+    function deleteMarkers() {
+        try {
+            for (var i = 0; i < _markers.length; i++) {
+                _markers[i].setMap(null);
+            }
 
-        _map = new google.maps.Map(document.getElementById(mapCanvasId), mapOptions);
-        return _map;
+            _markers = [];
+        } catch (e) {
+            var temp = e;
+        }         
     }
 
-    service.setMapBounds = function (location, zoom) {
+    service.createMap = function (mapCanvasId) {
+        try {
+            var mapOptions = {
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var map = new google.maps.Map(document.getElementById(mapCanvasId), mapOptions);
+            return map;
+        } catch (e) {
+            var temp = e;
+        }
+
+        return null;
+    }
+
+    service.setMapBounds = function (map, location, zoom) {
         var deferred = $q.defer();
 
-        _autocomplete.bindTo('bounds', _map);
+        try {            
+            _autocomplete.bindTo('bounds', map);
 
-        //google.maps.event.addListener(_map, 'dragend', resetMapCenter);
-
-        _geocoder.geocode({ 'address': location }, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                _map.fitBounds(results[0].geometry.viewport);
-                if (zoom !== 'undefined' && zoom !== undefined && zoom !== "") {
-                    _map.setZoom(parseInt(zoom));
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ 'address': location }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    map.fitBounds(results[0].geometry.viewport);
+                    if (zoom !== 'undefined' && zoom !== undefined && zoom !== "") {
+                        map.setZoom(parseInt(zoom));
+                    }                    
                 }
 
-                _zoom = _map.getZoom();
-                //_formattedAddress = results[1].formatted_address;
-
-                deferred.resolve();
-            }
-        });
+                return deferred.resolve();
+            });
+            
+        } catch (e) {
+            var temp = e;
+        }
 
         return deferred.promise;
     }
 
     service.setAutocomplete = function (locationId) {
-        var input = (document.getElementById(locationId));
-        _autocomplete = new google.maps.places.Autocomplete(input);
+        try {
+            var input = (document.getElementById(locationId));
+            _autocomplete = new google.maps.places.Autocomplete(input);
+        } catch (e) {
+            var temp = e;
+        }         
     }
 
     service.setAddressOnlyAutocomplete = function (locationId) {
-        var input = (document.getElementById(locationId));
-        var options = {
-            types: ['address']
-        };
-        _autocomplete = new google.maps.places.Autocomplete(input, options);
+        try {
+            var input = (document.getElementById(locationId));
+            var options = {
+                types: ['address']
+            };
+            _autocomplete = new google.maps.places.Autocomplete(input, options);
+        } catch (e) {
+            var temp = e;
+        }         
     }
 
-    service.getZoom = function () {
-        return _zoom;
+    service.refreshMarkers = function (map, locations) {
+        try {
+            deleteMarkers();
+            addMarkers(map, locations);
+        } catch (e) {
+            var temp = e;
+        }         
     }
 
-    service.getFormattedAddress = function () {
-        return _formattedAddress;
-    }
+    service.addMarkers = function (map, locations) {
+        try {
+            var marker;
 
-    service.setMapEvents = function () {
-        google.maps.event.addListener(_map, 'bounds_changed', onBoundsChanged);
-    }
+            for (var index in locations) {
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(locations[parseInt(index)].location.lat, locations[parseInt(index)].location.lng),
+                    map: map,
+                    title: 'time to ball!',
+                    draggable: true
+                });
 
-    function onBoundsChanged() {
-        //if (enableRecenter === true) {
-        var latlng = map.getCenter();
-        _geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                if (results[1]) {
-                    //$('#Location').val(results[1].formatted_address);
-                    //$location.path("/games/" + results[1].formatted_address + "/" + $routeParams.index, false).search({ 'zoom': map.getZoom() });
-                    //$scope.gamesearch.location = results[1].formatted_address;
-                    //$routeParams.zoom = map.getZoom();
-                }
-            }
-        });
-        //} else {
-        //    enableRecenter = true;
-        //}
-    }
+                //google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                //    return function () {
+                //    }
+                //})(marker, i));
 
-    service.refreshMarkers = function (locations) {
-        deleteMarkers();
-        this.addMarkers(locations);
-    }
-
-    service.addMarkers = function (locations) {
-        var marker;
-
-        for (var index in locations) {
-            marker = new google.maps.Marker({
-                position: new google.maps.LatLng(locations[parseInt(index)].location.lat, locations[parseInt(index)].location.lng),
-                map: _map,
-                title: 'time to ball!',
-                draggable: true
-            });
-
-            //google.maps.event.addListener(marker, 'click', (function (marker, i) {
-            //    return function () {
-            //    }
-            //})(marker, i));
-
-            _markers.push(marker);
-        };
-    }
-
-    function deleteMarkers() {
-        for (var i = 0; i < _markers.length; i++) {
-            _markers[i].setMap(null);
-        }
-
-        _markers = [];
-    }
-
-    function resetMapCenter() {
-        var latlng = gamesMap.getCenter();
-        var geocoder = new google.maps.Geocoder();
-        geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                if (results[1]) {
-                    $('#Location').val(results[1].formatted_address);
-                    pageGames(1);
-                } else {
-                    alert('No results found');
-                }
-            } else {
-                alert('Geocoder failed due to: ' + status);
-            }
-        });
-    }
+                _markers.push(marker);
+            };
+        } catch (e) {
+            var temp = e;
+        }         
+    }    
 
     return service;
 }]);
