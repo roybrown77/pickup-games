@@ -200,7 +200,7 @@
                 </div>
             </div>
 
-            <div class="col-xs-12" ng-repeat="place in placesToPlayGames" style="border: .25em solid yellow">
+            <div class="col-xs-12" ng-repeat="place in placesToPlayGames" style="border: .25em solid #009871">
                 <div>
                     <div class="sport">
                         {{place.name}}
@@ -239,6 +239,17 @@
                     </div>
                     <span class="glyphicon glyphicon-remove" style="cursor: pointer" ng-click="deletegame(game.id)"></span>
                     <span class="glyphicon glyphicon-pencil" style="cursor: pointer"></span>
+                </div>
+            </div>
+            <div class="col-xs-12" ng-repeat="place in placesToPlayGames" style="border: .25em solid #009871">
+                <div>
+                    <div class="sport">
+                        {{place.name}}
+                    </div>
+                    <div>
+                        {{place.address}}
+                    </div>
+                    <span class="glyphicon glyphicon-plus" style="cursor: pointer" ng-click="creategame(game.id)"></span>
                 </div>
             </div>
         </div>

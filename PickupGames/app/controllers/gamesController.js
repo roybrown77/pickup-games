@@ -72,7 +72,7 @@ app.controller('gamesController', ['$scope', '$http', '$q', '$location', '$resou
     function initialize() {
         try {
             _map = googleMapsService.createMap('map-canvas');
-            google.maps.event.addListener(_map, 'drag', onMapEvent);
+            google.maps.event.addListener(_map, 'dragend', onMapEvent);
             google.maps.event.addListener(_map, 'zoom_changed', onMapEvent);
             googleMapsService.setAutocomplete('search-location');
             initializeRouteParams();
@@ -97,16 +97,21 @@ app.controller('gamesController', ['$scope', '$http', '$q', '$location', '$resou
             _geocoder.geocode({ 'latLng': latlng }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     if (results[1]) {
-                        $routeParams.location = results[1].formatted_address;
-                        $routeParams.index = 1;
-                        $routeParams.zoom = _map.getZoom();
 
-                        googleMapsService.setMapBounds(_map, $routeParams.location, $routeParams.zoom).then(function () {                            
-                            updateUrl($routeParams.location, 1, $routeParams.zoom);
-                            resetGames();
-                            $scope.gamesearch = {};
-                            $scope.gamesearch.location = $routeParams.location;
-                        });                    
+                        if (($routeParams.location !== results[1].formatted_address) || ($routeParams.zoom !== _map.getZoom())) {
+                            $routeParams.location = results[1].formatted_address;
+                            $routeParams.index = 1;
+                            $routeParams.zoom = _map.getZoom();
+
+                            googleMapsService.setMapBounds(_map, $routeParams.location, $routeParams.zoom).then(function () {
+                                updateUrl($routeParams.location, 1, $routeParams.zoom);
+                                resetGames();
+                                $scope.gamesearch = {};
+                                $scope.gamesearch.location = $routeParams.location;
+                            });
+                        } else {
+                            _disableRecenter = false;
+                        }
                     }
                 }
             });
