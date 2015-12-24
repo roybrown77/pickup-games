@@ -133,6 +133,8 @@ app.controller('gamesController', ['$scope', '$http', '$q', '$location', '$resou
     }    
 
     $scope.searchgames = function () {
+        _disableRecenter = true;
+
         try {
             $routeParams.location = $scope.gamesearch.location;
             $routeParams.index = 1;
@@ -141,7 +143,8 @@ app.controller('gamesController', ['$scope', '$http', '$q', '$location', '$resou
             googleMapsService.setMapBounds(_map, $routeParams.location, $routeParams.zoom).then(function () {
                 $routeParams.zoom = _map.getZoom();                
                 resetGames();
-                updateUrl($routeParams.location, 1, $routeParams.zoom);                
+                updateUrl($routeParams.location, 1, $routeParams.zoom);
+                _disableRecenter = false;
             });
         } catch (e) {
             var temp = e;
