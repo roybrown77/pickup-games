@@ -25,7 +25,7 @@ namespace PickupGames.Domain.GameManagement.Mappers
             return new GamesPageViewModel
                        {
                            GameListModel = ConvertGameListToGameModelList(response.Games),
-                           GameSearchModel = ConvertGameSearchResponseToGameSearchModel(response),
+                           //GameSearchModel = ConvertGameSearchResponseToGameSearchModel(response),
                            PlacesToPlayGamesModel = response.PlacesToPlayGames
                        };
         }
@@ -53,6 +53,7 @@ namespace PickupGames.Domain.GameManagement.Mappers
                 gameListModel.Add(new EditGameRequest
                                       {
                                           Id = game.Id,
+                                          CreatedBy = game.UserId,
                                           Sport = game.Sport,
                                           DateTime = game.DateTime,
                                           PlayerCount = game.PlayerCount,

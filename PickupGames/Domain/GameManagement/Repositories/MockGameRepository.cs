@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using PickupGames.Domain.GameManagement.Models;
 using PickupGames.Domain.GameManagement.Repositories.Messaging;
+using PickupGames.Infrastructure.Exceptions;
 
 namespace PickupGames.Domain.GameManagement.Repositories
 {
@@ -119,56 +121,6 @@ namespace PickupGames.Domain.GameManagement.Repositories
             //}
         }
 
-        public void Add(Game game)
-        {
-            game.Id = Guid.NewGuid();            
-            Games.Add(game);
-        }
-
-        public void Edit(Guid id, Game game)
-        {
-            var gameFound = Games.Find(x => x.Id == id);
-
-            if (gameFound != null)
-            {
-                gameFound.DateTime = game.DateTime;
-                gameFound.Sport = game.Sport;
-                gameFound.Location = game.Location;                
-            }
-            
-            throw new Exception("GameNotFoundToEdit");
-        }
-
-        public void Delete(Guid id)
-        {
-            var gameFound = Games.Find(x => x.Id == id);
-
-            if (gameFound != null)
-            {
-                Games.Remove(gameFound);
-            }
-
-            throw new Exception("GameNotFoundToDelete");
-        }
-
-        private List<Game> GetGames()
-        {
-            var gameList = new List<Game>();
-
-            foreach (var game in Games)
-            {
-                game.Sport.Name = GetSportName(game.Sport.Id);
-                gameList.Add(game);
-            }
-
-            return gameList;
-        }
-
-        private string GetSportName(string sportId)
-        {
-            return MockSportRepository.Sports.Find(x => x.Id == sportId.ToLower()).Name;
-        }
-
         public List<Game> FindAll()
         {
             return GetGames();
@@ -187,5 +139,48 @@ namespace PickupGames.Domain.GameManagement.Repositories
             var games = GetGames();
             return games.FindAll(x => x.Location.Address == gameSearchQuery.Location || x.Sport.Id == gameSearchQuery.Sport || x.DateTime >= gameSearchQuery.GameTimeStart || x.DateTime <= gameSearchQuery.GameTimeEnd || x.DateTime.Date >= gameSearchQuery.GameDateStart || x.DateTime.Date <= gameSearchQuery.GameDateEnd);
         }
+
+        public void Add(Game game)
+        {
+            Games.Add(game);
+        }
+
+        public void Save(Guid id, Game game)
+        {
+            var gameFound = Games.Find(x => x.Id == id);
+
+            if (gameFound == null)
+            {
+                throw new ApplicationLayerException(HttpStatusCode.BadRequest, "Game does not exist: " + id);
+            }
+
+            gameFound.DateTime = game.DateTime;
+            gameFound.Sport = game.Sport;
+            gameFound.Location = game.Location;                                       
+        }
+
+        public void Delete(Guid id)
+        {
+            var gameFound = Games.Find(x => x.Id == id);
+            Games.Remove(gameFound);            
+        }
+
+        private List<Game> GetGames()
+        {
+            var gameList = new List<Game>();
+
+            foreach (var game in Games)
+            {
+                game.Sport.Name = GetSportName(game.Sport.Id);
+                gameList.Add(game);
+            }
+
+            return gameList;
+        }
+
+        private string GetSportName(string sportId)
+        {
+            return MockSportRepository.Sports.Find(x => x.Id == sportId.ToLower()).Name;
+        }        
     }
 }

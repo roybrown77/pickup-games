@@ -31,7 +31,7 @@ app.factory('gamesService', ['$q', '$http', '$resource', 'ngAuthSettings', funct
     service.deleteGame = function (id) {
         var deferred = $q.defer();
 
-        var resource = $resource(serviceBase + 'api/v1/games', id.toString());
+        var resource = $resource(serviceBase + 'api/v1/games/' + id.toString());
 
         resource.delete(function (response) {
             deferred.resolve(response);

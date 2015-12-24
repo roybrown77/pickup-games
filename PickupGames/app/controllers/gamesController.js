@@ -153,6 +153,7 @@ app.controller('gamesController', ['$scope', '$http', '$q', '$location', '$resou
 
     $scope.deletegame = function (id) {
         gamesService.deleteGame(id).then(function () {
+            resetGames();
         });
     };
 

@@ -14,5 +14,6 @@ namespace PickupGames.Domain.GameManagement.Services.Messaging
 
         public int PlayerCount { get; set; }
         public int Views { get; set; }
+        public string CreatedBy { get; set; }
     }
 }

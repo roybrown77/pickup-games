@@ -47,14 +47,14 @@ namespace PickupGames.Controllers.GameManagement
             var identity = (ClaimsIdentity)User.Identity;
             var claims = identity.Claims;
             var userId = claims.Single(c => c.Type == "userid").Value;
-            var game = GamesMapper.ConvertGameCreateModelToGame(userId, request);
+            request.UserId = userId;
 
             var gameService = new GameService(new MockGameRepository(), new GeographyService());
-            gameService.CreateGame(game);
+            gameService.CreateGame(request);
             return new HttpResponseMessage(HttpStatusCode.Created);                        
         }
 
-        [Route("api/v1/games")]
+        [Route("api/v1/games/{id}")]
         [HttpPut]
         public HttpResponseMessage UpdateGame(string id, EditGameRequest request)
         {
@@ -64,7 +64,7 @@ namespace PickupGames.Controllers.GameManagement
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
-        [Route("api/v1/games")]
+        [Route("api/v1/games/{id}")]
         [HttpDelete]
         public HttpResponseMessage DeleteGame(string id)
         {

@@ -183,14 +183,17 @@
                         <div class="sport">
                             {{game.sport.name}}
                         </div>
+                        <div class="location">
+                            {{game.createdBy}}
+                        </div>
                         <div class="location" data-lat={{game.location.lat}} data-lng={{game.location.lng}}>
                             {{game.location.address}}
                         </div>
-                        <div>
-                            {{game.distanceToCenterLocation.value}} {{game.distanceToCenterLocation.unit}}
-                        </div>
-                        <div>
+                        <div class="location">
                             {{game.dateTime}}
+                        </div>
+                        <div class="location">
+                            {{game.location.distanceToCenterLocation.value}} {{game.location.distanceToCenterLocation.unit}}
                         </div>
                         <span class="glyphicon glyphicon-remove" style="cursor: pointer" ng-click="deletegame(game.id)"></span>
                         <span class="glyphicon glyphicon-pencil" style="cursor: pointer"></span>
@@ -222,14 +225,20 @@
                         <div class="sport">
                             {{game.sport.name}}
                         </div>
-                        <div id="location" data-lat={{game.location.lat}} data-lng={{game.location.lat}}>
+                        <div class="location">
+                            {{game.createdBy}}
+                        </div>
+                        <div class="location">
+                            {{game.location}}
+                        </div>
+                        <div class="location" data-lat={{game.location.lat}} data-lng={{game.location.lng}}>
                             {{game.location.address}}
                         </div>
-                        <div>
-                            {{game.distanceToCenterLocation.value}} {{game.distanceToCenterLocation.unit}}
-                        </div>
-                        <div>
+                        <div class="location">
                             {{game.dateTime}}
+                        </div>
+                        <div class="location">
+                            {{game.location.distanceToCenterLocation.value}} {{game.location.distanceToCenterLocation.unit}}
                         </div>
                     </div>
                 </div>
