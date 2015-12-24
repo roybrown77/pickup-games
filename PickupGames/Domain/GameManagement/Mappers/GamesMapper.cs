@@ -9,17 +9,6 @@ namespace PickupGames.Domain.GameManagement.Mappers
 {
     public static class GamesMapper
     {
-        public static Game ConvertGameCreateModelToGame(string userId, CreateGameRequest createGameRequest)
-        {
-            return new Game
-                       {
-                           Sport = new Sport { Id = createGameRequest.SportId },
-                           DateTime = createGameRequest.DateTime,
-                           Location = new Location { Address = createGameRequest.Location },
-                           UserId = userId
-                       };
-        }
-
         public static GamesPageViewModel ConvertGameSearchResponseToGamesPageModel(GameSearchResponse response)
         {
             return new GamesPageViewModel

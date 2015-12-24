@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using PickupGames.Domain.AccountManagement.Models;
-using PickupGames.Domain.AccountManagement.Services.Messaging;
 using PickupGames.Infrastructure.Response;
 
 namespace PickupGames.Domain.AccountManagement.Repositories
@@ -14,9 +13,9 @@ namespace PickupGames.Domain.AccountManagement.Repositories
         public static List<Client> Clients = new List<Client>();
         public static List<User> Users = new List<User>();
     
-        public async Task<ResponseResult> RegisterUser(RegisterUserRequest registerUserModel)
+        public async Task<ResponseResult> RegisterUser(User user)
         {
-            Users.Add(new User { Id = Guid.NewGuid().ToString(), Name = registerUserModel.UserName, Password = registerUserModel.Password, Email = registerUserModel.Email, Active = true });
+            Users.Add(user);
             return new ResponseResult { Succeeded = true };
         }
 

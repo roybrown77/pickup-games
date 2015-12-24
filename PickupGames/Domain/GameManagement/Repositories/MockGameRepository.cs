@@ -129,15 +129,15 @@ namespace PickupGames.Domain.GameManagement.Repositories
         public List<Game> FindBy(string address)
         {
             return GetGames();
-            var games = GetGames();
-            return games.FindAll(x => x.Location.Address == address);
+            //var games = GetGames();
+            //return games.FindAll(x => x.Location.Address == address);
         }
 
         public List<Game> FindBy(GameSearchQuery gameSearchQuery)
         {
             return GetGames();
-            var games = GetGames();
-            return games.FindAll(x => x.Location.Address == gameSearchQuery.Location || x.Sport.Id == gameSearchQuery.Sport || x.DateTime >= gameSearchQuery.GameTimeStart || x.DateTime <= gameSearchQuery.GameTimeEnd || x.DateTime.Date >= gameSearchQuery.GameDateStart || x.DateTime.Date <= gameSearchQuery.GameDateEnd);
+            //var games = GetGames();
+            //return games.FindAll(x => x.Location.Address == gameSearchQuery.Location || x.Sport.Id == gameSearchQuery.Sport || x.DateTime >= gameSearchQuery.GameTimeStart || x.DateTime <= gameSearchQuery.GameTimeEnd || x.DateTime.Date >= gameSearchQuery.GameDateStart || x.DateTime.Date <= gameSearchQuery.GameDateEnd);
         }
 
         public void Add(Game game)

@@ -61,8 +61,8 @@ namespace PickupGames.Controllers.GameManagement
                 {
                     Games = userSavedGames,
                     PlacesToPlayGames = placesToPlayGames,
-                    SearchLocationLat = centerCoordinates.Lat,
-                    SearchLocationLng = centerCoordinates.Lng
+                    //SearchLocationLat = centerCoordinates.Lat,
+                    //SearchLocationLng = centerCoordinates.Lng
                 };
             }
             catch (Exception ex)

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net;
 using PickupGames.Domain.GameLocationManagement.Models;
 using PickupGames.Domain.GameManagement.Models;
 using PickupGames.Domain.GameManagement.Repositories;
 using PickupGames.Domain.GameManagement.Repositories.Messaging;
+using PickupGames.Domain.GameManagement.Services.Messaging;
 using PickupGames.Infrastructure.Exceptions;
 using PickupGames.Infrastructure.Geography;
 
@@ -21,13 +23,21 @@ namespace PickupGames.Domain.GameManagement.Services
             _geographyService = geographyService;
         }
 
-        public void CreateGame(Game game)
+        public void CreateGame(CreateGameRequest request)
         {
             try
             {
-                var coordinates = _geographyService.GetCoordinates(game.Location.Address);
-                game.Location = new Location { Lat = coordinates.Lat, Lng = coordinates.Lng };
+                var coordinates = _geographyService.GetCoordinates(request.Location);
 
+                var game = new Game
+                {
+                    Id = Guid.NewGuid(),
+                    Sport = new Sport { Id = request.SportId },
+                    DateTime = request.DateTime,
+                    Location = new Location { Address = request.Location, Lat = coordinates.Lat, Lng = coordinates.Lng },
+                    UserId = request.UserId                    
+                };
+                                
                 _gameRepository.Add(game);                
             }
             catch (Exception ex)
@@ -40,7 +50,7 @@ namespace PickupGames.Domain.GameManagement.Services
         {
             try
             {
-                _gameRepository.Edit(id, game);
+                _gameRepository.Save(id, game);
             }
             catch (Exception ex)
             {

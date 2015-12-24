@@ -54,9 +54,18 @@ namespace PickupGames.Domain.AccountManagement.Services
             }                        
         }
 
-        public Task<ResponseResult> RegisterUser(RegisterUserRequest registerUserModel)
+        public Task<ResponseResult> RegisterUser(RegisterUserRequest request)
         {
-            return _authRepository.RegisterUser(registerUserModel);
+            var user = new User
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = request.UserName,
+                Password = request.Password,
+                Email = request.Email,
+                Active = true
+            };
+
+            return _authRepository.RegisterUser(user);
         }
 
         public List<RefreshToken> GetAllRefreshTokens()
