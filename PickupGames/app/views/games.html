@@ -1,114 +1,114 @@
-﻿    <style class="ng-scope">
-        #search-location-row {
-            position: fixed;
-            top: .5em;
-            z-index: 999999;
-            left: 6em;
-        }
+﻿<style class="ng-scope">
+    #search-location-row {
+        position: fixed;
+        top: .5em;
+        z-index: 999999;
+        left: 6em;
+    }
 
-        #nav-search {
-            display: block;
-        }
+    #nav-search {
+        display: block;
+    }
 
-        #sidebar {
-            display: none;
-            background-color: whitesmoke;
-            position: fixed;
-            top: 4em;
-            left: 0;
-            bottom: 0;
-            width: 50%;
-            overflow-y: scroll;
-            /*overflow-x: hidden;
-            -webkit-overflow-scrolling: touch;*/
-        }
+    #sidebar {
+        display: none;
+        background-color: whitesmoke;
+        position: fixed;
+        top: 4em;
+        left: 0;
+        bottom: 0;
+        width: 50%;
+        overflow-y: scroll;
+        /*overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;*/
+    }
 
-        #more-filters-toggle {
-            margin-top: 1em;
-            margin-bottom: 1em;
-        }
+    #more-filters-toggle {
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
 
-        #show-listings-toggle {
-            margin-top: 1em;
-            margin-bottom: 1em;
-            display: none;
-        }
+    #show-listings-toggle {
+        margin-top: 1em;
+        margin-bottom: 1em;
+        display: none;
+    }
 
-        #showHideGameSearchToggle {
-            width: 100%;
-            position: relative;
-            bottom: 0;
-        }
+    #showHideGameSearchToggle {
+        width: 100%;
+        position: relative;
+        bottom: 0;
+    }
 
-        #search-extra-filters {
-            display: none;
-        }
+    #search-extra-filters {
+        display: none;
+    }
 
-        #searchgamesextraform > div > label {
-            color: grey;
-        }
+    #searchgamesextraform > div > label {
+        color: grey;
+    }
 
-        #map {
-            display: block;
-            width: 100%;
-            position: fixed;
-            top: 4em;
-            right: 0;
-            left: auto;
-            bottom: 0;
-        }
+    #map {
+        display: block;
+        width: 100%;
+        position: fixed;
+        top: 4em;
+        right: 0;
+        left: auto;
+        bottom: 0;
+    }
 
-        #map-canvas {
-            position: relative;
-            /*overflow: hidden;*/
-            -webkit-transform: translateZ(0px);
-            background-color: rgb(229, 227, 223);
-            height: 100%;
-        }
+    #map-canvas {
+        position: relative;
+        /*overflow: hidden;*/
+        -webkit-transform: translateZ(0px);
+        background-color: rgb(229, 227, 223);
+        height: 100%;
+    }
 
-        #mobile-footer {
-            background-color: white;
-            padding: .5em 0 .5em 0;
-            display: none;
-        }
+    #mobile-footer {
+        background-color: white;
+        padding: .5em 0 .5em 0;
+        display: none;
+    }
 
-        .mobile-nav-header {
-            color: grey;
-            font-weight: bold;
-            cursor: pointer;
-        }
+    .mobile-nav-header {
+        color: grey;
+        font-weight: bold;
+        cursor: pointer;
+    }
 
-        #search-results-mobile {
-            width: 100%;
-            margin: 0 !important;
-            border: 0;
-            border-radius: 0;
-            box-shadow: none;
-            -webkit-box-shadow: none;
-            background-color: whitesmoke;
-            padding: .5em 0 0 0;
-            height: 50%;
-            position: fixed;
-            bottom: 2.4em;
-            overflow-y: scroll;
-        }
+    #search-results-mobile {
+        width: 100%;
+        margin: 0 !important;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        background-color: whitesmoke;
+        padding: .5em 0 0 0;
+        max-height: 50%;
+        position: fixed;
+        bottom: 2.4em;
+        overflow-y: scroll;
+    }
 
-            #search-results > div, #search-results-mobile > div {
-                padding: 0 .5em .5em .5em;
-            }
+    #search-results > div, #search-results-mobile > div {
+        padding: 0 .5em .5em .5em;
+    }
 
-                #search-results > div > div, #search-results-mobile > div > div {
-                    box-shadow: 0 1px 2px lightgrey;
-                    background-color: white;
-                    color: grey;
-                    padding: .75em;
-                }
+    #search-results > div > div, #search-results-mobile > div > div {
+        box-shadow: 0 1px 2px lightgrey;
+        background-color: white;
+        color: grey;
+        padding: .75em;
+    }
 
-        .sport {
-            color: black;
-            font-size: 13pt;
-        }
-    </style>
+    .sport {
+        color: black;
+        font-size: 13pt;
+    }
+</style>
 
 
 <script type="text/ng-template" id="firstDialog">
@@ -164,87 +164,89 @@
 			});
 </script>
 
-    <div id="search-location-row" class="row ng-scope">
-        <div class="col-xs-12">
-            <form id="searchgamesform" name="searchgamesform" ng-submit="searchgames()" enctype="multipart/form-data" class="form-horizontal ng-pristine ng-valid" role="form">
-                <input id="search-location" name="Location" ng-model="gamesearch.location" type="text" data-lat="" data-lng="" class="form-control ng-pristine ng-valid" placeholder="Where do you want to play?" autocomplete="off">
-            </form>
-        </div>
+<div id="search-location-row" class="row ng-scope">
+    <div class="col-xs-12">
+        <form id="searchgamesform" name="searchgamesform" ng-submit="searchgames()" enctype="multipart/form-data" class="form-horizontal ng-pristine ng-valid" role="form">
+            <input id="search-location" name="Location" ng-model="gamesearch.location" type="text" data-lat="" data-lng="" class="form-control ng-pristine ng-valid" placeholder="Where do you want to play?" autocomplete="off">
+        </form>
     </div>
+</div>
 
-    <div id="sidebar" class="ng-scope">
-        <div style="color: black; margin: 45% 40% 45% 40%; font-size: 200%;{{displayGamesLoading}}">
-            Loading...
-        </div>
-        <div style={{displayGames}} class="col-xs-12">
-            <div id="search-results" class="row">
-                <div class="col-xs-12" ng-repeat="game in games">
-                    <div>
-                        <div class="sport">
-                            {{game.sport.name}}
-                        </div>
-                        <div class="location">
-                            {{game.createdBy}}
-                        </div>
-                        <div class="location" data-lat={{game.location.lat}} data-lng={{game.location.lng}}>
-                            {{game.location.address}}
-                        </div>
-                        <div class="location">
-                            {{game.dateTime}}
-                        </div>
-                        <div class="location">
-                            {{game.location.distanceToCenterLocation.value}} {{game.location.distanceToCenterLocation.unit}}
-                        </div>
-                        <span class="glyphicon glyphicon-remove" style="cursor: pointer" ng-click="deletegame(game.id)"></span>
-                        <span class="glyphicon glyphicon-pencil" style="cursor: pointer"></span>
+<div id="sidebar" class="ng-scope">
+    <div style="color: black; margin: 45% 40% 45% 40%; font-size: 200%;{{displayGamesLoading}}">
+        Loading...
+    </div>
+    <div style={{displayGames}} class="col-xs-12">
+        <div id="search-results" class="row">
+            <div class="col-xs-12" ng-repeat="game in games">
+                <div>
+                    <div class="sport">
+                        {{game.sport.name}}
                     </div>
+                    <div class="location">
+                        {{game.createdBy}}
+                    </div>
+                    <div class="location" data-lat={{game.location.lat}} data-lng={{game.location.lng}}>
+                        {{game.location.address}}
+                    </div>
+                    <div class="location">
+                        {{game.dateTime}}
+                    </div>
+                    <div class="location">
+                        {{game.location.distanceToCenterLocation.value}} {{game.location.distanceToCenterLocation.unit}}
+                    </div>
+                    <span class="glyphicon glyphicon-remove" style="cursor: pointer" ng-click="deletegame(game.id)"></span>
+                    <span class="glyphicon glyphicon-pencil" style="cursor: pointer"></span>
                 </div>
+            </div>
 
-                <div class="col-xs-12" ng-repeat="place in placesToPlayGames" style="border: .25em solid yellow">
-                    <div>
-                        <div class="sport">
-                            {{place.name}}
-                        </div>
-                        <div>
-                            {{place.address}}
-                        </div>
-                        <span class="glyphicon glyphicon-plus" style="cursor: pointer" ng-click="creategame(game.id)"></span>
+            <div class="col-xs-12" ng-repeat="place in placesToPlayGames" style="border: .25em solid yellow">
+                <div>
+                    <div class="sport">
+                        {{place.name}}
                     </div>
+                    <div>
+                        {{place.address}}
+                    </div>
+                    <span class="glyphicon glyphicon-plus" style="cursor: pointer" ng-click="creategame(game.id)"></span>
                 </div>
             </div>
         </div>
     </div>
-    <div id="map" class="ng-scope">
-        <div id="map-canvas" style="position: relative; overflow: hidden; transform: translateZ(0px); background-color: rgb(229, 227, 223);"></div>
-    </div>
-    <div id="mobile-footer" class="navbar-fixed-bottom ng-scope">
-        <div class="dropdown">
-            <div id="search-results-mobile" class="dropdown-menu" role="menu">
-                <div class="col-xs-12" ng-repeat="game in games">
-                    <div>
-                        <div class="sport">
-                            {{game.sport.name}}
-                        </div>
-                        <div>
-                            {{game.createdBy}}
-                        </div>
-                        <div data-lat={{game.location.lat}} data-lng={{game.location.lng}}>
-                            {{game.location.address}}
-                        </div>
-                        <div>
-                            {{game.dateTime}}
-                        </div>
-                        <div>
-                            {{game.location.distanceToCenterLocation.value}} {{game.location.distanceToCenterLocation.unit}}
-                        </div>
+</div>
+<div id="map" class="ng-scope">
+    <div id="map-canvas" style="position: relative; overflow: hidden; transform: translateZ(0px); background-color: rgb(229, 227, 223);"></div>
+</div>
+<div id="mobile-footer" class="navbar-fixed-bottom ng-scope">
+    <div class="dropdown">
+        <div id="search-results-mobile" class="dropdown-menu" role="menu">
+            <div class="col-xs-12" ng-repeat="game in games">
+                <div>
+                    <div class="sport">
+                        {{game.sport.name}}
                     </div>
+                    <div>
+                        {{game.createdBy}}
+                    </div>
+                    <div data-lat={{game.location.lat}} data-lng={{game.location.lng}}>
+                        {{game.location.address}}
+                    </div>
+                    <div>
+                        {{game.dateTime}}
+                    </div>
+                    <div>
+                        {{game.location.distanceToCenterLocation.value}} {{game.location.distanceToCenterLocation.unit}}
+                    </div>
+                    <span class="glyphicon glyphicon-remove" style="cursor: pointer" ng-click="deletegame(game.id)"></span>
+                    <span class="glyphicon glyphicon-pencil" style="cursor: pointer"></span>
                 </div>
             </div>
-            <div class="col-xs-6 mobile-nav-header" data-toggle="dropdown">
-                LIST RESULTS
-            </div>
-            <div class="col-xs-6 mobile-nav-header text-right">
-                FILTER
-            </div>
+        </div>
+        <div class="col-xs-6 mobile-nav-header" data-toggle="dropdown">
+            LIST RESULTS
+        </div>
+        <div class="col-xs-6 mobile-nav-header text-right">
+            FILTER
         </div>
     </div>
+</div>
