@@ -5,18 +5,22 @@
         </div>
         <div class="col-md-4">
             <h2 class="form-login-heading">Login</h2>
-            <input type="text" class="form-control" placeholder="Email or username" data-ng-model="loginData.userName" required autofocus>
-            <input type="password" class="form-control" placeholder="Password" data-ng-model="loginData.password" required>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" data-ng-model="loginData.useRefreshTokens"><strong> Use Refresh Tokens</strong>
-                </label>
+            <div>
+                <input type="text" class="form-control" placeholder="Email or username" data-ng-model="loginData.userName" required autofocus>
             </div>
-            <button class="btn btn-md btn-info btn-block" type="submit" data-ng-click="login()">Login</button>
-              <div data-ng-hide="message == ''" class="alert alert-danger">
-                {{message}}
+            <div style="margin-top: .35em;">
+                <input type="password" class="form-control" placeholder="Password" data-ng-model="loginData.password" required>
             </div>
-        </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" data-ng-model="loginData.useRefreshTokens"><strong> Use Refresh Tokens</strong>
+                    </label>
+                </div>
+                <button style="margin: .35em 0 .35em 0" class="btn btn-md btn-info btn-block" type="submit" data-ng-click="login()">Login</button>
+                <div style="margin: .35em 0 .35em 0" data-ng-hide="message == ''" class="alert alert-danger">
+                    {{message}}
+                </div>
+            </div>
         <div class="col-md-4">
             <h2 class="form-login-heading">Social Logins</h2>
             <p>Or you can login using one of the social logins bleow</p>
