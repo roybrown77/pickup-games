@@ -98,3 +98,8 @@ C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\StructureMap.Net4.
 C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\StructureMap.pdb
 C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\StructureMap.xml
 C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\StructureMap.Net4.pdb
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\StructureMap.Web.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\CavemanTools.pdb
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\SqlFu.pdb
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\StructureMap.Web.pdb
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\StructureMap.Web.xml

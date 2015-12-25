@@ -102,6 +102,9 @@
     <Reference Include="StructureMap.Net4">
       <HintPath>..\packages\structuremap.4.0.1.318\lib\net40\StructureMap.Net4.dll</HintPath>
     </Reference>
+    <Reference Include="StructureMap.Web">
+      <HintPath>..\packages\structuremap.web.4.0.0.315\lib\net40\StructureMap.Web.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -292,6 +295,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Client\" />
     <Folder Include="Controllers\GameLocationManagement\" />
     <Folder Include="Domain\GameLocationManagement\ViewModels\" />
     <Folder Include="Infrastructure\Configuration\" />
