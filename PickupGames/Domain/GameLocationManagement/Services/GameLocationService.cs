@@ -45,6 +45,7 @@ namespace PickupGames.Domain.GameLocationManagement.Services
 
         public List<Location> FindBy(GameSearchQuery gameSearchQuery)
         {
+            return new List<Location>();
             var placesToPlayGames = _gameLocationRepository.GetPlaces(new GeographySearchQuery { Address = gameSearchQuery.Location, Radius = gameSearchQuery.ZoomInMeters.ToString() });
             return placesToPlayGames;
         }        

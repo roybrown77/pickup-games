@@ -296,8 +296,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Client\" />
-    <Folder Include="Controllers\GameLocationManagement\" />
-    <Folder Include="Domain\GameLocationManagement\ViewModels\" />
     <Folder Include="Infrastructure\Configuration\" />
   </ItemGroup>
   <PropertyGroup>
