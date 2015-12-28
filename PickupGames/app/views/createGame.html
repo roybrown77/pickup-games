@@ -102,65 +102,64 @@
 </body>
 </html>-->
 
+<style class="ng-scope">
+    #createbutton {
+        max-width: 280px !important;
+        width: 100% !important;
+    }
 
-    <style class="ng-scope">
-        #createbutton {
-            max-width: 280px !important;
-            width: 100% !important;
-        }
+    .well-sm {
+        padding: 1em !important;
+        width: 18.65em !important;
+    }
 
-        .well-sm {
-            padding: 1em !important;
-            width: 18.65em !important;
-        }
+    .well {
+        margin-bottom: 0 !important;
+    }
+</style>
 
-        .well {
-            margin-bottom: 0 !important;
-        }
-    </style>
+<div class="row ng-scope">
+    <div id="create-game-container" class="col-xs-12">
+        <h2>Create game.</h2>
+        <section id="creategame">
+            <form id="creategameform" name="creategameform" ng-submit="creategame()" enctype="multipart/form-data" class="form-horizontal" role="form">
+                <h4>Create an awesome game!</h4>
+                <hr>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="Sport">Sport</label>
+                    <div class="col-md-10">
+                        <select style="width:18.65em" class="form-control" ng-init="creategame.sportSelected = sports[0]" ng-model="creategame.sportSelected" ng-options="sport as sport.name for sport in sports" required=""></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="GameDate">Game Date</label>
+                    <div class="col-md-10">
+                        <pre style="width: 20em;">{{dt | date:'fullDate' }}</pre>
+                        <datepicker ng-model="dt" min-date="minDate" show-weeks="false" class="well well-sm"></datepicker>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="GameTime">Game Time</label>
+                    <div class="col-md-10">
+                        <timepicker ng-model="ti" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="Location">Location</label>
+                    <div class="col-md-10">
+                        <input id="CreateGameLocation" style="width:18.65em" class="form-control" ng-model="creategame.location" placeholder="Peters Park, West 4th St, Gillette..." required="">
+                    </div>
+                </div>
 
-    <div class="row ng-scope">
-        <div id="create-game-container" class="col-xs-12">
-            <h2>Create game.</h2>
-            <section id="creategame">
-                <form id="creategameform" name="creategameform" ng-submit="creategame()" enctype="multipart/form-data" class="form-horizontal" role="form">
-                    <h4>Create an awesome game!</h4>
-                    <hr>
-                    <div class="form-group">
-                        <label class="col-md-2 control-label" for="Sport">Sport</label>
-                        <div class="col-md-10">
-                            <select style="width:18.65em" class="form-control" ng-init="creategame.sportSelected = sports[0]" ng-model="creategame.sportSelected" ng-options="sport as sport.name for sport in sports" required=""></select>
-                        </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button id="createbutton" type="submit" class="btn btn-large btn-primary col-xs-2" aria-hidden="true">
+                            <span id="creategameglyph" class="glyphicon {{creategameglyph}}" aria-hidden="true">
+                            </span>
+                        </button>
                     </div>
-                    <div class="form-group">
-                        <label class="col-md-2 control-label" for="GameDate">Game Date</label>
-                        <div class="col-md-10">
-                            <pre style="width: 20em;">{{dt | date:'fullDate' }}</pre>
-                            <datepicker ng-model="dt" min-date="minDate" show-weeks="false" class="well well-sm"></datepicker>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-2 control-label" for="GameTime">Game Time</label>
-                        <div class="col-md-10">
-                            <timepicker ng-model="ti" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-2 control-label" for="Location">Location</label>
-                        <div class="col-md-10">
-                            <input id="CreateGameLocation" style="width:18.65em" class="form-control" ng-model="creategame.location" placeholder="Peters Park, West 4th St, Gillette..." required="">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <button id="createbutton" type="submit" class="btn btn-large btn-primary col-xs-2" aria-hidden="true">
-                                <span id="creategameglyph" class="glyphicon {{creategameglyph}}" aria-hidden="true">
-                                </span>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </section>
-        </div>
+                </div>
+            </form>
+        </section>
     </div>
+</div>
