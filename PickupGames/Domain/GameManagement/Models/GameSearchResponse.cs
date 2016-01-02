@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using PickupGames.Domain.GameLocationManagement.Models;
+using PickupGames.Domain.GamePlaceManagement.Models;
 using PickupGames.Infrastructure.Response;
 
 namespace PickupGames.Domain.GameManagement.Models
@@ -9,6 +9,6 @@ namespace PickupGames.Domain.GameManagement.Models
         public string SearchLocationLat { get; set; }
         public string SearchLocationLng { get; set; }
         public List<Game> Games { get; set; }
-        public List<Location> PlacesToPlayGames { get; set; }
+        public List<Place> PlacesToPlayGames { get; set; }
     }
 }

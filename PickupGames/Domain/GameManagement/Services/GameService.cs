@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Net;
-using PickupGames.Domain.GameLocationManagement.Models;
 using PickupGames.Domain.GameManagement.Models;
 using PickupGames.Domain.GameManagement.Repositories;
 using PickupGames.Domain.GameManagement.Repositories.Messaging;
 using PickupGames.Domain.GameManagement.Services.Messaging;
+using PickupGames.Domain.GamePlaceManagement.Models;
 using PickupGames.Infrastructure.Exceptions;
 using PickupGames.Infrastructure.Geography;
 

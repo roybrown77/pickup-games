@@ -1,19 +1,18 @@
 ﻿using System.Collections.Generic;
-using PickupGames.Domain.GameLocationManagement.Models;
-using PickupGames.Domain.GameLocationManagement.Repositories;
-using PickupGames.Domain.GameManagement.Models;
 using PickupGames.Domain.GameManagement.Repositories.Messaging;
+using PickupGames.Domain.GamePlaceManagement.Models;
+using PickupGames.Domain.GamePlaceManagement.Repositories;
 using PickupGames.Infrastructure.Geography;
 
-namespace PickupGames.Domain.GameLocationManagement.Services
+namespace PickupGames.Domain.GamePlaceManagement.Services
 {
-    public class GameLocationService : IGameLocationService
+    public class GamePlaceService : IGamePlaceService
     {
-        private readonly IGameLocationRepository _gameLocationRepository;
+        private readonly IGamePlaceRepository _gamePlaceRepository;
 
-        public GameLocationService(IGameLocationRepository gameLocationRepository)
+        public GamePlaceService(IGamePlaceRepository gamePlaceRepository)
         {
-            _gameLocationRepository = gameLocationRepository;
+            _gamePlaceRepository = gamePlaceRepository;
         }
 
         //public GameSearchResponse FindBy(string location)
@@ -43,10 +42,9 @@ namespace PickupGames.Domain.GameLocationManagement.Services
         //    }
         //}
 
-        public List<Location> FindBy(GameSearchQuery gameSearchQuery)
+        public List<Place> FindBy(GameSearchQuery gameSearchQuery)
         {
-            return new List<Location>();
-            var placesToPlayGames = _gameLocationRepository.GetPlaces(new GeographySearchQuery { Address = gameSearchQuery.Location, Radius = gameSearchQuery.ZoomInMeters.ToString() });
+            var placesToPlayGames = _gamePlaceRepository.GetPlaces(new GeographySearchQuery { Address = gameSearchQuery.Location, Radius = gameSearchQuery.ZoomInMeters.ToString() });
             return placesToPlayGames;
         }        
     }

@@ -1,10 +1,10 @@
 using PickupGames.Controllers.GameManagement;
 using PickupGames.Domain.AccountManagement.Repositories;
 using PickupGames.Domain.AccountManagement.Services;
-using PickupGames.Domain.GameLocationManagement.Repositories;
-using PickupGames.Domain.GameLocationManagement.Services;
 using PickupGames.Domain.GameManagement.Repositories;
 using PickupGames.Domain.GameManagement.Services;
+using PickupGames.Domain.GamePlaceManagement.Repositories;
+using PickupGames.Domain.GamePlaceManagement.Services;
 using PickupGames.Infrastructure.Logging;
 using StructureMap;
 
@@ -48,8 +48,8 @@ namespace PickupGames.Infrastructure.DependencyInjection
                 c.For<IGameService>()
                     .Use<GameService>();
 
-                c.For<IGameLocationService>()
-                    .Use<GameLocationService>();
+                c.For<IGamePlaceService>()
+                    .Use<GamePlaceService>();
 
                 c.For<IGamePageViewService>()
                     .Use<GamePageViewService>();
@@ -57,8 +57,8 @@ namespace PickupGames.Infrastructure.DependencyInjection
                 c.For<IAuthRepository>()
                     .Use<MockAuthRepository>();
 
-                c.For<IGameLocationRepository>()
-                    .Use<GameLocationRepository>();
+                c.For<IGamePlaceRepository>()
+                    .Use<GamePlaceRepository>();
 
                 c.For<IGameRepository>()
                     .Use<MockGameRepository>();

@@ -1,6 +1,6 @@
 ﻿using PickupGames.Domain.GameManagement.Models;
 
-namespace PickupGames.Domain.GameLocationManagement.Models
+namespace PickupGames.Domain.GamePlaceManagement.Models
 {
     public class Location
     {

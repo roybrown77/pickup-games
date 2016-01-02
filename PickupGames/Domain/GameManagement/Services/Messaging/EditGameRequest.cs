@@ -1,6 +1,6 @@
 ﻿using System;
-using PickupGames.Domain.GameLocationManagement.Models;
 using PickupGames.Domain.GameManagement.Models;
+using PickupGames.Domain.GamePlaceManagement.Models;
 
 namespace PickupGames.Domain.GameManagement.Services.Messaging
 {

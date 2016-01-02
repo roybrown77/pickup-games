@@ -4,12 +4,12 @@ using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Web.Http;
-using PickupGames.Domain.GameLocationManagement.Repositories;
-using PickupGames.Domain.GameLocationManagement.Services;
 using PickupGames.Domain.GameManagement.Mappers;
 using PickupGames.Domain.GameManagement.Repositories;
 using PickupGames.Domain.GameManagement.Services;
 using PickupGames.Domain.GameManagement.Services.Messaging;
+using PickupGames.Domain.GamePlaceManagement.Repositories;
+using PickupGames.Domain.GamePlaceManagement.Services;
 using PickupGames.Infrastructure.Geography;
 
 namespace PickupGames.Controllers.GameManagement
@@ -22,7 +22,7 @@ namespace PickupGames.Controllers.GameManagement
 
         //public GamesController(IGamePageViewService gamePageService, IGameService gameService)
         //{
-        //    _gamePageService = new GamePageViewService(new GeographyService(), new GameService(new MockGameRepository(), new GeographyService()),  new GameLocationService(new GameLocationRepository()));
+        //    _gamePageService = new GamePageViewService(new GeographyService(), new GameService(new MockGameRepository(), new GeographyService()),  new GamePlaceService(new GamePlaceRepository()));
         //    _gameService = new GameService(new MockGameRepository(), new GeographyService());
         //}
 
@@ -33,7 +33,7 @@ namespace PickupGames.Controllers.GameManagement
         {
             var searchQuery = GamesMapper.ConvertGameSearchModelToGameSearchQuery(request);
 
-            var gamePageService = new GamePageViewService(new GeographyService(), new GameService(new MockGameRepository(), new GeographyService()),  new GameLocationService(new GameLocationRepository()));
+            var gamePageService = new GamePageViewService(new GeographyService(), new GameService(new MockGameRepository(), new GeographyService()),  new GamePlaceService(new MockGamePlaceRepository()));
             var rawResponse = gamePageService.FindBy(searchQuery);
             var response = GamesMapper.ConvertGameSearchResponseToGamesPageModel(rawResponse);
             return Request.CreateResponse(HttpStatusCode.OK, response);

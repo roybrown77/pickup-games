@@ -85,7 +85,7 @@ app.factory('googleMapsService', ['$q', function ($q) {
         }         
     }
 
-    service.addMarkers = function (map, locations) {
+    service.addMarkers = function (map, locations, icon) {
         try {
             var marker;
 
@@ -94,7 +94,8 @@ app.factory('googleMapsService', ['$q', function ($q) {
                     position: new google.maps.LatLng(locations[parseInt(index)].location.lat, locations[parseInt(index)].location.lng),
                     map: map,
                     title: 'time to ball!',
-                    draggable: true
+                    draggable: true,
+                    icon : icon
                 });
 
                 //google.maps.event.addListener(marker, 'click', (function (marker, i) {

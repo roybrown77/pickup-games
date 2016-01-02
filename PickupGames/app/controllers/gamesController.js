@@ -25,7 +25,8 @@ app.controller('gamesController', ['$scope', '$http', '$q', '$location', '$resou
             gamesService.getGames($routeParams).then(function (response) {
                 $scope.games = response.gameListModel;
                 $scope.placesToPlayGames = response.placesToPlayGamesModel;
-                googleMapsService.addMarkers(_map, $scope.games);
+                googleMapsService.addMarkers(_map, $scope.games, 'orange-dot.png');
+                googleMapsService.addMarkers(_map, $scope.placesToPlayGames, 'purple-dot.png');
                 $scope.displayGamesLoading = "display:none";
                 $scope.displayGames = "display:block";                
             });

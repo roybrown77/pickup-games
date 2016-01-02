@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using PickupGames.Domain.GameLocationManagement.Models;
 using PickupGames.Domain.GameManagement.Models;
 using PickupGames.Domain.GameManagement.Repositories.Messaging;
 using PickupGames.Domain.GameManagement.Services.Messaging;
 using PickupGames.Domain.GameManagement.ViewModels;
+using PickupGames.Domain.GamePlaceManagement.Models;
 
 namespace PickupGames.Domain.GameManagement.Mappers
 {

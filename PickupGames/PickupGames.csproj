@@ -199,8 +199,11 @@
     <Compile Include="Domain\AccountManagement\Models\Client.cs" />
     <Compile Include="Domain\AccountManagement\Services\IAuthService.cs" />
     <Compile Include="Domain\AccountManagement\ViewModels\RefreshTokenViewModel.cs" />
-    <Compile Include="Domain\GameLocationManagement\Services\GameLocationService.cs" />
-    <Compile Include="Domain\GameLocationManagement\Services\IGameLocationService.cs" />
+    <Compile Include="Domain\GamePlaceManagement\Models\Place.cs" />
+    <Compile Include="Domain\GamePlaceManagement\Repositories\Messaging\GoogleMapsPlacesResponse.cs" />
+    <Compile Include="Domain\GamePlaceManagement\Repositories\MockGameLocationRepository .cs" />
+    <Compile Include="Domain\GamePlaceManagement\Services\GamePlaceService.cs" />
+    <Compile Include="Domain\GamePlaceManagement\Services\IGamePlaceService.cs" />
     <Compile Include="Domain\GameManagement\Services\IGameService.cs" />
     <Compile Include="Infrastructure\Authentication\AuthenticationHandler.cs" />
     <Compile Include="Infrastructure\DatabaseAccessor\AdoDatabaseAccessor.cs" />
@@ -229,8 +232,8 @@
     <Compile Include="Infrastructure\Response\ResponseResult.cs" />
     <Compile Include="Domain\AccountManagement\Models\User.cs" />
     <Compile Include="Domain\AccountManagement\Repositories\IAuthorizationServerProvider.cs" />
-    <Compile Include="Domain\GameLocationManagement\Repositories\GameLocationRepository.cs" />
-    <Compile Include="Domain\GameLocationManagement\Repositories\IGameLocationRepository.cs" />
+    <Compile Include="Domain\GamePlaceManagement\Repositories\GamePlaceRepository.cs" />
+    <Compile Include="Domain\GamePlaceManagement\Repositories\IGamePlaceRepository.cs" />
     <Compile Include="Domain\AccountManagement\Services\AuthService.cs" />
     <Compile Include="Controllers\AccountManagement\RefreshTokensController.cs" />
     <Compile Include="Controllers\AccountManagement\AccountController.cs" />
@@ -239,7 +242,7 @@
     <Compile Include="Domain\GameManagement\Models\Coordinate.cs" />
     <Compile Include="Domain\GameManagement\Models\Distance.cs" />
     <Compile Include="Infrastructure\Geography\GeographySearchQuery.cs" />
-    <Compile Include="Domain\GameLocationManagement\Models\Location.cs" />
+    <Compile Include="Domain\GamePlaceManagement\Models\Location.cs" />
     <Compile Include="Domain\GameManagement\Models\Game.cs" />
     <Compile Include="Domain\GameManagement\Repositories\Messaging\GameSearchQuery.cs" />
     <Compile Include="Domain\GameManagement\Models\GameSearchResponse.cs" />

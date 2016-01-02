@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Net;
-using PickupGames.Domain.GameLocationManagement.Services;
 using PickupGames.Domain.GameManagement.Models;
 using PickupGames.Domain.GameManagement.Repositories.Messaging;
 using PickupGames.Domain.GameManagement.Services;
+using PickupGames.Domain.GamePlaceManagement.Services;
 using PickupGames.Infrastructure.Exceptions;
 using PickupGames.Infrastructure.Geography;
 
@@ -13,13 +13,13 @@ namespace PickupGames.Controllers.GameManagement
     {
         private readonly IGameService _gameService;
         private readonly IGeographyService _geographyService;
-        private readonly IGameLocationService _gameLocationService;
+        private readonly IGamePlaceService _gamePlaceService;
 
-        public GamePageViewService(IGeographyService geographyService, IGameService gameService, IGameLocationService gameLocationService)
+        public GamePageViewService(IGeographyService geographyService, IGameService gameService, IGamePlaceService gamePlaceService)
         {
             _geographyService = geographyService;
             _gameService = gameService;
-            _gameLocationService = gameLocationService;            
+            _gamePlaceService = gamePlaceService;            
         }
 
         //public GameSearchResponse FindBy(string location)
@@ -55,7 +55,7 @@ namespace PickupGames.Controllers.GameManagement
             {
                 var centerCoordinates = _geographyService.GetCoordinates(gameSearchQuery.Location);
                 var userSavedGames = _gameService.FindBy(gameSearchQuery, centerCoordinates);
-                var placesToPlayGames = _gameLocationService.FindBy(gameSearchQuery);
+                var placesToPlayGames = _gamePlaceService.FindBy(gameSearchQuery);
                 
                 return new GameSearchResponse
                 {

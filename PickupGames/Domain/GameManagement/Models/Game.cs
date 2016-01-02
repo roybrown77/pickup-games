@@ -1,5 +1,5 @@
 ﻿using System;
-using PickupGames.Domain.GameLocationManagement.Models;
+using PickupGames.Domain.GamePlaceManagement.Models;
 
 namespace PickupGames.Domain.GameManagement.Models
 {

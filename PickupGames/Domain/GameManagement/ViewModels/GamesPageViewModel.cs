@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using PickupGames.Domain.GameLocationManagement.Models;
 using PickupGames.Domain.GameManagement.Services.Messaging;
+using PickupGames.Domain.GamePlaceManagement.Models;
 
 namespace PickupGames.Domain.GameManagement.ViewModels
 {
@@ -13,6 +13,6 @@ namespace PickupGames.Domain.GameManagement.ViewModels
 
         public GameSearchRequest GameSearchModel { get; set; }
         public List<EditGameRequest> GameListModel { get; set; }
-        public List<Location> PlacesToPlayGamesModel { get; set; }
+        public List<Place> PlacesToPlayGamesModel { get; set; }
     }
 }
