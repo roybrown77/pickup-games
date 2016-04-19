@@ -61,9 +61,8 @@ app.config(function ($routeProvider) {
     $routeProvider.otherwise({ redirectTo: "/" });
 });
 
-//var serviceBase = 'http://qpiga.apphb.com/';
-//var serviceBase = 'http://qpid.azurewebsites.net/';
-var serviceBase = 'http://localhost:59512/';
+var serviceBase = 'http://qpiga.apphb.com/';
+//var serviceBase = 'http://localhost:59512/';
 
 app.constant('ngAuthSettings', {
     apiServiceBaseUri: serviceBase,

@@ -5,7 +5,7 @@ using System;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using PickupGames.Domain.AccountManagement.Repositories;
-using PickupGames.Infrastructure.DependencyInjection;
+//using PickupGames.Infrastructure.DependencyInjection;
 using PickupGames.Infrastructure.Logging;
 
 [assembly: OwinStartup(typeof(PickupGames.Startup))]
@@ -22,7 +22,7 @@ namespace PickupGames
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             app.UseWebApi(config);
 
-            GlobalConfiguration.Configuration.DependencyResolver = new StructureMapDependencyResolver(new IoCContainer().Initialize());
+            //GlobalConfiguration.Configuration.DependencyResolver = new StructureMapDependencyResolver(new IoCContainer().Initialize());
             GlobalConfiguration.Configuration.MessageHandlers.Add(new MessageLoggingHandler());
             config.Services.Replace(typeof(IHttpActionInvoker), new CustomHttpActionInvoker());
         }
