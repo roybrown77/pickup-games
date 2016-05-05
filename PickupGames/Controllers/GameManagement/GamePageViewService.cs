@@ -4,20 +4,20 @@ using PickupGames.Domain.GameManagement.Models;
 using PickupGames.Domain.GameManagement.Repositories.Messaging;
 using PickupGames.Domain.GameManagement.Services;
 using PickupGames.Domain.GamePlaceManagement.Services;
+using PickupGames.Domain.Geography;
 using PickupGames.Infrastructure.Exceptions;
-using PickupGames.Infrastructure.Geography;
 
 namespace PickupGames.Controllers.GameManagement
 {
     public class GamePageViewService : IGamePageViewService
     {
         private readonly IGameService _gameService;
-        private readonly IGeographyService _geographyService;
+        private readonly IGeographyRepository _geographyRepository;
         private readonly IGamePlaceService _gamePlaceService;
 
-        public GamePageViewService(IGeographyService geographyService, IGameService gameService, IGamePlaceService gamePlaceService)
+        public GamePageViewService(IGeographyRepository geographyRepository, IGameService gameService, IGamePlaceService gamePlaceService)
         {
-            _geographyService = geographyService;
+            _geographyRepository = geographyRepository;
             _gameService = gameService;
             _gamePlaceService = gamePlaceService;            
         }
@@ -49,15 +49,15 @@ namespace PickupGames.Controllers.GameManagement
         //    }
         //}
 
-        public GameSearchResponse FindBy(GameSearchQuery gameSearchQuery)
+        public GameSearchResponseListViewModel FindBy(GameSearchQuery gameSearchQuery)
         {
             try
             {
-                var centerCoordinates = _geographyService.GetCoordinates(gameSearchQuery.Location);
+                var centerCoordinates = _geographyRepository.GetCoordinates(gameSearchQuery.Location);
                 var userSavedGames = _gameService.FindBy(gameSearchQuery, centerCoordinates);
                 var placesToPlayGames = _gamePlaceService.FindBy(gameSearchQuery);
                 
-                return new GameSearchResponse
+                return new GameSearchResponseListViewModel
                 {
                     Games = userSavedGames,
                     PlacesToPlayGames = placesToPlayGames,

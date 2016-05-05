@@ -9,22 +9,22 @@ namespace PickupGames.Domain.GameManagement.Mappers
 {
     public static class GamesMapper
     {
-        public static GamesPageViewModel ConvertGameSearchResponseToGamesPageModel(GameSearchResponse response)
+        public static GamesPageViewModel ConvertGameSearchResponseToGamesPageModel(GameSearchResponseListViewModel responseListViewModel)
         {
             return new GamesPageViewModel
                        {
-                           GameListModel = ConvertGameListToGameModelList(response.Games),
+                           GameListModel = ConvertGameListToGameModelList(responseListViewModel.Games),
                            //GameSearchModel = ConvertGameSearchResponseToGameSearchModel(response),
-                           PlacesToPlayGamesModel = response.PlacesToPlayGames
+                           PlacesToPlayGamesModel = responseListViewModel.PlacesToPlayGames
                        };
         }
 
-        private static GameSearchRequest ConvertGameSearchResponseToGameSearchModel(GameSearchResponse response)
+        private static GameSearchRequest ConvertGameSearchResponseToGameSearchModel(GameSearchResponseListViewModel responseListViewModel)
         {
             return new GameSearchRequest
             {
-                LocationLat = response.SearchLocationLat,
-                LocationLng = response.SearchLocationLng
+                LocationLat = responseListViewModel.SearchLocationLat,
+                LocationLng = responseListViewModel.SearchLocationLng
             };
         }
 

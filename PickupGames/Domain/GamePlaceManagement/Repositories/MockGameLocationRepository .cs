@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using PickupGames.Domain.GamePlaceManagement.Models;
-using PickupGames.Infrastructure.Geography;
+using PickupGames.Domain.Geography;
 
 namespace PickupGames.Domain.GamePlaceManagement.Repositories
 {

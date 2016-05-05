@@ -3,9 +3,9 @@ using System.Net;
 using System.Xml.Linq;
 using PickupGames.Domain.GameManagement.Models;
 
-namespace PickupGames.Infrastructure.Geography
+namespace PickupGames.Domain.Geography
 {
-    public class GeographyService : IGeographyService
+    public class GeographyRepository : IGeographyRepository
     {
         public Coordinate GetCoordinates(string address)
         {

@@ -1,8 +1,8 @@
 ﻿using PickupGames.Domain.GameManagement.Models;
 
-namespace PickupGames.Infrastructure.Geography
+namespace PickupGames.Domain.Geography
 {
-    public interface IGeographyService
+    public interface IGeographyRepository
     {
         Coordinate GetCoordinates(string address);
         Distance DistanceBetweenCoordinates(Coordinate start, Coordinate end);

@@ -5,6 +5,6 @@ namespace PickupGames.Controllers.GameManagement
 {
     public interface IGamePageViewService
     {
-        GameSearchResponse FindBy(GameSearchQuery gameSearchQuery);
+        GameSearchResponseListViewModel FindBy(GameSearchQuery gameSearchQuery);
     }
 }

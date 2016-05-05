@@ -1,33 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Net;
 using PickupGames.Domain.GameManagement.Models;
 using PickupGames.Domain.GameManagement.Repositories;
 using PickupGames.Domain.GameManagement.Repositories.Messaging;
 using PickupGames.Domain.GameManagement.Services.Messaging;
 using PickupGames.Domain.GamePlaceManagement.Models;
+using PickupGames.Domain.Geography;
 using PickupGames.Infrastructure.Exceptions;
-using PickupGames.Infrastructure.Geography;
 
 namespace PickupGames.Domain.GameManagement.Services
 {
     public class GameService : IGameService
     {
         private readonly IGameRepository _gameRepository;
-        private readonly IGeographyService _geographyService;
+        private readonly IGeographyRepository _geographyRepository;
 
-        public GameService(IGameRepository gameRepository, IGeographyService geographyService)
+        public GameService(IGameRepository gameRepository, IGeographyRepository geographyRepository)
         {
             _gameRepository = gameRepository;
-            _geographyService = geographyService;
+            _geographyRepository = geographyRepository;
         }
 
         public void CreateGame(CreateGameRequest request)
         {
             try
             {
-                var coordinates = _geographyService.GetCoordinates(request.Location);
+                var coordinates = _geographyRepository.GetCoordinates(request.Location);
 
                 var game = new Game
                 {
@@ -110,7 +109,7 @@ namespace PickupGames.Domain.GameManagement.Services
                     Lng = game.Location.Lng
                 };
 
-                game.Location.DistanceToCenterLocation = _geographyService.DistanceBetweenCoordinates(gameCoordinate, centerCoordinate);
+                game.Location.DistanceToCenterLocation = _geographyRepository.DistanceBetweenCoordinates(gameCoordinate, centerCoordinate);
             }
 
             // must convert ft into miles

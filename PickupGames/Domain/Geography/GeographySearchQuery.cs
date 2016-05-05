@@ -1,4 +1,4 @@
-﻿namespace PickupGames.Infrastructure.Geography
+﻿namespace PickupGames.Domain.Geography
 {
     public class GeographySearchQuery
     {

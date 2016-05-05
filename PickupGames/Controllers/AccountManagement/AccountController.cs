@@ -8,7 +8,7 @@ using PickupGames.Infrastructure.Response;
 
 namespace PickupGames.Controllers.AccountManagement
 {
-    [RoutePrefix("api/v1/Account")]
+    [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
         private readonly IAuthService _authService;

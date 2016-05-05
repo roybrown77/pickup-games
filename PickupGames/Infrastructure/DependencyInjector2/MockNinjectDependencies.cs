@@ -3,7 +3,6 @@ using PickupGames.Domain.AccountManagement.Repositories;
 using PickupGames.Domain.AccountManagement.Services;
 using PickupGames.Domain.GameManagement.Repositories;
 using PickupGames.Domain.GameManagement.Services;
-using PickupGames.Infrastructure.Geography;
 
 namespace PickupGames.Infrastructure.DependencyInjector2
 {

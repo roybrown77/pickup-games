@@ -6,7 +6,7 @@ using System.Net;
 using Newtonsoft.Json;
 using PickupGames.Domain.GamePlaceManagement.Models;
 using PickupGames.Domain.GamePlaceManagement.Repositories.Messaging;
-using PickupGames.Infrastructure.Geography;
+using PickupGames.Domain.Geography;
 
 namespace PickupGames.Domain.GamePlaceManagement.Repositories
 {

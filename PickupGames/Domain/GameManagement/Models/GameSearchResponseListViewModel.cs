@@ -4,7 +4,7 @@ using PickupGames.Infrastructure.Response;
 
 namespace PickupGames.Domain.GameManagement.Models
 {
-    public class GameSearchResponse : ResponseBase
+    public class GameSearchResponseListViewModel : ResponseBase
     {
         public string SearchLocationLat { get; set; }
         public string SearchLocationLng { get; set; }

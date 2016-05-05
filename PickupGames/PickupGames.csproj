@@ -203,7 +203,7 @@
     <Compile Include="Infrastructure\Exceptions\Error.cs" />
     <Compile Include="Infrastructure\Exceptions\Warning.cs" />
     <Compile Include="Infrastructure\Exceptions\WarningType.cs" />
-    <Compile Include="Infrastructure\Geography\IGeographyService.cs" />
+    <Compile Include="Domain\Geography\IGeographyRepository.cs" />
     <Compile Include="Domain\AccountManagement\Models\RefreshToken.cs" />
     <Compile Include="Infrastructure\Logging\MockApplicationLogger.cs" />
     <Compile Include="Infrastructure\Logging\IApplicationLogger.cs" />
@@ -225,11 +225,11 @@
     <Compile Include="Infrastructure\Response\BasicResponse.cs" />
     <Compile Include="Domain\GameManagement\Models\Coordinate.cs" />
     <Compile Include="Domain\GameManagement\Models\Distance.cs" />
-    <Compile Include="Infrastructure\Geography\GeographySearchQuery.cs" />
+    <Compile Include="Domain\Geography\GeographySearchQuery.cs" />
     <Compile Include="Domain\GamePlaceManagement\Models\Location.cs" />
     <Compile Include="Domain\GameManagement\Models\Game.cs" />
     <Compile Include="Domain\GameManagement\Repositories\Messaging\GameSearchQuery.cs" />
-    <Compile Include="Domain\GameManagement\Models\GameSearchResponse.cs" />
+    <Compile Include="Domain\GameManagement\Models\GameSearchResponseListViewModel.cs" />
     <Compile Include="Domain\GameManagement\Models\GamesSortBy.cs" />
     <Compile Include="Infrastructure\Response\ResponseBase.cs" />
     <Compile Include="Infrastructure\Response\ResponseStatus.cs" />
@@ -252,7 +252,7 @@
     <Compile Include="Domain\AccountManagement\Repositories\MockAuthRepository.cs" />
     <Compile Include="Domain\AccountManagement\Repositories\AuthRepositoryEF.cs" />
     <Compile Include="Domain\AccountManagement\ViewModels\ClientViewModel.cs" />
-    <Compile Include="Infrastructure\Geography\GeographyService.cs" />
+    <Compile Include="Domain\Geography\GeographyRepository.cs" />
     <Compile Include="Domain\AccountManagement\Repositories\IAuthRepository.cs" />
     <Compile Include="Domain\GameManagement\Repositories\IGameRepository.cs" />
     <Compile Include="Domain\GameManagement\Repositories\ISportRepository.cs" />

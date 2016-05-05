@@ -5,7 +5,7 @@ app.factory('gamesService', ['$q', '$http', '$resource', 'ngAuthSettings', funct
     service.getGames = function (model) {
         var deferred = $q.defer();
 
-        var resource = $resource(serviceBase + 'api/v1/games', model, {
+        var resource = $resource(serviceBase + 'api/games', model, {
             'get': { method: 'GET', isArray: false }
         });
 
@@ -19,7 +19,7 @@ app.factory('gamesService', ['$q', '$http', '$resource', 'ngAuthSettings', funct
     service.getGame = function (id) {
         var deferred = $q.defer();
 
-        var resource = $resource(serviceBase + 'api/v1/games', id);
+        var resource = $resource(serviceBase + 'api/games', id);
 
         resource.get(function (response) {
             deferred.resolve(response.game);
@@ -31,7 +31,7 @@ app.factory('gamesService', ['$q', '$http', '$resource', 'ngAuthSettings', funct
     service.deleteGame = function (id) {
         var deferred = $q.defer();
 
-        var resource = $resource(serviceBase + 'api/v1/games/' + id.toString());
+        var resource = $resource(serviceBase + 'api/games/' + id.toString());
 
         resource.delete(function (response) {
             deferred.resolve(response);
@@ -43,7 +43,7 @@ app.factory('gamesService', ['$q', '$http', '$resource', 'ngAuthSettings', funct
     service.addGame = function (model) {
         var deferred = $q.defer();
 
-        var resource = $resource(serviceBase + 'api/v1/games', model);
+        var resource = $resource(serviceBase + 'api/games', model);
 
         resource.save(function (response) {
             deferred.resolve(response);
@@ -55,7 +55,7 @@ app.factory('gamesService', ['$q', '$http', '$resource', 'ngAuthSettings', funct
     service.updateGame = function (id, model) {
         var deferred = $q.defer();
 
-        var resource = $resource(serviceBase + 'api/v1/games/:id', null,
+        var resource = $resource(serviceBase + 'api/games/:id', null,
                         {
                             'update': { method: 'PUT' }
                         });
