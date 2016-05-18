@@ -27,6 +27,17 @@ namespace PickupGames.Infrastructure.Logging
     {
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
+            //if (!request.Headers.TryGetValues("correlation-id", out correlationList))
+            //{
+            //    HttpContext.Current.Items["CorrelationId"] = Guid.NewGuid().ToString();
+            //}
+            //else
+            //{
+            //    HttpContext.Current.Items["CorrelationId"] = correlationList.ToList()[0];
+            //}
+
+            //var correlationId = (string)HttpContext.Current.Items["CorrelationId"];
+
             var corrId = Guid.NewGuid().ToString();
             var requestInfo = string.Format("{0} {1}", request.Method, request.RequestUri);
 

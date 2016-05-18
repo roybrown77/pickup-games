@@ -2,7 +2,7 @@
 using System.Linq;
 using PickupGames.Infrastructure.Exceptions;
 
-namespace PickupGames.Infrastructure.Models
+namespace PickupGames.Infrastructure.Domain.BusinessRule
 {
     public static class BusinessRuleExtensions
     {
@@ -13,6 +13,6 @@ namespace PickupGames.Infrastructure.Models
                 Id = brokenRule.Property,
                 Message = brokenRule.Rule
             });
-        }        
-    }    
+        }
+    }
 }

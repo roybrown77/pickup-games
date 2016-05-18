@@ -1,4 +1,4 @@
-﻿namespace PickupGames.Infrastructure.Models
+﻿namespace PickupGames.Infrastructure.Domain.BusinessRule
 {
     public class BusinessRule
     {

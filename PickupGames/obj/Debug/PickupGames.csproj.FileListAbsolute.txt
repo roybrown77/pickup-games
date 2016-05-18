@@ -92,5 +92,3 @@ C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\System.Web.Http.We
 C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\obj\Debug\PickupGames.csprojResolveAssemblyReference.cache
 C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\obj\Debug\PickupGames.dll
 C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\obj\Debug\PickupGames.pdb
-C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\CavemanTools.pdb
-C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\SqlFu.pdb

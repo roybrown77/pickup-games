@@ -20,6 +20,11 @@ namespace PickupGames
  
             var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
             jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+
+            //var container = IoCFactory.GetStructureMapContainer(appSettings);
+            //GlobalConfiguration.Configuration.DependencyResolver = new StructureMapDependencyResolver(container.Initialize());
+
+            //config.Services.Replace(typeof(IHttpActionInvoker), new CustomHttpActionInvoker());
         }
     }
 }

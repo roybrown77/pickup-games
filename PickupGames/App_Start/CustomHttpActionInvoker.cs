@@ -58,3 +58,60 @@ namespace PickupGames
         }
     }    
 }
+
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Net;
+//using System.Net.Http;
+//using System.Threading;
+//using System.Threading.Tasks;
+//using System.Web.Http;
+//using System.Web.Http.Controllers;
+//using CareTeamMember.Identity.Infrastructure.Exceptions;
+//using CareTeamMember.Identity.Infrastructure.Logging;
+
+//namespace CareTeamMember.Identity.Api.WebRole
+//{
+//    //for more info, read http://www.codeproject.com/Articles/733512/Exception-Handling-in-WebAPI
+
+//    public class CustomHttpActionInvoker : ApiControllerActionInvoker
+//    {        
+//        public override Task<HttpResponseMessage> InvokeActionAsync(HttpActionContext actionContext, CancellationToken cancellationToken)
+//        {
+//            var result = base.InvokeActionAsync(actionContext, cancellationToken);
+            
+//            if (result.Exception != null)
+//            {               
+//                var baseException = result.Exception.InnerExceptions[0];
+
+//                string errorMessage;
+//                int errorCode;
+//                HttpError errorMessagError;
+
+//                if (baseException is ApplicationLayerException)
+//                {
+//                    var baseExcept = baseException as ApplicationLayerException;
+//                    baseExcept.Errors = baseExcept.Errors ?? new List<Error>();
+
+//                    errorMessage = baseExcept.ErrorDescription ?? "Internal Exception. Please contact your administrator.";
+//                    errorCode = (int)baseExcept.StatusCode;
+//                    var errors = baseExcept.Errors.ToList();
+
+//                    errorMessagError = new HttpError(errorMessage + " Reference Id: " + LoggingHelper.GenerateApplicationLayerErrorRefMessageAndLog(baseExcept)) { { "Code", errorCode }, { "Errors", errors } };
+
+//                    return Task.Run(() =>
+//                        actionContext.Request.CreateErrorResponse(baseExcept.StatusCode, errorMessagError));
+//                }
+
+//                errorMessage = "Internal Exception. Please contact your administrator. Reference Id: " + LoggingHelper.GenerateErrorRefMessageAndLog(baseException);
+
+//                errorCode = (int)HttpStatusCode.InternalServerError;
+                
+//                errorMessagError = new HttpError(errorMessage) { { "Code", errorCode } };
+//                    return Task.Run(() => actionContext.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, errorMessagError));
+//            }
+
+//            return result;
+//        }
+//    }    
+//}

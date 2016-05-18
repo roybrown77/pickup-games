@@ -170,6 +170,9 @@ namespace PickupGames.Infrastructure.DatabaseAccessor
                 cmd.Parameters.Add(param);
             }
 
+            //var correlationId = LoggingHelper.GetCorrelationId();
+            //_logger.Log(string.Format("Correlation Id: {0}, Execute Sql statement: {1} Parameters: {2}", correlationId, _commandText, GetParameterMessage()), LogType.Info);
+
             _logger.Log(string.Format("Execute Sql statement: {0} Parameters: {1}", _commandText, GetParameterMessage()), LogType.Info);
 
             Params.Clear();

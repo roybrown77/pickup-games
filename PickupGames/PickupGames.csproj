@@ -99,6 +99,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Cors">
       <HintPath>..\packages\Microsoft.AspNet.Cors.5.0.0\lib\net45\System.Web.Cors.dll</HintPath>
     </Reference>
@@ -197,22 +198,43 @@
     <Compile Include="Infrastructure\DatabaseAccessor\AdoDatabaseAccessor.cs" />
     <Compile Include="Infrastructure\DatabaseAccessor\DataReaderExtensions.cs" />
     <Compile Include="Infrastructure\DatabaseAccessor\IDatabaseAccessor.cs" />
+    <Compile Include="Infrastructure\Domain\BusinessRule\BusinessRule.cs" />
+    <Compile Include="Infrastructure\Domain\BusinessRule\BusinessRuleExtensions.cs" />
+    <Compile Include="Infrastructure\Domain\Events\DomainEventDispatcher.cs" />
+    <Compile Include="Infrastructure\Domain\Events\DomainEventingNotInitializedException.cs" />
+    <Compile Include="Infrastructure\Domain\Events\IDomainEvent.cs" />
+    <Compile Include="Infrastructure\Domain\Events\IDomainEventDispatcher.cs" />
+    <Compile Include="Infrastructure\Domain\Events\IDomainEventHandler.cs" />
+    <Compile Include="Infrastructure\Domain\Events\IDomainEventHandlerFactory.cs" />
+    <Compile Include="Infrastructure\Domain\Events\IEnumerableExtensions.cs" />
+    <Compile Include="Infrastructure\Domain\Models\EntityBase.cs" />
+    <Compile Include="Infrastructure\Domain\Models\IAggregateRoot.cs" />
+    <Compile Include="Infrastructure\Domain\Models\IdViewModel.cs" />
+    <Compile Include="Infrastructure\Domain\Models\ValueObjectBase.cs" />
+    <Compile Include="Infrastructure\Domain\Repository\IReadOnlyRepository.cs" />
+    <Compile Include="Infrastructure\Domain\Repository\IRepository.cs" />
+    <Compile Include="Infrastructure\Domain\Repository\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\Domain\Repository\IUnitOfWorkRepository.cs" />
+    <Compile Include="Infrastructure\Domain\Repository\UnitOfWork.cs" />
     <Compile Include="Infrastructure\Email\EmailUtilities.cs" />
     <Compile Include="Infrastructure\Exceptions\ApplicationLayerException.cs" />
     <Compile Include="Infrastructure\Exceptions\CustomException.cs" />
     <Compile Include="Infrastructure\Exceptions\Error.cs" />
+    <Compile Include="Infrastructure\Exceptions\ErrorExtensions.cs" />
+    <Compile Include="Infrastructure\Exceptions\ErrorMessage.cs" />
     <Compile Include="Infrastructure\Exceptions\Warning.cs" />
     <Compile Include="Infrastructure\Exceptions\WarningType.cs" />
     <Compile Include="Domain\Geography\IGeographyRepository.cs" />
     <Compile Include="Domain\AccountManagement\Models\RefreshToken.cs" />
+    <Compile Include="Infrastructure\Logging\ErrorLog.cs" />
+    <Compile Include="Infrastructure\Logging\ErrorLogExtensions.cs" />
+    <Compile Include="Infrastructure\Logging\LoggingHelper.cs" />
     <Compile Include="Infrastructure\Logging\MockApplicationLogger.cs" />
     <Compile Include="Infrastructure\Logging\IApplicationLogger.cs" />
     <Compile Include="Infrastructure\Logging\LoggingFactory.cs" />
     <Compile Include="Infrastructure\Logging\LogMessage.cs" />
     <Compile Include="Infrastructure\Logging\LogType.cs" />
     <Compile Include="Infrastructure\Logging\MessageLoggingHandler.cs" />
-    <Compile Include="Infrastructure\Models\BusinessRule.cs" />
-    <Compile Include="Infrastructure\Models\BusinessRulesExtensions.cs" />
     <Compile Include="Infrastructure\Response\ResponseResult.cs" />
     <Compile Include="Domain\AccountManagement\Models\User.cs" />
     <Compile Include="Domain\AccountManagement\Repositories\IAuthorizationServerProvider.cs" />
