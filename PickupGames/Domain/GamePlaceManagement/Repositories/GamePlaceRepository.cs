@@ -5,8 +5,9 @@ using System.Linq;
 using System.Net;
 using Newtonsoft.Json;
 using PickupGames.Domain.GamePlaceManagement.Models;
+using PickupGames.Domain.GamePlaceManagement.Repositories.Interfaces;
 using PickupGames.Domain.GamePlaceManagement.Repositories.Messaging;
-using PickupGames.Domain.Geography;
+using PickupGames.Domain.Geography.Repositories.Messaging;
 
 namespace PickupGames.Domain.GamePlaceManagement.Repositories
 {
@@ -38,7 +39,7 @@ namespace PickupGames.Domain.GamePlaceManagement.Repositories
                     }
                 }
 
-            return null;
+            return new List<Place>();
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using PickupGames.Domain.AccountManagement.Models;
 using PickupGames.Infrastructure.Response;
 
-namespace PickupGames.Domain.AccountManagement.Repositories
+namespace PickupGames.Domain.AccountManagement.Repositories.Interfaces
 {
     public interface IAuthRepository
     {

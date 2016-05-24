@@ -4,7 +4,7 @@ using PickupGames.Domain.AccountManagement.Models;
 using PickupGames.Domain.AccountManagement.Services.Messaging;
 using PickupGames.Infrastructure.Response;
 
-namespace PickupGames.Domain.AccountManagement.Services
+namespace PickupGames.Domain.AccountManagement.Services.Interfaces
 {
     public interface IAuthService
     {

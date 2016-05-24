@@ -1,6 +1,6 @@
 ﻿using PickupGames.Domain.GameManagement.Models;
 
-namespace PickupGames.Domain.Geography
+namespace PickupGames.Domain.Geography.Repositories.Interfaces
 {
     public interface IGeographyRepository
     {

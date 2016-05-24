@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using PickupGames.Domain.GameManagement.Models;
+using PickupGames.Domain.GameManagement.Repositories.Interfaces;
 using PickupGames.Domain.GameManagement.Repositories.Messaging;
 using PickupGames.Infrastructure.Exceptions;
 

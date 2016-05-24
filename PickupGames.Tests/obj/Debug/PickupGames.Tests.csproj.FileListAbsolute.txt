@@ -16,3 +16,12 @@ C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames.Tests\bin\Debug\Rhino.
 C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames.Tests\obj\Debug\PickupGames.Tests.csprojResolveAssemblyReference.cache
 C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames.Tests\obj\Debug\PickupGames.Tests.dll
 C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames.Tests\obj\Debug\PickupGames.Tests.pdb
+C:\git\pickupgames\PickupGames.Tests\bin\Debug\PickupGames.Tests.dll
+C:\git\pickupgames\PickupGames.Tests\bin\Debug\PickupGames.Tests.pdb
+C:\git\pickupgames\PickupGames.Tests\bin\Debug\nunit.framework.dll
+C:\git\pickupgames\PickupGames.Tests\bin\Debug\Rhino.Mocks.dll
+C:\git\pickupgames\PickupGames.Tests\bin\Debug\nunit.framework.xml
+C:\git\pickupgames\PickupGames.Tests\bin\Debug\Rhino.Mocks.xml
+C:\git\pickupgames\PickupGames.Tests\obj\Debug\PickupGames.Tests.csprojResolveAssemblyReference.cache
+C:\git\pickupgames\PickupGames.Tests\obj\Debug\PickupGames.Tests.dll
+C:\git\pickupgames\PickupGames.Tests\obj\Debug\PickupGames.Tests.pdb

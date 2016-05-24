@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using PickupGames.Domain.GameManagement.Models;
 using PickupGames.Domain.GameManagement.Repositories.Messaging;
 
-namespace PickupGames.Domain.GameManagement.Repositories
+namespace PickupGames.Domain.GameManagement.Repositories.Interfaces
 {
     public interface IGameRepository
     {

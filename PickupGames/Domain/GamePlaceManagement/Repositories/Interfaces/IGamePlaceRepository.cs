@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using PickupGames.Domain.GamePlaceManagement.Models;
-using PickupGames.Domain.Geography;
+using PickupGames.Domain.Geography.Repositories.Messaging;
 
-namespace PickupGames.Domain.GamePlaceManagement.Repositories
+namespace PickupGames.Domain.GamePlaceManagement.Repositories.Interfaces
 {
     public interface IGamePlaceRepository
     {

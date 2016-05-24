@@ -183,17 +183,16 @@
   <ItemGroup>
     <Compile Include="App_Start\CustomHttpActionInvoker.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\GameManagement\IGamePageViewService.cs" />
     <Compile Include="Domain\AccountManagement\Models\ApplicationType.cs" />
     <Compile Include="Domain\AccountManagement\Models\Client.cs" />
-    <Compile Include="Domain\AccountManagement\Services\IAuthService.cs" />
+    <Compile Include="Domain\AccountManagement\Services\Interfaces\IAuthService.cs" />
     <Compile Include="Domain\AccountManagement\ViewModels\RefreshTokenViewModel.cs" />
     <Compile Include="Domain\GamePlaceManagement\Models\Place.cs" />
     <Compile Include="Domain\GamePlaceManagement\Repositories\Messaging\GoogleMapsPlacesResponse.cs" />
-    <Compile Include="Domain\GamePlaceManagement\Repositories\MockGameLocationRepository .cs" />
+    <Compile Include="Domain\GamePlaceManagement\Repositories\MockGamePlaceRepository.cs" />
     <Compile Include="Domain\GamePlaceManagement\Services\GamePlaceService.cs" />
-    <Compile Include="Domain\GamePlaceManagement\Services\IGamePlaceService.cs" />
-    <Compile Include="Domain\GameManagement\Services\IGameService.cs" />
+    <Compile Include="Domain\GamePlaceManagement\Services\Interfaces\IGamePlaceService.cs" />
+    <Compile Include="Domain\GameManagement\Services\Interfaces\IGameService.cs" />
     <Compile Include="Infrastructure\Authentication\AuthenticationHandler.cs" />
     <Compile Include="Infrastructure\DatabaseAccessor\AdoDatabaseAccessor.cs" />
     <Compile Include="Infrastructure\DatabaseAccessor\DataReaderExtensions.cs" />
@@ -224,7 +223,7 @@
     <Compile Include="Infrastructure\Exceptions\ErrorMessage.cs" />
     <Compile Include="Infrastructure\Exceptions\Warning.cs" />
     <Compile Include="Infrastructure\Exceptions\WarningType.cs" />
-    <Compile Include="Domain\Geography\IGeographyRepository.cs" />
+    <Compile Include="Domain\Geography\Repositories\Interfaces\IGeographyRepository.cs" />
     <Compile Include="Domain\AccountManagement\Models\RefreshToken.cs" />
     <Compile Include="Infrastructure\Logging\ErrorLog.cs" />
     <Compile Include="Infrastructure\Logging\ErrorLogExtensions.cs" />
@@ -237,9 +236,9 @@
     <Compile Include="Infrastructure\Logging\MessageLoggingHandler.cs" />
     <Compile Include="Infrastructure\Response\ResponseResult.cs" />
     <Compile Include="Domain\AccountManagement\Models\User.cs" />
-    <Compile Include="Domain\AccountManagement\Repositories\IAuthorizationServerProvider.cs" />
+    <Compile Include="Domain\AccountManagement\Repositories\Interfaces\IAuthorizationServerProvider.cs" />
     <Compile Include="Domain\GamePlaceManagement\Repositories\GamePlaceRepository.cs" />
-    <Compile Include="Domain\GamePlaceManagement\Repositories\IGamePlaceRepository.cs" />
+    <Compile Include="Domain\GamePlaceManagement\Repositories\Interfaces\IGamePlaceRepository.cs" />
     <Compile Include="Domain\AccountManagement\Services\AuthService.cs" />
     <Compile Include="Controllers\AccountManagement\RefreshTokensController.cs" />
     <Compile Include="Controllers\AccountManagement\AccountController.cs" />
@@ -247,7 +246,7 @@
     <Compile Include="Infrastructure\Response\BasicResponse.cs" />
     <Compile Include="Domain\GameManagement\Models\Coordinate.cs" />
     <Compile Include="Domain\GameManagement\Models\Distance.cs" />
-    <Compile Include="Domain\Geography\GeographySearchQuery.cs" />
+    <Compile Include="Domain\Geography\Repositories\Messaging\GeographySearchQuery.cs" />
     <Compile Include="Domain\GamePlaceManagement\Models\Location.cs" />
     <Compile Include="Domain\GameManagement\Models\Game.cs" />
     <Compile Include="Domain\GameManagement\Repositories\Messaging\GameSearchQuery.cs" />
@@ -258,7 +257,6 @@
     <Compile Include="Domain\GameManagement\Models\Sport.cs" />
     <Compile Include="Domain\GameManagement\ViewModels\SportListResponse.cs" />
     <Compile Include="Domain\GameManagement\Services\GameService.cs" />
-    <Compile Include="Controllers\GameManagement\GamePageViewService.cs" />
     <Compile Include="Domain\GameManagement\Mappers\GamesMapper.cs" />
     <Compile Include="Domain\GameManagement\Services\Messaging\CreateGameRequest.cs" />
     <Compile Include="Domain\GameManagement\Services\Messaging\EditGameRequest.cs" />
@@ -274,10 +272,10 @@
     <Compile Include="Domain\AccountManagement\Repositories\MockAuthRepository.cs" />
     <Compile Include="Domain\AccountManagement\Repositories\AuthRepositoryEF.cs" />
     <Compile Include="Domain\AccountManagement\ViewModels\ClientViewModel.cs" />
-    <Compile Include="Domain\Geography\GeographyRepository.cs" />
-    <Compile Include="Domain\AccountManagement\Repositories\IAuthRepository.cs" />
-    <Compile Include="Domain\GameManagement\Repositories\IGameRepository.cs" />
-    <Compile Include="Domain\GameManagement\Repositories\ISportRepository.cs" />
+    <Compile Include="Domain\Geography\Repositories\GeographyRepository.cs" />
+    <Compile Include="Domain\AccountManagement\Repositories\Interfaces\IAuthRepository.cs" />
+    <Compile Include="Domain\GameManagement\Repositories\Interfaces\IGameRepository.cs" />
+    <Compile Include="Domain\GameManagement\Repositories\Interfaces\ISportRepository.cs" />
     <Compile Include="Domain\GameManagement\Repositories\MockGameRepository.cs" />
     <Compile Include="Domain\GameManagement\Repositories\MockSportRepository.cs" />
     <Compile Include="Domain\AccountManagement\Services\Messaging\RegisterUserRequest.cs" />

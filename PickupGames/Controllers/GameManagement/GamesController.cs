@@ -8,18 +8,19 @@ using PickupGames.Domain.GameManagement.Mappers;
 using PickupGames.Domain.GameManagement.Models;
 using PickupGames.Domain.GameManagement.Repositories;
 using PickupGames.Domain.GameManagement.Services;
+using PickupGames.Domain.GameManagement.Services.Interfaces;
 using PickupGames.Domain.GameManagement.Services.Messaging;
 using PickupGames.Domain.GamePlaceManagement.Repositories;
 using PickupGames.Domain.GamePlaceManagement.Services;
-using PickupGames.Domain.Geography;
+using PickupGames.Domain.GamePlaceManagement.Services.Interfaces;
+using PickupGames.Domain.Geography.Repositories;
+using PickupGames.Domain.Geography.Repositories.Interfaces;
 
 namespace PickupGames.Controllers.GameManagement
 {
     [Authorize]
     public class GamesController : ApiController
     {
-        //readonly IGamePageViewService _gamePageService;
-
         private readonly IGameService _gameService;
         private readonly IGeographyRepository _geographyRepository;
         private readonly IGamePlaceService _gamePlaceService;
@@ -36,11 +37,7 @@ namespace PickupGames.Controllers.GameManagement
         [HttpGet]
         public HttpResponseMessage GetGamesByQuery([FromUri] GameSearchRequest request)
         {
-            var searchQuery = GamesMapper.ConvertGameSearchModelToGameSearchQuery(request);
-
-            //var gamePageService = new GamePageViewService(new GeographyRepository(), new GameService(new MockGameRepository(), new GeographyRepository()),  new GamePlaceService(new GamePlaceRepository()));
-            //var rawResponse = gamePageService.FindBy(searchQuery);
-            
+            var searchQuery = GamesMapper.ConvertGameSearchModelToGameSearchQuery(request);            
             var centerCoordinates = _geographyRepository.GetCoordinates(searchQuery.Location);
             var userSavedGames = _gameService.FindBy(searchQuery, centerCoordinates);
             var placesToPlayGames = _gamePlaceService.FindBy(searchQuery);

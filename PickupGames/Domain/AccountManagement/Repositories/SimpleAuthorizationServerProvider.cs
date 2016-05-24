@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using PickupGames.Domain.AccountManagement.Models;
+using PickupGames.Domain.AccountManagement.Repositories.Interfaces;
 using PickupGames.Domain.AccountManagement.Services;
 using PickupGames.Infrastructure.Encoding;
 

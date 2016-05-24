@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Net;
 using PickupGames.Domain.GameManagement.Models;
-using PickupGames.Domain.GameManagement.Repositories;
+using PickupGames.Domain.GameManagement.Repositories.Interfaces;
 using PickupGames.Domain.GameManagement.Repositories.Messaging;
+using PickupGames.Domain.GameManagement.Services.Interfaces;
 using PickupGames.Domain.GameManagement.Services.Messaging;
 using PickupGames.Domain.GamePlaceManagement.Models;
-using PickupGames.Domain.Geography;
+using PickupGames.Domain.Geography.Repositories.Interfaces;
 using PickupGames.Infrastructure.Exceptions;
 
 namespace PickupGames.Domain.GameManagement.Services

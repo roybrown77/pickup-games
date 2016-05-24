@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using PickupGames.Domain.AccountManagement.Models;
+using PickupGames.Domain.AccountManagement.Repositories.Interfaces;
 using PickupGames.Infrastructure.Response;
 
 namespace PickupGames.Domain.AccountManagement.Repositories

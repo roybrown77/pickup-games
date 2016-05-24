@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using PickupGames.Domain.AccountManagement.Models;
-using PickupGames.Domain.AccountManagement.Repositories;
+using PickupGames.Domain.AccountManagement.Repositories.Interfaces;
+using PickupGames.Domain.AccountManagement.Services.Interfaces;
 using PickupGames.Domain.AccountManagement.Services.Messaging;
 using PickupGames.Infrastructure.Exceptions;
 using PickupGames.Infrastructure.Response;
@@ -45,7 +46,6 @@ namespace PickupGames.Domain.AccountManagement.Services
                     throw new ApplicationLayerException(HttpStatusCode.BadRequest, "Token Id was not removed for unknown reasons.");
                 }
 
-
                 return true;
             }
             catch (Exception ex)
@@ -64,6 +64,8 @@ namespace PickupGames.Domain.AccountManagement.Services
                 Email = request.Email,
                 Active = true
             };
+
+            //validate and return bad request
 
             return _authRepository.RegisterUser(user);
         }

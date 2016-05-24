@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.Owin.Security.OAuth;
 
-namespace PickupGames.Domain.AccountManagement.Repositories
+namespace PickupGames.Domain.AccountManagement.Repositories.Interfaces
 {
     interface IAuthorizationServerProvider
     {

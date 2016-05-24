@@ -2,6 +2,7 @@
 using System.Web.Http;
 using PickupGames.Domain.AccountManagement.Repositories;
 using PickupGames.Domain.AccountManagement.Services;
+using PickupGames.Domain.AccountManagement.Services.Interfaces;
 
 namespace PickupGames.Controllers.AccountManagement
 {

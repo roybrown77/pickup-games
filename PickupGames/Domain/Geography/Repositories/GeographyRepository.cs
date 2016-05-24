@@ -2,8 +2,9 @@
 using System.Net;
 using System.Xml.Linq;
 using PickupGames.Domain.GameManagement.Models;
+using PickupGames.Domain.Geography.Repositories.Interfaces;
 
-namespace PickupGames.Domain.Geography
+namespace PickupGames.Domain.Geography.Repositories
 {
     public class GeographyRepository : IGeographyRepository
     {
