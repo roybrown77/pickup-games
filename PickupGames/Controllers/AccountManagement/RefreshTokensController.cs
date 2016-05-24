@@ -25,7 +25,7 @@ namespace PickupGames.Controllers.AccountManagement
             return Ok(tokens);
         }
 
-        //[Authorize(Users = "Admin")]
+        //[Authorize(Users = "Admin1")]
         [AllowAnonymous]
         [Route("")]
         public async Task<IHttpActionResult> Delete(string tokenId)
