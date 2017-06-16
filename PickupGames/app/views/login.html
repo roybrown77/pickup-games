@@ -1,0 +1,51 @@
+﻿<div class="row ng-scope">
+    <div class="col-xs-12">
+        <h2>Login</h2>
+        <section>
+            <form class="form-horizontal" role="form">
+                <hr>
+                <div class="form-group">
+                    <div class="col-md-push-2 col-md-4">
+                        <input type="text" class="form-control" placeholder="Email or username" data-ng-model="loginData.userName" required autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-push-2 col-md-4">
+                        <input type="password" class="form-control" placeholder="Password" data-ng-model="loginData.password" required>
+                    </div>
+                </div>
+                <div class="checkbox" style="display: none">
+                    <label>
+                        <input type="checkbox" data-ng-model="loginData.useRefreshTokens"><strong> Use Refresh Tokens</strong>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-push-2 col-md-4">
+                        <button class="btn btn-large btn-primary col-xs-12" type="submit" data-ng-click="login()">Login</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div data-ng-hide="message == ''" class="<!--alert alert-danger--> col-md-push-2 col-md-4">
+                        {{message}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-push-2 col-md-4">
+                        <a class="btn btn-large btn-primary col-xs-12" ng-href="#/signup">Sign Up</a>
+                    </div>
+                </div>
+                <!--<div class="row">
+                    <div class="col-md-2">
+                        &nbsp;
+                    </div>
+                    <div class="col-md-4">
+                        <h2 class="form-login-heading">Social Logins</h2>
+                        <p>Or you can login using one of the social logins bleow</p>
+                        <button class="btn btn-large btn-facebook btn-block" type="button" data-ng-click="authExternalProvider('Facebook')"><i class="fa fa-facebook"></i> | Connect with Facebook</button>
+                        <button class="btn btn-large btn-google-plus btn-block" type="button" data-ng-click="authExternalProvider('Google')"><i class="fa fa-google-plus"></i> | Connect with Google+</button>
+                    </div>
+                </div>-->
+            </form>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DC8B1B6B-22C3-4FD9-AA5F-E98C000E0F71}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PickupGames</RootNamespace>
+    <AssemblyName>PickupGames</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CavemanTools">
+      <HintPath>..\packages\CavemanTools.3.13.0\lib\Net45\CavemanTools.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Cors">
+      <HintPath>..\packages\Microsoft.Owin.Cors.3.0.1\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="SqlFu">
+      <HintPath>..\packages\SqlFu.2.3.5\lib\Net45\SqlFu.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Cors">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.0.0\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\app.js" />
+    <Content Include="app\controllers\associateController.js" />
+    <Content Include="app\controllers\createGameController.js" />
+    <Content Include="app\controllers\gamesController.js" />
+    <Content Include="app\controllers\homeController.js" />
+    <Content Include="app\controllers\indexController.js" />
+    <Content Include="app\controllers\loginController.js" />
+    <Content Include="app\controllers\ordersController.js" />
+    <Content Include="app\controllers\refreshController.js" />
+    <Content Include="app\controllers\signupController.js" />
+    <Content Include="app\controllers\tokensManagerController.js" />
+    <Content Include="app\services\authInterceptorService.js" />
+    <Content Include="app\services\authService.js" />
+    <Content Include="app\services\googleMapsService.js" />
+    <Content Include="app\services\gamesService.js" />
+    <Content Include="app\services\ordersService.js" />
+    <Content Include="app\services\tokensManagerService.js" />
+    <Content Include="app\views\associate.html" />
+    <Content Include="app\views\createGame.html" />
+    <Content Include="app\views\games.html" />
+    <Content Include="app\views\home.html" />
+    <Content Include="app\views\loaderio-85e6d01631ee98b6ed29f2165037efe9.html" />
+    <Content Include="app\views\login.html" />
+    <Content Include="app\views\orders.html" />
+    <Content Include="app\views\refresh.html" />
+    <Content Include="app\views\signup.html" />
+    <Content Include="app\views\tokens.html" />
+    <Content Include="App_Data\aspnet-PickupGames-20150122082459.mdf" />
+    <Content Include="App_Data\aspnet-PickupGames-20150122082459_log.ldf">
+      <DependentUpon>aspnet-PickupGames-20150122082459.mdf</DependentUpon>
+    </Content>
+    <Content Include="authComplete.html" />
+    <Content Include="content\css\bootstrap-theme.css" />
+    <Content Include="content\css\bootstrap.css" />
+    <Content Include="content\css\bootstrap.min.css" />
+    <Content Include="content\css\font-awesome.min.css" />
+    <Content Include="content\css\loading-bar.css" />
+    <Content Include="content\css\loading-bar.min.css" />
+    <Content Include="content\css\site.css" />
+    <Content Include="content\css\site1.css" />
+    <Content Include="content\css\social-buttons.css" />
+    <Content Include="content\fonts\fontawesome-webfont.svg" />
+    <Content Include="content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="index.html" />
+    <Content Include="scripts\angular-local-storage.min.js" />
+    <Content Include="scripts\authComplete.js" />
+    <Content Include="scripts\loading-bar.min.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\CustomHttpActionInvoker.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Domain\AccountManagement\Models\ApplicationType.cs" />
+    <Compile Include="Domain\AccountManagement\Models\Client.cs" />
+    <Compile Include="Domain\AccountManagement\Services\Interfaces\IAuthService.cs" />
+    <Compile Include="Domain\AccountManagement\ViewModels\RefreshTokenViewModel.cs" />
+    <Compile Include="Domain\GamePlaceManagement\Models\Place.cs" />
+    <Compile Include="Domain\GamePlaceManagement\Repositories\Messaging\GoogleMapsPlacesResponse.cs" />
+    <Compile Include="Domain\GamePlaceManagement\Repositories\MockGamePlaceRepository.cs" />
+    <Compile Include="Domain\GamePlaceManagement\Services\GamePlaceService.cs" />
+    <Compile Include="Domain\GamePlaceManagement\Services\Interfaces\IGamePlaceService.cs" />
+    <Compile Include="Domain\GameManagement\Services\Interfaces\IGameService.cs" />
+    <Compile Include="Infrastructure\Authentication\AuthenticationHandler.cs" />
+    <Compile Include="Infrastructure\DatabaseAccessor\AdoDatabaseAccessor.cs" />
+    <Compile Include="Infrastructure\DatabaseAccessor\DataReaderExtensions.cs" />
+    <Compile Include="Infrastructure\DatabaseAccessor\IDatabaseAccessor.cs" />
+    <Compile Include="Infrastructure\Domain\BusinessRule\BusinessRule.cs" />
+    <Compile Include="Infrastructure\Domain\BusinessRule\BusinessRuleExtensions.cs" />
+    <Compile Include="Infrastructure\Domain\Events\DomainEventDispatcher.cs" />
+    <Compile Include="Infrastructure\Domain\Events\DomainEventingNotInitializedException.cs" />
+    <Compile Include="Infrastructure\Domain\Events\IDomainEvent.cs" />
+    <Compile Include="Infrastructure\Domain\Events\IDomainEventDispatcher.cs" />
+    <Compile Include="Infrastructure\Domain\Events\IDomainEventHandler.cs" />
+    <Compile Include="Infrastructure\Domain\Events\IDomainEventHandlerFactory.cs" />
+    <Compile Include="Infrastructure\Domain\Events\IEnumerableExtensions.cs" />
+    <Compile Include="Infrastructure\Domain\Models\EntityBase.cs" />
+    <Compile Include="Infrastructure\Domain\Models\IAggregateRoot.cs" />
+    <Compile Include="Infrastructure\Domain\Models\IdViewModel.cs" />
+    <Compile Include="Infrastructure\Domain\Models\ValueObjectBase.cs" />
+    <Compile Include="Infrastructure\Domain\Repository\IReadOnlyRepository.cs" />
+    <Compile Include="Infrastructure\Domain\Repository\IRepository.cs" />
+    <Compile Include="Infrastructure\Domain\Repository\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\Domain\Repository\IUnitOfWorkRepository.cs" />
+    <Compile Include="Infrastructure\Domain\Repository\UnitOfWork.cs" />
+    <Compile Include="Infrastructure\Email\EmailUtilities.cs" />
+    <Compile Include="Infrastructure\Exceptions\ApplicationLayerException.cs" />
+    <Compile Include="Infrastructure\Exceptions\CustomException.cs" />
+    <Compile Include="Infrastructure\Exceptions\Error.cs" />
+    <Compile Include="Infrastructure\Exceptions\ErrorExtensions.cs" />
+    <Compile Include="Infrastructure\Exceptions\ErrorMessage.cs" />
+    <Compile Include="Infrastructure\Exceptions\Warning.cs" />
+    <Compile Include="Infrastructure\Exceptions\WarningType.cs" />
+    <Compile Include="Domain\Geography\Repositories\Interfaces\IGeographyRepository.cs" />
+    <Compile Include="Domain\AccountManagement\Models\RefreshToken.cs" />
+    <Compile Include="Infrastructure\Logging\ErrorLog.cs" />
+    <Compile Include="Infrastructure\Logging\ErrorLogExtensions.cs" />
+    <Compile Include="Infrastructure\Logging\LoggingHelper.cs" />
+    <Compile Include="Infrastructure\Logging\MockApplicationLogger.cs" />
+    <Compile Include="Infrastructure\Logging\IApplicationLogger.cs" />
+    <Compile Include="Infrastructure\Logging\LoggingFactory.cs" />
+    <Compile Include="Infrastructure\Logging\LogMessage.cs" />
+    <Compile Include="Infrastructure\Logging\LogType.cs" />
+    <Compile Include="Infrastructure\Logging\MessageLoggingHandler.cs" />
+    <Compile Include="Infrastructure\Response\ResponseResult.cs" />
+    <Compile Include="Domain\AccountManagement\Models\User.cs" />
+    <Compile Include="Domain\AccountManagement\Repositories\Interfaces\IAuthorizationServerProvider.cs" />
+    <Compile Include="Domain\GamePlaceManagement\Repositories\GamePlaceRepository.cs" />
+    <Compile Include="Domain\GamePlaceManagement\Repositories\Interfaces\IGamePlaceRepository.cs" />
+    <Compile Include="Domain\AccountManagement\Services\AuthService.cs" />
+    <Compile Include="Controllers\AccountManagement\RefreshTokensController.cs" />
+    <Compile Include="Controllers\AccountManagement\AccountController.cs" />
+    <Compile Include="Controllers\GameManagement\GamesController.cs" />
+    <Compile Include="Infrastructure\Response\BasicResponse.cs" />
+    <Compile Include="Domain\GameManagement\Models\Coordinate.cs" />
+    <Compile Include="Domain\GameManagement\Models\Distance.cs" />
+    <Compile Include="Domain\Geography\Repositories\Messaging\GeographySearchQuery.cs" />
+    <Compile Include="Domain\GamePlaceManagement\Models\Location.cs" />
+    <Compile Include="Domain\GameManagement\Models\Game.cs" />
+    <Compile Include="Domain\GameManagement\Repositories\Messaging\GameSearchQuery.cs" />
+    <Compile Include="Domain\GameManagement\Models\GameSearchResponseListViewModel.cs" />
+    <Compile Include="Domain\GameManagement\Models\GamesSortBy.cs" />
+    <Compile Include="Infrastructure\Response\ResponseBase.cs" />
+    <Compile Include="Infrastructure\Response\ResponseStatus.cs" />
+    <Compile Include="Domain\GameManagement\Models\Sport.cs" />
+    <Compile Include="Domain\GameManagement\ViewModels\SportListResponse.cs" />
+    <Compile Include="Domain\GameManagement\Services\GameService.cs" />
+    <Compile Include="Domain\GameManagement\Mappers\GamesMapper.cs" />
+    <Compile Include="Domain\GameManagement\Services\Messaging\CreateGameRequest.cs" />
+    <Compile Include="Domain\GameManagement\Services\Messaging\EditGameRequest.cs" />
+    <Compile Include="Domain\GameManagement\Services\Messaging\GameSearchRequest.cs" />
+    <Compile Include="Domain\GameManagement\ViewModels\GamesPageViewModel.cs" />
+    <Compile Include="Infrastructure\ServiceAccessor\HttpClientServiceAccessor.cs" />
+    <Compile Include="Infrastructure\ServiceAccessor\IServiceAccessor.cs" />
+    <Compile Include="Infrastructure\ServiceAccessor\WebServiceResponse.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Domain\AccountManagement\Repositories\SimpleRefreshTokenProvider.cs" />
+    <Compile Include="Domain\AccountManagement\Repositories\SimpleAuthorizationServerProvider.cs" />
+    <Compile Include="Domain\AccountManagement\Repositories\AuthContext.cs" />
+    <Compile Include="Domain\AccountManagement\Repositories\MockAuthRepository.cs" />
+    <Compile Include="Domain\AccountManagement\Repositories\AuthRepositoryEF.cs" />
+    <Compile Include="Domain\AccountManagement\ViewModels\ClientViewModel.cs" />
+    <Compile Include="Domain\Geography\Repositories\GeographyRepository.cs" />
+    <Compile Include="Domain\AccountManagement\Repositories\Interfaces\IAuthRepository.cs" />
+    <Compile Include="Domain\GameManagement\Repositories\Interfaces\IGameRepository.cs" />
+    <Compile Include="Domain\GameManagement\Repositories\Interfaces\ISportRepository.cs" />
+    <Compile Include="Domain\GameManagement\Repositories\MockGameRepository.cs" />
+    <Compile Include="Domain\GameManagement\Repositories\MockSportRepository.cs" />
+    <Compile Include="Domain\AccountManagement\Services\Messaging\RegisterUserRequest.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Infrastructure\DependencyInjector2\MockNinjectDependencies.cs" />
+    <Compile Include="Infrastructure\DependencyInjector2\NinjectDependencyFactory.cs" />
+    <Compile Include="Infrastructure\DependencyInjector2\NinjectDependencyInjector.cs" />
+    <Compile Include="Infrastructure\Encoding\EncodingUtilities.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="content\fonts\fontawesome-webfont.eot" />
+    <Content Include="content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="content\fonts\fontawesome-webfont.woff" />
+    <Content Include="content\fonts\FontAwesome.otf" />
+    <Content Include="content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="content\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Client\" />
+    <Folder Include="Infrastructure\Configuration\" />
+    <Folder Include="Infrastructure\DependencyInjection\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>59525</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:59512/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:59512/</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

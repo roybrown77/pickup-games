@@ -1,0 +1,140 @@
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\PickupGames.dll.config
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\PickupGames.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\PickupGames.pdb
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\CavemanTools.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\EntityFramework.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\EntityFramework.SqlServer.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.Owin.Cors.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.Owin.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.Owin.Security.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\Newtonsoft.Json.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\Ninject.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\Owin.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\SqlFu.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\System.Net.Http.Formatting.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\System.Web.Cors.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\System.Web.Http.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\System.Web.Http.Owin.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\System.Web.Http.WebHost.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\CavemanTools.pdb
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\CavemanTools.xml
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\EntityFramework.xml
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\EntityFramework.SqlServer.xml
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.Owin.xml
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.Owin.Cors.xml
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.Owin.Security.xml
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\Newtonsoft.Json.xml
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\Ninject.xml
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\SqlFu.pdb
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\SqlFu.xml
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\System.Net.Http.Formatting.xml
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\System.Web.Http.xml
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\System.Web.Http.Owin.xml
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\bin\System.Web.Http.WebHost.xml
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\obj\Debug\PickupGames.csprojResolveAssemblyReference.cache
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\obj\Debug\PickupGames.dll
+C:\Users\ROY BROWN\Documents\GitHub\pickupgames\PickupGames\obj\Debug\PickupGames.pdb
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\PickupGames.dll.config
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\PickupGames.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\PickupGames.pdb
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\CavemanTools.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\EntityFramework.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\EntityFramework.SqlServer.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.Owin.Cors.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.Owin.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.Owin.Security.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\Newtonsoft.Json.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\Ninject.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\Owin.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\SqlFu.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\System.Net.Http.Formatting.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\System.Web.Cors.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\System.Web.Http.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\System.Web.Http.Owin.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\System.Web.Http.WebHost.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\CavemanTools.xml
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\EntityFramework.xml
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\EntityFramework.SqlServer.xml
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.Owin.xml
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.Owin.Cors.xml
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.Owin.Security.xml
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\Newtonsoft.Json.xml
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\Ninject.xml
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\SqlFu.xml
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\System.Net.Http.Formatting.xml
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\System.Web.Http.xml
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\System.Web.Http.Owin.xml
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\bin\System.Web.Http.WebHost.xml
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\obj\Debug\PickupGames.csprojResolveAssemblyReference.cache
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\obj\Debug\PickupGames.dll
+C:\Users\rbrown1\Documents\GitHub\pickupgames\PickupGames\obj\Debug\PickupGames.pdb
+C:\git\pickupgames\PickupGames\bin\PickupGames.dll.config
+C:\git\pickupgames\PickupGames\bin\PickupGames.dll
+C:\git\pickupgames\PickupGames\bin\PickupGames.pdb
+C:\git\pickupgames\PickupGames\bin\CavemanTools.dll
+C:\git\pickupgames\PickupGames\bin\EntityFramework.dll
+C:\git\pickupgames\PickupGames\bin\EntityFramework.SqlServer.dll
+C:\git\pickupgames\PickupGames\bin\Microsoft.AspNet.Identity.Core.dll
+C:\git\pickupgames\PickupGames\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\git\pickupgames\PickupGames\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\git\pickupgames\PickupGames\bin\Microsoft.Owin.Cors.dll
+C:\git\pickupgames\PickupGames\bin\Microsoft.Owin.dll
+C:\git\pickupgames\PickupGames\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\git\pickupgames\PickupGames\bin\Microsoft.Owin.Security.Cookies.dll
+C:\git\pickupgames\PickupGames\bin\Microsoft.Owin.Security.dll
+C:\git\pickupgames\PickupGames\bin\Microsoft.Owin.Security.OAuth.dll
+C:\git\pickupgames\PickupGames\bin\Newtonsoft.Json.dll
+C:\git\pickupgames\PickupGames\bin\Ninject.dll
+C:\git\pickupgames\PickupGames\bin\Owin.dll
+C:\git\pickupgames\PickupGames\bin\SqlFu.dll
+C:\git\pickupgames\PickupGames\bin\System.Net.Http.Formatting.dll
+C:\git\pickupgames\PickupGames\bin\System.Web.Cors.dll
+C:\git\pickupgames\PickupGames\bin\System.Web.Http.dll
+C:\git\pickupgames\PickupGames\bin\System.Web.Http.Owin.dll
+C:\git\pickupgames\PickupGames\bin\System.Web.Http.WebHost.dll
+C:\git\pickupgames\PickupGames\bin\CavemanTools.xml
+C:\git\pickupgames\PickupGames\bin\EntityFramework.xml
+C:\git\pickupgames\PickupGames\bin\EntityFramework.SqlServer.xml
+C:\git\pickupgames\PickupGames\bin\Microsoft.AspNet.Identity.Core.xml
+C:\git\pickupgames\PickupGames\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\git\pickupgames\PickupGames\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\git\pickupgames\PickupGames\bin\Microsoft.Owin.xml
+C:\git\pickupgames\PickupGames\bin\Microsoft.Owin.Cors.xml
+C:\git\pickupgames\PickupGames\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\git\pickupgames\PickupGames\bin\Microsoft.Owin.Security.xml
+C:\git\pickupgames\PickupGames\bin\Microsoft.Owin.Security.Cookies.xml
+C:\git\pickupgames\PickupGames\bin\Microsoft.Owin.Security.OAuth.xml
+C:\git\pickupgames\PickupGames\bin\Newtonsoft.Json.xml
+C:\git\pickupgames\PickupGames\bin\Ninject.xml
+C:\git\pickupgames\PickupGames\bin\SqlFu.xml
+C:\git\pickupgames\PickupGames\bin\System.Net.Http.Formatting.xml
+C:\git\pickupgames\PickupGames\bin\System.Web.Http.xml
+C:\git\pickupgames\PickupGames\bin\System.Web.Http.Owin.xml
+C:\git\pickupgames\PickupGames\bin\System.Web.Http.WebHost.xml
+C:\git\pickupgames\PickupGames\obj\Debug\PickupGames.csprojResolveAssemblyReference.cache
+C:\git\pickupgames\PickupGames\obj\Debug\PickupGames.dll
+C:\git\pickupgames\PickupGames\obj\Debug\PickupGames.pdb

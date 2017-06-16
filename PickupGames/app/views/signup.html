@@ -1,0 +1,57 @@
+﻿<div class="row ng-scope">
+    <div class="col-xs-12">
+        <h2>Sign Up</h2>
+        <section>
+            <form class="form-horizontal" role="form">
+                <hr>
+                <div class="form-group">
+                    <div class="col-md-push-2 col-md-4">
+                        <input type="text" class="form-control" placeholder="Username" data-ng-model="registration.userName" required autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-push-2 col-md-4">
+                        <input style="margin-top: .35em;" type="text" class="form-control" placeholder="Email" data-ng-model="registration.email" required autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-push-2 col-md-4">
+                        <input style="margin-top: .35em;" type="password" class="form-control" placeholder="Password" data-ng-model="registration.password" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-push-2 col-md-4">
+                        <input style="margin-top: .35em;" type="password" class="form-control" placeholder="Confirm Password" data-ng-model="registration.confirmPassword" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-push-2 col-md-4">
+                        <button style="margin: .35em 0 .35em 0" class="btn btn-large btn-primary col-xs-12" type="submit" data-ng-click="signUp()">Submit</button>
+                    </div>
+                </div>
+                <!--<div style="margin: .35em 0 .35em 0" data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">-->
+                <div class="form-group">
+                    <div class="col-md-push-2 col-md-4" data-ng-hide="message == ''" data-ng-class="<!--(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'-->">
+                        {{message}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-push-2 col-md-4">
+                        <a class="btn btn-large btn-primary col-xs-12" ng-href="#/login">Login</a>
+                    </div>
+                </div>
+                <!--<div class="row">
+                        <div class="col-md-2">
+                            &nbsp;
+                        </div>
+                        <div class="col-md-4">
+                            <h2 class="form-login-heading">Social Logins</h2>
+                            <p>Or you can login using one of the social logins bleow</p>
+                            <button class="btn btn-large btn-facebook btn-block" type="button" data-ng-click="authExternalProvider('Facebook')"><i class="fa fa-facebook"></i> | Connect with Facebook</button>
+                            <button class="btn btn-large btn-google-plus btn-block" type="button" data-ng-click="authExternalProvider('Google')"><i class="fa fa-google-plus"></i> | Connect with Google+</button>
+                        </div>
+                    </div>-->
+            </form>
+        </section>
+    </div>
+</div>

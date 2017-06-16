@@ -1,0 +1,165 @@
+﻿<!--<!doctype html>
+<html ng-app="ui.bootstrap.demo">
+<head>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
+    <script src="example.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <style>
+        .full button span {
+            background-color: limegreen;
+            border-radius: 32px;
+            color: black;
+        }
+
+        .partially button span {
+            background-color: orange;
+            border-radius: 32px;
+            color: black;
+        }
+    </style>
+    <div ng-controller="DatepickerDemoCtrl">
+        <pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre>
+
+        <h4>Inline</h4>
+        <div style="display:inline-block; min-height:290px;">
+            <datepicker ng-model="dt" min-date="minDate" show-weeks="true" class="well well-sm" custom-class="getDayClass(date, mode)"></datepicker>
+        </div>
+
+        <h4>Popup</h4>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="input-group">
+                    <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+            </div>
+
+            <div class="col-md-6">
+                <p class="input-group">
+                    <input type="date" class="form-control" datepicker-popup ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>Format:</label> <select class="form-control" ng-model="format" ng-options="f for f in formats"><option></option></select>
+            </div>
+        </div>
+
+        <hr />
+        <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
+        <button type="button" class="btn btn-sm btn-default" ng-click="dt = '2009-08-24'">2009-08-24</button>
+        <button type="button" class="btn btn-sm btn-danger" ng-click="clear()">Clear</button>
+        <button type="button" class="btn btn-sm btn-default" ng-click="toggleMin()" tooltip="After today restriction">Min date</button>
+    </div>
+</body>
+</html>-->
+
+
+<!--<!doctype html>
+<html ng-app="ui.bootstrap.demo">
+<head>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
+    <script src="example.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div ng-controller="TimepickerDemoCtrl">
+
+        <timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
+
+        <pre class="alert alert-info">Time is: {{mytime | date:'shortTime' }}</pre>
+
+        <div class="row">
+            <div class="col-xs-6">
+                Hours step is:
+                <select class="form-control" ng-model="hstep" ng-options="opt for opt in options.hstep"></select>
+            </div>
+            <div class="col-xs-6">
+                Minutes step is:
+                <select class="form-control" ng-model="mstep" ng-options="opt for opt in options.mstep"></select>
+            </div>
+        </div>
+
+        <hr>
+
+        <button class="btn btn-info" ng-click="toggleMode()">12H / 24H</button>
+        <button class="btn btn-default" ng-click="update()">Set to 14:00</button>
+        <button class="btn btn-danger" ng-click="clear()">Clear</button>
+
+    </div>
+</body>
+</html>-->
+
+<style class="ng-scope">
+    #createbutton {
+        max-width: 280px !important;
+        width: 100% !important;
+    }
+
+    .well-sm {
+        padding: 1em !important;
+        width: 18.65em !important;
+    }
+
+    .well {
+        margin-bottom: 0 !important;
+    }
+</style>
+
+<div class="row ng-scope">
+    <div id="create-game-container" class="col-xs-12">
+        <h2>Create game.</h2>
+        <section id="creategame">
+            <form id="creategameform" name="creategameform" ng-submit="creategame()" enctype="multipart/form-data" class="form-horizontal" role="form">
+                <h4>Create an awesome game!</h4>
+                <hr>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="Sport">Sport</label>
+                    <div class="col-md-10">
+                        <select style="width:18.65em" class="form-control" ng-init="creategame.sportSelected = sports[0]" ng-model="creategame.sportSelected" ng-options="sport as sport.name for sport in sports" required=""></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="GameDate">Game Date</label>
+                    <div class="col-md-10">
+                        <pre style="width: 20em;">{{dt | date:'fullDate' }}</pre>
+                        <datepicker ng-model="dt" min-date="minDate" show-weeks="false" class="well well-sm"></datepicker>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="GameTime">Game Time</label>
+                    <div class="col-md-10">
+                        <timepicker ng-model="ti" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="Location">Location</label>
+                    <div class="col-md-10">
+                        <input id="CreateGameLocation" style="width:18.65em" class="form-control" ng-model="creategame.location" placeholder="Peters Park, West 4th St, Gillette..." required="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button id="createbutton" type="submit" class="btn btn-large btn-primary col-xs-2" aria-hidden="true">
+                            <span id="creategameglyph" class="glyphicon {{creategameglyph}}" aria-hidden="true">
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
