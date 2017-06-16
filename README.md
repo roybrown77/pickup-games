@@ -2,6 +2,19 @@
 
 Create, join and track pickup games.
 
+# Tek Stak
+
+Client:
+
+Angular 1
+Bootstrap
+Google Maps
+
+Backend:
+
+Web Api / C#
+Google Maps
+
 # To Run Application locally (i'll fix in a later version)
 
 1. open in visual studio
