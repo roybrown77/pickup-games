@@ -2,6 +2,8 @@
 
 Create, join and track pickup games.
 
+http://qpiga.apphb.com
+
 # Tek Stak
 
 Client:
@@ -14,12 +16,13 @@ Backend:
 
 - Web Api / C#
 - Google Maps
+- Architected/organized using DDD principles
 
-# To Run Application locally
+# To run application locally
 
 1. open in visual studio
 
-2. i'll fix this step in a later version:
+2. i'll eliminate this step in a later version:
 
 comment out line:
 
