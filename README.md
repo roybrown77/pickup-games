@@ -6,14 +6,14 @@ Create, join and track pickup games.
 
 Client:
 
-Angular 1
-Bootstrap
-Google Maps
+- Angular 1
+- Bootstrap
+- Google Maps
 
 Backend:
 
-Web Api / C#
-Google Maps
+- Web Api / C#
+- Google Maps
 
 # To Run Application locally
 
