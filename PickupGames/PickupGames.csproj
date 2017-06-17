@@ -187,6 +187,7 @@
     <Compile Include="Domain\AccountManagement\Models\Client.cs" />
     <Compile Include="Domain\AccountManagement\Services\Interfaces\IAuthService.cs" />
     <Compile Include="Domain\AccountManagement\ViewModels\RefreshTokenViewModel.cs" />
+    <Compile Include="Domain\GameManagement\Models\GameExtensions.cs" />
     <Compile Include="Domain\GamePlaceManagement\Models\Place.cs" />
     <Compile Include="Domain\GamePlaceManagement\Repositories\Messaging\GoogleMapsPlacesResponse.cs" />
     <Compile Include="Domain\GamePlaceManagement\Repositories\MockGamePlaceRepository.cs" />

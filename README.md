@@ -16,7 +16,7 @@ Client:
 
 Backend:
 
-- Web Api / C#
+- .Net Web Api / C#
 - Google Maps
 - Architected/organized using DDD principles
 
