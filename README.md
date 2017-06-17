@@ -2,7 +2,9 @@
 
 Create, join and track pickup games.
 
-http://qpiga.apphb.com
+http://qpiga.apphb.com 
+
+*may take up to 15 seconds for site to come up since appharbor.com spins up iis when sleep
 
 # Tek Stak
 
@@ -17,6 +19,10 @@ Backend:
 - Web Api / C#
 - Google Maps
 - Architected/organized using DDD principles
+
+Continuous integration and hosting server:
+
+- appharbor.com which uses Amazon cloud
 
 # To run application locally
 

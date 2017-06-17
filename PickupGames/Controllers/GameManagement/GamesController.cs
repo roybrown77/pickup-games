@@ -10,6 +10,7 @@ using PickupGames.Domain.GameManagement.Repositories;
 using PickupGames.Domain.GameManagement.Services;
 using PickupGames.Domain.GameManagement.Services.Interfaces;
 using PickupGames.Domain.GameManagement.Services.Messaging;
+using PickupGames.Domain.GameManagement.ViewModels;
 using PickupGames.Domain.GamePlaceManagement.Repositories;
 using PickupGames.Domain.GamePlaceManagement.Services;
 using PickupGames.Domain.GamePlaceManagement.Services.Interfaces;
@@ -42,13 +43,12 @@ namespace PickupGames.Controllers.GameManagement
             var userSavedGames = _gameService.FindBy(searchQuery, centerCoordinates);
             var placesToPlayGames = _gamePlaceService.FindBy(searchQuery);
 
-            var viewModel = new GameSearchResponseListViewModel
+            var response = new GamesPageViewModel
             {
-                Games = userSavedGames,
-                PlacesToPlayGames = placesToPlayGames
+                GameListModel = userSavedGames.ConvertGameListToGameModelList(),
+                PlacesToPlayGamesModel = placesToPlayGames
             };
 
-            var response = GamesMapper.ConvertGameSearchResponseToGamesPageModel(viewModel);
             return Request.CreateResponse(HttpStatusCode.OK, response);
         }
 

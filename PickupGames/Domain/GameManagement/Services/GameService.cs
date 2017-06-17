@@ -80,24 +80,9 @@ namespace PickupGames.Domain.GameManagement.Services
 
             var maxDistance = gameSearchQuery.GetZoomMaxDistance();
 
-            games = GetGamesWithinRadius(games, maxDistance);
+            games = games.GetGamesWithinRadius(maxDistance);
 
             return games;
-        }
-
-        private List<Game> GetGamesWithinRadius(IEnumerable<Game> games, Distance maxDistance)
-        {
-            var newGames = new List<Game>();
-
-            foreach (var game in games)
-            {
-                if (game.Location.DistanceToCenterLocation.Value < maxDistance.Value)
-                {
-                    newGames.Add(game);
-                }
-            }
-
-            return newGames;
         }
 
         private void SetDistanceToCenter(List<Game> games, Coordinate centerCoordinate)
