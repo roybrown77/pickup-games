@@ -4,7 +4,7 @@ Create, join and track pickup games.
 
 http://qpiga.apphb.com 
 
-*may take up to 15 seconds for site to come up since appharbor.com spins up iis when sleep
+*may take up to 15 seconds for site to come up since https://appharbor.com spins up iis when sleep
 
 # Tek Stak
 
@@ -22,7 +22,7 @@ Backend:
 
 Continuous integration and hosting server:
 
-- appharbor.com which uses Amazon cloud
+- https://appharbor.com which uses Amazon cloud
 
 # To run application locally
 
