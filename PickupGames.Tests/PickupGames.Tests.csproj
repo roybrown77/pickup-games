@@ -53,9 +53,6 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="PonderTests.cs" />
-    <Compile Include="SqlFuTests.cs" />
-    <Compile Include="DataAccessorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

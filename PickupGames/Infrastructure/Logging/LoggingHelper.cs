@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Web;
 using PickupGames.Infrastructure.Exceptions;
@@ -33,41 +32,6 @@ namespace PickupGames.Infrastructure.Logging
                 Code = applicationLayerException.StatusCode,
                 Errors = applicationLayerException.Errors
             };
-        }
-
-        public static ErrorLog GenerateBrokenRuleErrorLog(string errorDescription, IEnumerable<Error> errors)
-        {
-            var correlationId = GetCorrelationId();
-
-            return new ErrorLog
-            {
-                CorrelationId = correlationId,
-                Message = errorDescription,
-                Code = HttpStatusCode.BadRequest,
-                Errors = errors
-            };
-        }
-
-        public static string GenerateErrorRefMessageAndLog(Exception exception)
-        {
-            var correlationId = GetCorrelationId();
-
-            var errorLog = GenerateExceptionErrorLog(exception);
-
-            LoggingFactory.GetLogger().Log(errorLog.ConvertToExceptionLogMessage(), LogType.Error);
-
-            return correlationId;
-        }
-
-        public static string GenerateApplicationLayerErrorRefMessageAndLog(ApplicationLayerException applicationLayerException)
-        {
-            var correlationId = GetCorrelationId();
-
-            var errorLog = GenerateApplicationErrorLog(applicationLayerException);
-
-            LoggingFactory.GetLogger().Log(errorLog.ConvertToApplicationExceptionLogMessage(), LogType.Error);
-
-            return correlationId;
         }
 
         public static string GetCorrelationId()

@@ -65,8 +65,6 @@ namespace PickupGames.Domain.AccountManagement.Services
                 Active = true
             };
 
-            //validate and return bad request
-
             return _authRepository.RegisterUser(user);
         }
 

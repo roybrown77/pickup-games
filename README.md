@@ -10,19 +10,20 @@ http://qpiga.apphb.com
 
 Client:
 
-- Angular 1
+- Angular 1 / Javascript
 - Bootstrap
-- Google Maps
+- Google Maps API
 
 Backend:
 
 - .Net Web Api / C#
-- Google Maps
+- Google Maps API
+- No database as this is a demo app.  Using static internal memory to record information which will be removed when iis resets.
 - Architected/organized using DDD principles
 
 Continuous integration and hosting server:
 
-- https://appharbor.com which uses Amazon cloud
+- https://appharbor.com which uses Amazon Web Services (AWS)
 
 # To run application locally
 

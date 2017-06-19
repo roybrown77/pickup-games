@@ -72,8 +72,6 @@ namespace PickupGames.Domain.GameManagement.Services
 
         public List<Game> FindBy(GameSearchQuery gameSearchQuery, Coordinate centerCoordinates)
         {
-            // get all games by state, region or country and filter down by maxDistance; must convert to formatted address if zip specified? get by zip
-
             var games = _gameRepository.FindBy(gameSearchQuery);
 
             SetDistanceToCenter(games, centerCoordinates);
@@ -96,11 +94,7 @@ namespace PickupGames.Domain.GameManagement.Services
                 };
 
                 game.Location.DistanceToCenterLocation = _geographyRepository.DistanceBetweenCoordinates(gameCoordinate, centerCoordinate);
-            }
-
-            // must convert ft into miles
-            // must consider km
-            //games = games.OrderBy(x => double.Parse(x.DistanceToCenterLocation.Replace(" mi","").Replace(" km",""))).ToList();            
+            }            
         }
     }
 }

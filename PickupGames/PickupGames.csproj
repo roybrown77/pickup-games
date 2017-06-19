@@ -186,44 +186,18 @@
     <Compile Include="Domain\AccountManagement\Models\ApplicationType.cs" />
     <Compile Include="Domain\AccountManagement\Models\Client.cs" />
     <Compile Include="Domain\AccountManagement\Services\Interfaces\IAuthService.cs" />
-    <Compile Include="Domain\AccountManagement\ViewModels\RefreshTokenViewModel.cs" />
     <Compile Include="Domain\GameManagement\Models\GameExtensions.cs" />
     <Compile Include="Domain\GamePlaceManagement\Models\Place.cs" />
     <Compile Include="Domain\GamePlaceManagement\Repositories\Messaging\GoogleMapsPlacesResponse.cs" />
-    <Compile Include="Domain\GamePlaceManagement\Repositories\MockGamePlaceRepository.cs" />
     <Compile Include="Domain\GamePlaceManagement\Services\GamePlaceService.cs" />
     <Compile Include="Domain\GamePlaceManagement\Services\Interfaces\IGamePlaceService.cs" />
     <Compile Include="Domain\GameManagement\Services\Interfaces\IGameService.cs" />
-    <Compile Include="Infrastructure\Authentication\AuthenticationHandler.cs" />
-    <Compile Include="Infrastructure\DatabaseAccessor\AdoDatabaseAccessor.cs" />
-    <Compile Include="Infrastructure\DatabaseAccessor\DataReaderExtensions.cs" />
-    <Compile Include="Infrastructure\DatabaseAccessor\IDatabaseAccessor.cs" />
     <Compile Include="Infrastructure\Domain\BusinessRule\BusinessRule.cs" />
-    <Compile Include="Infrastructure\Domain\BusinessRule\BusinessRuleExtensions.cs" />
-    <Compile Include="Infrastructure\Domain\Events\DomainEventDispatcher.cs" />
-    <Compile Include="Infrastructure\Domain\Events\DomainEventingNotInitializedException.cs" />
-    <Compile Include="Infrastructure\Domain\Events\IDomainEvent.cs" />
-    <Compile Include="Infrastructure\Domain\Events\IDomainEventDispatcher.cs" />
-    <Compile Include="Infrastructure\Domain\Events\IDomainEventHandler.cs" />
-    <Compile Include="Infrastructure\Domain\Events\IDomainEventHandlerFactory.cs" />
-    <Compile Include="Infrastructure\Domain\Events\IEnumerableExtensions.cs" />
-    <Compile Include="Infrastructure\Domain\Models\EntityBase.cs" />
-    <Compile Include="Infrastructure\Domain\Models\IAggregateRoot.cs" />
-    <Compile Include="Infrastructure\Domain\Models\IdViewModel.cs" />
-    <Compile Include="Infrastructure\Domain\Models\ValueObjectBase.cs" />
-    <Compile Include="Infrastructure\Domain\Repository\IReadOnlyRepository.cs" />
-    <Compile Include="Infrastructure\Domain\Repository\IRepository.cs" />
-    <Compile Include="Infrastructure\Domain\Repository\IUnitOfWork.cs" />
-    <Compile Include="Infrastructure\Domain\Repository\IUnitOfWorkRepository.cs" />
-    <Compile Include="Infrastructure\Domain\Repository\UnitOfWork.cs" />
-    <Compile Include="Infrastructure\Email\EmailUtilities.cs" />
     <Compile Include="Infrastructure\Exceptions\ApplicationLayerException.cs" />
     <Compile Include="Infrastructure\Exceptions\CustomException.cs" />
     <Compile Include="Infrastructure\Exceptions\Error.cs" />
     <Compile Include="Infrastructure\Exceptions\ErrorExtensions.cs" />
     <Compile Include="Infrastructure\Exceptions\ErrorMessage.cs" />
-    <Compile Include="Infrastructure\Exceptions\Warning.cs" />
-    <Compile Include="Infrastructure\Exceptions\WarningType.cs" />
     <Compile Include="Domain\Geography\Repositories\Interfaces\IGeographyRepository.cs" />
     <Compile Include="Domain\AccountManagement\Models\RefreshToken.cs" />
     <Compile Include="Infrastructure\Logging\ErrorLog.cs" />
@@ -251,28 +225,19 @@
     <Compile Include="Domain\GamePlaceManagement\Models\Location.cs" />
     <Compile Include="Domain\GameManagement\Models\Game.cs" />
     <Compile Include="Domain\GameManagement\Repositories\Messaging\GameSearchQuery.cs" />
-    <Compile Include="Domain\GameManagement\Models\GameSearchResponseListViewModel.cs" />
-    <Compile Include="Domain\GameManagement\Models\GamesSortBy.cs" />
     <Compile Include="Infrastructure\Response\ResponseBase.cs" />
     <Compile Include="Infrastructure\Response\ResponseStatus.cs" />
     <Compile Include="Domain\GameManagement\Models\Sport.cs" />
-    <Compile Include="Domain\GameManagement\ViewModels\SportListResponse.cs" />
     <Compile Include="Domain\GameManagement\Services\GameService.cs" />
     <Compile Include="Domain\GameManagement\Mappers\GamesMapper.cs" />
     <Compile Include="Domain\GameManagement\Services\Messaging\CreateGameRequest.cs" />
     <Compile Include="Domain\GameManagement\Services\Messaging\EditGameRequest.cs" />
     <Compile Include="Domain\GameManagement\Services\Messaging\GameSearchRequest.cs" />
     <Compile Include="Domain\GameManagement\ViewModels\GamesPageViewModel.cs" />
-    <Compile Include="Infrastructure\ServiceAccessor\HttpClientServiceAccessor.cs" />
-    <Compile Include="Infrastructure\ServiceAccessor\IServiceAccessor.cs" />
-    <Compile Include="Infrastructure\ServiceAccessor\WebServiceResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Domain\AccountManagement\Repositories\SimpleRefreshTokenProvider.cs" />
     <Compile Include="Domain\AccountManagement\Repositories\SimpleAuthorizationServerProvider.cs" />
-    <Compile Include="Domain\AccountManagement\Repositories\AuthContext.cs" />
     <Compile Include="Domain\AccountManagement\Repositories\MockAuthRepository.cs" />
-    <Compile Include="Domain\AccountManagement\Repositories\AuthRepositoryEF.cs" />
-    <Compile Include="Domain\AccountManagement\ViewModels\ClientViewModel.cs" />
     <Compile Include="Domain\Geography\Repositories\GeographyRepository.cs" />
     <Compile Include="Domain\AccountManagement\Repositories\Interfaces\IAuthRepository.cs" />
     <Compile Include="Domain\GameManagement\Repositories\Interfaces\IGameRepository.cs" />
@@ -281,9 +246,6 @@
     <Compile Include="Domain\GameManagement\Repositories\MockSportRepository.cs" />
     <Compile Include="Domain\AccountManagement\Services\Messaging\RegisterUserRequest.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Infrastructure\DependencyInjector2\MockNinjectDependencies.cs" />
-    <Compile Include="Infrastructure\DependencyInjector2\NinjectDependencyFactory.cs" />
-    <Compile Include="Infrastructure\DependencyInjector2\NinjectDependencyInjector.cs" />
     <Compile Include="Infrastructure\Encoding\EncodingUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -302,11 +264,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Client\" />
-    <Folder Include="Infrastructure\Configuration\" />
-    <Folder Include="Infrastructure\DependencyInjection\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

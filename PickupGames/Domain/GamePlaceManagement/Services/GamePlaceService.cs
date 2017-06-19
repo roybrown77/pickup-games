@@ -16,33 +16,6 @@ namespace PickupGames.Domain.GamePlaceManagement.Services
             _gamePlaceRepository = gamePlaceRepository;
         }
 
-        //public GameSearchResponse FindBy(string location)
-        //{
-        //    try
-        //    {
-        //        var centerCoordinates = _geographyUtility.GetCoordinates(location);
-                
-        //        var games = _gameRepository.FindBy(location);
-
-        //        SetDistanceToCenter(games, centerCoordinates);
-
-        //        return new GameSearchResponse
-        //                   {
-        //                       Games = games,
-        //                       SearchLocationLat = centerCoordinates.Lat,
-        //                       SearchLocationLng = centerCoordinates.Lng
-        //                   };
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return new GameSearchResponse
-        //                   {
-        //                       Status = ResponseStatus.Failed,
-        //                       Message = ex.Message
-        //                   };
-        //    }
-        //}
-
         public List<Place> FindBy(GameSearchQuery gameSearchQuery)
         {
             var placesToPlayGames = _gamePlaceRepository.GetPlaces(new GeographySearchQuery { Address = gameSearchQuery.Location, Radius = gameSearchQuery.ZoomInMeters.ToString() });

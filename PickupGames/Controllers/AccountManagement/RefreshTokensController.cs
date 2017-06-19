@@ -11,11 +11,6 @@ namespace PickupGames.Controllers.AccountManagement
     {
         private readonly IAuthService _authService;
 
-        //public RefreshTokensController(IAuthService authService)
-        //{
-        //    _authService = new AuthService(new MockAuthRepository());
-        //}
-
         [Authorize(Users = "Admin")]
         [Route("")]
         public IHttpActionResult Get()
@@ -25,7 +20,6 @@ namespace PickupGames.Controllers.AccountManagement
             return Ok(tokens);
         }
 
-        //[Authorize(Users = "Admin1")]
         [AllowAnonymous]
         [Route("")]
         public async Task<IHttpActionResult> Delete(string tokenId)

@@ -9,7 +9,6 @@ namespace PickupGames
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API routes
             config.MapHttpAttributeRoutes();
  
             config.Routes.MapHttpRoute(
@@ -20,11 +19,6 @@ namespace PickupGames
  
             var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
             jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-
-            //var container = IoCFactory.GetStructureMapContainer(appSettings);
-            //GlobalConfiguration.Configuration.DependencyResolver = new StructureMapDependencyResolver(container.Initialize());
-
-            //config.Services.Replace(typeof(IHttpActionInvoker), new CustomHttpActionInvoker());
         }
     }
 }
