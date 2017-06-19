@@ -27,7 +27,6 @@ namespace PickupGames.Domain.AccountManagement.Repositories
                 //Remove the comments from the below line context.SetError, and invalidate context 
                 //if you want to force sending clientId/secrects once obtain access tokens. 
                 context.Validated();
-                //context.SetError("invalid_clientId", "ClientId should be sent.");
                 return;
             }
 

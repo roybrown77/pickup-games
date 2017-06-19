@@ -5,13 +5,7 @@ app.controller('gamesController', ['$scope', '$http', '$q', '$location', '$resou
 
     function updateUrl(location, index, zoom) {
         try {
-            //var urlSearchParameterArray = getUrlSearchParameterArray();
-
-            //if (urlSearchParameterArray.length > 0) {
-            $location.path("/games/" + location + "/" + index, false).search({ 'zoom': zoom }); //=" + 2 + "&" + urlSearchParameterArray.join("&"));            
-            //} else {
-            //    $location.path("/games/usa/1", false).search({ 'zoom' : 4 });
-            //}  
+            $location.path("/games/" + location + "/" + index, false).search({ 'zoom': zoom });
         } catch (e) {
             var temp = e;
         }         

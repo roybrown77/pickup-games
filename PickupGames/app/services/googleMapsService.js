@@ -98,11 +98,6 @@ app.factory('googleMapsService', ['$q', function ($q) {
                     icon : icon
                 });
 
-                //google.maps.event.addListener(marker, 'click', (function (marker, i) {
-                //    return function () {
-                //    }
-                //})(marker, i));
-
                 _markers.push(marker);
             };
         } catch (e) {

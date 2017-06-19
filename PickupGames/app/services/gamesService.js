@@ -60,9 +60,6 @@ app.factory('gamesService', ['$q', '$http', '$resource', 'ngAuthSettings', funct
                             'update': { method: 'PUT' }
                         });
 
-        //var note = Notes.get({ id: id });
-        //$id = id;
-
         resource.update({ id: id }, model, function (response) {
             deferred.resolve(response);
         });
