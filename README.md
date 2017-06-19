@@ -1,6 +1,6 @@
 # Pickup Games
 
-Create, join and track pickup games.
+Create, join and track fitness at pickup games like flag football, basketball, golf, soccer, tennis, chess, etc.
 
 http://qpiga.apphb.com 
 
