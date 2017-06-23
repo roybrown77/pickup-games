@@ -4,7 +4,7 @@ Create, join and track fitness at pickup games like flag football, basketball, g
 
 http://qpiga.apphb.com 
 
-*may take up to 15 seconds for site to come up since https://appharbor.com spins up iis when sleep
+*may take up to 15 seconds for site to come up since https://appharbor.com spins up iis when there is no traffic for a given amount of time
 
 # Tek Stak
 
@@ -18,8 +18,8 @@ Backend:
 
 - .Net Web Api / C#
 - Google Maps API
-- No database as this is a demo app.  Using static internal memory to record information which will be removed when iis resets.
-- Architected/organized using DDD principles
+- No database as this is a demo app.  Using static internal memory (in mock repositories) to record information which will be removed when iis/server resets.
+- Architected/organized using Domain Driven Design (DDD) principles
 
 Continuous integration and hosting server:
 
@@ -27,9 +27,9 @@ Continuous integration and hosting server:
 
 # To run application locally
 
-1. open in visual studio
+1. Open in Visual Studio Professional
 
-2. i'll eliminate this step in a later version:
+2. I'll eliminate this step in a later version:
 
 comment out line:
 
@@ -39,4 +39,4 @@ uncomment line:
 
 var serviceBase = 'http://localhost:59512/';
 
-3. hit f5
+3. Hit f5
